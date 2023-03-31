@@ -13,6 +13,7 @@ import {
   mobile,
   mongodb,
   nodejs,
+  propertize,
   reactjs,
   redux,
   seal,
@@ -255,6 +256,36 @@ const testimonials = [
 ];
 
 const projects = [
+  {
+    name: "Propertize",
+    description:
+      "Propertize is a user-friendly and efficient CRUD real estate dashboard application designed to stream property management process.",
+    tags: [
+      {
+        name: "react",
+        color: "blue-text-gradient",
+      },
+      {
+        name: "mui",
+        color: "blue-text-gradient",
+      },
+      {
+        name: "mongodb",
+        color: "green-text-gradient",
+      },
+      {
+        name: "node",
+        color: "green-text-gradient",
+      },
+      {
+        name: "oauth2",
+        color: "pink-text-gradient",
+      },
+    ],
+    image: propertize,
+    source_code_link: "https://github.com/Benjaminnnnnn/propertize",
+    // demo_link: "https://leafy-centaur-afc811.netlify.app/",
+  },
   {
     name: "Mems",
     description:

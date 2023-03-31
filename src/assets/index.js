@@ -37,6 +37,7 @@ import tttgle from "./333gle.png";
 import carrent from "./carrent.png";
 import jobit from "./jobit.png";
 import mems from "./mems.png";
+import propertize from "./propertize.png";
 import tripguide from "./tripguide.png";
 import xv6 from "./xv6.png";
 
@@ -79,4 +80,5 @@ export {
   kubernetes,
   tttgle,
   xv6,
+  propertize,
 };

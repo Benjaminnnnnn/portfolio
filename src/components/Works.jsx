@@ -15,6 +15,7 @@ const ProjectCard = ({
   tags,
   image,
   source_code_link,
+  demo_link,
 }) => {
   return (
     <motion.div variants={fadeIn("up", "spring", index * 0.5, 0.75)}>
@@ -43,7 +44,18 @@ const ProjectCard = ({
         </div>
 
         <div className="mt-5 h-[150px]">
-          <h3 className="text-white font-bold text-[24px]">{name}</h3>
+          <h3 className="text-white font-bold text-[24px] flex flex-row  justify-between">
+            {name}
+            {/* display demo link if needed */}
+            {demo_link && (
+              <button
+                className="bg-sky-600 px-4 outline-none w-fit text-white shadow-md shadow-primary rounded-xl font-normal text-base"
+                onClick={() => window.open(demo_link, "_blank")}
+              >
+                Demo
+              </button>
+            )}
+          </h3>
           <p className="mt-2 text-secondary text-[14px]">{description}</p>
         </div>
 
