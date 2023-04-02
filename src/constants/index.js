@@ -152,7 +152,7 @@ const experiences = [
     company_name: "University of Washington",
     icon: uw,
     iconBg: "#E6DEDD",
-    date: "August 2021 -  June 2022",
+    date: "June 2021 -  August 2022",
     points: [
       "Instructed a full-stack web development course to 40 students.",
       "Included materials, such as HTML5, CSS, JavaScript, Vue, React, Node, Express, MySQL, MongoDB, RESTful APIs, Git, data visualizations, Linux, responsive web design, security vulnerabilities (XSS, CRSF), etc.",
@@ -262,7 +262,7 @@ const projects = [
       "Propertize is a user-friendly and efficient CRUD real estate dashboard application designed to stream property management process.",
     tags: [
       {
-        name: "react",
+        name: "react-typescript",
         color: "blue-text-gradient",
       },
       {
