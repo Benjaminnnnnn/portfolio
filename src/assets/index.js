@@ -33,13 +33,14 @@ import starbucks from "./company/starbucks.png";
 import tesla from "./company/tesla.png";
 import uw from "./company/uw.png";
 
-import tttgle from "./333gle.png";
 import carrent from "./carrent.png";
 import jobit from "./jobit.png";
-import mems from "./mems.png";
-import propertize from "./propertize.png";
+import tttgle from "./project/333gle.png";
+import cliphop from "./project/cliphop.png";
+import mems from "./project/mems.png";
+import propertize from "./project/propertize.png";
+import xv6 from "./project/xv6.png";
 import tripguide from "./tripguide.png";
-import xv6 from "./xv6.png";
 
 export {
   logo,
@@ -81,4 +82,5 @@ export {
   tttgle,
   xv6,
   propertize,
+  cliphop,
 };

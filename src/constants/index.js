@@ -1,6 +1,7 @@
 import {
   backend,
   beaconfire,
+  cliphop,
   cpp,
   creator,
   css,
@@ -173,61 +174,6 @@ const experiences = [
   },
 ];
 
-// const experiences = [
-//   {
-//     title: "React.js Developer",
-//     company_name: "Starbucks",
-//     icon: starbucks,
-//     iconBg: "#383E56",
-//     date: "March 2020 - April 2021",
-//     points: [
-//       "Developing and maintaining web applications using React.js and other related technologies.",
-//       "Collaborating with cross-functional teams including designers, product managers, and other developers to create high-quality products.",
-//       "Implementing responsive design and ensuring cross-browser compatibility.",
-//       "Participating in code reviews and providing constructive feedback to other developers.",
-//     ],
-//   },
-//   {
-//     title: "React Native Developer",
-//     company_name: "Tesla",
-//     icon: tesla,
-//     iconBg: "#E6DEDD",
-//     date: "Jan 2021 - Feb 2022",
-//     points: [
-//       "Developing and maintaining web applications using React.js and other related technologies.",
-//       "Collaborating with cross-functional teams including designers, product managers, and other developers to create high-quality products.",
-//       "Implementing responsive design and ensuring cross-browser compatibility.",
-//       "Participating in code reviews and providing constructive feedback to other developers.",
-//     ],
-//   },
-//   {
-//     title: "Web Developer",
-//     company_name: "Shopify",
-//     icon: shopify,
-//     iconBg: "#383E56",
-//     date: "Jan 2022 - Jan 2023",
-//     points: [
-//       "Developing and maintaining web applications using React.js and other related technologies.",
-//       "Collaborating with cross-functional teams including designers, product managers, and other developers to create high-quality products.",
-//       "Implementing responsive design and ensuring cross-browser compatibility.",
-//       "Participating in code reviews and providing constructive feedback to other developers.",
-//     ],
-//   },
-//   {
-//     title: "Full stack Developer",
-//     company_name: "Meta",
-//     icon: meta,
-//     iconBg: "#E6DEDD",
-//     date: "Jan 2023 - Present",
-//     points: [
-//       "Developing and maintaining web applications using React.js and other related technologies.",
-//       "Collaborating with cross-functional teams including designers, product managers, and other developers to create high-quality products.",
-//       "Implementing responsive design and ensuring cross-browser compatibility.",
-//       "Participating in code reviews and providing constructive feedback to other developers.",
-//     ],
-//   },
-// ];
-
 const testimonials = [
   {
     testimonial:
@@ -257,9 +203,38 @@ const testimonials = [
 
 const projects = [
   {
+    name: "ClipHop",
+    description:
+      "ClipHop is an immersive video sharing web application that seamlessly combines the power of social media with captivating short-form videos, reminiscent of the popular platform TikTok.",
+    tags: [
+      {
+        name: "react-typescript",
+        color: "blue-text-gradient",
+      },
+      {
+        name: "tailwind",
+        color: "blue-text-gradient",
+      },
+      {
+        name: "nextjs",
+        color: "green-text-gradient",
+      },
+      {
+        name: "sanity",
+        color: "green-text-gradient",
+      },
+      {
+        name: "oauth2",
+        color: "pink-text-gradient",
+      },
+    ],
+    image: cliphop,
+    source_code_link: "https://github.com/Benjaminnnnnn/cliphop",
+  },
+  {
     name: "Propertize",
     description:
-      "Propertize is a user-friendly and efficient CRUD real estate dashboard application designed to stream property management process.",
+      "Propertize is a user-friendly and efficient CRUD real estate dashboard application designed to streamline property management process.",
     tags: [
       {
         name: "react-typescript",
@@ -330,7 +305,7 @@ const projects = [
       },
     ],
     image: tttgle,
-    source_code_link: "https://github.com/",
+    source_code_link: "https://github.com/Benjaminnnnnn/333gle",
   },
   {
     name: "xv6",
@@ -354,71 +329,5 @@ const projects = [
     source_code_link: "https://github.com/Benjaminnnnnn/xv6",
   },
 ];
-
-// const projects = [
-//   {
-//     name: "Car Rent",
-//     description:
-//       "Web-based platform that allows users to search, book, and manage car rentals from various providers, providing a convenient and efficient solution for transportation needs.",
-//     tags: [
-//       {
-//         name: "react",
-//         color: "blue-text-gradient",
-//       },
-//       {
-//         name: "mongodb",
-//         color: "green-text-gradient",
-//       },
-//       {
-//         name: "tailwind",
-//         color: "pink-text-gradient",
-//       },
-//     ],
-//     image: carrent,
-//     source_code_link: "https://github.com/",
-//   },
-//   {
-//     name: "Job IT",
-//     description:
-//       "Web application that enables users to search for job openings, view estimated salary ranges for positions, and locate available jobs based on their current location.",
-//     tags: [
-//       {
-//         name: "react",
-//         color: "blue-text-gradient",
-//       },
-//       {
-//         name: "restapi",
-//         color: "green-text-gradient",
-//       },
-//       {
-//         name: "scss",
-//         color: "pink-text-gradient",
-//       },
-//     ],
-//     image: jobit,
-//     source_code_link: "https://github.com/",
-//   },
-//   {
-//     name: "Trip Guide",
-//     description:
-//       "A comprehensive travel booking platform that allows users to book flights, hotels, and rental cars, and offers curated recommendations for popular destinations.",
-//     tags: [
-//       {
-//         name: "nextjs",
-//         color: "blue-text-gradient",
-//       },
-//       {
-//         name: "supabase",
-//         color: "green-text-gradient",
-//       },
-//       {
-//         name: "css",
-//         color: "pink-text-gradient",
-//       },
-//     ],
-//     image: tripguide,
-//     source_code_link: "https://github.com/",
-//   },
-// ];
 
 export { services, technologies, experiences, testimonials, projects };
