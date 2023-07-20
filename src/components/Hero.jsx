@@ -1,8 +1,9 @@
 import { motion } from "framer-motion";
 import React, { useState } from "react";
 
-import { ComputersCanvas } from "../components";
+import { ComputersCanvas, TypingEffect } from "../components";
 import { styles } from "../styles";
+
 const Hero = () => {
   const [isStarted, setIsStarted] = useState(true);
   const [currentText, setCurrentText] = useState("Testing a sentence");
@@ -20,17 +21,21 @@ const Hero = () => {
         </div>
 
         <div>
-          {/* <h1
-            onMouseEnter={() => {
-              console.log("hi");
-              hoverTextEffect(setCurrentText, setCurrentIndex, setCurrentID);
-            }}
+          <TypingEffect
+            Tag="h1"
+            className={`${styles.heroHeadText} text-white`}
+            text="Hi, I'm"
           >
-            {currentText}
-          </h1> */}
-          <h1 className={`${styles.heroHeadText} text-white`}>
+            <TypingEffect
+              className="text-[#915eff]"
+              Tag="span"
+              text="Benjamin"
+            ></TypingEffect>
+          </TypingEffect>
+
+          {/* <h1 className={`${styles.heroHeadText} text-white`}>
             Hi, I'm <span className="text-[#915eff]">Benjamin</span>
-          </h1>
+          </h1> */}
           {/*   <Typewriter
               options={{ loop: true }}
               onInit={(typewriter) => {
