@@ -4,13 +4,17 @@ declare module "*.jpeg";
 declare module "*.jpg";
 
 declare module "react-tilt";
-declare module "About";
-declare module "Contact";
-declare module "Experience";
-declare module "Feedbacks";
-declare module "Hero";
-declare module "Navbar";
-declare module "Tech";
-declare module "TypingEffect";
-declare module "Works";
-declare module "Canvas";
+declare module "maath/random/dist/maath-random.esm";
+declare module "react-vertical-timeline-component";
+
+declare module "Loader";
+// declare module "About";
+// declare module "Contact";
+// declare module "Experience";
+// declare module "Feedbacks";
+// declare module "Hero";
+// declare module "Navbar";
+// declare module "Tech";
+// declare module "TypingEffect";
+// declare module "Works";
+// declare module "Canvas";

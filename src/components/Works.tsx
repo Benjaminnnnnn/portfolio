@@ -1,11 +1,11 @@
 import { motion } from "framer-motion";
-import React from "react";
 import Tilt from "react-tilt";
 import { github } from "../assets";
 
 import { projects } from "../constants";
 import { SectionWrapper } from "../hoc";
 import { styles } from "../styles";
+import { ProjectProp } from "../types";
 import { fadeIn, textVariant } from "../utils/motion";
 
 const ProjectCard = ({
@@ -16,7 +16,7 @@ const ProjectCard = ({
   image,
   source_code_link,
   demo_link,
-}) => {
+}: ProjectProp) => {
   return (
     <motion.div variants={fadeIn("up", "spring", index * 0.5, 0.75)}>
       <Tilt

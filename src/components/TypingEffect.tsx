@@ -1,12 +1,13 @@
-import React, { useEffect, useState } from "react";
+import { useEffect, useState } from "react";
+import { TypingEffectProps } from "../types";
 
-const alphabet = [...Array(26).keys()].map((v, i) =>
+const alphabet = [...Array(26).keys()].map((_, i) =>
   String.fromCharCode(i + 65)
 );
 
 // generates random text from the English alphabet
 // starting from index
-const generateRandomText = (text, index) => {
+const generateRandomText = (text: string, index: number) => {
   const characters = text.split("").map((char, idx) => {
     const randomChar = alphabet[Math.floor(Math.random() * 26)];
     return idx >= index ? randomChar.toUpperCase() : char;
@@ -14,10 +15,15 @@ const generateRandomText = (text, index) => {
   return characters.join("");
 };
 
-const TypingEffect = ({ text, Tag, className, children }) => {
+const TypingEffect = ({
+  text,
+  Tag,
+  className,
+  children,
+}: TypingEffectProps) => {
   const [currentText, setCurrentText] = useState("");
   const [currentIndex, setCurrentIndex] = useState(0);
-  const [id, setId] = useState(null);
+  const [id, setId] = useState(-1);
 
   useEffect(() => {
     const id = setInterval(() => {
@@ -32,7 +38,7 @@ const TypingEffect = ({ text, Tag, className, children }) => {
       setCurrentText(generateRandomText(text, currentIndex));
     } else {
       clearInterval(id);
-      setId(null);
+      setId(-1);
     }
   }, [currentIndex, text]);
 

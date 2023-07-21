@@ -1,15 +1,9 @@
 import { motion } from "framer-motion";
-import React, { useState } from "react";
 
-import { ComputersCanvas, TypingEffect } from "../components";
+import { ComputersCanvas, TypingEffect } from ".";
 import { styles } from "../styles";
 
 const Hero = () => {
-  const [isStarted, setIsStarted] = useState(true);
-  const [currentText, setCurrentText] = useState("Testing a sentence");
-  const [currentIndex, setCurrentIndex] = useState(0);
-  const [currentID, setCurrentID] = useState(0);
-
   return (
     <section className="relative w-full h-screen mx-auto">
       <div

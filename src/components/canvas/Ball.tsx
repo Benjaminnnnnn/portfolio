@@ -6,13 +6,14 @@ import {
   useTexture,
 } from "@react-three/drei";
 import { Canvas } from "@react-three/fiber";
-import React, { Suspense } from "react";
+import { Suspense } from "react";
 
 import CanvasLoader from "../Loader";
 
-const Ball = (props) => {
+const Ball = (props: any) => {
   const [decal] = useTexture([props.imgUrl]);
   return (
+    // @ts-ignore
     <Float speed={1.75} rotationIntensity={1} floatIntensity={2}>
       <ambientLight intensity={0.25}></ambientLight>
       <directionalLight position={[0, 0, 0.05]}></directionalLight>
@@ -36,7 +37,7 @@ const Ball = (props) => {
   );
 };
 
-const BallCanvas = ({ icon }) => {
+const BallCanvas = ({ icon }: { icon: string }) => {
   return (
     <Canvas frameloop="demand">
       <Suspense fallback={<CanvasLoader></CanvasLoader>}>

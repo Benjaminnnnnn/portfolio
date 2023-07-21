@@ -5,7 +5,7 @@ import Feedbacks from "./Feedbacks";
 import Hero from "./Hero";
 import Navbar from "./Navbar";
 import Tech from "./Tech";
-import TypingEffect from "./TypingEffect";
+import TypingEffect from "./TypingEffect.tsx";
 import Works from "./Works";
 import {
   BallCanvas,
