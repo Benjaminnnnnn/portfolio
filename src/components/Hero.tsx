@@ -1,14 +1,9 @@
 import { motion } from "framer-motion";
-import React, { useState } from "react";
 
-import { ComputersCanvas } from "../components";
+import { ComputersCanvas } from ".";
 import { styles } from "../styles";
-const Hero = () => {
-  const [isStarted, setIsStarted] = useState(true);
-  const [currentText, setCurrentText] = useState("Testing a sentence");
-  const [currentIndex, setCurrentIndex] = useState(0);
-  const [currentID, setCurrentID] = useState(0);
 
+const Hero = () => {
   return (
     <section className="relative w-full h-screen mx-auto">
       <div
@@ -20,31 +15,22 @@ const Hero = () => {
         </div>
 
         <div>
-          {/* <h1
-            onMouseEnter={() => {
-              console.log("hi");
-              hoverTextEffect(setCurrentText, setCurrentIndex, setCurrentID);
-            }}
+          {/* <TypingEffect
+            Tag="h1"
+            className={`${styles.heroHeadText} text-white`}
+            text="Hi, I'm"
           >
-            {currentText}
-          </h1> */}
+            <TypingEffect
+              className="text-[#915eff]"
+              Tag="span"
+              text="Benjamin"
+            ></TypingEffect>
+          </TypingEffect> */}
+
           <h1 className={`${styles.heroHeadText} text-white`}>
             Hi, I'm <span className="text-[#915eff]">Benjamin</span>
           </h1>
-          {/*   <Typewriter
-              options={{ loop: true }}
-              onInit={(typewriter) => {
-                typewriter
-                  .typeString("Hi I'm ")
-                  .pauseFor(1000)
-                  .typeString(
-                    "<span className='text-[#915eff]'>Benjamin</span>"
-                  )
-                  .deleteAll()
-                  .pauseFor(500)
-                  .start();
-              }}
-            />*/}
+
           <p className={`${styles.heroSubText} mt-2 text-white-100`}>
             I build responsive and scalable web applications.
             <br className="sm:block hidden" />

@@ -1,5 +1,4 @@
 import { motion } from "framer-motion";
-import React from "react";
 import { technologies } from "../constants";
 import { SectionWrapper } from "../hoc";
 import { styles } from "../styles";

@@ -1,5 +1,4 @@
 import { motion } from "framer-motion";
-import React from "react";
 import {
   VerticalTimeline,
   VerticalTimelineElement,
@@ -8,9 +7,10 @@ import "react-vertical-timeline-component/style.min.css";
 import { experiences } from "../constants";
 import { SectionWrapper } from "../hoc";
 import { styles } from "../styles";
+import { ExperienceProp } from "../types";
 import { textVariant } from "../utils/motion";
 
-const ExperienceCard = ({ experience }) => {
+const ExperienceCard = ({ experience }: { experience: ExperienceProp }) => {
   return (
     <VerticalTimelineElement
       contentStyle={{ background: "#1d1836", color: "#fff" }}
@@ -38,7 +38,7 @@ const ExperienceCard = ({ experience }) => {
       </div>
 
       <ul className="mt-5 list-disc ml-5 space-y-2">
-        {experience.points.map((point, index) => {
+        {experience.points.map((point: string, index: number) => {
           return (
             <li
               key={`experience-point-${index}`}

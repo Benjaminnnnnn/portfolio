@@ -1,14 +1,16 @@
 import { PointMaterial, Points, Preload } from "@react-three/drei";
 import { Canvas, useFrame } from "@react-three/fiber";
 import * as random from "maath/random/dist/maath-random.esm";
-import React, { Suspense, useRef } from "react";
+import { Suspense, useRef } from "react";
 
-const Stars = (props) => {
+const Stars = (props: any) => {
   const ref = useRef();
   const sphere = random.inSphere(new Float32Array(5000), { radius: 1.2 });
 
-  useFrame((state, delta) => {
+  useFrame((_, delta) => {
+    // @ts-ignore
     ref.current.rotation.x -= delta / 10;
+    // @ts-ignore
     ref.current.rotation.y -= delta / 15;
   });
 

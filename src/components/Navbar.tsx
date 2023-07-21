@@ -1,13 +1,14 @@
-import React, { useState } from "react";
+import { useRef, useState } from "react";
 import { Link } from "react-router-dom";
 
-import { close, logo, menu } from "../assets";
+import { logo } from "../assets";
 import { navLinks } from "../constants";
 import { styles } from "../styles";
 
 const Navbar = () => {
   const [active, setActive] = useState("");
   const [toggle, setToggle] = useState(false);
+  const menuRef = useRef<HTMLDivElement>(null);
 
   return (
     <nav
@@ -36,10 +37,10 @@ const Navbar = () => {
                 className={`
           ${
             active === link.title ? "text-white" : "text-secondary"
-          } hover:text-white text-[18px] font-medium cursor-pointer`}
+          } hover:text-white
+              text-[18px] font-medium cursor-pointer`}
                 onClick={() => {
                   setActive(link.title);
-                  // console.log(active, "clicked");
                 }}
               >
                 <a href={`#${link.id}`}>{link.title}</a>
@@ -49,14 +50,18 @@ const Navbar = () => {
         </ul>
 
         <div className="sm:hidden flex flex-1 justify-end items-center">
-          <img
-            src={toggle ? close : menu}
-            alt="menu"
-            className="w-[28px] h-[28px] object-contain cursor-pointer"
+          <div
+            ref={menuRef}
+            className="menu text-center cursor-pointer w-[64px] h-[64px] flex flex-col items-center justify-center"
             onClick={() => {
+              menuRef.current!.classList.toggle("menu-transform");
               setToggle((prevToggle) => !prevToggle);
             }}
-          />
+          >
+            <span className="menu-bar w-[32px] h-[2px] bg-white mb-2"></span>
+            <span className="menu-bar w-[32px] h-[2px] bg-white mb-2"></span>
+            <span className="menu-bar w-[32px] h-[2px] bg-white mb-2"></span>
+          </div>
 
           <div
             className={`${
@@ -73,6 +78,7 @@ const Navbar = () => {
                       active === link.title ? "text-white" : "text-secondary"
                     } font-poppins font-medium cursor-pointer text-[16px]`}
                     onClick={() => {
+                      menuRef.current!.classList.toggle("menu-transform");
                       setActive(link.title);
                       setToggle((prevToggle) => !prevToggle);
                     }}
