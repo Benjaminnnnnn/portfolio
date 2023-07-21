@@ -8,6 +8,7 @@ import {
 import { Canvas } from "@react-three/fiber";
 import { Suspense } from "react";
 
+// @ts-ignore
 import CanvasLoader from "../Loader";
 
 const Ball = (props: any) => {

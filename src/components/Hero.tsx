@@ -1,6 +1,6 @@
 import { motion } from "framer-motion";
 
-import { ComputersCanvas, TypingEffect } from ".";
+import { ComputersCanvas } from ".";
 import { styles } from "../styles";
 
 const Hero = () => {
@@ -15,7 +15,7 @@ const Hero = () => {
         </div>
 
         <div>
-          <TypingEffect
+          {/* <TypingEffect
             Tag="h1"
             className={`${styles.heroHeadText} text-white`}
             text="Hi, I'm"
@@ -25,25 +25,12 @@ const Hero = () => {
               Tag="span"
               text="Benjamin"
             ></TypingEffect>
-          </TypingEffect>
+          </TypingEffect> */}
 
-          {/* <h1 className={`${styles.heroHeadText} text-white`}>
+          <h1 className={`${styles.heroHeadText} text-white`}>
             Hi, I'm <span className="text-[#915eff]">Benjamin</span>
-          </h1> */}
-          {/*   <Typewriter
-              options={{ loop: true }}
-              onInit={(typewriter) => {
-                typewriter
-                  .typeString("Hi I'm ")
-                  .pauseFor(1000)
-                  .typeString(
-                    "<span className='text-[#915eff]'>Benjamin</span>"
-                  )
-                  .deleteAll()
-                  .pauseFor(500)
-                  .start();
-              }}
-            />*/}
+          </h1>
+
           <p className={`${styles.heroSubText} mt-2 text-white-100`}>
             I build responsive and scalable web applications.
             <br className="sm:block hidden" />
