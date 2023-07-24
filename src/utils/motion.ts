@@ -100,20 +100,6 @@ export const staggerContainer = (
   };
 };
 
-export const staggerChildren = () => {
-  return {
-    hidden: {
-      transition: { staggerChildren: 0.05, staggerDirection: -1 },
-    },
-    show: {
-      transition: {
-        staggerChildren: 0.07,
-        delayChildren: 1,
-      },
-    },
-  };
-};
-
 export const menuItem = () => {
   return {
     show: {

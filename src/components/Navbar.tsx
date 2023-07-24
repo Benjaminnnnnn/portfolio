@@ -7,7 +7,21 @@ import { navLinks } from "../constants";
 import { styles } from "../styles";
 
 // import Logo from "./animations/Logo";
-// import MobileNavbar from "./animations/MobileNavbar";
+import MobileNavbar from "./animated/MobileNavbar";
+
+const resumeHandler = async () => {
+  try {
+    const response = await fetch("resume.pdf");
+    const blob = await response.blob();
+    const fileUrl = window.URL.createObjectURL(blob);
+    const downloadLink = document.createElement("a");
+    downloadLink.href = fileUrl;
+    downloadLink.download = "Benjamin Zhuang.pdf";
+    downloadLink.click();
+  } catch (error) {
+    alert("Unable to download resume.");
+  }
+};
 
 const Navbar = () => {
   const [active, setActive] = useState("");
@@ -34,14 +48,16 @@ const Navbar = () => {
           </p>
         </Link>
 
-        <ul className="list-none hidden sm:flex flex-row gap-10">
+        <ul className="list-none hidden sm:flex flex-row gap-10 items-center">
           {navLinks.map((link) => {
             return (
               <li
                 key={link.id}
                 className={`
                   ${active === link.title ? "text-white" : "text-secondary"}
-                  text-[18px] font-medium cursor-pointer hover:text-white hover:scale-110 transition-all duration-500`}
+                  text-[18px] font-medium cursor-pointer
+                  hover:text-white hover:scale-110 transition-all duration-500
+                  `}
                 onClick={() => {
                   setActive(link.title);
                 }}
@@ -54,16 +70,25 @@ const Navbar = () => {
               </li>
             );
           })}
+
+          <li
+            className="text-white bg-purple-700 hover:bg-purple-800 focus:outline-none
+              font-medium rounded-full text-sm px-5 py-2.5 text-center
+              hover:transition-all hover:scale-110 hover:duration-500"
+            onClick={resumeHandler}
+          >
+            Resume
+          </li>
         </ul>
 
-        {/* <MobileNavbar
+        <MobileNavbar
           toggle={toggle}
           active={active}
           setToggle={setToggle}
           setActive={setActive}
-        ></MobileNavbar> */}
+        ></MobileNavbar>
 
-        <div className="sm:hidden flex flex-1 justify-end items-center">
+        {/* <div className="sm:hidden flex flex-1 justify-end items-center">
           <div
             ref={menuRef}
             className="menu text-center cursor-pointer w-[64px] h-[64px] flex flex-col items-center justify-center"
@@ -72,9 +97,12 @@ const Navbar = () => {
               setToggle((prevToggle) => !prevToggle);
             }}
           >
-            <span className="menu-bar w-[32px] h-[2px] bg-white mb-2"></span>
-            <span className="menu-bar w-[32px] h-[2px] bg-white mb-2"></span>
-            <span className="menu-bar w-[32px] h-[2px] bg-white mb-2"></span>
+            {Array.from(Array(3)).map((_, idx) => (
+              <span
+                key={idx}
+                className="menu-bar w-[32px] h-[2px] bg-white mb-2"
+              ></span>
+            ))}
           </div>
 
           <div
@@ -103,7 +131,7 @@ const Navbar = () => {
               })}
             </ul>
           </div>
-        </div>
+        </div> */}
       </div>
     </nav>
   );
