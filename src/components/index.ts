@@ -6,7 +6,7 @@ import Hero from "./Hero";
 import Navbar from "./Navbar";
 import Tech from "./Tech";
 import Works from "./Works";
-import TypingEffect from "./animations/TypingEffect.tsx";
+import TypingEffect from "./animated/TypingEffect.tsx";
 import {
   BallCanvas,
   ComputersCanvas,

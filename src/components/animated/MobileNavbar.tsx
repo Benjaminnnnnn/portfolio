@@ -4,17 +4,74 @@ import { navLinks } from "../../constants";
 import { IMobileNavbar } from "../../types";
 
 const sidebar = {
-  open: {
+  show: {
+    x: 0,
     height: "100vh",
     width: "100vw",
     transition: {
-      duration: 2,
+      type: "spring",
+      stiffness: 20,
+      restDelta: 2,
     },
   },
-  closed: {
-    height: 0,
-    width: 0,
-    transition: {},
+  hidden: {
+    x: "100%",
+    width: "100vw",
+    height: "100vh",
+    transition: {
+      delay: 0.5,
+      type: "spring",
+      stiffness: 400,
+      damping: 40,
+    },
+  },
+};
+
+// const sidebar = {
+//   show: {
+//     height: "100vh",
+//     width: "100vw",
+//     x: 0,
+//     transition: {
+//       duration: 1,
+//       delayChildren: 1.5,
+//     },
+//   },
+//   hidden: {
+//     x: "100%",
+//     y: 0,
+//     width: "100vw",
+//     height: "10vh",
+//   },
+// };
+
+const menu = {
+  show: {
+    y: 10,
+    transition: {
+      staggerChildren: 0.07,
+    },
+  },
+  hidden: {
+    y: 0,
+    transition: { staggerChildren: 0.05, staggerDirection: -1 },
+  },
+};
+
+const menuItem = {
+  show: {
+    y: 0,
+    opacity: 1,
+    transition: {
+      y: { stiffness: 1000, velocity: -100 },
+    },
+  },
+  hidden: {
+    y: 50,
+    opacity: 0,
+    transition: {
+      y: { stiffness: 1000 },
+    },
   },
 };
 
@@ -36,30 +93,33 @@ const MobileNavbar = ({
           setToggle((prevToggle) => !prevToggle);
         }}
       >
-        <span className="menu-bar w-[32px] h-[2px] bg-white mb-2"></span>
-        <span className="menu-bar w-[32px] h-[2px] bg-white mb-2"></span>
-        <span className="menu-bar w-[32px] h-[2px] bg-white mb-2"></span>
+        {Array.from(Array(3)).map((_, idx) => (
+          <span
+            key={idx}
+            className="menu-bar w-[32px] h-[2px] bg-white mb-2"
+          ></span>
+        ))}
       </div>
       <motion.div
-        initial={closed}
         animate={toggle ? "show" : "hidden"}
         variants={sidebar}
-        className={`${
-          toggle ? "flex" : "hidden"
-        } black-gradient fixed top-0 left-0`}
+        className={` bg-[#060815] fixed top-0 left-0`}
       >
-        <ul
-          //   variants={staggerChildren()}
+        <motion.ul
+          variants={menu}
           className="list-none flex justify-center items-center flex-col gap-4 w-full h-full"
         >
           {navLinks.map((link) => {
             return (
-              <li
+              <motion.li
+                variants={menuItem}
+                whileHover={{ scale: 1.1 }}
+                whileTap={{ scale: 1.3 }}
                 key={link.id}
                 className={`
                     ${
                       active === link.title ? "text-white" : "text-secondary"
-                    } font-poppins font-medium cursor-pointer text-[16px]`}
+                    } font-poppins font-medium text-lg cursor-pointer`}
                 onClick={() => {
                   menuRef.current!.classList.toggle("menu-transform");
                   setActive(link.title);
@@ -67,10 +127,10 @@ const MobileNavbar = ({
                 }}
               >
                 <a href={`#${link.id}`}>{link.title}</a>
-              </li>
+              </motion.li>
             );
           })}
-        </ul>
+        </motion.ul>
       </motion.div>
     </div>
   );
