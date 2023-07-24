@@ -1,9 +1,13 @@
 import { useRef, useState } from "react";
 import { Link } from "react-router-dom";
 
+// import { logo } from "../assets";
 import { logo } from "../assets";
 import { navLinks } from "../constants";
 import { styles } from "../styles";
+
+// import Logo from "./animations/Logo";
+// import MobileNavbar from "./animations/MobileNavbar";
 
 const Navbar = () => {
   const [active, setActive] = useState("");
@@ -23,6 +27,7 @@ const Navbar = () => {
             window.scrollTo(0, 0);
           }}
         >
+          {/* <Logo className="w-full h-full"></Logo> */}
           <img src={logo} alt="logo" className="w-9 h-9 object-contain" />
           <p className="text-white text-[18px] font-bold cursor-pointer">
             Benjamin
@@ -35,19 +40,28 @@ const Navbar = () => {
               <li
                 key={link.id}
                 className={`
-          ${
-            active === link.title ? "text-white" : "text-secondary"
-          } hover:text-white
-              text-[18px] font-medium cursor-pointer`}
+                  ${active === link.title ? "text-white" : "text-secondary"}
+                  text-[18px] font-medium cursor-pointer hover:text-white hover:scale-110 transition-all duration-500`}
                 onClick={() => {
                   setActive(link.title);
                 }}
               >
                 <a href={`#${link.id}`}>{link.title}</a>
+                <div
+                  className={`${active == link.title ? "w-full" : "w-0"}
+                h-[2px] bg-white transition-all duration-500`}
+                ></div>
               </li>
             );
           })}
         </ul>
+
+        {/* <MobileNavbar
+          toggle={toggle}
+          active={active}
+          setToggle={setToggle}
+          setActive={setActive}
+        ></MobileNavbar> */}
 
         <div className="sm:hidden flex flex-1 justify-end items-center">
           <div

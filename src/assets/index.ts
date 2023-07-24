@@ -27,6 +27,7 @@ import typescript from "./tech/typescript.png";
 
 import beaconfire from "./company/beaconfire.png";
 import meta from "./company/meta.png";
+import microsoft from "./company/microsoft.png";
 import seal from "./company/seal.png";
 import shopify from "./company/shopify.png";
 import starbucks from "./company/starbucks.png";
@@ -64,6 +65,7 @@ export {
   mems,
   menu,
   meta,
+  microsoft,
   mobile,
   mongodb,
   nodejs,

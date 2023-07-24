@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { TypingEffectProps } from "../types";
+import { TypingEffectProps } from "../../types";
 
 const alphabet = [...Array(26).keys()].map((_, i) =>
   String.fromCharCode(i + 65)

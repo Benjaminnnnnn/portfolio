@@ -11,6 +11,7 @@ import {
   javascript,
   kubernetes,
   mems,
+  microsoft,
   mobile,
   mongodb,
   nodejs,
@@ -137,15 +138,28 @@ const technologies = [
 
 const experiences = [
   {
+    title: "Software Engineer I",
+    company_name: "Microsoft",
+    icon: microsoft,
+    iconBg: "#ffffff",
+    date: "April 2023 - Current",
+    points: [
+      "Collaborated with cross-functional teams from IC3, AI, CTS, MTR, and OEMs to develop high-performance intelligent camera pipelines and hardware devices, enhancing hybrid Microsoft Teams meeting experience.",
+      "Successfully shipped Plaza and Jabra intelligent cameras with voice and face identification capabilities, seamlessly integrated with Copilot features, including summarizing meeting speaker keynotes and action items.",
+      "Led weekly bug bash sessions with teams up to 50 and actively engaged with TAP (Technology Adoption Program) customers to gather feedback and improve the firmware, feature pipeline, and Microsoft Teams UI.",
+      "Refactored and improved E2E intelligent camera regression testing framework, resulting a 30% increase in test coverage.",
+    ],
+  },
+  {
     title: "Full-Stack Engineer",
-    company_name: "BeaconFire",
+    company_name: "BeaconFire Inc",
     icon: beaconfire,
     iconBg: "#ffffff",
-    date: "Auguest 2022 - December 2022",
+    date: "August 2022 - December 2022",
     points: [
-      "Maintained internal software platforms, designed and delivered 5+ new microservices with CI/CD pipeline in a containerized development environment (React, JS, TS, Bootstrap, Docker, AWS ECS)",
-      "Upgraded current platforms with 30% better performance and more security by investigating and improving backend middleware and database accesses. (Node, Express, MongoDB).",
-      "Wrote 200+ unit tests for user interfaces, backend-processing, database interactions, and more. (Cypress).",
+      "Spearheaded the maintenance of internal software platforms while delivering 5+ new microservices, enhancing the CI/CD pipeline in a containerized development environment, utilizing React, TypeScript, Tailwind CSS, Docker, AWS ECS.",
+      "Upgraded existing platforms to achieve a 30% performance boost and enhanced security. Accomplished through in-depth investigation and improvements to backend middleware and database accesses, employing Node, Express, MongoDB.",
+      "Implemented comprehensive testing strategy, covering 100+ unit tests for user interfaces and backend using Cypress.",
     ],
   },
   {
@@ -155,9 +169,9 @@ const experiences = [
     iconBg: "#E6DEDD",
     date: "June 2021 -  August 2022",
     points: [
-      "Instructed a full-stack web development course to 40 students.",
-      "Included materials, such as HTML5, CSS, JavaScript, Vue, React, Node, Express, MySQL, MongoDB, RESTful APIs, Git, data visualizations, Linux, responsive web design, security vulnerabilities (XSS, CRSF), etc.",
-      "Designed and code reviewed 10+ medium sized creative web application projects.",
+      "Facilitated instruction for a web development course, guiding a cohort of 40 students in essential web development skills.",
+      "Developed comprehensive course materials, covering HTML5, CSS, JavaScript, React.js, Node.js, Express.js, SQLite, MongoDB, RESTful APIs, Git, data visualizations, responsive web design, security vulnerabilities.",
+      "Provided guidance and support to students in designing and implementing 10+ creative projects, fostering a collaborative environment that encourage code reviews and constructive feedback.",
     ],
   },
   {
@@ -167,9 +181,8 @@ const experiences = [
     iconBg: "#E6DEDD",
     date: "February 2020 - June 2021",
     points: [
-      "Deployed an automation software system for management process over 50 lab projects and 200 student/faculty researchers in an agile development team.",
-      "Implemented and containerized 10+ microservices, such as daily project progress tracker, project pitch & fund, team communication channel, and project showcase. (HTML, SCSS, React, React-router, Redux, Typescript, GraphQL, AWS Amplify, AppSync, Google OAuth, ECS, Docker, JWT)",
-      "Virtualized the server for the dev and test environment needs and automated configuration process with Docker.",
+      "Led an agile development team in deploying a content management system (CMS) to manage over 50 lab projects and support 400+ student/faculty researchers; streamlined project management process and improved overall efficiency.",
+      "Implemented and delivered 5+ microservices, including a project issue tracker, team communication channel, and project showcase. Technology encompasses React, Redux, Typescript, AWS Amplify, AWS AppSync, AWS Fargate, AWS Cognito, Google OAuth, JWT, and Terraform.",
     ],
   },
 ];
@@ -330,4 +343,4 @@ const projects = [
   },
 ];
 
-export { services, technologies, experiences, testimonials, projects };
+export { experiences, projects, services, technologies, testimonials };
