@@ -12,6 +12,7 @@ const sidebar = {
       type: "spring",
       stiffness: 20,
       restDelta: 2,
+      delayChildren: 0.5,
     },
   },
   hidden: {
@@ -26,24 +27,6 @@ const sidebar = {
     },
   },
 };
-
-// const sidebar = {
-//   show: {
-//     height: "100vh",
-//     width: "100vw",
-//     x: 0,
-//     transition: {
-//       duration: 1,
-//       delayChildren: 1.5,
-//     },
-//   },
-//   hidden: {
-//     x: "100%",
-//     y: 0,
-//     width: "100vw",
-//     height: "10vh",
-//   },
-// };
 
 const menu = {
   show: {
@@ -101,6 +84,7 @@ const MobileNavbar = ({
         ))}
       </div>
       <motion.div
+        initial={false}
         animate={toggle ? "show" : "hidden"}
         variants={sidebar}
         className={` bg-[#060815] fixed top-0 left-0`}
