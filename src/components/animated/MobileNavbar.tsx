@@ -1,7 +1,6 @@
 import { motion } from "framer-motion";
 import { useRef } from "react";
 import { navLinks } from "../../constants";
-import { IMobileNavbar } from "../../types";
 
 const sidebar = {
   show: {
@@ -58,16 +57,25 @@ const menuItem = {
   },
 };
 
+interface IProps {
+  toggle: boolean;
+  active: string;
+  setToggle: (value: boolean | ((prevToggle: boolean) => boolean)) => void;
+  setActive: (value: string | ((prevActive: string) => string)) => void;
+  resumeHandler: () => void;
+}
+
 const MobileNavbar = ({
   toggle,
   active,
   setToggle,
   setActive,
-}: IMobileNavbar) => {
+  resumeHandler,
+}: IProps) => {
   const menuRef = useRef<HTMLDivElement>(null);
 
   return (
-    <div className="sm:hidden flex flex-1 justify-end items-center">
+    <div className="lg:hidden flex flex-1 justify-end items-center">
       <div
         ref={menuRef}
         className="menu text-center cursor-pointer w-[64px] h-[64px] flex flex-col items-center justify-center z-10"
@@ -114,6 +122,14 @@ const MobileNavbar = ({
               </motion.li>
             );
           })}
+          <li
+            className="text-white bg-purple-700 hover:bg-purple-800 focus:outline-none
+              font-medium rounded-full text-sm px-5 py-2.5 text-center
+              hover:transition-all hover:scale-110 hover:duration-500"
+            onClick={resumeHandler}
+          >
+            Resume
+          </li>
         </motion.ul>
       </motion.div>
     </div>

@@ -17,6 +17,7 @@ import java from "./tech/java.jpg";
 import javascript from "./tech/javascript.png";
 import kubernetes from "./tech/kubernetes.png";
 import mongodb from "./tech/mongodb.png";
+import nextjs from "./tech/next.svg";
 import nodejs from "./tech/nodejs.png";
 import python from "./tech/python.png";
 import reactjs from "./tech/reactjs.png";
@@ -68,6 +69,7 @@ export {
   microsoft,
   mobile,
   mongodb,
+  nextjs,
   nodejs,
   propertize,
   python,
