@@ -50,7 +50,8 @@ const ComputersCanvas = () => {
   const [isPortrait, setIsPortrait] = useState(false);
 
   useEffect(() => {
-    const mediaQuery = window.matchMedia("(max-width: 500px)");
+    // account for iphone pro max
+    const mediaQuery = window.matchMedia("(max-width: 930px)");
     setIsMobile(mediaQuery.matches);
     setIsPortrait(
       !mediaQuery.matches && window.innerHeight > window.innerWidth
@@ -61,6 +62,8 @@ const ComputersCanvas = () => {
     };
 
     mediaQuery.addEventListener("change", handleMediaQueryChange);
+    console.log("ismobile", isMobile);
+    console.log("isPotrait", isPortrait);
     return () => {
       mediaQuery.removeEventListener("change", handleMediaQueryChange);
     };

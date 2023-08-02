@@ -48,7 +48,7 @@ const Navbar = () => {
           </p>
         </Link>
 
-        <ul className="list-none hidden sm:flex flex-row gap-10 items-center">
+        <ul className="list-none hidden lg:flex flex-row gap-10 items-center">
           {navLinks.map((link) => {
             return (
               <li
@@ -86,52 +86,8 @@ const Navbar = () => {
           active={active}
           setToggle={setToggle}
           setActive={setActive}
+          resumeHandler={resumeHandler}
         ></MobileNavbar>
-
-        {/* <div className="sm:hidden flex flex-1 justify-end items-center">
-          <div
-            ref={menuRef}
-            className="menu text-center cursor-pointer w-[64px] h-[64px] flex flex-col items-center justify-center"
-            onClick={() => {
-              menuRef.current!.classList.toggle("menu-transform");
-              setToggle((prevToggle) => !prevToggle);
-            }}
-          >
-            {Array.from(Array(3)).map((_, idx) => (
-              <span
-                key={idx}
-                className="menu-bar w-[32px] h-[2px] bg-white mb-2"
-              ></span>
-            ))}
-          </div>
-
-          <div
-            className={`${
-              !toggle ? "hidden" : "flex"
-            } p-6 black-gradient absolute top-20 right-0 mx-4 my-2 min-w[140px] z-10 rounded-xl`}
-          >
-            <ul className="list-none flex justify-end items-start flex-col gap-4">
-              {navLinks.map((link) => {
-                return (
-                  <li
-                    key={link.id}
-                    className={`
-                    ${
-                      active === link.title ? "text-white" : "text-secondary"
-                    } font-poppins font-medium cursor-pointer text-[16px]`}
-                    onClick={() => {
-                      menuRef.current!.classList.toggle("menu-transform");
-                      setActive(link.title);
-                      setToggle((prevToggle) => !prevToggle);
-                    }}
-                  >
-                    <a href={`#${link.id}`}>{link.title}</a>
-                  </li>
-                );
-              })}
-            </ul>
-          </div>
-        </div> */}
       </div>
     </nav>
   );

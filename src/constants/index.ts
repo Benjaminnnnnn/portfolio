@@ -14,10 +14,10 @@ import {
   microsoft,
   mobile,
   mongodb,
+  nextjs,
   nodejs,
   propertize,
   reactjs,
-  redux,
   seal,
   tailwind,
   tttgle,
@@ -90,10 +90,15 @@ const technologies = [
     name: "React JS",
     icon: reactjs,
   },
+
   {
-    name: "Redux Toolkit",
-    icon: redux,
+    name: "Next JS",
+    icon: nextjs,
   },
+  // {
+  //   name: "Redux Toolkit",
+  //   icon: redux,
+  // },
   {
     name: "Tailwind CSS",
     icon: tailwind,
