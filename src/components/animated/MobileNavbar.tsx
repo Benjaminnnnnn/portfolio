@@ -122,14 +122,17 @@ const MobileNavbar = ({
               </motion.li>
             );
           })}
-          <li
+          <motion.li
+            variants={menuItem}
+            whileHover={{ scale: 1.1 }}
+            whileTap={{ scale: 1.3 }}
             className="text-white bg-purple-700 hover:bg-purple-800 focus:outline-none
               font-medium rounded-full text-sm px-5 py-2.5 text-center
               hover:transition-all hover:scale-110 hover:duration-500"
             onClick={resumeHandler}
           >
             Resume
-          </li>
+          </motion.li>
         </motion.ul>
       </motion.div>
     </div>
