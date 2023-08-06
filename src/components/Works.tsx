@@ -94,7 +94,7 @@ const Works = () => {
         </motion.p>
       </div>
 
-      <div className="mt-20 flex flex-wrap gap-7">
+      <div className="mt-20 flex flex-wrap justify-center gap-7 lg:justify-start">
         {projects.map((project, index) => {
           return (
             <ProjectCard
