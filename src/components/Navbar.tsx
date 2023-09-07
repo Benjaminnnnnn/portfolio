@@ -5,7 +5,7 @@ import { Link } from "react-router-dom";
 import { navLinks } from "../constants";
 import { styles } from "../styles";
 
-import { logo } from "../assets";
+import { logo_test } from "../assets";
 import MobileNavbar from "./animated/MobileNavbar";
 
 const resumeHandler = async () => {
@@ -33,14 +33,18 @@ const Navbar = () => {
       <div className="w-full flex justify-between items-center max-w-7xl mx-auto">
         <Link
           to="/"
-          className="flex items-center gap-2"
+          className="flex items-center gap-2 group"
           onClick={() => {
             setActive("");
             window.scrollTo(0, 0);
           }}
         >
           {/* <Logo></Logo> */}
-          <img src={logo} alt="logo" className="w-9 h-9 object-contain" />
+          <img
+            src={logo_test}
+            alt="logo"
+            className="w-10 h-10 object-contain group-hover:rotate-[480deg] transition-all duration-300 ease-in-out"
+          />
           <p className="text-white text-[18px] font-bold cursor-pointer">
             Benjamin
           </p>

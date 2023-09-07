@@ -3,6 +3,7 @@ import close from "./close.svg";
 import creator from "./creator.png";
 import github from "./github.png";
 import logo from "./logo.svg";
+import logo_test from "./logo_test.svg";
 import menu from "./menu.svg";
 import mobile from "./mobile.png";
 import web from "./web.png";
@@ -63,6 +64,7 @@ export {
   jobit,
   kubernetes,
   logo,
+  logo_test,
   mems,
   menu,
   meta,
