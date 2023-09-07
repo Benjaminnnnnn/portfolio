@@ -28,10 +28,3 @@ export interface ProjectProp {
   source_code_link: string;
   demo_link?: string;
 }
-
-// export interface IMobileNavbar {
-//   toggle: boolean;
-//   active: string;
-//   setToggle: (value: boolean | ((prevToggle: boolean) => boolean)) => void;
-//   setActive: (value: string | ((prevActive: string) => string)) => void;
-// }

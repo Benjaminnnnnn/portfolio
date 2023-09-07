@@ -223,7 +223,7 @@ const projects = [
   {
     name: "ClipHop",
     description:
-      "ClipHop is an immersive video sharing web application that seamlessly combines the power of social media with captivating short-form videos, reminiscent of the popular platform TikTok.",
+      "ClipHop is an immersive video sharing web application that seamlessly combines the power of social media with captivating short-form videos.",
     tags: [
       {
         name: "react-typescript",

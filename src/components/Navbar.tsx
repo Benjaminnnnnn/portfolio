@@ -2,11 +2,10 @@ import { useState } from "react";
 import { Link } from "react-router-dom";
 
 // import { logo } from "../assets";
-import { logo } from "../assets";
 import { navLinks } from "../constants";
 import { styles } from "../styles";
 
-// import Logo from "./animations/Logo";
+import { logo_test } from "../assets";
 import MobileNavbar from "./animated/MobileNavbar";
 
 const resumeHandler = async () => {
@@ -26,7 +25,6 @@ const resumeHandler = async () => {
 const Navbar = () => {
   const [active, setActive] = useState("");
   const [toggle, setToggle] = useState(false);
-  // const menuRef = useRef<HTMLDivElement>(null)
 
   return (
     <nav
@@ -35,14 +33,18 @@ const Navbar = () => {
       <div className="w-full flex justify-between items-center max-w-7xl mx-auto">
         <Link
           to="/"
-          className="flex items-center gap-2"
+          className="flex items-center gap-2 group"
           onClick={() => {
             setActive("");
             window.scrollTo(0, 0);
           }}
         >
-          {/* <Logo className="w-full h-full"></Logo> */}
-          <img src={logo} alt="logo" className="w-9 h-9 object-contain" />
+          {/* <Logo></Logo> */}
+          <img
+            src={logo_test}
+            alt="logo"
+            className="w-10 h-10 object-contain group-hover:rotate-[480deg] transition-all duration-300 ease-in-out"
+          />
           <p className="text-white text-[18px] font-bold cursor-pointer">
             Benjamin
           </p>
@@ -72,9 +74,9 @@ const Navbar = () => {
           })}
 
           <li
-            className="text-white bg-purple-700 hover:bg-purple-800 focus:outline-none
+            className="text-white bg-highlight hover:bg-active focus:outline-none
               font-medium rounded-full text-sm px-5 py-2.5 text-center
-              hover:transition-all hover:scale-110 hover:duration-500"
+              hover:transition-all hover:scale-110 hover:duration-500 cursor-pointer"
             onClick={resumeHandler}
           >
             Resume
