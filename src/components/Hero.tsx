@@ -1,6 +1,7 @@
 import { motion } from "framer-motion";
 import { ComputersCanvas } from ".";
 import { styles } from "../styles";
+import Text from "./animated/Text";
 
 const Hero = () => {
   return (
@@ -14,26 +15,19 @@ const Hero = () => {
         </div>
 
         <div>
-          {/* <TypingEffect
-            Tag="h1"
-            className={`${styles.heroHeadText} text-white`}
-            text="Hi, I'm"
-          >
-            <TypingEffect
-              className="text-[#915eff]"
-              Tag="span"
-              text="Benjamin"
-            ></TypingEffect>
-          </TypingEffect> */}
-
           <h1 className={`${styles.heroHeadText} text-white`}>
-            Hi, I'm <span className="text-[#915eff]">Benjamin</span>
+            Hi, I'm <span className="text-highlight">Benjamin</span>
           </h1>
 
-          <p className={`${styles.heroSubText} mt-2 text-white-100 z-10`}>
+          <Text
+            text={"I build responsive and scalable web applications."}
+            className={`${styles.heroSubText} mt-2 text-white-100 z-10`}
+          ></Text>
+
+          {/* <p className={`${styles.heroSubText} mt-2 text-white-100 z-10`}>
             I build responsive and scalable web applications.
             <br className="sm:block hidden" />
-          </p>
+          </p> */}
         </div>
       </div>
 

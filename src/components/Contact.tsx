@@ -92,13 +92,13 @@ const Contact = () => {
               value={form.message}
               onChange={handleChange}
               placeholder="Do you have anything to say?"
-              className="bg-tertiary py-4 px-6 placeholder:text-secondary text-white rounded-none outline-none border-none font-medium"
+              className="bg-tertiary py-4 px-6 placeholder:text-secondary border-none text-white rounded-lg outline-none font-medium"
             />
           </label>
 
           <button
             type="submit"
-            className="bg-tertiary py-3 px-8 outline-none w-fit text-white font-bold shadow-md shadow-primary rounded-xl"
+            className="bg-highlight transition-all duration-300 hover:bg-active py-3 px-8 outline-none w-fit text-white font-bold shadow-md shadow-primary rounded-xl"
           >
             {loading ? "Sending..." : "Send"}
           </button>

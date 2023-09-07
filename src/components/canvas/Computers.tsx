@@ -62,8 +62,6 @@ const ComputersCanvas = () => {
     };
 
     mediaQuery.addEventListener("change", handleMediaQueryChange);
-    console.log("ismobile", isMobile);
-    console.log("isPotrait", isPortrait);
     return () => {
       mediaQuery.removeEventListener("change", handleMediaQueryChange);
     };
