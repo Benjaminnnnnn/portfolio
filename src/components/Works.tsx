@@ -27,7 +27,7 @@ const ProjectCard = ({
           <img
             src={image}
             alt={name}
-            className="w-full h-full object-scale-down rounded-2xl group-hover:scale-110 transition-all duration-200"
+            className="w-full h-full object-scale-down group-hover:scale-110 transition-all duration-200"
           />
           <div className="absolute inset-0 flex justify-end m-3 card-img_hover">
             <div
@@ -94,7 +94,7 @@ const Works = () => {
         </motion.p>
       </div>
 
-      <div className="mt-20 flex flex-wrap justify-center gap-7 lg:justify-start">
+      <div className="mt-20 flex flex-wrap justify-center gap-7 xl:justify-start">
         {projects.map((project, index) => {
           return (
             <ProjectCard

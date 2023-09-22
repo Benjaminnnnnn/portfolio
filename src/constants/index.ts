@@ -10,6 +10,7 @@ import {
   html,
   javascript,
   kubernetes,
+  leetcode,
   mems,
   microsoft,
   mobile,
@@ -220,6 +221,31 @@ const testimonials = [
 ];
 
 const projects = [
+  {
+    name: "LeetCode [Clone]",
+    description:
+      "LeetCode is an online platform offering coding challenges and interview preparation resources for software engineers and developers.",
+    tags: [
+      {
+        name: "react-typescript",
+        color: "blue-text-gradient",
+      },
+      {
+        name: "tailwind",
+        color: "blue-text-gradient",
+      },
+      {
+        name: "nextjs",
+        color: "green-text-gradient",
+      },
+      {
+        name: "firebase",
+        color: "orange-text-gradient",
+      },
+    ],
+    image: leetcode,
+    source_code_link: "https://github.com/Benjaminnnnnn/leetcode-clone",
+  },
   {
     name: "ClipHop",
     description:

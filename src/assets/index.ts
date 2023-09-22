@@ -36,19 +36,16 @@ import starbucks from "./company/starbucks.png";
 import tesla from "./company/tesla.png";
 import uw from "./company/uw.png";
 
-import carrent from "./carrent.png";
-import jobit from "./jobit.png";
 import tttgle from "./project/333gle.png";
 import cliphop from "./project/cliphop.png";
+import leetcode from "./project/leetcode.png";
 import mems from "./project/mems.png";
 import propertize from "./project/propertize.png";
 import xv6 from "./project/xv6.png";
-import tripguide from "./tripguide.png";
 
 export {
   backend,
   beaconfire,
-  carrent,
   cliphop,
   close,
   cpp,
@@ -61,8 +58,8 @@ export {
   html,
   java,
   javascript,
-  jobit,
   kubernetes,
+  leetcode,
   logo,
   logo_test,
   mems,
@@ -83,7 +80,6 @@ export {
   tailwind,
   tesla,
   threejs,
-  tripguide,
   tttgle,
   typescript,
   uw,
