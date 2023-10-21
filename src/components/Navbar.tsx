@@ -50,7 +50,7 @@ const Navbar = () => {
           </p>
         </Link>
 
-        <ul className="list-none hidden lg:flex flex-row gap-10 items-center">
+        <ul className="list-none hidden lg:flex flex-row gap-5 items-center">
           {navLinks.map((link) => {
             return (
               <li
@@ -64,7 +64,9 @@ const Navbar = () => {
                   setActive(link.title);
                 }}
               >
-                <a href={`#${link.id}`}>{link.title}</a>
+                <a href={`#${link.id}`} className="px-4 py-2">
+                  {link.title}
+                </a>
                 <div
                   className={`${active == link.title ? "w-full" : "w-0"}
                 h-[2px] bg-white transition-all duration-500`}
