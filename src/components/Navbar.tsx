@@ -28,12 +28,12 @@ const Navbar = () => {
 
   return (
     <nav
-      className={`${styles.paddingX} w-full flex items-center py-5 fixed top-0 z-20 bg-primary`}
+      className={`${styles.paddingX} fixed top-0 z-20 flex w-full items-center bg-primary py-5`}
     >
-      <div className="w-full flex justify-between items-center mx-auto">
+      <div className="mx-auto flex w-full items-center justify-between">
         <Link
           to="/"
-          className="flex items-center gap-2 group"
+          className="group flex items-center gap-2"
           onClick={() => {
             setActive("");
             window.scrollTo(0, 0);
@@ -43,22 +43,22 @@ const Navbar = () => {
           <img
             src={logo_test}
             alt="logo"
-            className="w-10 h-10 object-contain group-hover:rotate-[480deg] transition-all duration-300 ease-in-out"
+            className="h-10 w-10 object-contain transition-all duration-300 ease-in-out group-hover:rotate-[480deg]"
           />
-          <p className="text-white text-[18px] font-bold cursor-pointer">
+          <p className="cursor-pointer text-[18px] font-bold text-white">
             Benjamin
           </p>
         </Link>
 
-        <ul className="list-none hidden lg:flex flex-row gap-5 items-center">
+        <ul className="hidden list-none flex-row items-center gap-5 lg:flex">
           {navLinks.map((link) => {
             return (
               <li
                 key={link.id}
                 className={`
                   ${active === link.title ? "text-white" : "text-secondary"}
-                  text-[18px] font-medium cursor-pointer
-                  hover:text-white hover:scale-110 transition-all duration-500
+                  cursor-pointer text-[18px] font-medium
+                  transition-all duration-500 hover:scale-110 hover:text-white
                   `}
                 onClick={() => {
                   setActive(link.title);
@@ -76,9 +76,9 @@ const Navbar = () => {
           })}
 
           <li
-            className="text-white bg-highlight hover:bg-active focus:outline-none
-              font-medium rounded-full text-sm px-5 py-2.5 text-center
-              hover:transition-all hover:scale-110 hover:duration-500 cursor-pointer"
+            className="cursor-pointer rounded border border-secondary bg-blue-pink-gradient
+              bg-[length:0%_100%] bg-no-repeat px-4 py-2 text-center text-[18px] font-medium text-secondary transition-all
+              duration-500 hover:bg-[length:100%_100%] hover:text-white"
             onClick={resumeHandler}
           >
             Resume
