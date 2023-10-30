@@ -23,6 +23,12 @@ module.exports = {
       backgroundImage: {
         "hero-pattern": "url('/src/assets/herobg.png')",
       },
+      backgroundImage: {
+        "blue-pink-gradient":
+          "linear-gradient(to bottom right, #6366f1, #a855f7 60%, #ec4899)",
+        "pink-blue-gradient":
+          "linear-gradient(to bottom right, #ec4899, #a855f7 60%, #6366f1)",
+      },
     },
   },
   plugins: [],
