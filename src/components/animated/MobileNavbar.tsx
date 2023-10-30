@@ -75,10 +75,10 @@ const MobileNavbar = ({
   const menuRef = useRef<HTMLDivElement>(null);
 
   return (
-    <div className="lg:hidden flex flex-1 justify-end items-center">
+    <div className="flex flex-1 items-center justify-end lg:hidden">
       <div
         ref={menuRef}
-        className="menu text-center cursor-pointer w-[64px] h-[64px] flex flex-col items-center justify-center z-10"
+        className="menu z-10 flex h-[64px] w-[64px] cursor-pointer flex-col items-center justify-center text-center"
         onClick={() => {
           menuRef.current!.classList.toggle("menu-transform");
           setToggle((prevToggle) => !prevToggle);
@@ -87,7 +87,7 @@ const MobileNavbar = ({
         {Array.from(Array(3)).map((_, idx) => (
           <span
             key={idx}
-            className="menu-bar w-[32px] h-[2px] bg-white mb-2"
+            className="menu-bar mb-2 h-[2px] w-[32px] bg-white"
           ></span>
         ))}
       </div>
@@ -95,11 +95,11 @@ const MobileNavbar = ({
         initial={false}
         animate={toggle ? "show" : "hidden"}
         variants={sidebar}
-        className={` bg-[#060815] fixed top-0 left-0`}
+        className={` fixed top-0 left-0 bg-[#060815]`}
       >
         <motion.ul
           variants={menu}
-          className="list-none flex justify-center items-center flex-col gap-4 w-full h-full"
+          className="flex h-full w-full list-none flex-col items-center justify-center gap-4"
         >
           {navLinks.map((link) => {
             return (
@@ -111,7 +111,7 @@ const MobileNavbar = ({
                 className={`
                     ${
                       active === link.title ? "text-white" : "text-secondary"
-                    } font-poppins font-medium text-lg cursor-pointer`}
+                    } font-poppins cursor-pointer text-lg font-medium`}
                 onClick={() => {
                   menuRef.current!.classList.toggle("menu-transform");
                   setActive(link.title);
@@ -126,9 +126,9 @@ const MobileNavbar = ({
             variants={menuItem}
             whileHover={{ scale: 1.1 }}
             whileTap={{ scale: 1.3 }}
-            className="text-white bg-purple-700 hover:bg-purple-800 focus:outline-none
-              font-medium rounded-full text-sm px-5 py-2.5 text-center
-              hover:transition-all hover:scale-110 hover:duration-500"
+            className="cursor-pointer rounded bg-blue-pink-gradient
+            bg-no-repeat px-4 py-2 text-center text-[18px] font-medium text-white transition-all
+            duration-500 hover:text-white"
             onClick={resumeHandler}
           >
             Resume
