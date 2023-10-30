@@ -1,41 +1,45 @@
 import { motion } from "framer-motion";
 import { ComputersCanvas } from ".";
 import { styles } from "../styles";
-import Text from "./animated/Text";
 
 const Hero = () => {
   return (
-    <section className="relative w-full h-screen mx-auto">
+    <section className="relative mx-auto h-screen w-full">
       <div
-        className={`${styles.paddingX} absolute inset-0 top-[120px] max-w-7xl flex flex-row items-start gap-5`}
+        className={`${styles.paddingX} absolute inset-0 top-[120px] flex flex-row items-start gap-5 `}
       >
-        <div className="flex flex-col justify-center items-center mt-5">
+        {/* <div className="flex flex-col justify-center items-center mt-5">
           <div className="w-5 h-5 rounded-full bg-[#915eff]"></div>
           <div className="w-1 sm:h-80 h-40 violet-gradient"></div>
-        </div>
+        </div> */}
 
-        <div>
-          <h1 className={`${styles.heroHeadText} text-white`}>
-            Hi, I'm <span className="text-highlight">Benjamin</span>
+        <div className="mx-auto max-w-7xl">
+          <h1 className={`${styles.heroHeadText} text-center text-white`}>
+            <span className="bg-gradient-to-r from-blue-500 to-purple-500 bg-clip-text text-transparent">
+              Benjamin Zhuang
+            </span>
           </h1>
 
-          <Text
+          {/* <Text
             text={"I build responsive and scalable web applications."}
-            className={`${styles.heroSubText} mt-2 text-white-100 z-10`}
-          ></Text>
+            className={`${styles.heroSubText} z-10 mt-2 text-white-100`}
+          ></Text> */}
 
-          {/* <p className={`${styles.heroSubText} mt-2 text-white-100 z-10`}>
-            I build responsive and scalable web applications.
-            <br className="sm:block hidden" />
-          </p> */}
+          <p
+            className={`${styles.heroSubText} z-10 mt-2 text-center text-secondary md:mt-4`}
+          >
+            A full-stack web developer who builds responsive and scalable
+            systems with state-of-the-art technology.
+            <br className="hidden sm:block" />
+          </p>
         </div>
       </div>
 
       <ComputersCanvas></ComputersCanvas>
 
-      <div className="absolute bottom-16 xs:bottom-10 w-full flex justify-center items-center">
+      <div className="absolute bottom-16 flex w-full items-center justify-center xs:bottom-10">
         <a href="#about">
-          <div className="w-[35px] h-[64px] rounded-3xl border-4 border-secondary flex justify-center items-start p-2">
+          <div className="flex h-[64px] w-[35px] items-start justify-center rounded-3xl border-4 border-secondary p-2">
             <motion.div
               animate={{ y: [0, 24, 0] }}
               transition={{
@@ -43,7 +47,7 @@ const Hero = () => {
                 repeat: Infinity,
                 repeatType: "loop",
               }}
-              className="w-3 h-3 rounded-full bg-secondary mb-1"
+              className="mb-1 h-3 w-3 rounded-full bg-secondary"
             ></motion.div>
           </div>
         </a>
