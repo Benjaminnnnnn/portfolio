@@ -2,7 +2,8 @@ import { motion } from "framer-motion";
 
 interface IProps {
   text: string;
-  className: string;
+  containerClassName?: string;
+  className?: string;
 }
 
 const transition = {
@@ -34,9 +35,14 @@ const textAnimation = () => ({
   },
 });
 
-const Text = ({ text, className }: IProps) => {
+const Text = ({ text, className, containerClassName }: IProps) => {
   return (
-    <motion.div initial="hidden" animate="show" variants={containerAnimation()}>
+    <motion.div
+      initial="hidden"
+      animate="show"
+      variants={containerAnimation()}
+      className={containerClassName}
+    >
       {text.split("").map((c, index) => (
         <motion.span
           key={index}

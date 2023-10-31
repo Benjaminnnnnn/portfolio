@@ -19,6 +19,7 @@ import {
   nodejs,
   propertize,
   reactjs,
+  redux,
   seal,
   tailwind,
   tttgle,
@@ -27,6 +28,37 @@ import {
   web,
   xv6,
 } from "../assets";
+
+export interface IExperince {
+  title: string;
+  company_name: string;
+  icon: string;
+  iconBg: string;
+  date: string;
+  points: string[];
+}
+
+export interface IProject {
+  name: string;
+  description: string;
+  tags: {
+    name: string;
+    color: string;
+  }[];
+  image: string;
+  source_code_link: string;
+  demo_link?: string;
+}
+
+export interface IService {
+  title: string;
+  icon: string;
+}
+export interface ITechnology {
+  name: string;
+  icon: string;
+}
+export interface ITestimonial {}
 
 export const navLinks = [
   {
@@ -51,7 +83,7 @@ export const navLinks = [
   },
 ];
 
-const services = [
+const services: IService[] = [
   {
     title: "Web Developer",
     icon: web,
@@ -70,7 +102,7 @@ const services = [
   },
 ];
 
-const technologies = [
+const technologies: ITechnology[] = [
   {
     name: "HTML 5",
     icon: html,
@@ -96,10 +128,10 @@ const technologies = [
     name: "Next JS",
     icon: nextjs,
   },
-  // {
-  //   name: "Redux Toolkit",
-  //   icon: redux,
-  // },
+  {
+    name: "Redux",
+    icon: redux,
+  },
   {
     name: "Tailwind CSS",
     icon: tailwind,
@@ -142,7 +174,7 @@ const technologies = [
   },
 ];
 
-const experiences = [
+const experiences: IExperince[] = [
   {
     title: "Software Engineer I",
     company_name: "Microsoft",
@@ -220,7 +252,7 @@ const testimonials = [
   },
 ];
 
-const projects = [
+const projects: IProject[] = [
   {
     name: "LeetCode [Clone]",
     description:

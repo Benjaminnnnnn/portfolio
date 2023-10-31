@@ -5,6 +5,8 @@ import { styles } from "../styles";
 import { textVariant } from "../utils/motion";
 import { BallCanvas } from "./canvas";
 
+export type technology = (typeof technologies)[0];
+
 const Tech = () => {
   return (
     <>
@@ -13,10 +15,10 @@ const Tech = () => {
         <h2 className={styles.sectionHeadText}>Skills.</h2>
       </motion.div>
 
-      <div className="flex flex-row flex-wrap justify-center gap-10 mt-10">
+      <div className="mt-10 flex flex-row flex-wrap justify-center gap-10">
         {technologies.map((tech) => {
           return (
-            <div className="w-28 h-28" key={tech.name}>
+            <div className="h-28 w-28" key={tech.name}>
               <BallCanvas icon={tech.icon}></BallCanvas>
             </div>
           );
