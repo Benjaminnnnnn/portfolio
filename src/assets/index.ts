@@ -13,6 +13,7 @@ import css from "./tech/css.png";
 import docker from "./tech/docker.png";
 import figma from "./tech/figma.png";
 import git from "./tech/git.png";
+import graphql from "./tech/graphql.svg";
 import html from "./tech/html.png";
 import java from "./tech/java.jpg";
 import javascript from "./tech/javascript.png";
@@ -27,15 +28,13 @@ import tailwind from "./tech/tailwind.png";
 import threejs from "./tech/threejs.svg";
 import typescript from "./tech/typescript.png";
 
+// companies
 import beaconfire from "./company/beaconfire.png";
-import meta from "./company/meta.png";
 import microsoft from "./company/microsoft.png";
 import seal from "./company/seal.png";
-import shopify from "./company/shopify.png";
-import starbucks from "./company/starbucks.png";
-import tesla from "./company/tesla.png";
 import uw from "./company/uw.png";
 
+// projects
 import tttgle from "./project/333gle.png";
 import cliphop from "./project/cliphop.png";
 import leetcode from "./project/leetcode.png";
@@ -55,6 +54,7 @@ export {
   figma,
   git,
   github,
+  graphql,
   html,
   java,
   javascript,
@@ -64,7 +64,6 @@ export {
   logo_test,
   mems,
   menu,
-  meta,
   microsoft,
   mobile,
   mongodb,
@@ -75,10 +74,7 @@ export {
   reactjs,
   redux,
   seal,
-  shopify,
-  starbucks,
   tailwind,
-  tesla,
   threejs,
   tttgle,
   typescript,

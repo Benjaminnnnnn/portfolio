@@ -4,12 +4,10 @@ import {
   cliphop,
   cpp,
   creator,
-  css,
   docker,
   git,
-  html,
+  graphql,
   javascript,
-  kubernetes,
   leetcode,
   mems,
   microsoft,
@@ -18,6 +16,7 @@ import {
   nextjs,
   nodejs,
   propertize,
+  python,
   reactjs,
   redux,
   seal,
@@ -103,14 +102,14 @@ const services: IService[] = [
 ];
 
 const technologies: ITechnology[] = [
-  {
-    name: "HTML 5",
-    icon: html,
-  },
-  {
-    name: "CSS 3",
-    icon: css,
-  },
+  // {
+  //   name: "HTML 5",
+  //   icon: html,
+  // },
+  // {
+  //   name: "CSS 3",
+  //   icon: css,
+  // },
   {
     name: "JavaScript",
     icon: javascript,
@@ -123,6 +122,10 @@ const technologies: ITechnology[] = [
     name: "React JS",
     icon: reactjs,
   },
+  {
+    name: "Tailwind CSS",
+    icon: tailwind,
+  },
 
   {
     name: "Next JS",
@@ -133,8 +136,8 @@ const technologies: ITechnology[] = [
     icon: redux,
   },
   {
-    name: "Tailwind CSS",
-    icon: tailwind,
+    name: "GraphQL",
+    icon: graphql,
   },
   {
     name: "Node JS",
@@ -160,14 +163,14 @@ const technologies: ITechnology[] = [
     name: "docker",
     icon: docker,
   },
-  {
-    name: "kubernetes",
-    icon: kubernetes,
-  },
   // {
-  //   name: "python",
-  //   icon: python,
+  //   name: "kubernetes",
+  //   icon: kubernetes,
   // },
+  {
+    name: "python",
+    icon: python,
+  },
   {
     name: "c++",
     icon: cpp,
