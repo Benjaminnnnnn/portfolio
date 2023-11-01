@@ -1,6 +1,7 @@
 import { motion } from "framer-motion";
 import { ComputersCanvas } from ".";
 import { styles } from "../styles";
+import Text from "./animated/Text";
 
 const Hero = () => {
   return (
@@ -20,18 +21,19 @@ const Hero = () => {
             </span>
           </h1>
 
-          {/* <Text
-            text={"I build responsive and scalable web applications."}
-            className={`${styles.heroSubText} z-10 mt-2 text-white-100`}
-          ></Text> */}
+          <Text
+            text="A full-stack web developer who builds responsive and scalable
+            systems with state-of-the-art technology."
+            containerClassName={`${styles.heroSubText} z-10 mt-2 text-center text-secondary md:mt-4`}
+          ></Text>
 
-          <p
+          {/* <p
             className={`${styles.heroSubText} z-10 mt-2 text-center text-secondary md:mt-4`}
           >
             A full-stack web developer who builds responsive and scalable
             systems with state-of-the-art technology.
             <br className="hidden sm:block" />
-          </p>
+          </p> */}
         </div>
       </div>
 

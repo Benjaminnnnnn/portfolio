@@ -4,12 +4,10 @@ import {
   cliphop,
   cpp,
   creator,
-  css,
   docker,
   git,
-  html,
+  graphql,
   javascript,
-  kubernetes,
   leetcode,
   mems,
   microsoft,
@@ -18,7 +16,9 @@ import {
   nextjs,
   nodejs,
   propertize,
+  python,
   reactjs,
+  redux,
   seal,
   tailwind,
   tttgle,
@@ -27,6 +27,37 @@ import {
   web,
   xv6,
 } from "../assets";
+
+export interface IExperince {
+  title: string;
+  company_name: string;
+  icon: string;
+  iconBg: string;
+  date: string;
+  points: string[];
+}
+
+export interface IProject {
+  name: string;
+  description: string;
+  tags: {
+    name: string;
+    color: string;
+  }[];
+  image: string;
+  source_code_link: string;
+  demo_link?: string;
+}
+
+export interface IService {
+  title: string;
+  icon: string;
+}
+export interface ITechnology {
+  name: string;
+  icon: string;
+}
+export interface ITestimonial {}
 
 export const navLinks = [
   {
@@ -51,7 +82,7 @@ export const navLinks = [
   },
 ];
 
-const services = [
+const services: IService[] = [
   {
     title: "Web Developer",
     icon: web,
@@ -70,15 +101,15 @@ const services = [
   },
 ];
 
-const technologies = [
-  {
-    name: "HTML 5",
-    icon: html,
-  },
-  {
-    name: "CSS 3",
-    icon: css,
-  },
+const technologies: ITechnology[] = [
+  // {
+  //   name: "HTML 5",
+  //   icon: html,
+  // },
+  // {
+  //   name: "CSS 3",
+  //   icon: css,
+  // },
   {
     name: "JavaScript",
     icon: javascript,
@@ -91,18 +122,22 @@ const technologies = [
     name: "React JS",
     icon: reactjs,
   },
+  {
+    name: "Tailwind CSS",
+    icon: tailwind,
+  },
 
   {
     name: "Next JS",
     icon: nextjs,
   },
-  // {
-  //   name: "Redux Toolkit",
-  //   icon: redux,
-  // },
   {
-    name: "Tailwind CSS",
-    icon: tailwind,
+    name: "Redux",
+    icon: redux,
+  },
+  {
+    name: "GraphQL",
+    icon: graphql,
   },
   {
     name: "Node JS",
@@ -128,21 +163,21 @@ const technologies = [
     name: "docker",
     icon: docker,
   },
-  {
-    name: "kubernetes",
-    icon: kubernetes,
-  },
   // {
-  //   name: "python",
-  //   icon: python,
+  //   name: "kubernetes",
+  //   icon: kubernetes,
   // },
+  {
+    name: "python",
+    icon: python,
+  },
   {
     name: "c++",
     icon: cpp,
   },
 ];
 
-const experiences = [
+const experiences: IExperince[] = [
   {
     title: "Software Engineer I",
     company_name: "Microsoft",
@@ -220,7 +255,7 @@ const testimonials = [
   },
 ];
 
-const projects = [
+const projects: IProject[] = [
   {
     name: "LeetCode [Clone]",
     description:
