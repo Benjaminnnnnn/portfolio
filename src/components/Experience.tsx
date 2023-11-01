@@ -4,13 +4,12 @@ import {
   VerticalTimelineElement,
 } from "react-vertical-timeline-component";
 import "react-vertical-timeline-component/style.min.css";
-import { experiences } from "../constants";
+import { IExperince, experiences } from "../constants";
 import { SectionWrapper } from "../hoc";
 import { styles } from "../styles";
-import { ExperienceProp } from "../types";
 import { textVariant } from "../utils/motion";
 
-const ExperienceCard = ({ experience }: { experience: ExperienceProp }) => {
+const ExperienceCard = ({ experience }: { experience: IExperince }) => {
   return (
     <VerticalTimelineElement
       contentStyle={{ background: "#1d1836", color: "#fff" }}
@@ -18,31 +17,31 @@ const ExperienceCard = ({ experience }: { experience: ExperienceProp }) => {
       date={experience.date}
       iconStyle={{ background: experience.iconBg }}
       icon={
-        <div className="flex justify-center items-center w-full h-full">
+        <div className="flex h-full w-full items-center justify-center">
           <img
             src={experience.icon}
             alt={experience.company_name}
-            className="w-[60%] h-[60%] object-contain"
+            className="h-[60%] w-[60%] object-contain"
           />
         </div>
       }
     >
       <div>
-        <h3 className="text-white text-[24px] text-bold">{experience.title}</h3>
+        <h3 className="text-bold text-[24px] text-white">{experience.title}</h3>
         <p
-          className="text-secondary text-[16px] font-semibold"
+          className="text-[16px] font-semibold text-secondary"
           style={{ margin: 0 }}
         >
           {experience.company_name}
         </p>
       </div>
 
-      <ul className="mt-5 list-disc ml-5 space-y-2">
+      <ul className="mt-5 ml-5 list-disc space-y-2">
         {experience.points.map((point: string, index: number) => {
           return (
             <li
               key={`experience-point-${index}`}
-              className="text-white-100 text-[14px] pl-1 tracking-wider"
+              className="pl-1 text-[14px] tracking-wider text-white-100"
             >
               {point}
             </li>
