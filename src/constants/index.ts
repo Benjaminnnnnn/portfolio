@@ -4,6 +4,7 @@ import {
   cliphop,
   cpp,
   creator,
+  cypress,
   docker,
   git,
   graphql,
@@ -19,6 +20,7 @@ import {
   python,
   reactjs,
   redux,
+  rssagg,
   seal,
   tailwind,
   tttgle,
@@ -257,6 +259,36 @@ const testimonials = [
 
 const projects: IProject[] = [
   {
+    name: "Cypress (WIP)",
+    description:
+      "Cypress is an all-in-one platform for seamless team collaboration and project management.",
+    tags: [
+      {
+        name: "react-typescript",
+        color: "blue-text-gradient",
+      },
+
+      {
+        name: "nextjs",
+        color: "green-text-gradient",
+      },
+      {
+        name: "supabase",
+        color: "green-text-gradient",
+      },
+      {
+        name: "drizzle-orm",
+        color: "green-text-gradient",
+      },
+      {
+        name: "postgresql",
+        color: "pink-text-gradient",
+      },
+    ],
+    image: cypress,
+    source_code_link: "https://github.com/Benjaminnnnnn/cypress",
+  },
+  {
     name: "LeetCode [Clone]",
     description:
       "LeetCode is an online platform offering coding challenges and interview preparation resources for software engineers and developers.",
@@ -284,7 +316,7 @@ const projects: IProject[] = [
   {
     name: "ClipHop",
     description:
-      "ClipHop is an immersive video sharing web application that seamlessly combines the power of social media with captivating short-form videos.",
+      "ClipHop is an immersive video sharing web application that combines the power of social media with captivating short-form videos.",
     tags: [
       {
         name: "react-typescript",
@@ -309,6 +341,31 @@ const projects: IProject[] = [
     ],
     image: cliphop,
     source_code_link: "https://github.com/Benjaminnnnnn/cliphop",
+  },
+  {
+    name: "RSS Aggregator",
+    description:
+      "An RSS feed aggregator web server and scrape. Get/subscribe your favorite RSS feeds here.",
+    tags: [
+      {
+        name: "go",
+        color: "blue-text-gradient",
+      },
+      {
+        name: "go-chi",
+        color: "blue-text-gradient",
+      },
+      {
+        name: "postgresql",
+        color: "blue-text-gradient",
+      },
+      {
+        name: "sqlc",
+        color: "green-text-gradient",
+      },
+    ],
+    image: rssagg,
+    source_code_link: "https://github.com/Benjaminnnnnn/go-rssagg",
   },
   {
     name: "Propertize",
