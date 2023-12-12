@@ -345,7 +345,7 @@ const projects: IProject[] = [
   {
     name: "RSS Aggregator",
     description:
-      "An RSS feed aggregator web server and scrape. Get/subscribe your favorite RSS feeds here.",
+      "An RSS feed aggregator web server and scraper, desinged to be dynamic and effective. Get/subscribe your favorite RSS feeds here.",
     tags: [
       {
         name: "go",
