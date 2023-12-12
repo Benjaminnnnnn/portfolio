@@ -37,9 +37,11 @@ import uw from "./company/uw.png";
 // projects
 import tttgle from "./project/333gle.png";
 import cliphop from "./project/cliphop.png";
+import cypress from "./project/cypress.png";
 import leetcode from "./project/leetcode.png";
 import mems from "./project/mems.png";
 import propertize from "./project/propertize.png";
+import rssagg from "./project/rssagg.png";
 import xv6 from "./project/xv6.png";
 
 export {
@@ -50,6 +52,7 @@ export {
   cpp,
   creator,
   css,
+  cypress,
   docker,
   figma,
   git,
@@ -73,6 +76,7 @@ export {
   python,
   reactjs,
   redux,
+  rssagg,
   seal,
   tailwind,
   threejs,
