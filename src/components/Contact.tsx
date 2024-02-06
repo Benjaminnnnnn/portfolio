@@ -96,12 +96,6 @@ const Contact = () => {
             />
           </label>
 
-          {/* <button
-            type="submit"
-            className="bg-highlight transition-all duration-300 hover:bg-active py-3 px-8 outline-none w-fit text-white font-bold shadow-md shadow-primary rounded-xl"
-          >
-            {loading ? "Sending..." : "Send"}
-          </button> */}
           <button
             type="submit"
             className="w-fit cursor-pointer rounded
