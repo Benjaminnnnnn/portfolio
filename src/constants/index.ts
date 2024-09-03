@@ -187,10 +187,10 @@ const experiences: IExperince[] = [
     iconBg: "#ffffff",
     date: "April 2023 - Current",
     points: [
-      "Collaborated with cross-functional teams from IC3, AI, CTS, MTR, and OEMs to develop high-performance intelligent camera pipelines and hardware devices, enhancing hybrid Microsoft Teams meeting experience.",
-      "Successfully shipped Plaza and Jabra intelligent cameras with voice and face identification capabilities, seamlessly integrated with Copilot features, including summarizing meeting speaker keynotes and action items.",
-      "Led weekly bug bash sessions with teams up to 50 and actively engaged with TAP (Technology Adoption Program) customers to gather feedback and improve the firmware, feature pipeline, and Microsoft Teams UI.",
-      "Refactored and improved E2E intelligent camera regression testing framework, resulting a 30% increase in test coverage.",
+      "Collaborated with cross-functional teams and partners to build cross-platform Microsoft Teams meeting experience with high-performance edge/cloud-based AI camera pipelines and hardware cameras devices.",
+      "Participated in agile development of Teams meeting experience and implemented new features that meets business requirements.",
+      "Ownership in E2E intelligent camera automation testing framework, resulting in a 30% increase in test coverage.",
+      "Led weekly bug bash sessions with meeting up to 30 participants to overall Teams meeting room experience.",
     ],
   },
   {
