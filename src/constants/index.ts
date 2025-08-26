@@ -187,10 +187,11 @@ const experiences: IExperince[] = [
     iconBg: "#ffffff",
     date: "April 2023 - Current",
     points: [
-      "Collaborated with cross-functional teams and partners to build cross-platform Microsoft Teams meeting experience with high-performance edge/cloud-based AI camera pipelines and hardware cameras devices.",
-      "Participated in agile development of Teams meeting experience and implemented new features that meets business requirements.",
-      "Ownership in E2E intelligent camera automation testing framework, resulting in a 30% increase in test coverage.",
-      "Led weekly bug bash sessions with meeting up to 30 participants to overall Teams meeting room experience.",
+      "Architected and delivered an end-to-end people identification system in Microsoft Teams meeting rooms, expanding AI capabilities to legacy hardware and improving accessibility for enterprise clients.",
+      "Engineered and optimized a real-time face detection pipeline processing 1080p video at 30fps with 99% accuracy, directly enhancing meeting experiences for 10M+ global users.",
+      "Collaborated cross-functionally with security and compliance teams to design a privacy-first face enrollment pipeline.",
+      "Enhanced multilingual voice recognition capabilities, raising accuracy to 95% across 40+ languages, improving inclusivity for international Teams adoption.",
+      "Instituted a robust testing framework with 95% code coverage for AI/ML components, reducing regression incidents by 30%.",
     ],
   },
   {
@@ -200,9 +201,9 @@ const experiences: IExperince[] = [
     iconBg: "#ffffff",
     date: "August 2022 - December 2022",
     points: [
-      "Spearheaded the maintenance of internal software platforms while delivering 5+ new microservices, enhancing the CI/CD pipeline in a containerized development environment, utilizing React, TypeScript, Tailwind CSS, Docker, AWS ECS.",
-      "Upgraded existing platforms to achieve a 30% performance boost and enhanced security. Accomplished through in-depth investigation and improvements to backend middleware and database accesses, employing Node, Express, MongoDB.",
-      "Implemented comprehensive testing strategy, covering 100+ unit tests for user interfaces and backend using Cypress.",
+      "Spearheaded internal management platform and activated scalable frontend infrastructure for developer onboarding.",
+      "Streamlined CI/CD pipelines to deploy internal tools, reducing deployment times by 10 mins per release.",
+      "Wrote 100+ unit/component/automated tests to ensure zero downtime in CI/CD releases.",
     ],
   },
   {
@@ -212,9 +213,8 @@ const experiences: IExperince[] = [
     iconBg: "#E6DEDD",
     date: "June 2021 -  August 2022",
     points: [
-      "Facilitated instruction for a web development course, guiding a cohort of 40 students in essential web development skills.",
-      "Developed comprehensive course materials, covering HTML5, CSS, JavaScript, React.js, Node.js, Express.js, SQLite, MongoDB, RESTful APIs, Git, data visualizations, responsive web design, security vulnerabilities.",
-      "Provided guidance and support to students in designing and implementing 10+ creative projects, fostering a collaborative environment that encourage code reviews and constructive feedback.",
+      "Taught and supported 40+ students in advanced web development concepts and algorithms. ",
+      "Mentored students in software design principles and led code reviews for student projects.",
     ],
   },
   {
@@ -224,8 +224,8 @@ const experiences: IExperince[] = [
     iconBg: "#E6DEDD",
     date: "February 2020 - June 2021",
     points: [
-      "Led an agile development team in deploying a content management system (CMS) to manage over 50 lab projects and support 400+ student/faculty researchers; streamlined project management process and improved overall efficiency.",
-      "Implemented and delivered 5+ microservices, including a project issue tracker, team communication channel, and project showcase. Technology encompasses React, Redux, Typescript, AWS Amplify, AWS AppSync, AWS Fargate, AWS Cognito, Google OAuth, JWT, and Terraform.",
+      "Led development of a research-oriented content management system supporting real-time data analysis for 500+ daily entries.",
+      "Designed and automated a research data processing microservice, reducing 30-hour human labor per week.",
     ],
   },
 ];
