@@ -185,7 +185,7 @@ const experiences: IExperince[] = [
     company_name: "Microsoft",
     icon: microsoft,
     iconBg: "#ffffff",
-    date: "April 2023 - Current",
+    date: "April 2023 - October 2024",
     points: [
       "Architected and delivered an end-to-end people identification system in Microsoft Teams meeting rooms, expanding AI capabilities to legacy hardware and improving accessibility for enterprise clients.",
       "Engineered and optimized a real-time face detection pipeline processing 1080p video at 30fps with 99% accuracy, directly enhancing meeting experiences for 10M+ global users.",
