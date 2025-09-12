@@ -2,7 +2,7 @@ import { useState } from "react";
 import { Link } from "react-router-dom";
 
 // import { logo } from "../assets";
-import { navLinks } from "../constants";
+import { LinkedIn, navLinks } from "../constants";
 import { styles } from "../styles";
 
 import { logo_test } from "../assets";
@@ -74,6 +74,21 @@ const Navbar = () => {
               </li>
             );
           })}
+          <li
+            className={`
+                  ${active === LinkedIn.title ? "text-white" : "text-secondary"}
+                  cursor-pointer text-[18px] font-medium
+                  transition-all duration-500 hover:scale-110 hover:text-white
+                  `}
+          >
+            <a href={LinkedIn.link} className="px-4 py-2">
+              {LinkedIn.title}
+            </a>
+            <div
+              className={`${active == "LinkedIn" ? "w-full" : "w-0"}
+                h-[2px] bg-white transition-all duration-500`}
+            ></div>
+          </li>
 
           <li
             className="cursor-pointer rounded border border-secondary bg-blue-pink-gradient

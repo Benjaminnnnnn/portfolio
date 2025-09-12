@@ -466,4 +466,16 @@ const projects: IProject[] = [
   },
 ];
 
-export { experiences, projects, services, technologies, testimonials };
+const LinkedIn = {
+  title: "LinkedIn",
+  link: "https://www.linkedin.com/in/benjamin-zhuang/",
+};
+
+export {
+  experiences,
+  LinkedIn,
+  projects,
+  services,
+  technologies,
+  testimonials,
+};

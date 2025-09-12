@@ -1,6 +1,6 @@
 import { motion } from "framer-motion";
 import { useRef } from "react";
-import { navLinks } from "../../constants";
+import { LinkedIn, navLinks } from "../../constants";
 
 const sidebar = {
   show: {
@@ -122,6 +122,27 @@ const MobileNavbar = ({
               </motion.li>
             );
           })}
+          <motion.li
+            variants={menuItem}
+            whileHover={{ scale: 1.1 }}
+            whileTap={{ scale: 1.3 }}
+            className={`
+                    ${
+                      active === LinkedIn.title
+                        ? "text-white"
+                        : "text-secondary"
+                    } font-poppins cursor-pointer text-lg font-medium`}
+            onClick={() => {
+              menuRef.current!.classList.toggle("menu-transform");
+              setActive(LinkedIn.title);
+              setTimeout(() => {
+                setActive("");
+              }, 1000);
+              setToggle((prevToggle) => !prevToggle);
+            }}
+          >
+            <a href={LinkedIn.link}>{LinkedIn.title}</a>
+          </motion.li>
           <motion.li
             variants={menuItem}
             whileHover={{ scale: 1.1 }}
