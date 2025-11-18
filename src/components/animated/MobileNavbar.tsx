@@ -76,13 +76,16 @@ const MobileNavbar = ({
   theme,
   toggleTheme,
 }: IProps) => {
-  const menuRef = useRef<HTMLDivElement>(null);
+  const menuRef = useRef<HTMLButtonElement>(null);
 
   return (
-    <div className="flex flex-1 items-center justify-end lg:hidden">
-      <div
-        ref={menuRef}
+    <div className="flex flex-1 items-center justify-center lg:hidden">
+      <button
         className="menu z-10 flex h-[64px] w-[64px] cursor-pointer flex-col items-center justify-center text-center"
+        ref={menuRef}
+        aria-label="Toggle menu"
+        aria-expanded={toggle}
+        type="button"
         onClick={() => {
           menuRef.current!.classList.toggle("menu-transform");
           setToggle((prevToggle) => !prevToggle);
@@ -94,7 +97,7 @@ const MobileNavbar = ({
             className="menu-bar mb-2 h-[2px] w-[32px] bg-ink"
           ></span>
         ))}
-      </div>
+      </button>
       <motion.div
         initial={false}
         animate={toggle ? "show" : "hidden"}
