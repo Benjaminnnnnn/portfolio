@@ -57,6 +57,7 @@ body {
     rgb(var(--color-bg));
   color: rgb(var(--color-text-strong));
   min-height: 100vh;
+  scroll-padding-top: 96px;
   transition: background 250ms ease, color 250ms ease;
 }
 

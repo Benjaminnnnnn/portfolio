@@ -14,7 +14,7 @@ const App = () => {
   return (
     <BrowserRouter>
       <div className="relative z-0 bg-primary text-ink">
-        <div className="relative isolate">
+        <div className="relative">
           {/* <div className=""> */}
           <Navbar></Navbar>
           <Hero></Hero>

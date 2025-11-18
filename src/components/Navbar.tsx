@@ -30,9 +30,9 @@ const Navbar = () => {
 
   return (
     <nav
-      className={`${styles.paddingX} fixed top-0 z-20 flex w-full items-center py-5`}
+      className={`${styles.paddingX} fixed top-0 z-[9999] flex w-full items-center py-5`}
     >
-      <div className="glass-panel mx-auto flex w-full items-center justify-between rounded-2xl border border-border/70 bg-primary/70 px-5 py-3 shadow-card backdrop-blur-xl">
+      <div className="glass-panel mx-auto flex w-full items-center justify-between rounded-2xl border border-border/60 bg-primary/90 px-5 py-3 shadow-card backdrop-blur-2xl">
         <Link
           to="/"
           className="group flex items-center gap-2"
@@ -58,9 +58,7 @@ const Navbar = () => {
               <li
                 key={link.id}
                 className={`
-                  ${
-                    active === link.title ? "text-ink" : "text-secondary"
-                  }
+                  ${active === link.title ? "text-ink" : "text-secondary"}
                   cursor-pointer text-[16px] font-medium
                   transition-all duration-300 hover:-translate-y-0.5 hover:text-ink
                   `}
@@ -80,9 +78,7 @@ const Navbar = () => {
           })}
           <li
             className={`
-                  ${
-                    active === LinkedIn.title ? "text-ink" : "text-secondary"
-                  }
+                  ${active === LinkedIn.title ? "text-ink" : "text-secondary"}
                   cursor-pointer text-[16px] font-medium
                   transition-all duration-300 hover:-translate-y-0.5 hover:text-ink
                   `}
@@ -94,6 +90,26 @@ const Navbar = () => {
               className={`${active == "LinkedIn" ? "w-full" : "w-0"}
                 h-[2px] bg-ink transition-all duration-500`}
             ></div>
+          </li>
+
+          <li
+            className="group flex cursor-pointer flex-col items-start gap-1 text-[16px] font-medium text-secondary transition-all duration-300 hover:-translate-y-0.5 hover:text-ink"
+            onClick={resumeHandler}
+          >
+            <span className="flex items-center gap-1">
+              Resume
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                strokeWidth="1.8"
+                className="h-4 w-4 transition-transform duration-300"
+              >
+                <path d="M12 3v12m0 0 4-4m-4 4-4-4" />
+                <path d="M5 19h14" />
+              </svg>
+            </span>
           </li>
 
           <li>
@@ -127,15 +143,6 @@ const Navbar = () => {
                 </svg>
               )}
             </button>
-          </li>
-
-          <li
-            className="cursor-pointer rounded-full border border-transparent bg-blue-pink-gradient
-              bg-[length:0%_100%] bg-no-repeat px-4 py-2 text-center text-[15px] font-semibold text-white transition-all
-              duration-500 hover:bg-[length:100%_100%]"
-            onClick={resumeHandler}
-          >
-            Resume
           </li>
         </ul>
 

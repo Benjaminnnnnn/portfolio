@@ -165,12 +165,21 @@ const MobileNavbar = ({
             variants={menuItem}
             whileHover={{ scale: 1.1 }}
             whileTap={{ scale: 1.3 }}
-            className="cursor-pointer rounded bg-blue-pink-gradient
-            bg-no-repeat px-6 py-2 text-center text-[16px] font-semibold text-white transition-all
-            duration-500 hover:text-white"
+            className="group flex cursor-pointer items-center gap-1 text-center text-[16px] font-semibold text-ink transition-all duration-300"
             onClick={resumeHandler}
           >
             Resume
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              strokeWidth="1.8"
+              className="h-5 w-5"
+            >
+              <path d="M12 3v12m0 0 4-4m-4 4-4-4" />
+              <path d="M5 19h14" />
+            </svg>
           </motion.li>
         </motion.ul>
       </motion.div>

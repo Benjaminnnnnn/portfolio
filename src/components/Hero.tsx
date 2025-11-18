@@ -46,7 +46,10 @@ const Hero = () => {
         </div>
       </div>
 
-      <ComputersCanvas></ComputersCanvas>
+      <div className="relative mt-10 h-[360px] w-full sm:mt-14 sm:h-[440px] md:h-[520px]">
+        <div className="pointer-events-none absolute inset-0 -z-10 bg-gradient-to-b from-transparent via-accent/8 to-transparent blur-3xl"></div>
+        <ComputersCanvas></ComputersCanvas>
+      </div>
 
       <div className="absolute bottom-16 flex w-full items-center justify-center xs:bottom-10">
         <a href="#about">
