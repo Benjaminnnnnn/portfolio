@@ -24,48 +24,51 @@ const ProjectCard = ({
     <motion.div variants={fadeIn("up", "spring", index * 0.5, 0.75)}>
       <Tilt
         options={{ max: 20, scale: 1, speed: 500 }}
-        className="group w-full rounded-2xl bg-tertiary p-5 sm:w-[360px]"
+        className="group w-full rounded-2xl border border-border/70 bg-tertiary/80 p-5 shadow-card backdrop-blur sm:w-[360px]"
       >
-        <div className="relative h-[230px] w-full">
+        <div className="relative h-[230px] w-full overflow-hidden rounded-xl border border-border/70 bg-elevated/80">
           <img
             src={image}
             alt={name}
-            className="h-full w-full object-scale-down transition-all duration-200 group-hover:scale-110"
+            className="h-full w-full object-scale-down transition-all duration-300 group-hover:scale-110"
           />
           <div className="card-img_hover absolute inset-0 m-3 flex justify-end">
             <div
               onClick={() => window.open(source_code_link, "_blank")}
-              className="black-gradient flex h-10 w-10 cursor-pointer items-center justify-center rounded-full"
+              className="black-gradient flex h-10 w-10 cursor-pointer items-center justify-center rounded-full shadow-md shadow-border/60 transition-transform duration-300 hover:-translate-y-1"
             >
               <img
                 src={github}
                 alt="github"
-                className="h-1/2 w-1/2 object-contain"
+                className="h-1/2 w-1/2 object-contain invert"
               />
             </div>
           </div>
         </div>
 
         <div className="mt-5 h-[150px]">
-          <h3 className="flex flex-row justify-between text-[24px] font-bold  text-white">
+          <h3 className="flex flex-row justify-between text-[22px] font-semibold text-ink">
             {name}
             {/* display demo link if needed */}
             {demo_link && (
               <button
-                className="w-fit rounded-xl bg-sky-600 px-4 text-base font-normal text-white shadow-md shadow-primary outline-none"
+                className="w-fit rounded-xl border border-border/70 bg-elevated px-4 py-1 text-sm font-semibold text-ink shadow-sm outline-none transition-transform duration-200 hover:-translate-y-0.5 hover:border-accent"
                 onClick={() => window.open(demo_link, "_blank")}
               >
                 Demo
               </button>
             )}
           </h3>
-          <p className="mt-2 text-[14px] text-secondary">{description}</p>
+          <p className="mt-2 text-[15px] text-secondary">{description}</p>
         </div>
 
         <div className="mt-4 flex flex-wrap gap-x-2">
           {tags.map((tag) => {
             return (
-              <p key={tag.name} className={`text-[14px] ${tag.color}`}>
+              <p
+                key={tag.name}
+                className={`rounded-full bg-elevated/70 px-3 py-1 text-[13px] font-semibold ${tag.color}`}
+              >
                 #{tag.name}
               </p>
             );
