@@ -18,14 +18,14 @@ const ServiceCard = ({
     <Tilt className="xs:w-[250px] w-full">
       <motion.div
         variants={fadeIn("right", "spring", 0.5 * index, 0.75)}
-        className="w-full green-pink-gradient p-[1px] rounded-[20px] shadow-card"
+        className="w-full rounded-[20px] border border-border/70 bg-elevated/80 p-[1px] shadow-card backdrop-blur"
       >
         <div
           // options={{ max: 45, scale: 1, speed: 450 }}
-          className="bg-tertiary rounded-[20px] py-5 px-12 min-h-[280px] flex justify-evenly items-center flex-col"
+          className="flex min-h-[280px] flex-col items-center justify-evenly rounded-[20px] bg-tertiary/80 px-10 py-8"
         >
           <img src={icon} alt={title} className="w-16 h-16 object-contain" />
-          <h3 className="text-white text-[20px] font-bold text-center">
+          <h3 className="text-ink text-[20px] font-semibold text-center">
             {title}
           </h3>
         </div>
@@ -44,7 +44,7 @@ const About = () => {
 
       <motion.p
         variants={fadeIn("", "", 0.1, 1)}
-        className="mt-4 text-secondary text-[17px] max-w-3xl leading-[30px]"
+        className="mt-4 max-w-3xl text-[17px] leading-[30px] text-secondary"
       >
         I'm a junior full-stack engineer with experience in TypeScript and
         JavaScript, and expertise in frameworks like React, Vue, Next.js, and

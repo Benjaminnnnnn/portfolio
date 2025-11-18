@@ -63,6 +63,8 @@ interface IProps {
   setToggle: (value: boolean | ((prevToggle: boolean) => boolean)) => void;
   setActive: (value: string | ((prevActive: string) => string)) => void;
   resumeHandler: () => void;
+  theme: "light" | "dark";
+  toggleTheme: () => void;
 }
 
 const MobileNavbar = ({
@@ -71,14 +73,19 @@ const MobileNavbar = ({
   setToggle,
   setActive,
   resumeHandler,
+  theme,
+  toggleTheme,
 }: IProps) => {
-  const menuRef = useRef<HTMLDivElement>(null);
+  const menuRef = useRef<HTMLButtonElement>(null);
 
   return (
-    <div className="flex flex-1 items-center justify-end lg:hidden">
-      <div
-        ref={menuRef}
+    <div className="flex flex-1 items-center justify-center lg:hidden">
+      <button
         className="menu z-10 flex h-[64px] w-[64px] cursor-pointer flex-col items-center justify-center text-center"
+        ref={menuRef}
+        aria-label="Toggle menu"
+        aria-expanded={toggle}
+        type="button"
         onClick={() => {
           menuRef.current!.classList.toggle("menu-transform");
           setToggle((prevToggle) => !prevToggle);
@@ -87,20 +94,36 @@ const MobileNavbar = ({
         {Array.from(Array(3)).map((_, idx) => (
           <span
             key={idx}
-            className="menu-bar mb-2 h-[2px] w-[32px] bg-white"
+            className="menu-bar mb-2 h-[2px] w-[32px] bg-ink"
           ></span>
         ))}
-      </div>
+      </button>
       <motion.div
         initial={false}
         animate={toggle ? "show" : "hidden"}
         variants={sidebar}
-        className={` fixed top-0 left-0 bg-[#060815]`}
+        className="fixed left-0 top-0 flex min-h-screen w-screen items-center justify-center bg-primary"
       >
         <motion.ul
           variants={menu}
-          className="flex h-full w-full list-none flex-col items-center justify-center gap-4"
+          className="flex w-full max-w-md list-none flex-col items-center justify-center gap-6 px-6 text-center"
         >
+          <motion.li variants={menuItem} className="mb-4">
+            <button
+              aria-label="Toggle color theme"
+              onClick={() => {
+                toggleTheme();
+              }}
+              className="flex w-full items-center justify-between gap-3 rounded-2xl border border-border/70 bg-tertiary px-5 py-3 text-ink shadow-sm transition-transform duration-200 hover:-translate-y-0.5"
+            >
+              <span className="text-sm font-semibold uppercase tracking-wide text-secondary">
+                {theme === "dark" ? "Dark" : "Light"} mode
+              </span>
+              <span className="flex h-10 w-10 items-center justify-center rounded-full border border-border/60 bg-elevated/70 text-ink">
+                {theme === "dark" ? "☀️" : "🌙"}
+              </span>
+            </button>
+          </motion.li>
           {navLinks.map((link) => {
             return (
               <motion.li
@@ -110,8 +133,8 @@ const MobileNavbar = ({
                 key={link.id}
                 className={`
                     ${
-                      active === link.title ? "text-white" : "text-secondary"
-                    } font-poppins cursor-pointer text-lg font-medium`}
+                      active === link.title ? "text-ink" : "text-secondary"
+                    } font-poppins w-full cursor-pointer text-center text-lg font-semibold`}
                 onClick={() => {
                   menuRef.current!.classList.toggle("menu-transform");
                   setActive(link.title);
@@ -128,10 +151,8 @@ const MobileNavbar = ({
             whileTap={{ scale: 1.3 }}
             className={`
                     ${
-                      active === LinkedIn.title
-                        ? "text-white"
-                        : "text-secondary"
-                    } font-poppins cursor-pointer text-lg font-medium`}
+                      active === LinkedIn.title ? "text-ink" : "text-secondary"
+                    } font-poppins w-full cursor-pointer text-center text-lg font-semibold`}
             onClick={() => {
               menuRef.current!.classList.toggle("menu-transform");
               setActive(LinkedIn.title);
@@ -147,12 +168,21 @@ const MobileNavbar = ({
             variants={menuItem}
             whileHover={{ scale: 1.1 }}
             whileTap={{ scale: 1.3 }}
-            className="cursor-pointer rounded bg-blue-pink-gradient
-            bg-no-repeat px-4 py-2 text-center text-[18px] font-medium text-white transition-all
-            duration-500 hover:text-white"
+            className="group flex cursor-pointer items-center gap-1 text-center text-lg font-semibold text-secondary transition-all duration-300"
             onClick={resumeHandler}
           >
             Resume
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              strokeWidth="1.8"
+              className="h-5 w-5"
+            >
+              <path d="M12 3v12m0 0 4-4m-4 4-4-4" />
+              <path d="M5 19h14" />
+            </svg>
           </motion.li>
         </motion.ul>
       </motion.div>

@@ -31,13 +31,13 @@ const Computers = ({
       />
       <primitive
         object={computer.scene}
-        scale={isMobile ? 0.6 : isPortrait ? 0.4 : 0.75}
+        scale={isMobile ? 0.65 : isPortrait ? 0.8 : 0.9}
         position={
           isMobile
-            ? [0, -3, -2.2]
+            ? [0, -1.3, -1.1]
             : isPortrait
-            ? [0, -1, -0.85]
-            : [0, -3.25, -1.5]
+            ? [0, -2, -1.3]
+            : [0, -1, -1.5]
         }
         rotation={[-0.01, -0.2, -0.1]}
       ></primitive>
@@ -54,7 +54,7 @@ const ComputersCanvas = () => {
     const mediaQuery = window.matchMedia("(max-width: 930px)");
     setIsMobile(mediaQuery.matches);
     setIsPortrait(
-      !mediaQuery.matches && window.innerHeight > window.innerWidth
+      !mediaQuery.matches && window.innerHeight > window.innerWidth,
     );
     const handleMediaQueryChange = (event: MediaQueryListEvent) => {
       setIsMobile(event.matches);
@@ -69,6 +69,7 @@ const ComputersCanvas = () => {
 
   return (
     <Canvas
+      className="h-full w-full"
       frameloop="demand"
       shadows
       camera={{ position: [20, 3, 5], fov: 25 }}

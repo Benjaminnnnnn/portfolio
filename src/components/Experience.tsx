@@ -12,8 +12,15 @@ import { textVariant } from "../utils/motion";
 const ExperienceCard = ({ experience }: { experience: IExperince }) => {
   return (
     <VerticalTimelineElement
-      contentStyle={{ background: "#1d1836", color: "#fff" }}
-      contentArrowStyle={{ borderRight: "7px solid #232631" }}
+      contentStyle={{
+        background: "rgb(var(--color-surface))",
+        color: "rgb(var(--color-text-strong))",
+        border: "1px solid rgba(var(--color-border), 0.6)",
+        boxShadow: "var(--shadow-1)",
+      }}
+      contentArrowStyle={{
+        borderRight: "7px solid rgba(var(--color-border), 0.8)",
+      }}
       date={experience.date}
       iconStyle={{ background: experience.iconBg }}
       icon={
@@ -27,7 +34,9 @@ const ExperienceCard = ({ experience }: { experience: IExperince }) => {
       }
     >
       <div>
-        <h3 className="text-bold text-[24px] text-white">{experience.title}</h3>
+        <h3 className="text-[22px] font-semibold text-ink">
+          {experience.title}
+        </h3>
         <p
           className="text-[16px] font-semibold text-secondary"
           style={{ margin: 0 }}
@@ -41,7 +50,7 @@ const ExperienceCard = ({ experience }: { experience: IExperince }) => {
           return (
             <li
               key={`experience-point-${index}`}
-              className="pl-1 text-[14px] tracking-wider text-white-100"
+              className="pl-1 text-[14px] leading-relaxed tracking-wider text-secondary"
             >
               {point}
             </li>
@@ -56,7 +65,7 @@ const Experience = () => {
   return (
     <>
       <motion.div variants={textVariant()}>
-        <p className={styles.sectionSubText}>What I have doen so far</p>
+        <p className={styles.sectionSubText}>What I have done so far</p>
         <h2 className={styles.sectionHeadText}>Work Experience.</h2>
       </motion.div>
 
