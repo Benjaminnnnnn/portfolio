@@ -99,11 +99,11 @@ const MobileNavbar = ({
         initial={false}
         animate={toggle ? "show" : "hidden"}
         variants={sidebar}
-        className="fixed left-0 top-0 bg-primary/95 backdrop-blur-xl"
+        className="fixed left-0 top-0 flex min-h-screen w-screen items-center justify-center bg-primary"
       >
         <motion.ul
           variants={menu}
-          className="flex h-full w-full list-none flex-col items-center justify-center gap-6 px-6"
+          className="flex w-full max-w-md list-none flex-col items-center justify-center gap-6 px-6 text-center"
         >
           <motion.li variants={menuItem} className="mb-4">
             <button
@@ -111,12 +111,12 @@ const MobileNavbar = ({
               onClick={() => {
                 toggleTheme();
               }}
-              className="flex items-center gap-3 rounded-full border border-border/80 bg-tertiary px-4 py-3 text-ink shadow-sm transition-transform duration-200 hover:-translate-y-0.5"
+              className="flex w-full items-center justify-between gap-3 rounded-2xl border border-border/70 bg-tertiary px-5 py-3 text-ink shadow-sm transition-transform duration-200 hover:-translate-y-0.5"
             >
               <span className="text-sm font-semibold uppercase tracking-wide text-secondary">
                 {theme === "dark" ? "Dark" : "Light"} mode
               </span>
-              <span className="flex h-10 w-10 items-center justify-center rounded-full border border-border/60 bg-black/5 text-ink">
+              <span className="flex h-10 w-10 items-center justify-center rounded-full border border-border/60 bg-elevated/70 text-ink">
                 {theme === "dark" ? "☀️" : "🌙"}
               </span>
             </button>
@@ -131,7 +131,7 @@ const MobileNavbar = ({
                 className={`
                     ${
                       active === link.title ? "text-ink" : "text-secondary"
-                    } font-poppins cursor-pointer text-lg font-semibold`}
+                    } font-poppins w-full cursor-pointer text-center text-lg font-semibold`}
                 onClick={() => {
                   menuRef.current!.classList.toggle("menu-transform");
                   setActive(link.title);
@@ -149,7 +149,7 @@ const MobileNavbar = ({
             className={`
                     ${
                       active === LinkedIn.title ? "text-ink" : "text-secondary"
-                    } font-poppins cursor-pointer text-lg font-semibold`}
+                    } font-poppins w-full cursor-pointer text-center text-lg font-semibold`}
             onClick={() => {
               menuRef.current!.classList.toggle("menu-transform");
               setActive(LinkedIn.title);
@@ -165,7 +165,7 @@ const MobileNavbar = ({
             variants={menuItem}
             whileHover={{ scale: 1.1 }}
             whileTap={{ scale: 1.3 }}
-            className="group flex cursor-pointer items-center gap-1 text-center text-[16px] font-semibold text-ink transition-all duration-300"
+            className="group flex cursor-pointer items-center gap-1 text-center text-lg font-semibold text-secondary transition-all duration-300"
             onClick={resumeHandler}
           >
             Resume

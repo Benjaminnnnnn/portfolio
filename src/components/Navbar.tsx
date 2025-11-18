@@ -145,17 +145,16 @@ const Navbar = () => {
             </button>
           </li>
         </ul>
-
-        <MobileNavbar
-          toggle={toggle}
-          active={active}
-          setToggle={setToggle}
-          setActive={setActive}
-          resumeHandler={resumeHandler}
-          theme={theme}
-          toggleTheme={toggleTheme}
-        ></MobileNavbar>
       </div>
+      <MobileNavbar
+        toggle={toggle}
+        active={active}
+        setToggle={setToggle}
+        setActive={setActive}
+        resumeHandler={resumeHandler}
+        theme={theme}
+        toggleTheme={toggleTheme}
+      ></MobileNavbar>
     </nav>
   );
 };
