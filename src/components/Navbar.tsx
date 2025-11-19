@@ -29,42 +29,23 @@ const Navbar = () => {
   const { theme, toggleTheme } = useTheme();
 
   useEffect(() => {
-    const sectionElements = navLinks
-      .map((link) => document.getElementById(link.id))
-      .filter((el): el is HTMLElement => Boolean(el));
-
-    if (!sectionElements.length) {
-      return;
-    }
-
+    const sections = document.querySelectorAll("section[id]");
     const observer = new IntersectionObserver(
-      (entries) => {
-        entries.forEach((entry) => {
-          console.log("observed:", entry);
-          if (entry.isIntersecting) {
-            const linkedSection = navLinks.find(
-              (link) => link.id === entry.target.id,
-            );
-            if (linkedSection) {
-              setActive(linkedSection.title);
-            }
+      ([entry]) => {
+        if (entry.isIntersecting) {
+          const id = entry.target.id === "hero" ? "" : entry.target.id;
+          setActive(id);
+          if (id !== "") {
+            history.replaceState(null, "", `#${id}`);
+          } else {
+            history.replaceState(null, "", location.pathname);
           }
-        });
+        }
       },
-      {
-        root: null,
-        rootMargin: "-50% 0px -45% 0px",
-        threshold: 0.2,
-      },
+      { rootMargin: "-20% 0px -20% 0px", threshold: 0 },
     );
-
-    sectionElements.forEach((section) => {
-      observer.observe(section);
-    });
-
-    return () => {
-      observer.disconnect();
-    };
+    sections.forEach((sec) => observer.observe(sec));
+    return () => sections.forEach((sec) => observer.unobserve(sec));
   }, []);
 
   return (
@@ -98,19 +79,19 @@ const Navbar = () => {
               <li
                 key={link.id}
                 className={`
-                  ${active === link.title ? "text-ink" : "text-secondary"}
+                  ${active === link.id ? "text-ink" : "text-secondary"}
                   cursor-pointer text-[16px] font-medium
                   transition-all duration-300 hover:-translate-y-0.5 hover:text-ink
                   `}
                 onClick={() => {
-                  setActive(link.title);
+                  setActive(link.id);
                 }}
               >
                 <a href={`#${link.id}`} className="px-3 py-2">
                   {link.title}
                 </a>
                 <div
-                  className={`${active == link.title ? "w-full" : "w-0"}
+                  className={`${active == link.id ? "w-full" : "w-0"}
                 h-[2px] bg-ink transition-all duration-500`}
                 ></div>
               </li>

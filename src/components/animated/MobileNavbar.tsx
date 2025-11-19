@@ -133,11 +133,11 @@ const MobileNavbar = ({
                 key={link.id}
                 className={`
                     ${
-                      active === link.title ? "text-ink" : "text-secondary"
+                      active === link.id ? "text-ink" : "text-secondary"
                     } font-poppins w-full cursor-pointer text-center text-lg font-semibold`}
                 onClick={() => {
                   menuRef.current!.classList.toggle("menu-transform");
-                  setActive(link.title);
+                  setActive(link.id);
                   setToggle((prevToggle) => !prevToggle);
                 }}
               >
@@ -162,11 +162,7 @@ const MobileNavbar = ({
               setToggle((prevToggle) => !prevToggle);
             }}
           >
-            <a
-              href={LinkedIn.link}
-              target="_blank"
-              rel="noopener noreferrer"
-            >
+            <a href={LinkedIn.link} target="_blank" rel="noopener noreferrer">
               {LinkedIn.title}
             </a>
           </motion.li>
