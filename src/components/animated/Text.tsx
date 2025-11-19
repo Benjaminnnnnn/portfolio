@@ -7,9 +7,9 @@ interface IProps {
 }
 
 const transition = {
-  delayChildren: 0.6,
+  delayChildren: 0.5,
   staggerChildren: 0.04,
-  duration: 1.4,
+  duration: 0.7,
   ease: [0.35, 0.17, 0.3, 0.86],
 };
 
@@ -31,7 +31,7 @@ const textAnimation = () => ({
   show: {
     y: 0,
     opacity: 1,
-    transition: { ...transition, duration: 1 },
+    transition: { ...transition, duration: 0.8 },
   },
 });
 
