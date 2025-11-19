@@ -8,18 +8,18 @@ import {
   docker,
   git,
   graphql,
-  javascript,
+  grpc,
   leetcode,
   mems,
   microsoft,
   mobile,
   mongodb,
   nextjs,
-  nodejs,
   propertize,
   python,
   reactjs,
   redux,
+  rest,
   rssagg,
   seal,
   tailwind,
@@ -27,7 +27,7 @@ import {
   typescript,
   uw,
   web,
-  xv6,
+  xv6
 } from "../assets";
 
 export interface IExperince {
@@ -59,7 +59,7 @@ export interface ITechnology {
   name: string;
   icon: string;
 }
-export interface ITestimonial {}
+export interface ITestimonial { }
 
 export const navLinks = [
   {
@@ -105,17 +105,9 @@ const services: IService[] = [
 
 const technologies: ITechnology[] = [
   // {
-  //   name: "HTML 5",
-  //   icon: html,
+  //   name: "JavaScript",
+  //   icon: javascript,
   // },
-  // {
-  //   name: "CSS 3",
-  //   icon: css,
-  // },
-  {
-    name: "JavaScript",
-    icon: javascript,
-  },
   {
     name: "TypeScript",
     icon: typescript,
@@ -125,11 +117,6 @@ const technologies: ITechnology[] = [
     icon: reactjs,
   },
   {
-    name: "Tailwind CSS",
-    icon: tailwind,
-  },
-
-  {
     name: "Next JS",
     icon: nextjs,
   },
@@ -138,12 +125,28 @@ const technologies: ITechnology[] = [
     icon: redux,
   },
   {
+    name: "Tailwind CSS",
+    icon: tailwind,
+  },
+  // {
+  //   name: "PlayWright",
+  //   icon: playwright
+  // },
+  // {
+  //   name: "Node JS",
+  //   icon: nodejs,
+  // },
+  {
+    name: "REST API",
+    icon: rest,
+  },
+  {
     name: "GraphQL",
     icon: graphql,
   },
   {
-    name: "Node JS",
-    icon: nodejs,
+    name: "gRPC",
+    icon: grpc,
   },
   {
     name: "MongoDB",
@@ -477,5 +480,6 @@ export {
   projects,
   services,
   technologies,
-  testimonials,
+  testimonials
 };
+
