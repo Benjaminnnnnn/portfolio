@@ -40,7 +40,7 @@ const ProjectCard = ({
               <img
                 src={github}
                 alt="github"
-                className="h-1/2 w-1/2 object-contain filter brightness-0 invert"
+                className="h-1/2 w-1/2 object-contain brightness-0 invert filter"
               />
             </div>
           </div>
@@ -90,7 +90,7 @@ const Works = () => {
       <div className="flex w-full">
         <motion.p
           variants={fadeIn("", "", 0.1, 1)}
-          className="mt-3 max-w-3xl text-[17px] leading-[30px] text-secondary"
+          className="mt-3 text-[17px] leading-[30px] text-secondary"
         >
           Following projects showcases my skills and experience through
           real-world examples of my work. Each project is briefly described with
