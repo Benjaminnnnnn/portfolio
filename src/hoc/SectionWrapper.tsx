@@ -6,13 +6,16 @@ const SectionWrapper = (Component: React.FC, idName: string): React.FC => {
   return function HOC() {
     return (
       <motion.section
+        id={idName}
         variants={staggerContainer()}
         initial="hidden"
         whileInView="show"
         viewport={{ once: true, amount: 0.2 }}
-        className={`${styles.padding} max-w-7xl mx-auto relative z-0 scroll-mt-28`}
+        role="region"
+        aria-labelledby={`${idName}-heading`}
+        className={`${styles.padding} relative z-0 mx-auto max-w-7xl scroll-mt-28`}
       >
-        <span className="hash-span" id={idName}>
+        <span className="hash-span" aria-hidden="true">
           &nbsp;
         </span>
         <Component />

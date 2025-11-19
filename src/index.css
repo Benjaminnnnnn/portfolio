@@ -84,6 +84,29 @@ a {
   color: rgb(var(--color-text-strong));
 }
 
+.skip-link {
+  position: fixed;
+  top: 1rem;
+  left: 1rem;
+  z-index: 10000;
+  transform: translateY(-200%);
+  padding: 0.75rem 1.25rem;
+  border-radius: 999px;
+  background: rgb(var(--color-surface));
+  color: rgb(var(--color-text-strong));
+  border: 1px solid rgba(var(--color-border), 0.7);
+  box-shadow: var(--shadow-1);
+  font-weight: 600;
+  transition:
+    transform 0.3s ease,
+    box-shadow 0.3s ease;
+}
+
+.skip-link:focus-visible {
+  transform: translateY(0);
+  outline: none;
+}
+
 .hash-span {
   margin-top: -100px;
   padding-bottom: 100px;

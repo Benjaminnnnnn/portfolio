@@ -30,7 +30,7 @@ const Contact = () => {
           from_name: form.name,
           to_name: "Benjamin",
           from_email: form.email,
-          to_email: "zhuangzheyi12@gmail.com",
+          to_email: "benjaminzhuangjobs@outlook.com",
           message: form.message,
         },
         "9r5TmQB7Pt3WQ3uLq",
@@ -53,7 +53,14 @@ const Contact = () => {
         className="flex-[0.75] rounded-2xl border border-border/70 bg-tertiary/80 p-8 shadow-card backdrop-blur"
       >
         <p className={`${styles.sectionSubText}`}>Get in touch</p>
-        <h3 className={`${styles.sectionHeadText}`}>Contact.</h3>
+        <h2 className={`${styles.sectionHeadText}`} id="contact-heading">
+          Contact.
+        </h2>
+        <p className="mt-4 text-[16px] leading-[28px] text-secondary">
+          Share a challenge, an idea, or a roadmap. I respond quickly to new
+          opportunities involving React, TypeScript, performance audits, or full
+          product builds.
+        </p>
 
         <form
           ref={formRef}
@@ -71,7 +78,7 @@ const Contact = () => {
               value={form.name}
               onChange={handleChange}
               placeholder="What's your name?"
-              className="rounded-xl border border-border/70 bg-elevated/80 py-4 px-5 font-medium text-ink outline-none placeholder:text-secondary transition-shadow focus:border-accent focus:shadow-card"
+              className="rounded-xl border border-border/70 bg-elevated/80 py-4 px-5 font-medium text-ink outline-none transition-shadow placeholder:text-secondary focus:border-accent focus:shadow-card"
             />
           </label>
           <label className="flex flex-col">
@@ -85,7 +92,7 @@ const Contact = () => {
               value={form.email}
               onChange={handleChange}
               placeholder="What's your email?"
-              className="rounded-xl border border-border/70 bg-elevated/80 py-4 px-5 font-medium text-ink outline-none placeholder:text-secondary transition-shadow focus:border-accent focus:shadow-card"
+              className="rounded-xl border border-border/70 bg-elevated/80 py-4 px-5 font-medium text-ink outline-none transition-shadow placeholder:text-secondary focus:border-accent focus:shadow-card"
             />
           </label>
           <label className="flex flex-col">
@@ -98,7 +105,7 @@ const Contact = () => {
               value={form.message}
               onChange={handleChange}
               placeholder="Do you have anything to say?"
-              className="rounded-xl border border-border/70 bg-elevated/80 py-4 px-5 font-medium text-ink outline-none placeholder:text-secondary transition-shadow focus:border-accent focus:shadow-card"
+              className="rounded-xl border border-border/70 bg-elevated/80 py-4 px-5 font-medium text-ink outline-none transition-shadow placeholder:text-secondary focus:border-accent focus:shadow-card"
             />
           </label>
 
