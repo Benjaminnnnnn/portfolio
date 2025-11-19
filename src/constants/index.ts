@@ -8,7 +8,6 @@ import {
   docker,
   git,
   graphql,
-  grpc,
   leetcode,
   mems,
   microsoft,
@@ -23,6 +22,7 @@ import {
   rest,
   rssagg,
   seal,
+  tailwind,
   tttgle,
   typescript,
   uw,
@@ -124,10 +124,10 @@ const technologies: ITechnology[] = [
     name: "Redux",
     icon: redux,
   },
-  // {
-  //   name: "Tailwind CSS",
-  //   icon: tailwind,
-  // },
+  {
+    name: "Tailwind CSS",
+    icon: tailwind,
+  },
   {
     name: "PlayWright",
     icon: playwright
@@ -144,10 +144,10 @@ const technologies: ITechnology[] = [
     name: "GraphQL",
     icon: graphql,
   },
-  {
-    name: "gRPC",
-    icon: grpc,
-  },
+  // {
+  //   name: "gRPC",
+  //   icon: grpc,
+  // },
   {
     name: "MongoDB",
     icon: mongodb,
