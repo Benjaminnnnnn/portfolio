@@ -14,6 +14,7 @@ import docker from "./tech/docker.png";
 import figma from "./tech/figma.png";
 import git from "./tech/git.png";
 import graphql from "./tech/graphql.svg";
+import grpc from './tech/grpc.png';
 import html from "./tech/html.png";
 import java from "./tech/java.jpg";
 import javascript from "./tech/javascript.png";
@@ -21,12 +22,15 @@ import kubernetes from "./tech/kubernetes.png";
 import mongodb from "./tech/mongodb.png";
 import nextjs from "./tech/next.svg";
 import nodejs from "./tech/nodejs.png";
+import playwright from './tech/playwright.svg';
 import python from "./tech/python.png";
 import reactjs from "./tech/reactjs.png";
 import redux from "./tech/redux.png";
+import rest from './tech/rest.png';
 import tailwind from "./tech/tailwind.png";
 import threejs from "./tech/threejs.svg";
 import typescript from "./tech/typescript.png";
+
 
 // companies
 import beaconfire from "./company/beaconfire.png";
@@ -48,8 +52,7 @@ export {
   backend,
   beaconfire,
   cliphop,
-  close,
-  cpp,
+  close, cpp,
   creator,
   css,
   cypress,
@@ -57,13 +60,11 @@ export {
   figma,
   git,
   github,
-  graphql,
-  html,
+  graphql, grpc, html,
   java,
   javascript,
   kubernetes,
-  leetcode,
-  logo,
+  leetcode, logo,
   logo_test,
   mems,
   menu,
@@ -71,12 +72,9 @@ export {
   mobile,
   mongodb,
   nextjs,
-  nodejs,
-  propertize,
+  nodejs, playwright, propertize,
   python,
-  reactjs,
-  redux,
-  rssagg,
+  reactjs, redux, rest, rssagg,
   seal,
   tailwind,
   threejs,
@@ -84,5 +82,6 @@ export {
   typescript,
   uw,
   web,
-  xv6,
+  xv6
 };
+
