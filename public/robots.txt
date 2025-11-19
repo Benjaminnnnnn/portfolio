@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://benjaminzhuang.com/sitemap.xml
+Sitemap: https://benjaminnnnnn.github.io/portfolio/sitemap.xml
