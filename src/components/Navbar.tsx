@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 
 // import { logo } from "../assets";
@@ -27,6 +27,45 @@ const Navbar = () => {
   const [active, setActive] = useState("");
   const [toggle, setToggle] = useState(false);
   const { theme, toggleTheme } = useTheme();
+
+  useEffect(() => {
+    const sectionElements = navLinks
+      .map((link) => document.getElementById(link.id))
+      .filter((el): el is HTMLElement => Boolean(el));
+
+    if (!sectionElements.length) {
+      return;
+    }
+
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          console.log("observed:", entry);
+          if (entry.isIntersecting) {
+            const linkedSection = navLinks.find(
+              (link) => link.id === entry.target.id,
+            );
+            if (linkedSection) {
+              setActive(linkedSection.title);
+            }
+          }
+        });
+      },
+      {
+        root: null,
+        rootMargin: "-50% 0px -45% 0px",
+        threshold: 0.2,
+      },
+    );
+
+    sectionElements.forEach((section) => {
+      observer.observe(section);
+    });
+
+    return () => {
+      observer.disconnect();
+    };
+  }, []);
 
   return (
     <nav
@@ -72,7 +111,7 @@ const Navbar = () => {
                 </a>
                 <div
                   className={`${active == link.title ? "w-full" : "w-0"}
-                h-[2px] bg-white transition-all duration-500`}
+                h-[2px] bg-ink transition-all duration-500`}
                 ></div>
               </li>
             );

@@ -56,11 +56,11 @@ const Contact = () => {
         <h2 className={`${styles.sectionHeadText}`} id="contact-heading">
           Contact.
         </h2>
-        <p className="mt-4 text-[16px] leading-[28px] text-secondary">
+        {/* <p className="mt-4 text-[16px] leading-[28px] text-secondary">
           Share a challenge, an idea, or a roadmap. I respond quickly to new
           opportunities involving React, TypeScript, performance audits, or full
           product builds.
-        </p>
+        </p> */}
 
         <form
           ref={formRef}
