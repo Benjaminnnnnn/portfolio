@@ -2,6 +2,7 @@ import About from "./About";
 import Contact from "./Contact";
 import Experience from "./Experience";
 import Feedbacks from "./Feedbacks";
+import Footer from "./Footer";
 import Hero from "./Hero";
 import Navbar from "./Navbar";
 import Tech from "./Tech";
@@ -21,6 +22,7 @@ export {
   Contact,
   EarthCanvas,
   Experience,
+  Footer,
   Feedbacks,
   Hero,
   Navbar,

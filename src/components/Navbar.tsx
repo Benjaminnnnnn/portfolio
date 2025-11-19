@@ -31,6 +31,7 @@ const Navbar = () => {
   return (
     <nav
       className={`${styles.paddingX} fixed top-0 z-[9999] flex w-full items-center py-5`}
+      aria-label="Primary navigation"
     >
       <div className="glass-panel mx-auto flex w-full items-center justify-between rounded-2xl border border-border/60 bg-primary/90 px-5 py-3 shadow-card backdrop-blur-2xl">
         <Link
@@ -44,7 +45,7 @@ const Navbar = () => {
           {/* <Logo></Logo> */}
           <img
             src={logo_test}
-            alt="logo"
+            alt="Benjamin Zhuang logo"
             className="h-10 w-10 object-contain transition-all duration-300 ease-in-out group-hover:rotate-[480deg]"
           />
           <p className="cursor-pointer text-[18px] font-semibold text-ink">
@@ -83,7 +84,12 @@ const Navbar = () => {
                   transition-all duration-300 hover:-translate-y-0.5 hover:text-ink
                   `}
           >
-            <a href={LinkedIn.link} className="px-4 py-2">
+            <a
+              href={LinkedIn.link}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="px-4 py-2"
+            >
               {LinkedIn.title}
             </a>
             <div
@@ -92,11 +98,13 @@ const Navbar = () => {
             ></div>
           </li>
 
-          <li
-            className="group flex cursor-pointer flex-col items-start gap-1 text-[16px] font-medium text-secondary transition-all duration-300 hover:-translate-y-0.5 hover:text-ink"
-            onClick={resumeHandler}
-          >
-            <span className="flex items-center gap-1">
+          <li className="text-[16px] font-medium text-secondary">
+            <button
+              type="button"
+              onClick={resumeHandler}
+              className="group flex items-center gap-1 transition-all duration-300 hover:-translate-y-0.5 hover:text-ink"
+              aria-label="Download resume as PDF"
+            >
               Resume
               <svg
                 xmlns="http://www.w3.org/2000/svg"
@@ -109,7 +117,7 @@ const Navbar = () => {
                 <path d="M12 3v12m0 0 4-4m-4 4-4-4" />
                 <path d="M5 19h14" />
               </svg>
-            </span>
+            </button>
           </li>
 
           <li>

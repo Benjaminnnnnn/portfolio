@@ -162,27 +162,39 @@ const MobileNavbar = ({
               setToggle((prevToggle) => !prevToggle);
             }}
           >
-            <a href={LinkedIn.link}>{LinkedIn.title}</a>
+            <a
+              href={LinkedIn.link}
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              {LinkedIn.title}
+            </a>
           </motion.li>
           <motion.li
             variants={menuItem}
             whileHover={{ scale: 1.1 }}
             whileTap={{ scale: 1.3 }}
-            className="group flex cursor-pointer items-center gap-1 text-center text-lg font-semibold text-secondary transition-all duration-300"
-            onClick={resumeHandler}
+            className="w-full"
           >
-            Resume
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              viewBox="0 0 24 24"
-              fill="none"
-              stroke="currentColor"
-              strokeWidth="1.8"
-              className="h-5 w-5"
+            <button
+              type="button"
+              onClick={resumeHandler}
+              className="group flex w-full items-center justify-center gap-2 rounded-2xl border border-border/70 bg-tertiary px-5 py-3 text-center text-lg font-semibold text-secondary transition-all duration-300"
+              aria-label="Download resume as PDF"
             >
-              <path d="M12 3v12m0 0 4-4m-4 4-4-4" />
-              <path d="M5 19h14" />
-            </svg>
+              Resume
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                strokeWidth="1.8"
+                className="h-5 w-5"
+              >
+                <path d="M12 3v12m0 0 4-4m-4 4-4-4" />
+                <path d="M5 19h14" />
+              </svg>
+            </button>
           </motion.li>
         </motion.ul>
       </motion.div>

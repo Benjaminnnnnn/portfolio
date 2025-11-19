@@ -41,12 +41,15 @@ const Text = ({ text, className, containerClassName }: IProps) => {
       initial="hidden"
       animate="show"
       variants={containerAnimation()}
+      aria-label={text}
+      role="text"
       className={containerClassName}
     >
       {text.split("").map((c, index) => (
         <motion.span
           key={index}
           variants={textAnimation()}
+          aria-hidden="true"
           className={className}
         >
           {c}

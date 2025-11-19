@@ -5,7 +5,11 @@ import Text from "./animated/Text";
 
 const Hero = () => {
   return (
-    <section className="relative mx-auto flex max-h-[100vh] min-h-[100vh] w-full flex-col items-center overflow-hidden pt-28 pb-16 sm:pt-32 sm:pb-20">
+    <section
+      id="hero"
+      aria-labelledby="hero-heading"
+      className="relative mx-auto flex max-h-[100vh] min-h-[100vh] w-full flex-col items-center overflow-hidden pt-28 pb-16 sm:pt-32 sm:pb-20"
+    >
       <div className="pointer-events-none absolute inset-0">
         <div className="subtle-grid absolute inset-0 opacity-60"></div>
         <div className="absolute inset-x-0 top-0 h-80 bg-gradient-to-b from-accent/20 via-transparent to-transparent blur-3xl"></div>
@@ -18,32 +22,31 @@ const Hero = () => {
           <span className="mb-4 inline-flex items-center gap-2 rounded-full border border-border/70 bg-tertiary px-4 py-2 text-[12px] font-semibold uppercase tracking-[0.28em] text-secondary">
             Crafting digital systems with heart
           </span>
-          <h1 className={`${styles.heroHeadText} text-ink`}>
+          <h1 className={`${styles.heroHeadText} text-ink`} id="hero-heading">
             <span className="bg-gradient-to-r from-accent via-highlight to-accent-2 bg-clip-text text-transparent">
               Benjamin Zhuang
             </span>
           </h1>
 
           <Text
-            text="A full-stack web developer who builds responsive and scalable
-            systems with state-of-the-art technology."
+            text="Product-focused full-stack web developer that balance performance, accessibility, and delightful UX with state-of-the-art technology."
             containerClassName={`${styles.heroSubText} z-10 mt-4 max-w-3xl text-center text-secondary md:mt-6`}
           ></Text>
 
-          <div className="mt-8 flex flex-wrap items-center justify-center gap-3">
+          <ul className="mt-8 flex list-none flex-wrap items-center justify-center gap-3">
             {[
               "Full-stack development",
               "Systems thinking",
               "Human-centered UX",
             ].map((pill) => (
-              <span
+              <li
                 key={pill}
                 className="rounded-full border border-border/60 bg-elevated/80 px-4 py-2 text-sm font-semibold text-secondary shadow-sm backdrop-blur"
               >
                 {pill}
-              </span>
+              </li>
             ))}
-          </div>
+          </ul>
         </div>
       </div>
 
@@ -53,7 +56,7 @@ const Hero = () => {
       </div>
 
       <div className="absolute bottom-16 flex w-full items-center justify-center xs:bottom-10">
-        <a href="#about">
+        <a href="#about" aria-label="Scroll to about section">
           <div className="flex h-[64px] w-[35px] items-start justify-center rounded-3xl border-4 border-secondary p-2">
             <motion.div
               animate={{ y: [0, 24, 0] }}
