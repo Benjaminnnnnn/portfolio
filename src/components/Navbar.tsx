@@ -53,7 +53,7 @@ const Navbar = () => {
           </p>
         </Link>
 
-        <ul className="hidden list-none flex-row items-center gap-6 lg:flex">
+        <ul className="hidden list-none flex-row items-center gap-4 lg:flex">
           {navLinks.map((link) => {
             return (
               <li
@@ -67,7 +67,7 @@ const Navbar = () => {
                   setActive(link.title);
                 }}
               >
-                <a href={`#${link.id}`} className="px-4 py-2">
+                <a href={`#${link.id}`} className="px-3 py-2">
                   {link.title}
                 </a>
                 <div
@@ -88,7 +88,7 @@ const Navbar = () => {
               href={LinkedIn.link}
               target="_blank"
               rel="noopener noreferrer"
-              className="px-4 py-2"
+              className="px-3 py-2"
             >
               {LinkedIn.title}
             </a>
