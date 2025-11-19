@@ -15,6 +15,7 @@ import {
   mobile,
   mongodb,
   nextjs,
+  playwright,
   propertize,
   python,
   reactjs,
@@ -22,7 +23,6 @@ import {
   rest,
   rssagg,
   seal,
-  tailwind,
   tttgle,
   typescript,
   uw,
@@ -124,14 +124,14 @@ const technologies: ITechnology[] = [
     name: "Redux",
     icon: redux,
   },
-  {
-    name: "Tailwind CSS",
-    icon: tailwind,
-  },
   // {
-  //   name: "PlayWright",
-  //   icon: playwright
+  //   name: "Tailwind CSS",
+  //   icon: tailwind,
   // },
+  {
+    name: "PlayWright",
+    icon: playwright
+  },
   // {
   //   name: "Node JS",
   //   icon: nodejs,
