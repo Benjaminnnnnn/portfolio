@@ -1,3 +1,4 @@
+import { useTranslation } from "react-i18next";
 import { LinkedIn, navLinks } from "../constants";
 
 const LinkedInIcon = () => (
@@ -33,6 +34,7 @@ const GithubIcon = () => (
 const githubProfile = "https://github.com/Benjaminnnnnn";
 
 const Footer = () => {
+  const { t } = useTranslation();
   const currentYear = new Date().getFullYear();
 
   return (
@@ -43,11 +45,10 @@ const Footer = () => {
             Benjamin Zhuang
           </p>
           <p className="text-[15px] leading-relaxed text-secondary">
-            Full-stack software engineer focused on performant experiences for
-            product teams that care about quality, SEO, and accessibility.
+            {t("footer.tagline")}
           </p>
           <p className="text-sm text-secondary/80">
-            © {currentYear} Benjamin Zhuang. All rights reserved.
+            © {currentYear} Benjamin Zhuang. {t("footer.copyright")}
           </p>
         </div>
 
@@ -56,16 +57,16 @@ const Footer = () => {
             <ul className="flex flex-col flex-wrap items-start gap-x-6 gap-y-3 text-[15px] font-medium text-secondary">
               {navLinks.map((link) => (
                 <li key={`footer-${link.id}`}>
-                  <a
-                    href={`#${link.id}`}
-                    className="transition-colors duration-200 hover:text-accent"
-                  >
-                    {link.title}
-                  </a>
-                </li>
-              ))}
-            </ul>
-          </nav>
+              <a
+                href={`#${link.id}`}
+                className="transition-colors duration-200 hover:text-accent"
+              >
+                {t(`nav.${link.id}`)}
+              </a>
+            </li>
+          ))}
+        </ul>
+      </nav>
 
           <div className="flex flex-col gap-3 text-sm font-semibold text-secondary">
             <a
@@ -75,7 +76,7 @@ const Footer = () => {
               className="flex items-center gap-2 transition-colors duration-200 hover:text-accent"
             >
               <LinkedInIcon />
-              LinkedIn
+              {t("nav.linkedin")}
             </a>
             <a
               href={githubProfile}
@@ -84,7 +85,7 @@ const Footer = () => {
               className="flex items-center gap-2 transition-colors duration-200 hover:text-accent"
             >
               <GithubIcon />
-              GitHub
+              {t("footer.github")}
             </a>
           </div>
         </div>

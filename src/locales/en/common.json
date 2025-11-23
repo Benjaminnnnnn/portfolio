@@ -1,0 +1,164 @@
+{
+  "skipToContent": "Skip to main content",
+  "nav": {
+    "about": "About",
+    "experience": "Experience",
+    "tech": "Skill",
+    "project": "Project",
+    "contact": "Contact",
+    "resume": "Resume",
+    "linkedin": "LinkedIn",
+    "language": {
+      "label": "Language",
+      "en": "English",
+      "zh-TW": "繁體中文"
+    },
+    "theme": {
+      "light": "Light Mode",
+      "dark": "Dark Mode"
+    }
+  },
+  "hero": {
+    "badge": "Crafting digital systems with heart",
+    "name": "Benjamin Zhuang",
+    "headline": "Product-focused full-stack web developer that balance performance, accessibility, and delightful UX with state-of-the-art technology.",
+    "pills": [
+      "Full-stack development",
+      "Systems thinking",
+      "Human-centered UX"
+    ],
+    "scrollAria": "Scroll to about section"
+  },
+  "about": {
+    "eyebrow": "Introduction",
+    "title": "Overview.",
+    "body": "I am a full-stack software engineer with a strong TypeScript, React, Next.js, and Node.js toolkit. I pair systems thinking with product intuition to ship resilient, SEO-friendly user experiences that scale securely in the cloud. I thrive in fast-paced, agile teams where close collaboration with designers, engineers, and stakeholders turns complex requirements into intuitive web applications.",
+    "services": {
+      "web": "Web Developer",
+      "frontend": "Frontend Developer",
+      "backend": "Backend Developer",
+      "software": "Software Engineer"
+    }
+  },
+  "experience": {
+    "eyebrow": "What I have done so far",
+    "title": "Work Experience.",
+    "body": "I have worked with cross-functional teams that ship performant TypeScript, Python, and GraphQL services, automate CI/CD testing, and optimize accessibility for millions of end users.",
+    "items": {
+      "microsoft": {
+        "title": "Software Engineer I",
+        "company": "Microsoft",
+        "date": "April 2023 - October 2024",
+        "points": [
+          "Architected and delivered an end-to-end people identification system in Microsoft Teams meeting rooms, expanding AI capabilities to legacy hardware and improving accessibility for enterprise clients.",
+          "Engineered and optimized a real-time face detection pipeline processing 1080p video at 30fps with 99% accuracy, directly enhancing meeting experiences for 10M+ global users.",
+          "Collaborated cross-functionally with security and compliance teams to design a privacy-first face enrollment pipeline.",
+          "Enhanced multilingual voice recognition capabilities, raising accuracy to 95% across 40+ languages, improving inclusivity for international Teams adoption.",
+          "Instituted a robust testing framework with 95% code coverage for AI/ML components, reducing regression incidents by 30%."
+        ]
+      },
+      "beaconfire": {
+        "title": "Full-Stack Engineer",
+        "company": "BeaconFire Inc",
+        "date": "August 2022 - December 2022",
+        "points": [
+          "Spearheaded internal management platform and activated scalable frontend infrastructure for developer onboarding.",
+          "Streamlined CI/CD pipelines to deploy internal tools, reducing deployment times by 10 mins per release.",
+          "Wrote 100+ unit/component/automated tests to ensure zero downtime in CI/CD releases."
+        ]
+      },
+      "uw": {
+        "title": "Web Development Teaching Assistant",
+        "company": "University of Washington",
+        "date": "June 2021 -  August 2022",
+        "points": [
+          "Taught and supported 40+ students in advanced web development concepts and algorithms. ",
+          "Mentored students in software design principles and led code reviews for student projects."
+        ]
+      },
+      "seal": {
+        "title": "Full-Stack Engineer",
+        "company": "Sensors Robotic and Automation Laboratory",
+        "date": "February 2020 - June 2021",
+        "points": [
+          "Led development of a research-oriented content management system supporting real-time data analysis for 500+ daily entries.",
+          "Designed and automated a research data processing microservice, reducing 30-hour human labor per week."
+        ]
+      }
+    }
+  },
+  "tech": {
+    "eyebrow": "Some of my skill sets",
+    "title": "Skills.",
+    "body": "My toolkit spans modern web stacks including React, Next.js, GraphQL, Node.js, PostgreSQL, and cloud-native infrastructure so I can design, build, and scale end-to-end product experiences."
+  },
+  "projects": {
+    "eyebrow": "My projects",
+    "title": "Projects.",
+    "body": "Real-world products where I led the React, Next.js, and Node.js stack demonstrate how I architect scalable APIs, craft polished interfaces, and keep performance, accessibility, and SEO aligned with business goals.",
+    "demo": "Demo",
+    "viewSource": "View the {{name}} source code on GitHub",
+    "items": {
+      "cypress": {
+        "name": "Cypress (WIP)",
+        "description": "Cypress is an all-in-one platform for seamless team collaboration and project management."
+      },
+      "leetcode": {
+        "name": "LeetCode [Clone]",
+        "description": "LeetCode is an online platform offering coding challenges and interview preparation resources for software engineers and developers."
+      },
+      "cliphop": {
+        "name": "ClipHop",
+        "description": "ClipHop is an immersive video sharing web application that combines the power of social media with captivating short-form videos."
+      },
+      "rssagg": {
+        "name": "RSS Aggregator",
+        "description": "An RSS feed aggregator web server and scraper, desinged to be dynamic and effective. Get/subscribe your favorite RSS feeds here."
+      },
+      "propertize": {
+        "name": "Propertize",
+        "description": "Propertize is a user-friendly and efficient CRUD real estate dashboard application designed to streamline property management process."
+      },
+      "mems": {
+        "name": "Mems",
+        "description": "Social media platform that enables users to share their favorite travel places to others and record their best part of memories."
+      },
+      "tttgle": {
+        "name": "333gle",
+        "description": "A multithreaded search engine with in-memory data-structures to effectively perform multi-query searches over more than millions of index files."
+      },
+      "xv6": {
+        "name": "xv6",
+        "description": "A teaching-style operating system implementing the standard RISC-V instruction set under a Linux development environment. xv6 supports concurrency and threads."
+      }
+    }
+  },
+  "contact": {
+    "eyebrow": "Get in touch",
+    "title": "Contact.",
+    "form": {
+      "nameLabel": "Your Name",
+      "namePlaceholder": "What's your name?",
+      "emailLabel": "Your Email",
+      "emailPlaceholder": "What's your email?",
+      "messageLabel": "Your Message",
+      "messagePlaceholder": "Do you have anything to say?"
+    },
+    "status": {
+      "sending": "Sending...",
+      "send": "Send"
+    },
+    "alerts": {
+      "success": "Thank you! I will get back to you as soon as possible.",
+      "error": "Something went wrong. Please try again later."
+    }
+  },
+  "footer": {
+    "tagline": "Full-stack software engineer focused on performant experiences for product teams that care about quality, SEO, and accessibility.",
+    "copyright": "All rights reserved.",
+    "github": "GitHub"
+  },
+  "resume": {
+    "downloadError": "Unable to download resume."
+  }
+}

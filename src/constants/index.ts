@@ -31,6 +31,7 @@ import {
 } from "../assets";
 
 export interface IExperince {
+  id: string;
   title: string;
   company_name: string;
   icon: string;
@@ -40,6 +41,7 @@ export interface IExperince {
 }
 
 export interface IProject {
+  id: string;
   name: string;
   description: string;
   tags: {
@@ -52,6 +54,7 @@ export interface IProject {
 }
 
 export interface IService {
+  id: string;
   title: string;
   icon: string;
 }
@@ -86,18 +89,22 @@ export const navLinks = [
 
 const services: IService[] = [
   {
+    id: "web",
     title: "Web Developer",
     icon: web,
   },
   {
+    id: "frontend",
     title: "Frontend Developer",
     icon: mobile,
   },
   {
+    id: "backend",
     title: "Backend Developer",
     icon: backend,
   },
   {
+    id: "software",
     title: "Software Engineer",
     icon: creator,
   },
@@ -184,6 +191,7 @@ const technologies: ITechnology[] = [
 
 const experiences: IExperince[] = [
   {
+    id: "microsoft",
     title: "Software Engineer I",
     company_name: "Microsoft",
     icon: microsoft,
@@ -198,6 +206,7 @@ const experiences: IExperince[] = [
     ],
   },
   {
+    id: "beaconfire",
     title: "Full-Stack Engineer",
     company_name: "BeaconFire Inc",
     icon: beaconfire,
@@ -210,6 +219,7 @@ const experiences: IExperince[] = [
     ],
   },
   {
+    id: "uw",
     title: "Web Development Teaching Assistant",
     company_name: "University of Washington",
     icon: uw,
@@ -221,6 +231,7 @@ const experiences: IExperince[] = [
     ],
   },
   {
+    id: "seal",
     title: "Full-Stack Engineer",
     company_name: "Sensors Robotic and Automation Laboratory",
     icon: seal,
@@ -262,6 +273,7 @@ const testimonials = [
 
 const projects: IProject[] = [
   {
+    id: "cypress",
     name: "Cypress (WIP)",
     description:
       "Cypress is an all-in-one platform for seamless team collaboration and project management.",
@@ -292,6 +304,7 @@ const projects: IProject[] = [
     source_code_link: "https://github.com/Benjaminnnnnn/cypress",
   },
   {
+    id: "leetcode",
     name: "LeetCode [Clone]",
     description:
       "LeetCode is an online platform offering coding challenges and interview preparation resources for software engineers and developers.",
@@ -317,6 +330,7 @@ const projects: IProject[] = [
     source_code_link: "https://github.com/Benjaminnnnnn/leetcode-clone",
   },
   {
+    id: "cliphop",
     name: "ClipHop",
     description:
       "ClipHop is an immersive video sharing web application that combines the power of social media with captivating short-form videos.",
@@ -346,6 +360,7 @@ const projects: IProject[] = [
     source_code_link: "https://github.com/Benjaminnnnnn/cliphop",
   },
   {
+    id: "rssagg",
     name: "RSS Aggregator",
     description:
       "An RSS feed aggregator web server and scraper, desinged to be dynamic and effective. Get/subscribe your favorite RSS feeds here.",
@@ -371,6 +386,7 @@ const projects: IProject[] = [
     source_code_link: "https://github.com/Benjaminnnnnn/go-rssagg",
   },
   {
+    id: "propertize",
     name: "Propertize",
     description:
       "Propertize is a user-friendly and efficient CRUD real estate dashboard application designed to streamline property management process.",
@@ -401,6 +417,7 @@ const projects: IProject[] = [
     // demo_link: "https://leafy-centaur-afc811.netlify.app/",
   },
   {
+    id: "mems",
     name: "Mems",
     description:
       "Social media platform that enables users to share their favorite travel places to others and record their best part of memories.",
@@ -426,6 +443,7 @@ const projects: IProject[] = [
     source_code_link: "https://github.com/Benjaminnnnnn/mems",
   },
   {
+    id: "tttgle",
     name: "333gle",
     description:
       "A multithreaded search engine with in-memory data-structures to effectively perform multi-query searches over more than millions of index files.",
@@ -447,6 +465,7 @@ const projects: IProject[] = [
     source_code_link: "https://github.com/Benjaminnnnnn/333gle",
   },
   {
+    id: "xv6",
     name: "xv6",
     description:
       "A teaching-style operating system implementing the standard RISC-V instruction set under a Linux development environment. xv6 supports concurrency and threads.",
@@ -482,4 +501,3 @@ export {
   technologies,
   testimonials
 };
-

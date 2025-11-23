@@ -1,0 +1,164 @@
+{
+  "skipToContent": "跳至主要內容",
+  "nav": {
+    "about": "關於我",
+    "experience": "經歷",
+    "tech": "技能",
+    "project": "作品集",
+    "contact": "聯絡",
+    "resume": "履歷",
+    "linkedin": "LinkedIn",
+    "language": {
+      "label": "語言",
+      "en": "English",
+      "zh-TW": "繁體中文"
+    },
+    "theme": {
+      "light": "淺色模式",
+      "dark": "深色模式"
+    }
+  },
+  "hero": {
+    "badge": "以熱忱打造數位系統",
+    "name": "Benjamin Zhuang",
+    "headline": "以產品為導向的全端網頁開發者，運用最先進科技在效能、無障礙與愉悅體驗間取得平衡。",
+    "pills": [
+      "全端開發",
+      "系統思維",
+      "以人為本的體驗"
+    ],
+    "scrollAria": "捲動至關於我區塊"
+  },
+  "about": {
+    "eyebrow": "自我介紹",
+    "title": "概覽",
+    "body": "我是一名全端工程師，擅長 TypeScript、React、Next.js 與 Node.js，透過系統思維與產品直覺，打造具有韌性且符合 SEO 的雲端體驗。我樂於在節奏快速的敏捷團隊中，與設計師、工程師與利害關係人密切合作，將複雜需求轉化為直覺的網頁應用。",
+    "services": {
+      "web": "網頁開發者",
+      "frontend": "前端開發者",
+      "backend": "後端開發者",
+      "software": "軟體工程師"
+    }
+  },
+  "experience": {
+    "eyebrow": "我的歷程",
+    "title": "工作經驗",
+    "body": "我曾與跨職能團隊合作，交付高效能的 TypeScript、Python 與 GraphQL 服務，打造自動化的 CI/CD 測試，並為數百萬使用者優化無障礙與易用性。",
+    "items": {
+      "microsoft": {
+        "title": "Software Engineer I",
+        "company": "Microsoft",
+        "date": "2023 年 4 月 - 2024 年 10 月",
+        "points": [
+          "設計並交付 Teams 會議室中的端對端人員識別系統，將 AI 能力拓展到舊型硬體，提升企業客戶的可及性。",
+          "打造與最佳化即時人臉偵測管線，處理 1080p@30fps 並達到 99% 準確率，改善 1,000 萬以上用戶的會議體驗。",
+          "與資安與法遵團隊協作，設計隱私優先的人臉註冊流程。",
+          "強化多語系語音辨識能力，將 40+ 語言的準確率提升至 95%，促進全球 Teams 的普及。",
+          "建立覆蓋率達 95% 的 AI/ML 測試框架，將回歸問題降低 30%。"
+        ]
+      },
+      "beaconfire": {
+        "title": "Full-Stack Engineer",
+        "company": "BeaconFire Inc",
+        "date": "2022 年 8 月 - 2022 年 12 月",
+        "points": [
+          "主導內部管理平台並建立可擴展的前端基礎架構，加速開發者上手流程。",
+          "優化 CI/CD 流程以部署內部工具，每次發佈節省 10 分鐘。",
+          "撰寫超過 100 個單元/元件/自動化測試，確保 CI/CD 發佈零停機。"
+        ]
+      },
+      "uw": {
+        "title": "Web Development Teaching Assistant",
+        "company": "University of Washington",
+        "date": "2021 年 6 月 - 2022 年 8 月",
+        "points": [
+          "教授並支援 40+ 名學生進階網頁開發與演算法概念。",
+          "指導學生軟體設計原則，並帶領專案的程式碼審查。"
+        ]
+      },
+      "seal": {
+        "title": "Full-Stack Engineer",
+        "company": "Sensors Robotic and Automation Laboratory",
+        "date": "2020 年 2 月 - 2021 年 6 月",
+        "points": [
+          "主導研究導向的內容管理系統，支援每日 500+ 筆資料的即時分析。",
+          "設計並自動化研究資料處理微服務，每週節省 30 小時人力。"
+        ]
+      }
+    }
+  },
+  "tech": {
+    "eyebrow": "我的技能組合",
+    "title": "技能",
+    "body": "我的工具箱涵蓋現代網路技術：React、Next.js、GraphQL、Node.js、PostgreSQL 與雲端原生基礎架構，能設計、建置並擴展端到端的產品體驗。"
+  },
+  "projects": {
+    "eyebrow": "我的作品",
+    "title": "作品集",
+    "body": "我主導 React、Next.js 與 Node.js 堆疊的實際產品，展現我如何架構可擴充 API、打造精緻介面，並讓效能、無障礙與 SEO 與商業目標保持一致。",
+    "demo": "Demo",
+    "viewSource": "查看 {{name}} 的 GitHub 原始碼",
+    "items": {
+      "cypress": {
+        "name": "Cypress（開發中）",
+        "description": "Cypress 是整合型的團隊協作與專案管理平台。"
+      },
+      "leetcode": {
+        "name": "LeetCode [Clone]",
+        "description": "LeetCode 是提供程式挑戰與面試準備的線上平台。"
+      },
+      "cliphop": {
+        "name": "ClipHop",
+        "description": "ClipHop 是融合社群互動的沉浸式短影音分享網站。"
+      },
+      "rssagg": {
+        "name": "RSS Aggregator",
+        "description": "高效的 RSS 訂閱與抓取伺服器，輕鬆取得並訂閱你喜愛的 RSS。"
+      },
+      "propertize": {
+        "name": "Propertize",
+        "description": "Propertize 是高效率的 CRUD 不動產管理儀表板，簡化物件管理流程。"
+      },
+      "mems": {
+        "name": "Mems",
+        "description": "讓使用者分享最愛的旅遊地點，並記錄美好回憶的社群平台。"
+      },
+      "tttgle": {
+        "name": "333gle",
+        "description": "具備記憶體內資料結構的多執行緒搜尋引擎，能在數百萬索引檔上進行多重查詢。"
+      },
+      "xv6": {
+        "name": "xv6",
+        "description": "支援 RISC-V 指令集的教學用作業系統，實作多執行緒與併發。"
+      }
+    }
+  },
+  "contact": {
+    "eyebrow": "聯絡我",
+    "title": "聯絡",
+    "form": {
+      "nameLabel": "您的名字",
+      "namePlaceholder": "我該如何稱呼你？",
+      "emailLabel": "您的 Email",
+      "emailPlaceholder": "你的 Email 是什麼？",
+      "messageLabel": "留言",
+      "messagePlaceholder": "想分享什麼嗎？"
+    },
+    "status": {
+      "sending": "寄送中...",
+      "send": "送出"
+    },
+    "alerts": {
+      "success": "感謝你的訊息！我會盡快回覆。",
+      "error": "發生錯誤，請稍後再試。"
+    }
+  },
+  "footer": {
+    "tagline": "全端工程師，專注為重視品質、SEO 與無障礙的產品團隊打造高效體驗。",
+    "copyright": "保留所有權利。",
+    "github": "GitHub"
+  },
+  "resume": {
+    "downloadError": "無法下載履歷。"
+  }
+}
