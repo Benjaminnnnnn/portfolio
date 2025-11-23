@@ -21,7 +21,7 @@
   "hero": {
     "badge": "以熱忱打造數位系統",
     "name": "Benjamin Zhuang",
-    "headline": "以產品為導向的全端網頁開發者，運用最先進科技在效能、無障礙與愉悅體驗間取得平衡。",
+    "headline": "以產品為本的全端網頁開發者，運用新世代技術在效能、無障礙與流暢體驗間取得平衡。",
     "pills": [
       "全端開發",
       "系統思維",
@@ -32,7 +32,7 @@
   "about": {
     "eyebrow": "自我介紹",
     "title": "概覽",
-    "body": "我是一名全端工程師，擅長 TypeScript、React、Next.js 與 Node.js，透過系統思維與產品直覺，打造具有韌性且符合 SEO 的雲端體驗。我樂於在節奏快速的敏捷團隊中，與設計師、工程師與利害關係人密切合作，將複雜需求轉化為直覺的網頁應用。",
+    "body": "我是一名全端工程師，擅長 TypeScript、React、Next.js 與 Node.js。結合系統思維與產品直覺，打造穩健且符合 SEO 的雲端產品體驗。我樂於在節奏快速的敏捷團隊中，與設計師、工程師與利害關係人密切合作，將複雜需求轉化為直覺的網頁應用。",
     "services": {
       "web": "網頁開發者",
       "frontend": "前端開發者",
@@ -41,19 +41,19 @@
     }
   },
   "experience": {
-    "eyebrow": "我的歷程",
+    "eyebrow": "我的經歷",
     "title": "工作經驗",
-    "body": "我曾與跨職能團隊合作，交付高效能的 TypeScript、Python 與 GraphQL 服務，打造自動化的 CI/CD 測試，並為數百萬使用者優化無障礙與易用性。",
+    "body": "我曾與跨職能團隊合作，交付高效能的 TypeScript、Python 與 GraphQL 服務，建立自動化的 CI/CD 測試流程，並為數百萬使用者優化無障礙與易用性。",
     "items": {
       "microsoft": {
         "title": "Software Engineer I",
         "company": "Microsoft",
         "date": "2023 年 4 月 - 2024 年 10 月",
         "points": [
-          "設計並交付 Teams 會議室中的端對端人員識別系統，將 AI 能力拓展到舊型硬體，提升企業客戶的可及性。",
-          "打造與最佳化即時人臉偵測管線，處理 1080p@30fps 並達到 99% 準確率，改善 1,000 萬以上用戶的會議體驗。",
+          "設計並交付 Teams 會議室的端到端人員識別系統，讓既有硬體也能具備 AI 能力，強化企業用戶的無障礙體驗。",
+          "建立並最佳化即時人臉偵測流程，處理 1080p@30fps 且維持 99% 準確率，改善超過 1,000 萬用戶的會議體驗。",
           "與資安與法遵團隊協作，設計隱私優先的人臉註冊流程。",
-          "強化多語系語音辨識能力，將 40+ 語言的準確率提升至 95%，促進全球 Teams 的普及。",
+          "提升多語系語音辨識能力，將 40+ 語言的準確率提升至 95%，推動 Teams 的全球採用。",
           "建立覆蓋率達 95% 的 AI/ML 測試框架，將回歸問題降低 30%。"
         ]
       },
@@ -62,9 +62,9 @@
         "company": "BeaconFire Inc",
         "date": "2022 年 8 月 - 2022 年 12 月",
         "points": [
-          "主導內部管理平台並建立可擴展的前端基礎架構，加速開發者上手流程。",
-          "優化 CI/CD 流程以部署內部工具，每次發佈節省 10 分鐘。",
-          "撰寫超過 100 個單元/元件/自動化測試，確保 CI/CD 發佈零停機。"
+          "主導內部管理平台並建立可擴充的前端基礎架構，讓開發者更快上手。",
+          "優化 CI/CD 流程以部署內部工具，每次發佈節省約 10 分鐘。",
+          "撰寫超過 100 個單元/元件/自動化測試，確保 CI/CD 發佈零停機時間。"
         ]
       },
       "uw": {
@@ -104,7 +104,7 @@
         "description": "Cypress 是整合型的團隊協作與專案管理平台。"
       },
       "leetcode": {
-        "name": "LeetCode [Clone]",
+        "name": "LeetCode（仿作）",
         "description": "LeetCode 是提供程式挑戰與面試準備的線上平台。"
       },
       "cliphop": {
@@ -113,7 +113,7 @@
       },
       "rssagg": {
         "name": "RSS Aggregator",
-        "description": "高效的 RSS 訂閱與抓取伺服器，輕鬆取得並訂閱你喜愛的 RSS。"
+        "description": "高效的 RSS 訂閱與抓取伺服器，輕鬆追蹤你喜愛的來源。"
       },
       "propertize": {
         "name": "Propertize",
@@ -138,11 +138,11 @@
     "title": "聯絡",
     "form": {
       "nameLabel": "您的名字",
-      "namePlaceholder": "我該如何稱呼你？",
+      "namePlaceholder": "我該怎麼稱呼您？",
       "emailLabel": "您的 Email",
-      "emailPlaceholder": "你的 Email 是什麼？",
+      "emailPlaceholder": "您的 Email 是？",
       "messageLabel": "留言",
-      "messagePlaceholder": "想分享什麼嗎？"
+      "messagePlaceholder": "想告訴我什麼嗎？"
     },
     "status": {
       "sending": "寄送中...",
