@@ -1,6 +1,7 @@
 import emailjs from "@emailjs/browser";
 import { motion } from "framer-motion";
 import { useRef, useState } from "react";
+import { useTranslation } from "react-i18next";
 
 import { SectionWrapper } from "../hoc";
 import { styles } from "../styles";
@@ -8,6 +9,7 @@ import { slideIn } from "../utils/motion";
 import { EarthCanvas } from "./canvas";
 
 const Contact = () => {
+  const { t } = useTranslation();
   const formRef: React.RefObject<HTMLFormElement> =
     useRef<HTMLFormElement>(null);
   const [form, setForm] = useState({ name: "", email: "", message: "" });
@@ -37,12 +39,12 @@ const Contact = () => {
       );
 
       setLoading(false);
-      alert("Thank you! I will get back to you as soon as possible.");
+      alert(t("contact.alerts.success"));
       setForm({ name: "", email: "", message: "" });
     } catch (error) {
       setLoading(false);
       console.log(error);
-      alert("Something went wrong. Please try again later.");
+      alert(t("contact.alerts.error"));
     }
   };
 
@@ -52,9 +54,9 @@ const Contact = () => {
         variants={slideIn("left", "tween", 0.2, 1)}
         className="flex-[0.75] rounded-2xl border border-border/70 bg-tertiary/80 p-8 shadow-card backdrop-blur"
       >
-        <p className={`${styles.sectionSubText}`}>Get in touch</p>
+        <p className={`${styles.sectionSubText}`}>{t("contact.eyebrow")}</p>
         <h2 className={`${styles.sectionHeadText}`} id="contact-heading">
-          Contact.
+          {t("contact.title")}
         </h2>
         {/* <p className="mt-4 text-[16px] leading-[28px] text-secondary">
           Share a challenge, an idea, or a roadmap. I respond quickly to new
@@ -69,7 +71,7 @@ const Contact = () => {
         >
           <label className="flex flex-col">
             <span className="mb-2 text-sm font-semibold uppercase tracking-[0.25em] text-secondary">
-              Your Name
+              {t("contact.form.nameLabel")}
             </span>
             <input
               required
@@ -77,13 +79,13 @@ const Contact = () => {
               name="name"
               value={form.name}
               onChange={handleChange}
-              placeholder="What's your name?"
+              placeholder={t("contact.form.namePlaceholder")}
               className="rounded-xl border border-border/70 bg-elevated/80 py-4 px-5 font-medium text-ink outline-none transition-shadow placeholder:text-secondary focus:border-accent focus:shadow-card"
             />
           </label>
           <label className="flex flex-col">
             <span className="mb-2 text-sm font-semibold uppercase tracking-[0.25em] text-secondary">
-              Your Email
+              {t("contact.form.emailLabel")}
             </span>
             <input
               required
@@ -91,20 +93,20 @@ const Contact = () => {
               name="email"
               value={form.email}
               onChange={handleChange}
-              placeholder="What's your email?"
+              placeholder={t("contact.form.emailPlaceholder")}
               className="rounded-xl border border-border/70 bg-elevated/80 py-4 px-5 font-medium text-ink outline-none transition-shadow placeholder:text-secondary focus:border-accent focus:shadow-card"
             />
           </label>
           <label className="flex flex-col">
             <span className="mb-2 text-sm font-semibold uppercase tracking-[0.25em] text-secondary">
-              Your Message
+              {t("contact.form.messageLabel")}
             </span>
             <textarea
               rows={7}
               name="message"
               value={form.message}
               onChange={handleChange}
-              placeholder="Do you have anything to say?"
+              placeholder={t("contact.form.messagePlaceholder")}
               className="rounded-xl border border-border/70 bg-elevated/80 py-4 px-5 font-medium text-ink outline-none transition-shadow placeholder:text-secondary focus:border-accent focus:shadow-card"
             />
           </label>
@@ -115,7 +117,7 @@ const Contact = () => {
              bg-blue-pink-gradient bg-no-repeat px-6 py-2 text-center text-[16px]
              font-semibold text-white shadow-md shadow-primary transition-transform duration-200 hover:-translate-y-0.5"
           >
-            {loading ? "Sending..." : "Send"}
+            {loading ? t("contact.status.sending") : t("contact.status.send")}
           </button>
         </form>
       </motion.div>

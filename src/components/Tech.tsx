@@ -1,4 +1,5 @@
 import { motion } from "framer-motion";
+import { useTranslation } from "react-i18next";
 import { technologies } from "../constants";
 import { SectionWrapper } from "../hoc";
 import { styles } from "../styles";
@@ -8,12 +9,14 @@ import { BallCanvas } from "./canvas";
 export type technology = (typeof technologies)[0];
 
 const Tech = () => {
+  const { t } = useTranslation();
+
   return (
     <>
       <motion.div variants={textVariant()}>
-        <p className={styles.sectionSubText}>Some of my skill sets</p>
+        <p className={styles.sectionSubText}>{t("tech.eyebrow")}</p>
         <h2 className={styles.sectionHeadText} id="tech-heading">
-          Skills.
+          {t("tech.title")}
         </h2>
       </motion.div>
 
@@ -21,9 +24,7 @@ const Tech = () => {
         variants={fadeIn("", "", 0.1, 1)}
         className="mt-4 text-[17px] leading-[30px] text-secondary"
       >
-        My toolkit spans modern web stacks including React, Next.js, GraphQL,
-        Node.js, PostgreSQL, and cloud-native infrastructure so I can design,
-        build, and scale end-to-end product experiences.
+        {t("tech.body")}
       </motion.p>
 
       <div className="mt-10 flex flex-row flex-wrap justify-center gap-10">

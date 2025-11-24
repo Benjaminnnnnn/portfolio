@@ -1,9 +1,13 @@
 import { motion } from "framer-motion";
+import { useTranslation } from "react-i18next";
 import { ComputersCanvas } from ".";
 import { styles } from "../styles";
 import Text from "./animated/Text";
 
 const Hero = () => {
+  const { t } = useTranslation();
+  const pills = t("hero.pills", { returnObjects: true }) as string[];
+
   return (
     <section
       id="hero"
@@ -20,25 +24,21 @@ const Hero = () => {
       <div className={`${styles.paddingX} w-full`}>
         <div className="mx-auto flex max-w-6xl flex-col items-center text-center">
           <span className="mb-4 inline-flex items-center gap-2 rounded-full border border-border/70 bg-tertiary px-4 py-2 text-[12px] font-semibold uppercase tracking-[0.28em] text-secondary">
-            Crafting digital systems with heart
+            {t("hero.badge")}
           </span>
           <h1 className={`${styles.heroHeadText} text-ink`} id="hero-heading">
             <span className="bg-gradient-to-r from-accent via-highlight to-accent-2 bg-clip-text text-transparent">
-              Benjamin Zhuang
+              {t("hero.name")}
             </span>
           </h1>
 
           <Text
-            text="Product-focused full-stack web developer that balance performance, accessibility, and delightful UX with state-of-the-art technology."
+            text={t("hero.headline")}
             containerClassName={`${styles.heroSubText} z-10 mt-4 max-w-3xl text-center text-secondary md:mt-6`}
           ></Text>
 
           <ul className="mt-8 flex list-none flex-wrap items-center justify-center gap-3">
-            {[
-              "Full-stack development",
-              "Systems thinking",
-              "Human-centered UX",
-            ].map((pill) => (
+            {pills.map((pill) => (
               <li
                 key={pill}
                 className="rounded-full border border-border/60 bg-elevated/80 px-4 py-2 text-sm font-semibold text-secondary shadow-sm backdrop-blur"
@@ -56,7 +56,7 @@ const Hero = () => {
       </div>
 
       <div className="absolute bottom-16 flex w-full items-center justify-center xs:bottom-10">
-        <a href="#about" aria-label="Scroll to about section">
+        <a href="#about" aria-label={t("hero.scrollAria")}>
           <div className="flex h-[64px] w-[35px] items-start justify-center rounded-3xl border-4 border-secondary p-2">
             <motion.div
               animate={{ y: [0, 24, 0] }}

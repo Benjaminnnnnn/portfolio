@@ -1,5 +1,6 @@
 import { motion } from "framer-motion";
 import { useRef } from "react";
+import { useTranslation } from "react-i18next";
 import { LinkedIn, navLinks } from "../../constants";
 
 const sidebar = {
@@ -76,7 +77,12 @@ const MobileNavbar = ({
   theme,
   toggleTheme,
 }: IProps) => {
+  const { t, i18n } = useTranslation();
   const menuRef = useRef<HTMLButtonElement>(null);
+  const languageOptions = [
+    { code: "en", label: t("nav.language.en") },
+    { code: "zh-TW", label: t("nav.language.zh-TW") },
+  ];
 
   return (
     <div className="flex flex-1 items-center justify-center lg:hidden">
@@ -108,19 +114,45 @@ const MobileNavbar = ({
           variants={menu}
           className="flex w-full max-w-md list-none flex-col items-center justify-center gap-6 px-6 text-center"
         >
-          <motion.li variants={menuItem} className="mb-4">
+          <motion.li variants={menuItem} className="w-full">
+            <div className="flex w-full items-center justify-center gap-3 rounded-2xl border border-border/70 px-5 py-3 text-ink shadow-sm">
+              {languageOptions.map((option) => {
+                const isActive = i18n.resolvedLanguage === option.code;
+                return (
+                  <button
+                    key={option.code}
+                    type="button"
+                    onClick={() => {
+                      i18n.changeLanguage(option.code);
+                    }}
+                    className={`rounded-full px-3 py-1 text-base font-semibold transition-all duration-200 ${
+                      isActive
+                        ? "text-ink underline decoration-2 underline-offset-4"
+                        : "text-secondary hover:text-ink"
+                    }`}
+                    aria-pressed={isActive}
+                  >
+                    {option.label}
+                  </button>
+                );
+              })}
+            </div>
+          </motion.li>
+          <motion.li variants={menuItem}>
             <button
-              aria-label="Toggle color theme"
+              aria-label={
+                theme === "dark" ? t("nav.theme.light") : t("nav.theme.dark")
+              }
               onClick={() => {
                 toggleTheme();
               }}
-              className="flex w-full items-center justify-between gap-3 rounded-2xl border border-border/70 bg-tertiary px-5 py-3 text-ink shadow-sm transition-transform duration-200 hover:-translate-y-0.5"
+              className="flex w-full items-center justify-between gap-2 rounded-2xl px-3 py-2 text-ink transition-transform duration-200 hover:-translate-y-0.5"
             >
-              <span className="text-sm font-semibold uppercase tracking-wide text-secondary">
-                {theme === "dark" ? "Dark" : "Light"} mode
-              </span>
               <span className="flex h-10 w-10 items-center justify-center rounded-full border border-border/60 bg-elevated/70 text-ink">
-                {theme === "dark" ? "☀️" : "🌙"}
+                {theme === "dark" ? "🌙" : "☀️"}
+              </span>
+              <span className="text-base font-semibold text-secondary">
+                {theme === "dark" ? t("nav.theme.dark") : t("nav.theme.light")}
               </span>
             </button>
           </motion.li>
@@ -134,14 +166,14 @@ const MobileNavbar = ({
                 className={`
                     ${
                       active === link.id ? "text-ink" : "text-secondary"
-                    } font-poppins w-full cursor-pointer text-center text-lg font-semibold`}
+                    } font-poppins w-full cursor-pointer text-center text-base font-semibold`}
                 onClick={() => {
                   menuRef.current!.classList.toggle("menu-transform");
                   setActive(link.id);
                   setToggle((prevToggle) => !prevToggle);
                 }}
               >
-                <a href={`#${link.id}`}>{link.title}</a>
+                <a href={`#${link.id}`}>{t(`nav.${link.id}`)}</a>
               </motion.li>
             );
           })}
@@ -152,7 +184,7 @@ const MobileNavbar = ({
             className={`
                     ${
                       active === LinkedIn.title ? "text-ink" : "text-secondary"
-                    } font-poppins w-full cursor-pointer text-center text-lg font-semibold`}
+                    } font-poppins w-full cursor-pointer text-center text-base font-semibold`}
             onClick={() => {
               menuRef.current!.classList.toggle("menu-transform");
               setActive(LinkedIn.title);
@@ -163,7 +195,7 @@ const MobileNavbar = ({
             }}
           >
             <a href={LinkedIn.link} target="_blank" rel="noopener noreferrer">
-              {LinkedIn.title}
+              {t("nav.linkedin")}
             </a>
           </motion.li>
           <motion.li
@@ -175,10 +207,10 @@ const MobileNavbar = ({
             <button
               type="button"
               onClick={resumeHandler}
-              className="group flex w-full items-center justify-center gap-2 rounded-2xl border border-border/70 bg-tertiary px-5 py-3 text-center text-lg font-semibold text-secondary transition-all duration-300"
+              className="group flex w-full items-center justify-center gap-1 rounded-2xl text-center text-base font-semibold text-secondary transition-all duration-300"
               aria-label="Download resume as PDF"
             >
-              Resume
+              {t("nav.resume")}
               <svg
                 xmlns="http://www.w3.org/2000/svg"
                 viewBox="0 0 24 24"

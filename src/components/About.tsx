@@ -1,5 +1,6 @@
 import { motion } from "framer-motion";
 import Tilt from "react-tilt";
+import { useTranslation } from "react-i18next";
 import { services } from "../constants";
 import { SectionWrapper } from "../hoc";
 import { styles } from "../styles";
@@ -32,12 +33,14 @@ const ServiceCard = ({
 };
 
 const About = () => {
+  const { t } = useTranslation();
+
   return (
     <>
       <motion.div variants={textVariant()}>
-        <p className={styles.sectionSubText}>Introduction</p>
+        <p className={styles.sectionSubText}>{t("about.eyebrow")}</p>
         <h2 className={styles.sectionHeadText} id="about-heading">
-          Overview.
+          {t("about.title")}
         </h2>
       </motion.div>
 
@@ -45,21 +48,20 @@ const About = () => {
         variants={fadeIn("", "", 0.1, 1)}
         className="mt-4 text-[17px] leading-[30px] text-secondary"
       >
-        I am a full-stack software engineer with a strong TypeScript, React,
-        Next.js, and Node.js toolkit. I pair systems thinking with product
-        intuition to ship resilient, SEO-friendly user experiences that scale
-        securely in the cloud. I thrive in fast-paced, agile teams where close
-        collaboration with designers, engineers, and stakeholders turns complex
-        requirements into intuitive web applications.
+        {t("about.body")}
       </motion.p>
 
       <div className="mt-20 flex flex-wrap justify-center gap-10">
         {services.map((service, index) => {
+          const title = t(`about.services.${service.id}`, {
+            defaultValue: service.title,
+          });
           return (
             <ServiceCard
               key={service.title}
               index={index}
               {...service}
+              title={title}
             ></ServiceCard>
           );
         })}

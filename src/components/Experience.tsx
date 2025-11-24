@@ -1,4 +1,5 @@
 import { motion } from "framer-motion";
+import { useTranslation } from "react-i18next";
 import {
   VerticalTimeline,
   VerticalTimelineElement,
@@ -10,6 +11,21 @@ import { styles } from "../styles";
 import { fadeIn, textVariant } from "../utils/motion";
 
 const ExperienceCard = ({ experience }: { experience: IExperince }) => {
+  const { t } = useTranslation();
+  const title = t(`experience.items.${experience.id}.title`, {
+    defaultValue: experience.title,
+  });
+  const company = t(`experience.items.${experience.id}.company`, {
+    defaultValue: experience.company_name,
+  });
+  const date = t(`experience.items.${experience.id}.date`, {
+    defaultValue: experience.date,
+  });
+  const points = t(`experience.items.${experience.id}.points`, {
+    returnObjects: true,
+    defaultValue: experience.points,
+  }) as string[];
+
   return (
     <VerticalTimelineElement
       contentStyle={{
@@ -21,7 +37,7 @@ const ExperienceCard = ({ experience }: { experience: IExperince }) => {
       contentArrowStyle={{
         borderRight: "7px solid rgba(var(--color-border), 0.8)",
       }}
-      date={experience.date}
+      date={date}
       iconStyle={{ background: experience.iconBg }}
       icon={
         <div className="flex h-full w-full items-center justify-center">
@@ -34,19 +50,17 @@ const ExperienceCard = ({ experience }: { experience: IExperince }) => {
       }
     >
       <div>
-        <h3 className="text-[22px] font-semibold text-ink">
-          {experience.title}
-        </h3>
+        <h3 className="text-[22px] font-semibold text-ink">{title}</h3>
         <p
           className="text-[16px] font-semibold text-secondary"
           style={{ margin: 0 }}
         >
-          {experience.company_name}
+          {company}
         </p>
       </div>
 
       <ul className="mt-5 ml-5 list-disc space-y-2">
-        {experience.points.map((point: string, index: number) => {
+        {points.map((point: string, index: number) => {
           return (
             <li
               key={`experience-point-${index}`}
@@ -62,12 +76,14 @@ const ExperienceCard = ({ experience }: { experience: IExperince }) => {
 };
 
 const Experience = () => {
+  const { t } = useTranslation();
+
   return (
     <>
       <motion.div variants={textVariant()}>
-        <p className={styles.sectionSubText}>What I have done so far</p>
+        <p className={styles.sectionSubText}>{t("experience.eyebrow")}</p>
         <h2 className={styles.sectionHeadText} id="experience-heading">
-          Work Experience.
+          {t("experience.title")}
         </h2>
       </motion.div>
 
@@ -75,16 +91,14 @@ const Experience = () => {
         variants={fadeIn("", "", 0.1, 1)}
         className="mt-4 text-[17px] leading-[30px] text-secondary"
       >
-        I have worked with cross-functional teams that ship performant
-        TypeScript, Python, and GraphQL services, automate CI/CD testing, and
-        optimize accessibility for millions of end users.
+        {t("experience.body")}
       </motion.p>
 
       <div className="mt-20 flex flex-col">
         <VerticalTimeline>
           {experiences.map((experience) => (
             <ExperienceCard
-              key={experience.date}
+              key={experience.id}
               experience={experience}
             ></ExperienceCard>
           ))}

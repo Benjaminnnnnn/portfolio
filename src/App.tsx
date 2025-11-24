@@ -1,4 +1,5 @@
 import { BrowserRouter } from "react-router-dom";
+import { useTranslation } from "react-i18next";
 import {
   About,
   Contact,
@@ -12,11 +13,13 @@ import {
 } from "./components";
 
 const App = () => {
+  const { t } = useTranslation();
+
   return (
     <BrowserRouter>
       <div className="relative z-0 bg-primary text-ink">
         <a href="#main-content" className="skip-link">
-          Skip to main content
+          {t("skipToContent")}
         </a>
         <header className="relative">
           <Navbar></Navbar>

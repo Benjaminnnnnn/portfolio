@@ -1,5 +1,6 @@
 import { motion } from "framer-motion";
 import Tilt from "react-tilt";
+import { useTranslation } from "react-i18next";
 import { github } from "../assets";
 
 import { IProject, projects } from "../constants";
@@ -13,6 +14,7 @@ type ProjectCard = IProject & {
 
 const ProjectCard = ({
   index,
+  id,
   name,
   description,
   tags,
@@ -20,6 +22,16 @@ const ProjectCard = ({
   source_code_link,
   demo_link,
 }: ProjectCard) => {
+  const { t } = useTranslation();
+  const translatedName = t(`projects.items.${id}.name`, { defaultValue: name });
+  const translatedDescription = t(`projects.items.${id}.description`, {
+    defaultValue: description,
+  });
+  const demoLabel = t("projects.demo");
+  const ariaSource = t("projects.viewSource", {
+    name: translatedName,
+    defaultValue: `View the ${translatedName} source code on GitHub`,
+  });
   const titleId = `project-${index}-title`;
   return (
     <motion.div variants={fadeIn("up", "spring", index * 0.5, 0.75)}>
@@ -39,7 +51,7 @@ const ProjectCard = ({
                 href={source_code_link}
                 target="_blank"
                 rel="noopener noreferrer"
-                aria-label={`View the ${name} source code on GitHub`}
+                aria-label={ariaSource}
                 className="flex h-10 w-10 items-center justify-center rounded-full border border-accent/70 bg-accent text-white shadow-md shadow-border/60 transition-transform duration-300 hover:-translate-y-1 hover:border-accent"
               >
                 <img
@@ -57,7 +69,7 @@ const ProjectCard = ({
               className="flex flex-row justify-between text-[22px] font-semibold text-ink"
               id={titleId}
             >
-              {name}
+              {translatedName}
               {/* display demo link if needed */}
               {demo_link && (
                 <a
@@ -66,11 +78,13 @@ const ProjectCard = ({
                   rel="noopener noreferrer"
                   className="w-fit rounded-xl border border-border/70 bg-elevated px-4 py-1 text-sm font-semibold text-ink shadow-sm outline-none transition-transform duration-200 hover:-translate-y-0.5 hover:border-accent"
                 >
-                  Demo
+                  {demoLabel}
                 </a>
               )}
             </h3>
-            <p className="mt-2 text-[15px] text-secondary">{description}</p>
+            <p className="mt-2 text-[15px] text-secondary">
+              {translatedDescription}
+            </p>
           </div>
 
           <div className="mt-4 flex flex-wrap gap-x-2">
@@ -92,12 +106,14 @@ const ProjectCard = ({
 };
 
 const Works = () => {
+  const { t } = useTranslation();
+
   return (
     <>
       <motion.div variants={textVariant()}>
-        <p className={styles.sectionSubText}>My projects</p>
+        <p className={styles.sectionSubText}>{t("projects.eyebrow")}</p>
         <h2 className={styles.sectionHeadText} id="project-heading">
-          Projects.
+          {t("projects.title")}
         </h2>
       </motion.div>
 
@@ -106,10 +122,7 @@ const Works = () => {
           variants={fadeIn("", "", 0.1, 1)}
           className="mt-3 text-[17px] leading-[30px] text-secondary"
         >
-          Real-world products where I led the React, Next.js, and Node.js stack
-          demonstrate how I architect scalable APIs, craft polished interfaces,
-          and keep performance, accessibility, and SEO aligned with business
-          goals.
+          {t("projects.body")}
         </motion.p>
       </div>
 
