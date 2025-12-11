@@ -278,7 +278,7 @@ const educations: IEducation[] = [
     school: "University of Washington",
     degree: "B.S. in Computer Science",
     period: "September 2018 - December 2022",
-    gpa: "3.85 / 4.0; Dean's List: 13 quarters",
+    gpa: "3.85 / 4.0",
     coursework: [
       "Machine Learning",
       "Natural Language Processing",
