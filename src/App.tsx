@@ -1,8 +1,9 @@
-import { BrowserRouter } from "react-router-dom";
 import { useTranslation } from "react-i18next";
+import { BrowserRouter } from "react-router-dom";
 import {
   About,
   Contact,
+  Education,
   Experience,
   Footer,
   Hero,
@@ -27,6 +28,7 @@ const App = () => {
         <main id="main-content">
           <Hero></Hero>
           <About></About>
+          <Education></Education>
           <Experience></Experience>
           <Tech></Tech>
           <Works></Works>

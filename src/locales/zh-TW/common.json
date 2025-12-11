@@ -3,6 +3,7 @@
   "nav": {
     "about": "關於我",
     "experience": "經歷",
+    "education": "學歷",
     "tech": "技能",
     "project": "作品集",
     "contact": "聯絡",
@@ -50,11 +51,10 @@
         "company": "Microsoft",
         "date": "2023 年 4 月 - 2024 年 10 月",
         "points": [
-          "設計並交付 Teams 會議室的端到端人員識別系統，讓既有硬體也能具備 AI 能力，強化企業用戶的無障礙體驗。",
-          "建立並最佳化即時人臉偵測流程，處理 1080p@30fps 且維持 99% 準確率，改善超過 1,000 萬用戶的會議體驗。",
-          "與資安與法遵團隊協作，設計隱私優先的人臉註冊流程。",
-          "提升多語系語音辨識能力，將 40+ 語言的準確率提升至 95%，推動 Teams 的全球採用。",
-          "建立覆蓋率達 95% 的 AI/ML 測試框架，將回歸問題降低 30%。"
+          "推出隱私優先的 Teams Rooms 人員識別，支援新舊會議室硬體，讓超過 1,000 萬名與會者獲得更好的無障礙體驗，且上線後零 P0 事件。",
+          "最佳化 1080p@30fps 人臉偵測管線（ONNX Runtime + CPU 最佳化），維持約 99% 準確率、~22ms p95 延遲，同時降低 GPU 成本約 8%。",
+          "強化人臉註冊流程，落實 PII 最小化與留存控管，符合企業隱私規範並通過內部稽核。",
+          "為 AI/ML 服務建立 99% 自動化測試覆蓋率，將回歸問題降低 30%。"
         ]
       },
       "beaconfire": {
@@ -62,9 +62,9 @@
         "company": "BeaconFire Inc",
         "date": "2022 年 8 月 - 2022 年 12 月",
         "points": [
-          "主導內部管理平台並建立可擴充的前端基礎架構，讓開發者更快上手。",
-          "優化 CI/CD 流程以部署內部工具，每次發佈節省約 10 分鐘。",
-          "撰寫超過 100 個單元/元件/自動化測試，確保 CI/CD 發佈零停機時間。"
+          "打造內部管理平台介面（React/Next.js）與自助式導入流程，協助 50 個團隊將 TTF commit 從 7 天縮短到 1 天。",
+          "交付含權限與稽核記錄的 API 層（Express + Redis），服務 700 名內部使用者，維持約 99.9% uptime。",
+          "強化 GitHub Actions CI/CD 管線，每次發佈節省約 10 分鐘並提升回滾穩定度。"
         ]
       },
       "uw": {
@@ -72,17 +72,52 @@
         "company": "University of Washington",
         "date": "2021 年 6 月 - 2022 年 8 月",
         "points": [
-          "教授並支援 40+ 名學生進階網頁開發與演算法概念。",
-          "指導學生軟體設計原則，並帶領專案的程式碼審查。"
+          "教授並支援 40+ 名學生進階網頁開發與演算法，每週舉辦程式碼審查與實作實驗室並給予可行回饋。",
+          "建立專案檢查清單與 CI 關卡，提高作業通過率與程式品質。"
         ]
       },
       "seal": {
         "title": "Full-Stack Engineer",
-        "company": "Sensors Robotic and Automation Laboratory",
+        "company": "Sensors, Energy, and Automation Laboratory",
         "date": "2020 年 2 月 - 2021 年 6 月",
         "points": [
-          "主導研究導向的內容管理系統，支援每日 500+ 筆資料的即時分析。",
-          "設計並自動化研究資料處理微服務，每週節省 30 小時人力。"
+          "打造研究用 CMS 與資料管線，處理每日 500+ 筆資料並提供即時分析儀表板。",
+          "自動化研究資料處理微服務，每週節省約 30 小時人力。"
+        ]
+      }
+    }
+  },
+  "education": {
+    "eyebrow": "我的學習",
+    "title": "學歷",
+    "body": "結合正規教育與持續自學，專注系統思維、人本設計與現代網頁工程。",
+    "gpaLabel": "GPA：{{gpa}}",
+    "courseworkLabel": "核心課程",
+    "items": {
+      "cmu": {
+        "school": "卡內基美隆大學",
+        "degree": "軟體工程碩士",
+        "period": "預計 2026 年 12 月畢業",
+        "gpa": "3.9 / 4.0",
+        "coursework": [
+          "Cloud Computing",
+          "Distributed Systems",
+          "Quality Assurance",
+          "API Design",
+          "Software Architecture"
+        ]
+      },
+      "uw": {
+        "school": "華盛頓大學",
+        "degree": "電腦科學學士",
+        "period": "2018 年 9 月 - 2022 年 12 月",
+        "gpa": "3.85 / 4.0；連續 13 季度院長名單",
+        "coursework": [
+          "Machine Learning",
+          "Natural Language Processing",
+          "Operating Systems",
+          "Algorithms",
+          "Computer Graphics"
         ]
       }
     }
@@ -101,10 +136,10 @@
     "items": {
       "cypress": {
         "name": "Cypress（開發中）",
-        "description": "Cypress 是整合型的團隊協作與專案管理平台。"
+        "description": "打造類 Notion 編輯器，支援多人即時協作、版本歷史與 AI 助手摘要/行動項目。"
       },
       "leetcode": {
-        "name": "LeetCode（仿作）",
+        "name": "LeetCode（Clone）",
         "description": "LeetCode 是提供程式挑戰與面試準備的線上平台。"
       },
       "cliphop": {
