@@ -8,6 +8,10 @@ import menu from "./menu.svg";
 import mobile from "./mobile.png";
 import web from "./web.png";
 
+// educations
+import cmu from './education/cmu.png';
+
+// tech stack
 import cpp from "./tech/c++.png";
 import css from "./tech/css.png";
 import docker from "./tech/docker.png";
@@ -31,7 +35,6 @@ import tailwind from "./tech/tailwind.png";
 import threejs from "./tech/threejs.svg";
 import typescript from "./tech/typescript.png";
 
-
 // companies
 import beaconfire from "./company/beaconfire.png";
 import microsoft from "./company/microsoft.png";
@@ -52,7 +55,7 @@ export {
   backend,
   beaconfire,
   cliphop,
-  close, cpp,
+  close, cmu, cpp,
   creator,
   css,
   cypress,

@@ -1,6 +1,6 @@
 import { motion } from "framer-motion";
-import Tilt from "react-tilt";
 import { useTranslation } from "react-i18next";
+import Tilt from "react-tilt";
 import { github } from "../assets";
 
 import { IProject, projects } from "../constants";
@@ -37,9 +37,12 @@ const ProjectCard = ({
     <motion.div variants={fadeIn("up", "spring", index * 0.5, 0.75)}>
       <Tilt
         options={{ max: 20, scale: 1, speed: 500 }}
-        className="group w-full rounded-2xl border border-border/70 bg-tertiary/80 p-5 shadow-card backdrop-blur sm:w-[360px]"
+        className="group h-full w-full rounded-2xl border border-border/70 bg-tertiary/80 p-5 shadow-card backdrop-blur sm:w-[360px]"
       >
-        <article className="flex h-full flex-col" aria-labelledby={titleId}>
+        <article
+          className="flex h-full min-h-[450px] flex-col gap-4"
+          aria-labelledby={titleId}
+        >
           <div className="relative h-[230px] w-full overflow-hidden rounded-xl border border-border/70 bg-elevated/80">
             <img
               src={image}
@@ -64,7 +67,7 @@ const ProjectCard = ({
             </div>
           </div>
 
-          <div className="mt-5 h-[150px]">
+          <div className="flex flex-col gap-3">
             <h3
               className="flex flex-row justify-between text-[22px] font-semibold text-ink"
               id={titleId}
@@ -82,17 +85,17 @@ const ProjectCard = ({
                 </a>
               )}
             </h3>
-            <p className="mt-2 text-[15px] text-secondary">
+            <p className="text-[15px] text-secondary">
               {translatedDescription}
             </p>
           </div>
 
-          <div className="mt-4 flex flex-wrap gap-x-2">
+          <div className="flex flex-wrap gap-2">
             {tags.map((tag) => {
               return (
                 <p
                   key={tag.name}
-                  className={`rounded-full bg-elevated/70 px-3 py-1 text-[13px] font-semibold ${tag.color}`}
+                  className={`rounded-full bg-elevated/70 py-1 text-[13px] font-semibold ${tag.color}`}
                 >
                   #{tag.name}
                 </p>

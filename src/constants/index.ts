@@ -2,6 +2,7 @@ import {
   backend,
   beaconfire,
   cliphop,
+  cmu,
   cpp,
   creator,
   cypress,
@@ -63,6 +64,15 @@ export interface ITechnology {
   icon: string;
 }
 export interface ITestimonial { }
+export interface IEducation {
+  id: string;
+  school: string;
+  degree: string;
+  period: string;
+  gpa?: string;
+  coursework: string[];
+  icon: string;
+}
 
 export const navLinks = [
   {
@@ -72,6 +82,10 @@ export const navLinks = [
   {
     id: "experience",
     title: "Experience",
+  },
+  {
+    id: "education",
+    title: "Education",
   },
   {
     id: "tech",
@@ -198,11 +212,10 @@ const experiences: IExperince[] = [
     iconBg: "#ffffff",
     date: "April 2023 - October 2024",
     points: [
-      "Architected and delivered an end-to-end people identification system in Microsoft Teams meeting rooms, expanding AI capabilities to legacy hardware and improving accessibility for enterprise clients.",
-      "Engineered and optimized a real-time face detection pipeline processing 1080p video at 30fps with 99% accuracy, directly enhancing meeting experiences for 10M+ global users.",
-      "Collaborated cross-functionally with security and compliance teams to design a privacy-first face enrollment pipeline.",
-      "Enhanced multilingual voice recognition capabilities, raising accuracy to 95% across 40+ languages, improving inclusivity for international Teams adoption.",
-      "Instituted a robust testing framework with 95% code coverage for AI/ML components, reducing regression incidents by 30%.",
+      "Shipped privacy-first people identification for Teams Rooms, enabling advanced/legacy room hardware and expanding accessibility for 10M+ meeting participants with zero P0 incidents post-launch.",
+      "Optimized a 1080p@30fps face detection pipeline (ONNX Runtime + CPU optimizations), sustaining ~99% detection accuracy with ~22ms p95 latency and trimming GPU cost by ~8%.",
+      "Reinforced face enrollment flows with PII minimization and retention controls to meet enterprise privacy requirements and pass internal audits.",
+      "Instituted automation tests for AI/ML services to 99% coverage, reducing regression incidents by 30%.",
     ],
   },
   {
@@ -213,9 +226,9 @@ const experiences: IExperince[] = [
     iconBg: "#ffffff",
     date: "August 2022 - December 2022",
     points: [
-      "Spearheaded internal management platform and activated scalable frontend infrastructure for developer onboarding.",
-      "Streamlined CI/CD pipelines to deploy internal tools, reducing deployment times by 10 mins per release.",
-      "Wrote 100+ unit/component/automated tests to ensure zero downtime in CI/CD releases.",
+      "Engineered internal management platform UI (React/Next.js) and onboarding flows so new teams could self-serve setup and configurations, speeding time-to-first-commit from 7 days to 1 day for 50 teams.",
+      "Delivered API layer and persistence (Express + Redis) with auth and audit logging to guard internal workflows, serving 700 internal users at ~99.9% uptime.",
+      "Streamlined CI/CD pipelines (GitHub Actions) to cut release time by ~10 minutes per deploy and stabilize rollback reliability.",
     ],
   },
   {
@@ -224,23 +237,56 @@ const experiences: IExperince[] = [
     company_name: "University of Washington",
     icon: uw,
     iconBg: "#E6DEDD",
-    date: "June 2021 -  August 2022",
+    date: "June 2021 - August 2022",
     points: [
-      "Taught and supported 40+ students in advanced web development concepts and algorithms. ",
-      "Mentored students in software design principles and led code reviews for student projects.",
+      "Taught 40+ students on advanced web development and algorithms; ran weekly code reviews labs with actionable feedback.",
+      "Started project review checklists and CI gating, increasing assignment pass consistency and code quality.",
     ],
   },
   {
     id: "seal",
     title: "Full-Stack Engineer",
-    company_name: "Sensors Robotic and Automation Laboratory",
+    company_name: "Sensors, Energy, and Automation Laboratory",
     icon: seal,
     iconBg: "#E6DEDD",
     date: "February 2020 - June 2021",
     points: [
-      "Led development of a research-oriented content management system supporting real-time data analysis for 500+ daily entries.",
-      "Designed and automated a research data processing microservice, reducing 30-hour human labor per week.",
+      "Built a research CMS and data pipeline handling 500+ daily entries with real-time analysis dashboards.",
+      "Automated the research data processing microservice, eliminating ~30 hours/week of manual effort.",
     ],
+  },
+];
+
+const educations: IEducation[] = [
+  {
+    id: "cmu",
+    school: "Carnegie Mellon University",
+    degree: "Master of Software Engineering",
+    period: "Expected December 2026",
+    gpa: "3.9 / 4.0",
+    coursework: [
+      "Cloud Computing",
+      "Distributed Systems",
+      "Quality Assurance",
+      "API Design",
+      "Software Architecture",
+    ],
+    icon: cmu,
+  },
+  {
+    id: "uw",
+    school: "University of Washington",
+    degree: "B.S. in Computer Science",
+    period: "September 2018 - December 2022",
+    gpa: "3.85 / 4.0; Dean's List: 13 quarters",
+    coursework: [
+      "Machine Learning",
+      "Natural Language Processing",
+      "Operating Systems",
+      "Algorithms",
+      "Computer Graphics",
+    ],
+    icon: uw,
   },
 ];
 
@@ -276,7 +322,7 @@ const projects: IProject[] = [
     id: "cypress",
     name: "Cypress (WIP)",
     description:
-      "Cypress is an all-in-one platform for seamless team collaboration and project management.",
+      "Designed a Notion-like editor with real-time collaborative document editing, version history, and AI assistants for summaries and action items.",
     tags: [
       {
         name: "react-typescript",
@@ -305,7 +351,7 @@ const projects: IProject[] = [
   },
   {
     id: "leetcode",
-    name: "LeetCode [Clone]",
+    name: "LeetCode (Clone)",
     description:
       "LeetCode is an online platform offering coding challenges and interview preparation resources for software engineers and developers.",
     tags: [
@@ -494,8 +540,7 @@ const LinkedIn = {
 };
 
 export {
-  experiences,
-  LinkedIn,
+  educations, experiences, LinkedIn,
   projects,
   services,
   technologies,
