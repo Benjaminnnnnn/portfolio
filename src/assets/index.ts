@@ -42,6 +42,7 @@ import seal from "./company/seal.png";
 import uw from "./company/uw.png";
 
 // projects
+import algo from "./project/algo.png";
 import tttgle from "./project/333gle.png";
 import cliphop from "./project/cliphop.png";
 import cypress from "./project/cypress.png";
@@ -52,6 +53,7 @@ import rssagg from "./project/rssagg.png";
 import xv6 from "./project/xv6.png";
 
 export {
+  algo,
   backend,
   beaconfire,
   cliphop,

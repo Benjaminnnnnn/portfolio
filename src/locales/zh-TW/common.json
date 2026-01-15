@@ -111,7 +111,7 @@
         "school": "華盛頓大學",
         "degree": "電腦科學學士",
         "period": "2018 年 9 月 - 2022 年 12 月",
-        "gpa": "3.85 / 4.0；連續 13 季度院長名單",
+        "gpa": "3.85 / 4.0",
         "coursework": [
           "Machine Learning",
           "Natural Language Processing",
@@ -134,8 +134,12 @@
     "demo": "Demo",
     "viewSource": "查看 {{name}} 的 GitHub 原始碼",
     "items": {
+      "algoexplorer": {
+        "name": "AlgoExplorer",
+        "description": "互動式演算法遊樂場，提供逐步視覺化、AI 導師解說與命令選單快速導覽。"
+      },
       "cypress": {
-        "name": "Cypress（開發中）",
+        "name": "Cypress",
         "description": "打造類 Notion 編輯器，支援多人即時協作、版本歷史與 AI 助手摘要/行動項目。"
       },
       "leetcode": {
