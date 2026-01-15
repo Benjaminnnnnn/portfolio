@@ -1,4 +1,5 @@
 import {
+  algo,
   backend,
   beaconfire,
   cliphop,
@@ -319,8 +320,34 @@ const testimonials = [
 
 const projects: IProject[] = [
   {
+    id: "algoexplorer",
+    name: "AlgoExplorer",
+    description:
+      "Interactive algorithm playground with step-by-step visualizations, an AI tutor, and a command palette for rapid navigation.",
+    tags: [
+      {
+        name: "react-typescript",
+        color: "blue-text-gradient",
+      },
+      {
+        name: "vite",
+        color: "green-text-gradient",
+      },
+      {
+        name: "tailwind",
+        color: "blue-text-gradient",
+      },
+      {
+        name: "openai",
+        color: "pink-text-gradient",
+      },
+    ],
+    image: algo,
+    source_code_link: "https://github.com/Benjaminnnnnn/algo-explorer",
+  },
+  {
     id: "cypress",
-    name: "Cypress (WIP)",
+    name: "Cypress",
     description:
       "Designed a Notion-like editor with real-time collaborative document editing, version history, and AI assistants for summaries and action items.",
     tags: [
