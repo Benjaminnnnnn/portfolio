@@ -142,6 +142,10 @@
         "name": "Cypress",
         "description": "打造類 Notion 編輯器，支援多人即時協作、版本歷史與 AI 助手摘要/行動項目。"
       },
+      "splendor": {
+        "name": "Splendor",
+        "description": "線上版 Splendor 桌遊，支援多人、聊天、成就、遊戲內下注與 AI 教練，並以嚴謹的 QA 測試保障品質。"
+      },
       "leetcode": {
         "name": "LeetCode（Clone）",
         "description": "LeetCode 是提供程式挑戰與面試準備的線上平台。"
