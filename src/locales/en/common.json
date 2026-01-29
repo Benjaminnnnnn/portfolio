@@ -142,6 +142,10 @@
         "name": "Cypress",
         "description": "Designed a Notion-like editor with real-time collaborative document editing, version history, and AI assistants for summaries and action items."
       },
+      "splendor": {
+        "name": "Splendor",
+        "description": "Online Splendor board game with multiplayer, chat, achievements, in-game betting, and AI coaching, backed by rigorous QA testing."
+      },
       "leetcode": {
         "name": "LeetCode (Clone)",
         "description": "LeetCode is an online platform offering coding challenges and interview preparation resources for software engineers and developers."
