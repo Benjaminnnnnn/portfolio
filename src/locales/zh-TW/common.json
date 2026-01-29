@@ -146,6 +146,10 @@
         "name": "LeetCode（Clone）",
         "description": "LeetCode 是提供程式挑戰與面試準備的線上平台。"
       },
+      "splendor": {
+        "name": "寶石商人",
+        "description": "支援多人連線、聊天、成就、遊戲內下注與 AI 對局教練的 Splendor 線上桌遊，並以嚴謹 QA 策略測試。"
+      },
       "cliphop": {
         "name": "ClipHop",
         "description": "ClipHop 是融合社群互動的沉浸式短影音分享網站。"

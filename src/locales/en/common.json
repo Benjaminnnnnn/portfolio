@@ -146,6 +146,10 @@
         "name": "LeetCode (Clone)",
         "description": "LeetCode is an online platform offering coding challenges and interview preparation resources for software engineers and developers."
       },
+      "splendor": {
+        "name": "Splendor",
+        "description": "Online Splendor board game with multiplayer, chat, achievements, in-game betting, and AI game coaching, backed by rigorous QA strategies."
+      },
       "cliphop": {
         "name": "ClipHop",
         "description": "ClipHop is an immersive video sharing web application that combines the power of social media with captivating short-form videos."

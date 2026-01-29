@@ -50,6 +50,7 @@ import leetcode from "./project/leetcode.png";
 import mems from "./project/mems.png";
 import propertize from "./project/propertize.png";
 import rssagg from "./project/rssagg.png";
+import splendor from "./project/splendor.png";
 import xv6 from "./project/xv6.png";
 
 export {
@@ -81,6 +82,7 @@ export {
   python,
   reactjs, redux, rest, rssagg,
   seal,
+  splendor,
   tailwind,
   threejs,
   tttgle,

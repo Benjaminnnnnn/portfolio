@@ -24,6 +24,7 @@ import {
   rest,
   rssagg,
   seal,
+  splendor,
   tailwind,
   tttgle,
   typescript,
@@ -344,6 +345,39 @@ const projects: IProject[] = [
     ],
     image: algo,
     source_code_link: "https://github.com/Benjaminnnnnn/algo-explorer",
+  },
+  {
+    id: "splendor",
+    name: "Splendor",
+    description:
+      "Online Splendor board game with multiplayer, chat, achievements, in-game betting, and AI game coaching, backed by rigorous QA strategies.",
+    tags: [
+      {
+        name: "React",
+        color: "blue-text-gradient",
+      },
+      {
+        name: "WebSocket",
+        color: "blue-text-gradient",
+      },
+      {
+        name: "PlayWright",
+        color: "green-text-gradient",
+      }, {
+        name: "fast-check",
+        color: "green-text-gradient",
+      },
+      {
+        name: "Stryker",
+        color: "green-text-gradient",
+      },
+      {
+        name: "Codex",
+        color: "pink-text-gradient",
+      },
+    ],
+    image: splendor,
+    source_code_link: "https://github.com/Benjaminnnnnn/splendor",
   },
   {
     id: "cypress",
