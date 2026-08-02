@@ -1,9 +1,40 @@
-![Deployment Status](https://github.com/Benjaminnnnnn/portfolio/actions/workflows/static.yml/badge.svg)
+# Benjamin Zhuang — portfolio
 
-### Hi, I'm Benjamin👋
+Personal portfolio of Benjamin Zhuang, built as a typed Next.js 16 application
+and deployed to GitHub Pages as a static export.
 
-Welcome to my [personal portfolio website](https://benjaminnnnnn.github.io/portfolio).
+> **Provenance.** The visual shell and front-end implementation were recovered
+> from the public deployment at [haoqi.design](https://haoqi.design/) by Haoqi
+> Wen. Every visible biography, project card, project image, repository link,
+> metric, and case-study write-up now represents Benjamin Zhuang's own work.
+> The original portfolio archive under `src/` remains the local content source.
 
-### Project technology used
+## Run locally
 
-![React](https://img.shields.io/badge/react-%2320232a.svg?style=for-the-badge&logo=react&logoColor=%2361DAFB) ![TailwindCSS](https://img.shields.io/badge/tailwindcss-%2338B2AC.svg?style=for-the-badge&logo=tailwind-css&logoColor=white) ![Framer](https://img.shields.io/badge/Framer-black?style=for-the-badge&logo=framer&logoColor=blue) ![JavaScript](https://img.shields.io/badge/javascript-%23323330.svg?style=for-the-badge&logo=javascript&logoColor=%23F7DF1E) ![TypeScript](https://img.shields.io/badge/typescript-%23007ACC.svg?style=for-the-badge&logo=typescript&logoColor=white) ![Threejs](https://img.shields.io/badge/threejs-black?style=for-the-badge&logo=three.js&logoColor=white) ![Vite](https://img.shields.io/badge/vite-%23646CFF.svg?style=for-the-badge&logo=vite&logoColor=white)
+```bash
+npm ci
+npm run dev
+```
+
+Production verification:
+
+```bash
+npm run build
+python3 -m http.server 3000 --directory out
+npm run test:smoke -- http://127.0.0.1:3000
+```
+
+## Stack
+
+- Next.js 16.2.12 App Router
+- TypeScript 7.0.2
+- React 19.2.8
+- Three.js r184 with direct, typed render graphs
+- GSAP with `useGSAP` and ScrollTrigger
+
+## Portfolio content
+
+- Ten local case-study routes sourced from Benjamin's original portfolio data and screenshots
+- Structured project writing in `data/portfolio-projects.ts`
+- Optimized project media in `public/project-media/`
+- One clearly captioned GPT Image 2 editorial visual for each case study
