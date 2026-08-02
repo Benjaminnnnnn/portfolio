@@ -12,6 +12,9 @@ const nextConfig: NextConfig = {
   },
   // GitHub Pages serves static files only, so the site is pre-rendered to out/.
   output: "export",
+  // Directory indexes keep project routes portable across GitHub Pages and
+  // ordinary static file servers.
+  trailingSlash: true,
   // next/image's default loader needs a server; static export requires opting out.
   images: {
     unoptimized: true,

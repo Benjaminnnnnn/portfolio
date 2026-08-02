@@ -6,11 +6,11 @@ import "./globals.css";
 export const metadata: Metadata = {
   metadataBase: new URL("https://benjaminnnnnn.github.io/portfolio"),
   title: {
-    default: "Benjamin Zhuang — Full-Stack Web Developer",
+    default: "Benjamin Zhuang — Full-Stack & AI Engineer",
     template: "%s — Benjamin Zhuang",
   },
   description:
-    "Benjamin Zhuang — Engineering and AI exploration, building digital products with craft and taste.",
+    "Benjamin Zhuang shapes AI-era products through design judgment, taste, and full-stack engineering.",
   icons: { icon: "/icon.svg" },
 };
 

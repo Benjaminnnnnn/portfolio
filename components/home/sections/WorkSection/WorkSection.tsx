@@ -14,8 +14,8 @@ export function WorkSection() {
   return (
     <SectionFrame ref={section} name="work" className="work-section" id="work">
       <div className="work-heading">
-        <span>SELECTED WORK</span>
-        <span>2018—2026</span>
+        <span>SELECTED WORK / 02</span>
+        <span>AI · DESIGN · TASTE · ENGINEERING</span>
       </div>
       <div ref={grid} className="projects-grid">
         {projects.map((project, index) => (

@@ -7,7 +7,9 @@ const browser = await chromium.launch({
   headless: true,
   args: ["--use-angle=metal", "--enable-webgl", "--ignore-gpu-blocklist"],
 });
-const page = await browser.newPage({ viewport: { width: 1440, height: 900 }, deviceScaleFactor: 1 });
+const viewportWidth = Number(process.argv[6] ?? 1440);
+const viewportHeight = Number(process.argv[7] ?? 900);
+const page = await browser.newPage({ viewport: { width: viewportWidth, height: viewportHeight }, deviceScaleFactor: 1 });
 const errors = [];
 const consoleMessages = [];
 page.on("pageerror", (error) => errors.push(error.message));

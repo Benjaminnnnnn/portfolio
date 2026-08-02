@@ -3,7 +3,19 @@ import fs from "node:fs/promises";
 import { chromium } from "playwright-core";
 
 const origin = process.argv[2] ?? "http://127.0.0.1:3000";
-const routes = ["/", "/reunimos", "/inspire_mono", "/wasm_design_utils", "/adrive", "/shore_icon", "/teambition"];
+const routes = [
+  "/",
+  "/algo-explorer",
+  "/splendor",
+  "/cypress",
+  "/leetcode-clone",
+  "/cliphop",
+  "/rss-aggregator",
+  "/propertize",
+  "/mems",
+  "/333gle",
+  "/xv6",
+];
 const chromePath = process.env.CHROME_PATH ?? "/Applications/Google Chrome.app/Contents/MacOS/Google Chrome";
 const browser = await chromium.launch({ executablePath: chromePath, headless: true });
 const context = await browser.newContext({ viewport: { width: 1440, height: 900 }, deviceScaleFactor: 1, colorScheme: "light" });
@@ -19,6 +31,10 @@ for (const route of routes) {
   const response = await page.goto(`${origin}${route}`, { waitUntil: "networkidle" });
   assert.equal(response?.status(), 200, `${route} did not return 200`);
   assert.ok((await page.title()).length > 4, `${route} is missing a document title`);
+  if (route !== "/") {
+    assert.equal(await page.locator(".article-shell").count(), 1, `${route} is missing the case-study shell`);
+    assert.equal(await page.locator(".study-chapter").count(), 3, `${route} is missing case-study chapters`);
+  }
   const brokenVisibleImages = await page.locator("img:visible").evaluateAll((images) => images.filter((image) => image.complete && image.naturalWidth === 0).map((image) => image.getAttribute("src")));
   assert.deepEqual(brokenVisibleImages, [], `${route} has broken visible images`);
 }
@@ -82,6 +98,15 @@ const mobileOverflow = await page.locator("#home-scroll").evaluate((node) => ({
   })),
 }));
 assert.equal(mobileOverflow.fits, true, `mobile home overflows horizontally: ${JSON.stringify(mobileOverflow)}`);
+
+await page.goto(`${origin}/algo-explorer`, { waitUntil: "networkidle" });
+const mobileStudyOverflow = await page.locator(".article-scroll").evaluate((node) => ({
+  fits: node.scrollWidth <= node.clientWidth + 1,
+  clientWidth: node.clientWidth,
+  scrollWidth: node.scrollWidth,
+  heading: node.querySelector("h1")?.getBoundingClientRect().toJSON(),
+}));
+assert.equal(mobileStudyOverflow.fits, true, `mobile case study overflows horizontally: ${JSON.stringify(mobileStudyOverflow)}`);
 
 await browser.close();
 assert.deepEqual(pageErrors, [], `browser errors: ${pageErrors.join(" | ")}`);

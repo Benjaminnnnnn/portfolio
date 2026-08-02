@@ -8,12 +8,12 @@ type ProjectCardProps = {
 };
 
 export function ProjectCard({ project, index }: ProjectCardProps) {
-  const content = (
-    <>
+  return (
+    <Link className="project-card" data-project-card href={project.href}>
       <div className="project-media">
         <Image
           src={project.image}
-          alt=""
+          alt={project.alt}
           fill
           sizes="(max-width: 720px) 100vw, 33vw"
           priority={index < 3}
@@ -22,30 +22,10 @@ export function ProjectCard({ project, index }: ProjectCardProps) {
       <div className="project-meta">
         <span>{project.title}</span>
         <span>
-          {project.year}
+          {project.detail}
           {project.tag ? `  ${project.tag}` : ""}
         </span>
       </div>
-    </>
-  );
-
-  if (project.external) {
-    return (
-      <a
-        className="project-card"
-        data-project-card
-        href={project.href}
-        target="_blank"
-        rel="noreferrer"
-      >
-        {content}
-      </a>
-    );
-  }
-
-  return (
-    <Link className="project-card" data-project-card href={project.href}>
-      {content}
     </Link>
   );
 }

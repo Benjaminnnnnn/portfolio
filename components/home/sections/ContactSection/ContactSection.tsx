@@ -1,6 +1,5 @@
 "use client";
 
-import Image from "next/image";
 import { useRef } from "react";
 import { ScrambleText } from "../../../animation/ScrambleText";
 import { useFloatingStickers } from "../../animation/useFloatingStickers";
@@ -8,15 +7,16 @@ import { SectionFrame } from "../../shared/SectionFrame";
 import { useContactReveal } from "./useContactReveal";
 
 const contactStickers = [
-  { className: "contact-star", src: "/sticker_img/s_10.png", size: 112 },
-  { className: "contact-heart", src: "/sticker_img/s_05.png", size: 132 },
-  { className: "contact-year", src: "/sticker_img/s_03.png", size: 104 },
-  { className: "contact-coin", src: "/sticker_img/s_07.png", size: 110 },
-  { className: "contact-reunimos", src: "/sticker_img/s_04.png", size: 164 },
-  { className: "contact-smile", src: "/sticker_img/s_06.png", size: 104 },
-  { className: "contact-eyes", src: "/sticker_img/s_01.png", size: 108 },
-  { className: "contact-pen", src: "/sticker_img/s_02.png", size: 106 },
-  { className: "contact-hand", src: "/sticker_img/s_08.png", size: 100 },
+  { className: "contact-nextjs", label: "NEXT.JS", tone: "acid", emphasis: true },
+  { className: "contact-typescript", label: "TYPESCRIPT", tone: "violet", emphasis: true },
+  { className: "contact-gcp", label: "GCP", tone: "blue", emphasis: false },
+  { className: "contact-cloudflare", label: "CLOUDFLARE", tone: "coral", emphasis: false },
+  { className: "contact-architecture", label: "SYSTEM ARCH", tone: "ink", emphasis: true },
+  { className: "contact-docker", label: "DOCKER", tone: "blue", emphasis: false },
+  { className: "contact-kubernetes", label: "K8S", tone: "acid", emphasis: false },
+  { className: "contact-graphql", label: "GRAPHQL", tone: "coral", emphasis: false },
+  { className: "contact-api", label: "API DESIGN", tone: "violet", emphasis: true },
+  { className: "contact-patterns", label: "PATTERNS", tone: "blue", emphasis: false },
 ] as const;
 
 export function ContactSection() {
@@ -28,14 +28,14 @@ export function ContactSection() {
     <SectionFrame ref={section} name="contact" className="contact-section" id="contact">
       {contactStickers.map((sticker) => (
         <div key={sticker.className} className={`contact-sticker-slot ${sticker.className}`} data-contact-sticker>
-          <Image
-            className="contact-sticker-art"
+          <div
+            className={`contact-sticker-art contact-glyph tone-${sticker.tone}${sticker.emphasis ? " is-emphasis" : ""}`}
             data-floating-sticker
-            src={sticker.src}
-            alt=""
-            width={sticker.size}
-            height={sticker.size}
-          />
+            data-emphasis={sticker.emphasis ? "true" : undefined}
+            aria-hidden="true"
+          >
+            {sticker.label}
+          </div>
         </div>
       ))}
 

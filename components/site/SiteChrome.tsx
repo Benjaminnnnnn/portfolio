@@ -196,7 +196,7 @@ export function SiteChrome({ scramble = false }: { scramble?: boolean }) {
         </div>
       </aside>
       <div className="site-status site-status-left">
-        <span hidden={nearBottom}>{scramble ? <ScrambleText text={`GMT+8 CN ${time}`} letterDelay={40} /> : `GMT+8 CN ${time}`}</span>
+        <span hidden={nearBottom}>{scramble ? <ScrambleText text={`GMT+8 TW ${time}`} letterDelay={40} /> : `GMT+8 TW ${time}`}</span>
         <span hidden={!nearBottom}>BENJAMIN ZHUANG (C) 2026</span>
       </div>
       <PointerCoordinates />
