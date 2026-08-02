@@ -13,7 +13,7 @@ export function HeroSection() {
         </p>
         <p>
           <ScrambleText
-            text="I'm Haoqi Wen, leading Design Engineering and AI exploration at ■■■■■■, engineering, and AI at scale. Outside work, I build design tools for team efficiency."
+            text="I'm Benjamin Zhuang, a full-stack developer focused on performance, accessibility, and interfaces that feel effortless to use."
             letterDelay={10}
           />
         </p>

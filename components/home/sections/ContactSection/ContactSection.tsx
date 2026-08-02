@@ -53,17 +53,14 @@ export function ContactSection() {
       </div>
 
       <div className="contact-bottom">
-        <a href="mailto:curiosity.wen@gmail.com">
-          <ScrambleText className="contact-scramble" text="curiosity.wen@gmail.com" />
+        <a href="mailto:benjaminzhuangjobs@outlook.com">
+          <ScrambleText className="contact-scramble" text="benjaminzhuangjobs@outlook.com" />
         </a>
         <div>
-          <a href="https://twitter.com/wenhaoqi" target="_blank" rel="noreferrer">
-            <ScrambleText className="contact-scramble" text="Twitter/X" />
+          <a href="https://www.linkedin.com/in/benjamin-zhuang/" target="_blank" rel="noreferrer">
+            <ScrambleText className="contact-scramble" text="LinkedIn" />
           </a>
-          <a href="https://www.figma.com/@wenhaoqi" target="_blank" rel="noreferrer">
-            <ScrambleText className="contact-scramble" text="Figma" />
-          </a>
-          <a href="https://github.com/wenhaoqiasd" target="_blank" rel="noreferrer">
+          <a href="https://github.com/Benjaminnnnnn" target="_blank" rel="noreferrer">
             <ScrambleText className="contact-scramble" text="GitHub" />
           </a>
         </div>

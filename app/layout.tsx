@@ -4,13 +4,13 @@ import "./original.css";
 import "./globals.css";
 
 export const metadata: Metadata = {
-  metadataBase: new URL("https://haoqi.design"),
+  metadataBase: new URL("https://benjaminnnnnn.github.io/portfolio"),
   title: {
-    default: "Haoqi Design — Design & Engineering",
-    template: "%s — Haoqi Design",
+    default: "Benjamin Zhuang — Full-Stack Web Developer",
+    template: "%s — Benjamin Zhuang",
   },
   description:
-    "Haoqi Wen — leading Design Engineering and AI exploration, building digital products with craft and taste.",
+    "Benjamin Zhuang — Engineering and AI exploration, building digital products with craft and taste.",
   icons: { icon: "/icon.svg" },
 };
 

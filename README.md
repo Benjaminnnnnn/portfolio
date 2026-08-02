@@ -1,11 +1,20 @@
-# Haoqi Design recovery
+# Benjamin Zhuang — portfolio
 
-Recovered from the public deployment at [haoqi.design](https://haoqi.design/) and rebuilt as a typed Next.js 16 application.
+Personal portfolio of Benjamin Zhuang, built as a typed Next.js 16 application
+and deployed to GitHub Pages as a static export.
+
+> **Provenance.** The visual design and front-end implementation were recovered
+> from the public deployment at [haoqi.design](https://haoqi.design/) by Haoqi
+> Wen. Site identity (title, brand mark, bio, contact details) has been replaced,
+> but the case-study routes and `data/recovered-articles.ts` are still Haoqi
+> Wen's original written work and project write-ups — including the
+> `@wenhaoqi/wasm_design_utils` package. They are **not** mine and must be
+> replaced with my own projects before this site is published.
 
 ## Run locally
 
 ```bash
-npm install
+npm ci
 npm run dev
 ```
 

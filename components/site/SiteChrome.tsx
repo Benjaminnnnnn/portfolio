@@ -167,8 +167,8 @@ export function SiteChrome({ scramble = false }: { scramble?: boolean }) {
   return (
     <>
       <header className="site-header">
-        <Link href="/" className="brand" aria-label="Haoqi Design home">
-          {scramble ? <ScrambleText text="HAOQI.DESIGN" /> : "HAOQI.DESIGN"}
+        <Link href="/" className="brand" aria-label="Benjamin Zhuang home">
+          {scramble ? <ScrambleText text="BENJAMIN.ZHUANG" /> : "BENJAMIN.ZHUANG"}
         </Link>
         <nav aria-label="Primary navigation">
           {pathname === "/" ? (
@@ -197,7 +197,7 @@ export function SiteChrome({ scramble = false }: { scramble?: boolean }) {
       </aside>
       <div className="site-status site-status-left">
         <span hidden={nearBottom}>{scramble ? <ScrambleText text={`GMT+8 CN ${time}`} letterDelay={40} /> : `GMT+8 CN ${time}`}</span>
-        <span hidden={!nearBottom}>HAOQI (C) 2026</span>
+        <span hidden={!nearBottom}>BENJAMIN ZHUANG (C) 2026</span>
       </div>
       <PointerCoordinates />
       <button className="site-status site-status-globe" aria-label="Scroll to top" onClick={() => getScrollContainer()?.scrollTo({ top: 0, behavior: "smooth" })}>◎</button>
