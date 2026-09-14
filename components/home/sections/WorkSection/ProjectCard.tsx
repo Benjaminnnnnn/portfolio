@@ -1,5 +1,6 @@
-import Image from "next/image";
+import { ProjectArtwork } from "@/components/ProjectArtwork";
 import Link from "next/link";
+import type { CSSProperties } from "react";
 import type { Project } from "./projects";
 
 type ProjectCardProps = {
@@ -9,23 +10,15 @@ type ProjectCardProps = {
 
 export function ProjectCard({ project, index }: ProjectCardProps) {
   return (
-    <Link className="project-card" data-project-card href={project.href}>
-      <div className="project-media">
-        <Image
-          src={project.image}
-          alt={project.alt}
-          fill
-          sizes="(max-width: 720px) 100vw, 33vw"
-          priority={index < 3}
-        />
+    <article className="project-card project-card-gallery" data-project-card style={{ "--card-accent": project.accent } as CSSProperties}>
+      <Link className="project-media" href={project.href} aria-label={`Read ${project.title} case study`}>
+        <ProjectArtwork slug={project.slug} src={project.image} alt={project.alt} />
+        <span className="project-type-tag">{project.detail}</span>
+      </Link>
+      <div className="project-description">
+        <h3><Link href={project.href}>{project.title}</Link></h3>
+        <span className="project-number">{String(index + 1).padStart(2, "0")} <span aria-hidden="true">↗</span></span>
       </div>
-      <div className="project-meta">
-        <span>{project.title}</span>
-        <span>
-          {project.detail}
-          {project.tag ? `  ${project.tag}` : ""}
-        </span>
-      </div>
-    </Link>
+    </article>
   );
 }

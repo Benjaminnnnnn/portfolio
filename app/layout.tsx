@@ -2,15 +2,16 @@ import type { Metadata } from "next";
 import { ThemeModeProvider } from "../components/site/ThemeModeProvider";
 import "./original.css";
 import "./globals.css";
+import "./project-studies.css";
 
 export const metadata: Metadata = {
   metadataBase: new URL("https://benjaminnnnnn.github.io/portfolio"),
   title: {
-    default: "Benjamin Zhuang — Full-Stack & AI Engineer",
+    default: "Benjamin Zhuang — Software Engineer · CMU",
     template: "%s — Benjamin Zhuang",
   },
   description:
-    "Benjamin Zhuang shapes AI-era products through design judgment, taste, and full-stack engineering.",
+    "Benjamin Zhuang, a master's student at Carnegie Mellon. Web applications, systems projects, and engineering notes with code and experiments.",
   icons: { icon: "/icon.svg" },
 };
 

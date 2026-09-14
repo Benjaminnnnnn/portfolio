@@ -6,25 +6,25 @@ export function HeroSection() {
     <SectionFrame name="hero" className="hero-section" id="top">
       <div className="hero-meta">
         <p className="hero-discipline">
-          <ScrambleText text={"AI, Design &\nEngineering"} letterDelay={10} />
+          <ScrambleText text={"Software\nEngineering"} letterDelay={10} />
         </p>
         <p>
-          <ScrambleText text={"Taste in the details.\nSystems underneath."} letterDelay={10} />
+          <ScrambleText text={"Carnegie Mellon\nMaster's student"} letterDelay={10} />
         </p>
         <p>
           <ScrambleText
-            text="I'm Benjamin Zhuang. I shape AI-era products where design judgment, technical depth, and a strong point of view meet."
+            text="I'm Benjamin Zhuang, a master's student at Carnegie Mellon. I build web applications and study the systems that run underneath them."
             letterDelay={10}
           />
         </p>
       </div>
       <div className="hero-copy">
         <h1>
-          <ScrambleText text="I SHAPE AI" delay={300} letterDelay={35} />
+          <ScrambleText text="HELLO, I'M BENJAMIN." delay={300} letterDelay={35} />
           <br />
-          <ScrambleText text="WITH DESIGN TASTE" delay={500} letterDelay={35} />
+          <ScrambleText text="I BUILD THINGS" delay={500} letterDelay={35} />
           <br />
-          <ScrambleText text="AND ENGINEERING" delay={700} letterDelay={35} />
+          <ScrambleText text="AND FIGURE THEM OUT." delay={700} letterDelay={35} />
         </h1>
       </div>
     </SectionFrame>

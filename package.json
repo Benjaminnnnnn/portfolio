@@ -7,7 +7,8 @@
     "build": "next build",
     "start": "next start",
     "lint": "eslint scripts/*.mjs eslint.config.mjs",
-    "test:smoke": "node scripts/smoke.mjs"
+    "test:smoke": "node scripts/smoke.mjs",
+    "test:projects": "node scripts/verify-projects.mjs"
   },
   "dependencies": {
     "@gsap/react": "2.1.2",

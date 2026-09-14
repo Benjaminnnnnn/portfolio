@@ -2,6 +2,7 @@ import type { NextConfig } from "next";
 
 const nextConfig: NextConfig = {
   reactStrictMode: true,
+  distDir: process.env.PORTFOLIO_BUILD_DIR || ".next",
   // This repo is checked out as a git worktree nested inside the parent clone,
   // which still carries the v1 Vite app (postcss.config.cjs + tailwind v3) on
   // main. Without pinning the root, Next walks up past the worktree, picks up

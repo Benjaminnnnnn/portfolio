@@ -12,16 +12,12 @@ export function WorkSection() {
   useProjectReveal(section, grid);
 
   return (
-    <SectionFrame ref={section} name="work" className="work-section" id="work">
-      <div className="work-heading">
-        <span>SELECTED WORK / 02</span>
-        <span>AI · DESIGN · TASTE · ENGINEERING</span>
+    <SectionFrame ref={section} name="work" className="work-section work-gallery-section" id="work">
+      <header className="work-gallery-heading"><h2>Selected work</h2><p>Web apps, systems, and coursework <span>01—13</span></p></header>
+      <div ref={grid} className="projects-grid work-gallery-grid">
+        {projects.map((project, index) => <ProjectCard project={project} index={index} key={project.slug} />)}
       </div>
-      <div ref={grid} className="projects-grid">
-        {projects.map((project, index) => (
-          <ProjectCard project={project} index={index} key={project.title} />
-        ))}
-      </div>
+      <a className="all-repositories" href="https://github.com/Benjaminnnnnn?tab=repositories" target="_blank" rel="noreferrer">All repositories on GitHub <span aria-hidden="true">↗</span></a>
     </SectionFrame>
   );
 }

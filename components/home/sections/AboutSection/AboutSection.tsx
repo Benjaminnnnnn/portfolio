@@ -13,13 +13,12 @@ export function AboutSection() {
       <p className="eyebrow">ABOUT / 01</p>
       <div className="about-copy">
         <p>
-          I build at the intersection of AI, design, taste, and engineering—turning complex systems
-          into products that feel clear, useful, and distinctly considered.
+          I&apos;m a master&apos;s student at Carnegie Mellon. My projects range from multiplayer
+          games and learning tools to databases and background job systems.
         </p>
         <p>
-          Previously at Microsoft, I helped ship privacy-first people identification for Teams Rooms.
-          I&apos;m now pursuing an MSE at Carnegie Mellon University and exploring how thoughtful AI can
-          improve the way people learn, create, and collaborate.
+          Previously at Microsoft, I worked on people identification for Teams Rooms.
+          I&apos;m looking for software engineering roles where I can keep building and learning with a team.
         </p>
       </div>
       <div

@@ -1,0 +1,11 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1440" height="1000" viewBox="0 0 1440 1000" fill="none">
+  <defs><linearGradient id="bg" x2="1" y2="1"><stop stop-color="#b7c9e3"/><stop offset="1" stop-color="#87a6ce"/></linearGradient><pattern id="grid" width="50" height="50" patternUnits="userSpaceOnUse"><path d="M50 0H0V50" stroke="#345c91" stroke-opacity=".12"/></pattern></defs>
+  <rect width="1440" height="1000" fill="url(#bg)"/><rect width="1440" height="1000" fill="url(#grid)"/>
+  <g fill="#2d4d7c" font-family="monospace" font-size="19" letter-spacing="2"><text x="80" y="85">PETCLINIC / DEVOPS</text><text x="1108" y="85">CMU 17-636</text></g>
+  <text x="76" y="254" fill="#2b4b79" font-family="Arial, sans-serif" font-size="155" font-weight="700" letter-spacing="-9">After the commit.</text>
+  <path d="M325 495H1110V698H340" stroke="#3f6596" stroke-width="3"/><path d="m352 686-12 12 12 12" stroke="#3f6596" stroke-width="3"/>
+  <g fill="#eef1eb" stroke="#7192b9"><rect x="111" y="409" width="292" height="180" rx="12"/><rect x="573" y="409" width="292" height="180" rx="12"/><rect x="1037" y="409" width="292" height="180" rx="12"/></g>
+  <g fill="#365782" font-family="monospace"><text x="145" y="453" font-size="15">01 / BUILD</text><text x="145" y="516" font-size="35">Jenkins</text><text x="145" y="552" font-size="16">COMPILE + TEST</text><text x="607" y="453" font-size="15">02 / CHECK</text><text x="607" y="516" font-size="35">Quality</text><text x="607" y="552" font-size="16">SONARQUBE + ZAP</text><text x="1071" y="453" font-size="15">03 / DEPLOY</text><text x="1071" y="516" font-size="35">Ansible</text><text x="1071" y="552" font-size="16">VAGRANT VM</text></g>
+  <rect x="111" y="643" width="499" height="112" rx="12" fill="#335986"/><g fill="#e6edf6" font-family="monospace"><text x="145" y="683" font-size="15">04 / OBSERVE</text><text x="145" y="726" font-size="27">Prometheus + Grafana</text></g>
+  <path d="M80 877H1360" stroke="#557ca6" stroke-opacity=".5"/><g fill="#2d4d7c" font-family="monospace" font-size="17"><text x="80" y="923">UPSTREAM APP · COURSE DELIVERY WORK</text><text x="1080" y="923">WORKFLOW DIAGRAM</text></g>
+</svg>

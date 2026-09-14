@@ -1,8 +1,12 @@
 node_modules/
 .next/
+.next-verify/
 out/
 .DS_Store
 *.log
 *.tsbuildinfo
 .env*
 !.env.example
+artifacts/
+.web-shader-extractor/
+demonstrators/

@@ -18,41 +18,41 @@ export function PurposeSection() {
         <div className="hyper-sticky">
           <HyperspaceCanvas />
           <div className="hyper-stage stage-primary hyper-center">
-            <span>SHAPE AI</span>
-            <span>WITH</span>
-            <span>INTENT</span>
+            <span>BUILD IT</span>
+            <span>THEN</span>
+            <span>TEST IT</span>
           </div>
           <div className="hyper-stage stage-secondary hyper-center">
-            <span>DESIGN</span>
-            <span>WITH A</span>
-            <span>POINT OF VIEW</span>
+            <span>FOLLOW</span>
+            <span>THE</span>
+            <span>DETAILS</span>
           </div>
           <div className="hyper-stage stage-principles">
             <SourceRings progress={ringProgress} />
             <p className="principle p1">
-              AI expands
+              Read the
               <br />
-              the possibility.
+              source.
             </p>
             <p className="principle p2">
-              Design gives it
+              Trace the
               <br />
-              human shape.
+              request.
             </p>
             <p className="principle p3">
-              Taste makes
+              Test what
               <br />
-              it memorable.
+              can fail.
             </p>
             <p className="principle p4">
-              Engineering makes
+              Write down
               <br />
-              it real.
+              what changed.
             </p>
           </div>
           <div className="hyper-stage stage-final hyper-center">
-            <span>BUILD FOR</span>
-            <span>THE LONG RUN</span>
+            <span>KEEP</span>
+            <span>LEARNING</span>
           </div>
         </div>
       </SectionFrame>

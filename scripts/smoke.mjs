@@ -5,6 +5,9 @@ import { chromium } from "playwright-core";
 const origin = process.argv[2] ?? "http://127.0.0.1:3000";
 const routes = [
   "/",
+  "/relay",
+  "/simple-db",
+  "/petclinic-devops",
   "/algo-explorer",
   "/splendor",
   "/cypress",

@@ -39,16 +39,16 @@ export function ContactSection() {
         </div>
       ))}
 
-      <div className="contact-title" aria-label="Let’s create something extraordinary">
+      <div className="contact-title" aria-label="Let's build something useful">
         <div className="contact-title-row contact-title-first">
           <ScrambleText className="contact-scramble contact-lets" text="Let's" />
-          <ScrambleText className="contact-scramble contact-create" text="Create" reverse />
+          <ScrambleText className="contact-scramble contact-create" text="Build" reverse />
         </div>
         <div className="contact-title-row">
           <ScrambleText className="contact-scramble contact-something" text="Something" />
         </div>
         <div className="contact-title-row">
-          <ScrambleText className="contact-scramble contact-extraordinary" text="Extraordinary" reverse />
+          <ScrambleText className="contact-scramble contact-extraordinary" text="Useful" reverse />
         </div>
       </div>
 
