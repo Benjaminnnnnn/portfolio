@@ -2,8 +2,18 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
     <loc>https://benjaminnnnnn.github.io/portfolio/</loc>
-    <lastmod>2025-11-19</lastmod>
+    <lastmod>2026-08-02</lastmod>
     <changefreq>monthly</changefreq>
     <priority>1.0</priority>
   </url>
+  <url><loc>https://benjaminnnnnn.github.io/portfolio/algo-explorer/</loc><lastmod>2026-08-02</lastmod></url>
+  <url><loc>https://benjaminnnnnn.github.io/portfolio/splendor/</loc><lastmod>2026-08-02</lastmod></url>
+  <url><loc>https://benjaminnnnnn.github.io/portfolio/cypress/</loc><lastmod>2026-08-02</lastmod></url>
+  <url><loc>https://benjaminnnnnn.github.io/portfolio/leetcode-clone/</loc><lastmod>2026-08-02</lastmod></url>
+  <url><loc>https://benjaminnnnnn.github.io/portfolio/cliphop/</loc><lastmod>2026-08-02</lastmod></url>
+  <url><loc>https://benjaminnnnnn.github.io/portfolio/rss-aggregator/</loc><lastmod>2026-08-02</lastmod></url>
+  <url><loc>https://benjaminnnnnn.github.io/portfolio/propertize/</loc><lastmod>2026-08-02</lastmod></url>
+  <url><loc>https://benjaminnnnnn.github.io/portfolio/mems/</loc><lastmod>2026-08-02</lastmod></url>
+  <url><loc>https://benjaminnnnnn.github.io/portfolio/333gle/</loc><lastmod>2026-08-02</lastmod></url>
+  <url><loc>https://benjaminnnnnn.github.io/portfolio/xv6/</loc><lastmod>2026-08-02</lastmod></url>
 </urlset>

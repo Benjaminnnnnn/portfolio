@@ -1,0 +1,94 @@
+/* Each project has its own material, palette and editorial rhythm. */
+.project-card-gallery .project-type-tag { background: var(--card-paper); color: var(--card-ink); }
+.project-card-gallery .project-media { border: 0; }
+.study-art-directed .study-header { padding-bottom: 22px; margin-bottom: 24px; }
+.study-art-directed .study-hero { margin: 0 0 38px; }
+.study-art-directed .study-hero > .project-artwork { height: auto; aspect-ratio: 16 / 9; }
+.study-art-directed .study-hero figcaption { display: flex; justify-content: space-between; gap: 10px 24px; flex-wrap: wrap; font: 10px/1.6 "mono", monospace; }
+.study-art-directed .study-intro { display: grid; grid-template-columns: 1.4fr 1fr; gap: 20px 38px; margin: 0 0 44px; }
+.study-art-directed .study-intro > p { margin: 0; font-size: 16px; }
+.study-art-directed .study-intro .study-scope { padding-left: 24px; border-left: 1px solid var(--line); font-size: 13px; }
+.study-art-directed .study-intro .study-stack { align-self: center; font-size: 10px; }
+.study-art-directed .study-source { margin: 0; min-height: 44px; }
+.study-art-directed .study-gallery { grid-template-columns: repeat(12, minmax(0, 1fr)); gap: 32px 18px; }
+.study-art-directed .study-chapter { grid-column: span 6; }
+.study-art-directed .study-panel-3 { grid-column: 1 / -1; }
+.study-layout-diptych .study-panel-1 { grid-column: span 7; }
+.study-layout-diptych .study-panel-2 { grid-column: span 5; }
+.study-layout-sequence .study-panel-1 { grid-column: span 8; }
+.study-layout-sequence .study-panel-2 { grid-column: span 4; }
+.study-relay .study-chapter { grid-column: 1 / -1; }
+.study-petclinic-devops .study-panel-1, .study-petclinic-devops .study-panel-2 { grid-column: span 6; }
+.study-art-directed .study-screen-spread { margin: 0 0 8px; min-width: 0; grid-column: 1 / -1; }
+.study-screen-spread figcaption { display: flex; align-items: baseline; gap: 12px 28px; margin-top: 12px; }
+.study-screen-spread figcaption > span { flex-shrink: 0; font: 10px/1.6 "mono", monospace; }
+.study-screen-spread figcaption > p { font-size: 12px; line-height: 1.6; color: var(--label-2); }
+.study-art-directed .study-image-button { background: var(--study-paper); height: 360px; }
+.study-art-directed .study-panel-2 .study-image-button { background: var(--study-contrast); }
+.study-art-directed .study-image-full { height: auto; padding: 36px; }
+.study-art-directed .study-image-full .study-crop { width: 100%; }
+.study-art-directed .study-image-expand { background: var(--study-ink); color: var(--study-paper); }
+.study-art-directed .study-visual > figcaption { display: flex; align-items: baseline; gap: 14px; }
+.study-panel-number { flex-shrink: 0; font: 10px/1.6 "mono", monospace; color: var(--label-2); }
+.study-art-directed .study-visual figcaption p { font-size: 12px; line-height: 1.6; color: var(--label-2); }
+
+/* Keep diagrams as real text, and let the cover's palette carry through them. */
+.study-art-directed .project-diagram { min-height: 360px; background: var(--study-paper); color: var(--study-ink); padding: 30px; }
+.study-art-directed .project-diagram > div { max-width: 640px; margin-inline: auto; }
+.study-art-directed .diagram-box { background: color-mix(in srgb, var(--study-paper), white 45%); border-color: color-mix(in srgb, var(--study-ink) 32%, var(--study-paper)); border-radius: 0; }
+.study-art-directed .diagram-box.accent { background: var(--study-contrast); border-color: var(--project-accent); }
+.study-art-directed .diagram-box.muted { background: transparent; color: inherit; opacity: .8; }
+.study-art-directed .diagram-footnote { color: inherit; opacity: .8; }
+.study-art-directed .study-panel-3 .project-diagram { padding-block: 42px; }
+.study-art-directed .environment-boundary { background: color-mix(in srgb, var(--study-paper), white 30%); border-color: var(--project-accent); }
+.study-art-directed .page-slots > div { border-color: var(--project-accent); background: var(--study-contrast); }
+.study-art-directed .page-lines { color: var(--project-accent); }
+.study-art-directed .rule-gate { border-color: var(--project-accent); }
+.study-art-directed .rule-gate > span { background: var(--study-contrast); }
+.study-art-directed .frame-strip > div { background: color-mix(in srgb, var(--study-paper), white 50%); border-color: var(--project-accent); }
+.study-art-directed .frame-strip > div.active { outline-color: var(--project-accent); }
+.study-art-directed .mini-grid i { background: var(--study-paper); }
+.study-art-directed .mini-grid i.visited { background: var(--project-accent); }
+.study-art-directed .workspace-map { background: var(--study-paper); border-color: var(--project-accent); }
+.study-art-directed .workspace-map aside { background: var(--study-contrast); }
+.study-art-directed .skeleton-records i { background: color-mix(in srgb, var(--study-ink), transparent 75%); }
+.study-art-directed .search-query { background: var(--study-contrast); border-color: var(--project-accent); }
+.study-art-directed .record-sheet { background: color-mix(in srgb, var(--study-paper), white 45%); border-color: var(--project-accent); }
+.study-art-directed .record-image { background: var(--study-contrast); }
+.study-simple-db .diagram-buffer { background-image: linear-gradient(#4564480a 1px, transparent 1px), linear-gradient(90deg, #4564480a 1px, transparent 1px); background-size: 24px 24px; }
+.study-xv6 .diagram-box { background: #223027; border-color: #58794c; }
+.study-xv6 .kernel-map { background: transparent; }
+.study-xv6 .kernel-map > div, .study-xv6 .kernel-base { background: #223027; border-color: #58794c; color: var(--study-ink); }
+.study-xv6 .syscall-boundary { color: #bbdc96; border-color: #58794c; }
+.study-xv6 .study-panel-2 .study-image-button { background: #0c120e; }
+.study-relay .diagram-leases { background: #202d35; color: #f1e9df; }
+.study-relay .diagram-leases .diagram-box { background: #2c3c46; border-color: #71818a; }
+.study-relay .diagram-leases .diagram-box.accent { background: #f4c4ab; border-color: #f4c4ab; color: #402b22; }
+.study-relay .diagram-throughput { background: #f2dfd3; }
+.study-relay .chart-track > span { background: #a43f23; }
+.study-petclinic-devops .study-panel-1 .project-diagram,
+.study-petclinic-devops .study-panel-2 .project-diagram { min-height: 510px; }
+
+@media (max-width: 1050px) and (min-width: 761px) {
+  .study-layout-sequence .study-panel-1, .study-layout-sequence .study-panel-2 { grid-column: span 6; }
+  .study-art-directed .project-diagram { padding-inline: 20px; }
+}
+@media (max-width: 760px) {
+  .study-art-directed .study-hero { margin-bottom: 28px; }
+  .study-art-directed .study-hero figcaption { font-size: 9px; gap: 5px 12px; }
+  .study-art-directed .study-intro { display: block; margin-bottom: 30px; }
+  .study-art-directed .study-intro > p { font-size: 15px; }
+  .study-art-directed .study-intro .study-scope { padding-left: 0; border: 0; margin-top: 14px; font-size: 13px; }
+  .study-art-directed .study-intro .study-stack { margin-top: 16px; font-size: 10px; }
+  .study-art-directed .study-source { margin-top: 18px; }
+  .study-art-directed .study-gallery { grid-template-columns: 1fr; gap: 28px; }
+  .study-art-directed .study-chapter { grid-column: 1; }
+  .study-art-directed .study-image-button { height: 300px; }
+  .study-art-directed .study-image-full { height: auto; padding: 20px 14px 34px; }
+  .study-screen-spread figcaption { display: block; }
+  .study-screen-spread figcaption p { margin-top: 5px; }
+  .study-art-directed .project-diagram { min-height: 300px; padding: 24px 16px; }
+  .study-art-directed .study-panel-3 .project-diagram { padding-block: 28px; }
+  .study-petclinic-devops .study-panel-1 .project-diagram,
+  .study-petclinic-devops .study-panel-2 .project-diagram { min-height: 300px; }
+}

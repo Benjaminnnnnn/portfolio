@@ -1,0 +1,25 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1440" height="1000" viewBox="0 0 1440 1000" fill="none">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1440" y2="1000" gradientUnits="userSpaceOnUse"><stop stop-color="#f3a787"/><stop offset="1" stop-color="#dc6448"/></linearGradient>
+    <pattern id="grid" width="60" height="60" patternUnits="userSpaceOnUse"><path d="M60 0H0V60" stroke="#8b3826" stroke-opacity=".12"/></pattern>
+    <filter id="shadow" x="-30%" y="-30%" width="180%" height="180%"><feDropShadow dx="0" dy="24" stdDeviation="24" flood-color="#652b22" flood-opacity=".18"/></filter>
+  </defs>
+  <rect width="1440" height="1000" fill="url(#bg)"/><rect width="1440" height="1000" fill="url(#grid)"/>
+  <g fill="#592c24" font-family="monospace" font-size="19" letter-spacing="2"><text x="80" y="84">RELAY / SYSTEM STUDY 01</text><text x="1070" y="84">AT LEAST ONCE</text></g>
+  <text x="72" y="255" fill="#612c23" font-family="Arial, sans-serif" font-size="174" font-weight="700" letter-spacing="-12">Work continues.</text>
+  <g stroke="#6d382c" stroke-width="2"><path d="M424 592H604V448H864"/><path d="M424 592H864"/><path d="M424 592H604V740H864"/><path d="M1100 487V555" stroke-dasharray="8 8"/></g>
+  <g filter="url(#shadow)">
+    <rect x="108" y="422" width="348" height="344" rx="14" fill="#f6e6d5"/>
+    <g fill="#633c2d" font-family="monospace"><text x="140" y="468" font-size="17">DURABLE QUEUE</text><text x="140" y="715" font-size="14">POSTGRESQL · COMMITTED</text></g>
+    <g fill="#e0c8b3" stroke="#c9aa93"><rect x="140" y="503" width="284" height="43" rx="4"/><rect x="140" y="558" width="284" height="43" rx="4"/><rect x="140" y="613" width="284" height="43" rx="4"/></g>
+    <g fill="#754c36" font-size="16" font-family="monospace"><text x="158" y="531">job_01 · waiting</text><text x="158" y="586">job_02 · waiting</text><text x="158" y="641">job_03 · waiting</text></g>
+    <rect x="864" y="395" width="430" height="105" rx="12" fill="#b55741" stroke="#8a4434"/>
+    <rect x="864" y="542" width="430" height="105" rx="12" fill="#f9f0df"/>
+    <rect x="864" y="689" width="430" height="105" rx="12" fill="#f9f0df"/>
+  </g>
+  <g font-family="monospace" font-size="20"><g fill="#f9e4d7"><text x="904" y="442">WORKER A</text><text x="904" y="473" font-size="14">LEASE EXPIRED</text></g><g fill="#513b30"><text x="904" y="590">WORKER B</text><text x="904" y="621" font-size="14">JOB RECLAIMED · NEW TOKEN</text><text x="904" y="737">WORKER C</text><text x="904" y="768" font-size="14">READY FOR WORK</text></g></g>
+  <circle cx="1243" cy="448" r="9" fill="#f2b697"/><path d="m1238 443 10 10m0-10-10 10" stroke="#8c3b2c" stroke-width="2"/>
+  <circle cx="1243" cy="594" r="9" fill="#728b45"/><circle cx="1243" cy="742" r="9" fill="#b9b69d"/>
+  <rect x="552" y="558" width="132" height="70" rx="35" fill="#692d24"/><text x="618" y="601" text-anchor="middle" fill="#fff0dc" font-family="monospace" font-size="17">CLAIM</text>
+  <path d="M80 884H1360" stroke="#8b4433" stroke-opacity=".4"/><g fill="#602f25" font-family="monospace" font-size="17"><text x="80" y="925">LEASE → EXECUTE → ACKNOWLEDGE</text><text x="966" y="925">ARCHITECTURE ILLUSTRATION</text></g>
+</svg>
