@@ -390,8 +390,7 @@ html[data-inverse="true"] .site-status {
   line-height: 1.4;
 }
 
-.hero-meta > :nth-child(2) { grid-column: 2; padding-left: 8px; }
-.hero-meta > :nth-child(3) { grid-column: 3; padding-left: 8px; }
+.hero-description { grid-column: 3; padding-left: 8px; }
 
 .hero-discipline {
   font-family: "tiktok", Arial, sans-serif;
@@ -783,15 +782,15 @@ html[data-inverse="true"] .hyper-section { color: #fff; }
   justify-content: center;
   padding: 64px;
   color: var(--label-1);
-  overflow-x: clip;
-  overflow-y: visible;
+  overflow: clip;
 }
 
 .contact-title {
   position: relative;
   z-index: 5;
   width: 100%;
-  font-size: clamp(52px, 6vw, 115px);
+  margin: 0;
+  font-size: clamp(44px, 5.8vw, 119px);
   font-weight: 700;
   line-height: 1;
   letter-spacing: -0.045em;
@@ -812,7 +811,7 @@ html[data-inverse="true"] .hyper-section { color: #fff; }
 .contact-extraordinary { grid-column: 4 / 11; text-align: right; }
 
 .contact-sticker-slot {
-  position: fixed;
+  position: absolute;
   z-index: 7;
   opacity: 0;
   visibility: hidden;
@@ -827,44 +826,23 @@ html[data-inverse="true"] .hyper-section { color: #fff; }
   will-change: transform;
 }
 
-.contact-glyph {
-  display: grid;
-  place-items: center;
-  min-width: 1em;
-  padding: 8px 12px;
-  border: 1px solid rgba(0, 0, 0, 0.9);
-  border-radius: 14px;
-  color: #0d1111;
-  font-family: "tronica-mono", "mono", monospace;
-  font-size: clamp(13px, 1.1vw, 19px);
-  font-weight: 700;
-  letter-spacing: -0.04em;
-  white-space: nowrap;
-  box-shadow: 7px 7px 0 rgba(0, 0, 0, 0.9);
+.contact-sticker-art img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  transform: rotate(var(--sticker-tilt, 0deg));
+  filter: drop-shadow(1px 3px 1px rgb(30 42 55 / 15%));
 }
 
-.contact-glyph.is-emphasis {
-  border-width: 2px;
-  font-size: clamp(16px, 1.4vw, 23px);
-  box-shadow: 9px 9px 0 rgba(0, 0, 0, 0.9);
-}
-
-.tone-violet { background: #9b72ff; }
-.tone-acid { background: var(--acid); }
-.tone-coral { background: #ff786c; }
-.tone-blue { background: #71c6ff; }
-.tone-ink { background: #f8f3e9; }
-
-.contact-nextjs { left: 15%; top: 14%; width: 160px; height: 58px; }
-.contact-typescript { left: 42%; top: 8%; width: 190px; height: 62px; }
-.contact-gcp { right: 4%; top: 16%; width: 90px; height: 48px; }
-.contact-cloudflare { right: 10%; top: 32%; width: 155px; height: 54px; }
-.contact-architecture { right: 22%; bottom: -7%; width: 190px; height: 74px; }
-.contact-docker { left: 17%; bottom: -4%; width: 112px; height: 50px; }
-.contact-kubernetes { left: 25%; top: 51%; width: 86px; height: 46px; }
-.contact-graphql { left: 28%; top: 27%; width: 126px; height: 50px; }
-.contact-api { right: 23%; top: 23%; width: 155px; height: 58px; }
-.contact-patterns { left: 58%; top: 14%; width: 126px; height: 50px; }
+/* Die-cut silhouettes frame the typography, leaving the center and links clear. */
+.contact-eyes { left: 18%; top: 9%; width: clamp(90px, 9vw, 184px); aspect-ratio: 1; --sticker-tilt: -36deg; }
+.contact-nib { left: -4%; top: -4%; width: clamp(100px, 10vw, 205px); aspect-ratio: 1; --sticker-tilt: 18deg; }
+.contact-star { left: 60%; top: 22%; width: clamp(82px, 8vw, 164px); aspect-ratio: 1; --sticker-tilt: 20deg; z-index: 4; }
+.contact-heart { right: 18%; top: 44%; width: clamp(70px, 7vw, 144px); aspect-ratio: 1; --sticker-tilt: 30deg; }
+.contact-smile { right: 9%; top: 66%; width: clamp(92px, 8vw, 164px); aspect-ratio: 1; --sticker-tilt: -28deg; }
+.contact-pixel { right: 7%; top: 19%; width: clamp(90px, 9vw, 184px); aspect-ratio: 1; --sticker-tilt: 22deg; }
+.contact-bolt { left: 67%; bottom: -2%; width: clamp(86px, 8vw, 164px); aspect-ratio: 1; --sticker-tilt: -65deg; }
 
 .contact-bottom {
   position: absolute;
@@ -914,8 +892,7 @@ html[data-inverse="true"] .hyper-section { color: #fff; }
   .custom-scroll-rail { display: none; }
   .grid-overlay { background-size: 100%; }
   .hero-meta { top: 82px; grid-template-columns: 1fr 1fr; font-size: 11px; }
-  .hero-meta > :nth-child(2) { display: none; }
-  .hero-meta > :nth-child(3) { grid-column: 2; }
+  .hero-description { grid-column: 2; }
   .hero-discipline { font-size: 20px; }
   .desktop-only { display: none; }
   .hero-copy { bottom: 14vh; width: calc(100% - 32px); }
@@ -943,23 +920,18 @@ html[data-inverse="true"] .hyper-section { color: #fff; }
   .p4 { left: 36%; top: 75%; }
   .orbit-rings { width: 220px; height: 220px; }
   .contact-section { padding: 24px; }
-  .contact-title { width: 100%; font-size: 9.5vw; }
+  .contact-title { width: 100%; font-size: 7.1vw; line-height: 1.12; }
   .contact-lets { grid-column: 1 / span 6; }
   .contact-create { grid-column: 7 / span 6; }
   .contact-something { grid-column: 1 / 13; }
   .contact-extraordinary { grid-column: 1 / 13; }
-  .contact-glyph { padding: 6px 8px; border-radius: 10px; font-size: 9px; box-shadow: 4px 4px 0 rgba(0, 0, 0, 0.9); }
-  .contact-glyph.is-emphasis { font-size: 11px; box-shadow: 5px 5px 0 rgba(0, 0, 0, 0.9); }
-  .contact-nextjs { left: 4%; top: 18%; width: 102px; height: 42px; }
-  .contact-typescript { left: 36%; top: 11%; width: 120px; height: 44px; }
-  .contact-gcp { right: 0; top: 19%; width: 62px; height: 36px; }
-  .contact-cloudflare { right: 2%; top: 36%; width: 100px; height: 40px; }
-  .contact-architecture { right: 12%; bottom: -5%; width: 126px; height: 54px; }
-  .contact-docker { left: 4%; bottom: -2%; width: 78px; height: 38px; }
-  .contact-kubernetes { left: 18%; top: 52%; width: 58px; height: 34px; }
-  .contact-graphql { left: 20%; top: 30%; width: 84px; height: 38px; }
-  .contact-api { right: 16%; top: 26%; width: 96px; height: 42px; }
-  .contact-patterns { left: 54%; top: 16%; width: 82px; height: 36px; }
+  .contact-eyes { left: 12%; top: 17%; width: 82px; }
+  .contact-nib { left: -12%; top: 6%; width: 84px; }
+  .contact-star { left: 57%; top: 29%; width: 66px; }
+  .contact-heart { right: 4%; top: 58%; width: 65px; }
+  .contact-smile { right: 16%; top: 71%; width: 78px; }
+  .contact-pixel { right: 3%; top: 15%; width: 74px; }
+  .contact-bolt { left: 62%; bottom: -2%; width: 72px; }
   .contact-bottom {
     left: 8px;
     right: 8px;

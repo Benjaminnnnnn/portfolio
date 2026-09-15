@@ -1,65 +1,92 @@
-# Visual-first project redesign
+# Project art direction
+
+> Superseded cover direction: the user approved the detail pages but requested
+> recognizable product-demo covers. [Product covers](product-covers.md) describes
+> the current implementation. The palettes and detail layouts below remain;
+> the generated images are preserved on disk but no longer displayed as covers.
 
 September 14, 2026.
 
 ## Direction
 
-The user supplied four screenshots after the first local design pass. They show
-image-led project cards with small labels, a narrow article column, paired visual
-panels, and compact technical writing. The final direction replaces the earlier
-alternating image-and-text rows with that gallery structure.
+The latest request replaces the similar-looking SVG/CSS covers with more varied
+generated artwork. All six new layout references were inspected. Their useful
+principles are a quiet reading column, bold visual subjects, complementary
+backgrounds, generous interface views, and paired details. Reference artwork was
+not copied.
 
-The reference artwork is not copied into the portfolio. Project covers use
-original CSS drawings or existing project interface captures. The old generated
-`*-system.webp` images are not rendered.
+The earlier visual-first pass removed the repeated overview, oversized metrics
+and core-loop sections. Those changes remain. This pass replaces its cover
+drawings and screenshot-window covers.
 
-## What changed
+## Delivered
 
-- All 13 projects have visual cards in the index. Smaller projects no longer sit in a text-only archive.
-- Cards use small project names and category labels. Long summaries and stack lists are on the detail pages instead.
-- Each detail page has a centered 860px reading column, a short introduction, and four visual panels.
-- Galleries pair panels on desktop and stack them on mobile. Screenshot details open the original full image.
-- The repeated overview, oversized metric tiles, alternating chapter layout, and “core loop” section are removed.
-- Longer implementation notes remain available in a native expandable section.
-- Scope notes remain visible, including team attribution, AI assistance, unfinished features, course frameworks, and measurement limits.
-- The article scroll area stays between the fixed navigation and status controls, so those controls do not cover the gallery or captions.
+All 13 projects now have their own generated editorial cover, palette and material:
 
-The `no-ai-slop` skill guided copy edits. The changes cut repetition and generic
-introductions, keep the technical facts, and use plain English. Full copy is in
-`data/portfolio-projects.ts`, `data/systems-projects.ts`, and `data/project-visuals.ts`.
+| Project | Art direction |
+| --- | --- |
+| Relay | Brushed metal, orange job tokens, cool charcoal |
+| Splendor | Jewel photography, plum velvet, brass and ivory |
+| AlgoExplorer | Cobalt folded-paper maze and orange thread |
+| SimpleDB | Green archival drawer, ivory records, coral card |
+| PetClinic | Blue and terracotta clinic linocut |
+| 333gle | Orange lens, abstract newspaper collage, cobalt mark |
+| xv6 | Black CRT glass and phosphor-green cells |
+| RSS Aggregator | Coral and teal screenprinted streams |
+| Cypress | Plum and chartreuse document sculpture |
+| Leetcode Clone | Mustard and graphite woodblock puzzle |
+| ClipHop | Hot-pink and mint skateboard motion collage |
+| Propertize | Terracotta architectural model and blue shadows |
+| Mems | Peach paper, sea glass, imagined travel photographs |
 
-## Visual sources
+The artwork appears in the index, detail-page hero and next-project thumbnail.
+Detail pages lead with a full-width 16:9 cover, then a compact two-column intro
+that stacks on mobile. Nine UI projects also have a large original screenshot,
+followed by crops and explanations. Backend pages keep their factual diagrams
+and the Relay replay. The total is 61 panels across 13 pages.
 
-`ProjectArtwork.tsx` draws the Relay, Splendor, SimpleDB, PetClinic, and xv6 covers
-with CSS. Other covers frame existing interface captures. `StudyImage.tsx` crops
-those captures in the browser, preserving their aspect ratios and access to the
-full image. Crops are labeled as details of an existing screenshot, not extra
-screens from the application.
+The supporting galleries use equal, 7:5, or 8:4 paired panels and wide closing
+panels. Diagram text remains selectable. The background, ink and contrasting
+accent colors come from each project's artwork rather than one shared beige
+diagram style. The site navigation and existing animation behavior are unchanged.
 
-`ProjectDiagram.tsx` draws project-specific explanations with selectable HTML
-text. Diagrams are labeled as conceptual views rather than runtime output. The
-Relay chart uses the recorded local experiment values; its replay uses recorded
-job events. No new production measurements are claimed.
+## Sources and generation
+
+Used the built-in image_gen tool through the imagegen skill, one separate prompt
+per project. The tool does not expose a model selector: the requested
+“GPT-image 2.5” version cannot be confirmed. No Higgsfield connection was available.
+No alternate CLI model was silently selected.
+
+All 13 originals were inspected before integration. Optimized WebP copies are in
+`public/project-media/art-direction/*-v1.webp` (about 3 MiB total). Original PNGs
+remain in the tool's generated-images directory. Exact prompts, original paths
+and workspace output paths are preserved in `docs/project-art-prompts.json`.
+
+Every hero is labeled “AI-generated concept artwork,” with descriptive alt text.
+These images are artistic metaphors, not interface captures, real products,
+runtime evidence or personal travel photographs. Actual screenshots still use
+the original `project.cover` sources. Their full-image dialogs preserve keyboard
+dismissal and focus restoration. Technical caveats and team/course attribution
+remain visible; no new results or capabilities are claimed.
+
+The imagegen skill guided separate briefs, output inspection, non-destructive
+asset storage, and the distinction between artwork and factual evidence.
 
 ## Verification
 
-The browser verifier checks all 13 pages for four visual panels, paired desktop
-layout, compact headings, expandable notes, image loading, full-image dialogs,
-Escape dismissal, restored focus, keyboard-operated Relay replay, and dark mode.
-It checks horizontal overflow at 320, 390, 768, 1440, and 2048px.
+- Production static build and TypeScript: passed, all 16 generated pages.
+- Project verifier: passed, 13 distinct covers/palettes, nine full captures, 61 panels.
+- Responsive checks: passed at 320, 390, 768, 1440 and 2048px.
+- Image decode, dialogs, Escape and focus restoration: passed.
+- Dark mode, reduced motion and keyboard Relay replay: passed.
+- Existing 14-route interaction smoke suite: passed.
+- Script lint and whitespace checks: passed.
 
-Final result: passed for all 13 pages and 52 panels, with no browser errors.
-Desktop galleries for every project and mobile examples were visually reviewed.
-The production build, lint, existing 14-route smoke suite, and `git diff --check`
-also passed. The user's original `next-env.d.ts` change was restored after building.
+The generated images, desktop galleries and mobile examples were visually
+reviewed. Browser evidence lives in the ignored `artifacts/portfolio/` directory.
+The user's `next-env.d.ts` development import was restored after the build.
 
-The production build checks application TypeScript. The lint command checks
-scripts. The existing smoke suite checks all 14 routes and the site's navigation,
-theme, sound, and scroll shortcuts.
+Preview: http://127.0.0.1:3109/#work
 
-Local screenshots and the final browser result are under the ignored
-`artifacts/portfolio/` directory. The preview runs on `http://127.0.0.1:3109`.
-
-This task changes the local portfolio. It does not publish Relay to GitHub or
-deploy the portfolio. The earlier repository publication request remains a
-separate approval item.
+This is a local portfolio change. Nothing was committed, deployed or published
+to an external repository as part of this task.

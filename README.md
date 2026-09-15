@@ -8,7 +8,7 @@ and deployed to GitHub Pages as a static export.
 > Wen. Every visible biography, project card, project image, repository link,
 > project description now refers to Benjamin's projects. Course frameworks,
 > team scope, and AI assistance are identified in the relevant case studies.
-> The project gallery, cover drawings, explanatory diagrams, and Relay experiment
+> The project gallery, generated editorial artwork, explanatory diagrams, and Relay experiment
 > replay were added for this redesign. The original archive remains under `src/`.
 
 ## Run locally
@@ -50,10 +50,12 @@ set `CHROME_PATH` if it is installed somewhere other than the default macOS path
 ## Portfolio content
 
 - Thirteen image-led project cards in a staggered gallery
-- Narrow detail pages with a short introduction, four visual panels, and expandable implementation notes
+- Narrow, artwork-first detail pages with four or five visual panels and expandable implementation notes
 - Project writing in `data/portfolio-projects.ts` and `data/systems-projects.ts`
 - Gallery captions, screenshot crops, and scope notes in `data/project-visuals.ts`
-- Existing interface captures in `public/project-media/`; new covers and explanatory diagrams drawn in `ProjectArtwork` and `ProjectDiagram`
+- Thirteen product-demo covers using actual interface captures, recorded job events, source code, and one labeled setup-form reconstruction; see `docs/product-covers.md`
+- Existing interface captures remain in `public/project-media/`; explanatory diagrams use selectable HTML text
+- Earlier generated artwork and prompts are retained for recovery but no longer rendered on covers
 - Full-image dialogs with keyboard dismissal and restored focus
 - An interactive replay of a recorded Relay worker-crash experiment
 - Source-backed role/repository assessment in `docs/google-project-audit.md`
@@ -63,7 +65,7 @@ ignored by the portfolio repository. Public publication is awaiting approval;
 its source links remain disabled until the repository exists. See
 `docs/goal-progress.md` for the remaining publication step and verification record.
 
-The current visual redesign follows the four supplied layout references: small
-project labels, graphic covers, a centered reading column, and paired visual
-panels. It does not reuse the reference site's project artwork. Details and
-verification are recorded in `docs/visual-redesign.md`.
+The current visual redesign follows the six newly supplied layout references:
+small project labels, varied materials and colors, a centered reading column,
+large interface captures, and paired detail panels. It does not reuse the
+reference site's artwork. Details and verification are in `docs/visual-redesign.md`.

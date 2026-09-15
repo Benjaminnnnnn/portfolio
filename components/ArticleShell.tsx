@@ -2,6 +2,8 @@ import Link from "next/link";
 import type { CSSProperties } from "react";
 import { getNextProject, type PortfolioProject, type PortfolioProjectSlug } from "@/data/portfolio-projects";
 import { projectVisuals, projectScopeNotes } from "@/data/project-visuals";
+import { projectArt } from "@/data/project-art";
+import { productCovers } from "@/data/product-covers";
 import { SiteChrome } from "./site/SiteChrome";
 import { LeaseReplay } from "./LeaseReplay";
 import { ProjectArtwork } from "./ProjectArtwork";
@@ -12,8 +14,9 @@ export function ArticleShell({ project }: { project: PortfolioProject }) {
   const slug = project.slug as PortfolioProjectSlug;
   const nextProject = getNextProject(slug);
   const visuals = projectVisuals[slug];
+  const art = projectArt[slug];
   return (
-    <div className="article-root" style={{ "--project-accent": project.accent } as CSSProperties}>
+    <div className={`article-root study-art-directed study-${slug} study-layout-${art.layout}`} style={{ "--project-accent": art.accent, "--study-paper": art.paper, "--study-ink": art.ink, "--study-contrast": art.contrast } as CSSProperties}>
       <SiteChrome />
       <main className="article-scroll no-scrollbar">
         <article className="article-shell">
@@ -22,6 +25,10 @@ export function ArticleShell({ project }: { project: PortfolioProject }) {
             <h1>{project.title}</h1>
             <p className="study-context">{project.context}</p>
           </header>
+          <figure className="study-hero">
+            <ProjectArtwork slug={slug} src={project.cover} alt={project.coverAlt} priority />
+            <figcaption><span>{productCovers[slug].caption}</span><span>Product preview</span></figcaption>
+          </figure>
           <section className="study-intro" aria-label="About this project">
             <p>{project.summary}</p>
             <p className="study-scope">{projectScopeNotes[slug]}</p>
@@ -30,15 +37,15 @@ export function ArticleShell({ project }: { project: PortfolioProject }) {
           </section>
 
           <div className="study-gallery">
-            <figure className="study-hero">
-              <ProjectArtwork slug={slug} src={project.cover} alt={project.coverAlt} priority />
-              <figcaption>{["relay", "splendor", "simple-db", "petclinic-devops", "xv6"].includes(slug) ? "Project cover · original graphic" : "Project cover · existing interface capture"}</figcaption>
-            </figure>
+            {art.screen && <figure className="study-screen-spread">
+              <StudyImage src={project.cover} alt={project.coverAlt} full visual={{ title: "The interface", caption: art.screen, crop: { x: 0, y: 0, width: 100, height: 100 } }} />
+              <figcaption><span>Interface capture</span><p>{art.screen}</p></figcaption>
+            </figure>}
             {visuals.map((visual, index) => {
-              return <section className={`study-chapter${visual.replay ? " study-chapter-replay" : ""}`} key={visual.title} aria-labelledby={`detail-${index}`}>
+              return <section className={`study-chapter study-panel-${index + 1}${visual.replay ? " study-chapter-replay" : ""}${visual.crop ? " study-panel-capture" : " study-panel-diagram"}`} key={visual.title} aria-labelledby={`detail-${index}`}>
                 <figure className="study-visual">
                   {visual.crop ? <StudyImage src={project.cover} alt={project.coverAlt} visual={visual} /> : visual.replay ? <LeaseReplay /> : <ProjectDiagram kind={visual.diagram!} slug={slug} />}
-                  <figcaption><h2 id={`detail-${index}`}>{visual.title}</h2><p>{visual.caption}</p></figcaption>
+                  <figcaption><span className="study-panel-number" aria-hidden="true">0{index + 1}</span><div><h2 id={`detail-${index}`}>{visual.title}</h2><p>{visual.caption}</p></div></figcaption>
                 </figure>
               </section>;
             })}

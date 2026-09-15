@@ -8,10 +8,7 @@ export function HeroSection() {
         <p className="hero-discipline">
           <ScrambleText text={"Software\nEngineering"} letterDelay={10} />
         </p>
-        <p>
-          <ScrambleText text={"Carnegie Mellon\nMaster's student"} letterDelay={10} />
-        </p>
-        <p>
+        <p className="hero-description">
           <ScrambleText
             text="I'm Benjamin Zhuang, a master's student at Carnegie Mellon. I build web applications and study the systems that run underneath them."
             letterDelay={10}

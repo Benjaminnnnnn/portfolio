@@ -4,7 +4,7 @@ import Image from "next/image";
 import { useRef, type CSSProperties } from "react";
 import type { StudyVisual } from "@/data/project-visuals";
 
-export function StudyImage({ src, alt, visual }: { src: string; alt: string; visual: StudyVisual }) {
+export function StudyImage({ src, alt, visual, full = false }: { src: string; alt: string; visual: StudyVisual; full?: boolean }) {
   const dialog = useRef<HTMLDialogElement>(null);
   const crop = visual.crop!;
   const imageRatios: Record<string, number> = {
@@ -21,8 +21,8 @@ export function StudyImage({ src, alt, visual }: { src: string; alt: string; vis
     "--crop-ratio": (imageRatios[imageName] ?? 1.8) * crop.width / crop.height,
   } as CSSProperties;
   return <>
-    <button className="study-image-button" onClick={() => dialog.current?.showModal()} aria-label={`Open full screenshot: ${visual.title}`} style={style}>
-      <span className="study-crop"><Image src={src} alt={`${visual.title}. Detail of: ${alt}`} fill sizes="(max-width: 760px) 150vw, 100vw" /></span>
+    <button className={`study-image-button${full ? " study-image-full" : ""}`} onClick={() => dialog.current?.showModal()} aria-label={`Open full screenshot: ${visual.title}`} style={style}>
+      <span className="study-crop"><Image src={src} alt={full ? alt : `${visual.title}. Detail of: ${alt}`} fill sizes="(max-width: 760px) 150vw, 100vw" /></span>
       <span className="study-image-expand" aria-hidden="true">View full image ↗</span>
     </button>
     <dialog ref={dialog} className="study-lightbox" aria-label={`${visual.title}: full project screenshot`} onClick={event => { if (event.target === event.currentTarget) dialog.current?.close(); }}>

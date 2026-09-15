@@ -98,6 +98,7 @@ const glassFragment = /* glsl */ `
   uniform vec4 uTintColorA;
   uniform vec4 uTintColorB;
   uniform vec2 uTintLocalYRange;
+  uniform float uTintFlip;
   uniform float uTintEnabled;
   uniform float uTintMix;
   uniform float uTintThicknessMinAlpha;
@@ -106,6 +107,10 @@ const glassFragment = /* glsl */ `
   uniform sampler2D uTexture;
   uniform float uSceneRefractionEnabled;
   uniform float uRgbRefraction;
+  uniform float uWaterEnabled;
+  uniform float uWaterTime;
+  uniform vec2 uWaterPointer;
+  uniform float uWaterStrength;
   uniform int uLoop;
   varying vec3 worldNormal;
   varying vec3 eyeVector;
@@ -136,6 +141,32 @@ const glassFragment = /* glsl */ `
     vec2 uv = gl_FragCoord.xy / uScreenResolutionPx.xy;
     vec3 normal = normalize(worldNormal);
     if (!gl_FrontFacing) normal = -normal;
+    float waterMask = 0.0;
+    float caustic = 0.0;
+    float sunGlint = 0.0;
+    if (uWaterEnabled > 0.5 && uWaterStrength > 0.001) {
+      // Screen-height units keep the pool circular on wide and tall screens.
+      vec2 aspect = vec2(uScreenResolutionPx.x / uScreenResolutionPx.y, 1.0);
+      vec2 fromPointer = (uv - uWaterPointer) * aspect;
+      float distanceToPointer = length(fromPointer);
+      waterMask = (1.0 - smoothstep(0.025, 0.19, distanceToPointer)) * uWaterStrength;
+      if (waterMask > 0.001) {
+        // Crossing, domain-warped waves make drifting sunlit filaments, not a
+        // flat cursor glow. Perturb the glass normal and refraction together.
+        float t = uWaterTime;
+        vec2 water = uv * aspect * 28.0;
+        water += vec2(sin(water.y * 1.7 + t * 0.7), cos(water.x * 1.3 - t * 0.6)) * 0.38;
+        float a = water.x * 2.2 + water.y * 1.1 + t * 0.9;
+        float b = water.y * 2.8 - water.x * 0.8 - t * 0.7;
+        vec2 waves = vec2(cos(a) + 0.55 * cos(b), sin(b) - 0.55 * sin(a));
+        float ripple = sin(distanceToPointer * 85.0 - t * 2.5) * exp(-distanceToPointer * 12.0);
+        waves += fromPointer / max(distanceToPointer, 0.001) * ripple * 0.35;
+        normal = normalize(normal + vec3(waves * waterMask * 0.12, 0.0));
+        uv += waves * waterMask * 0.003;
+        caustic = pow(clamp(1.0 - abs(sin(a) + sin(b)) * 0.7, 0.0, 1.0), 12.0);
+        sunGlint = caustic * pow(max(0.0, sin(a * 0.6 - b * 0.8 + t * 0.45)), 8.0);
+      }
+    }
     vec3 eyeDir = normalize(eyeVector);
     vec3 color = vec3(0.0);
     float noise = random(uv) * 0.025;
@@ -183,6 +214,7 @@ const glassFragment = /* glsl */ `
     color = pow(max(color, 0.0), vec3(1.0 / max(uGamma, 0.0001)));
     float range = max(uTintLocalYRange.y - uTintLocalYRange.x, 0.00001);
     float gradient = clamp((modelLocalY - uTintLocalYRange.x) / range, 0.0, 1.0);
+    gradient = mix(gradient, 1.0 - gradient, uTintFlip);
     vec4 tint = mix(uTintColorB, uTintColorA, gradient);
     float thicknessMask = clamp(1.0 - abs(dot(normal, eyeDir)), 0.0, 1.0);
     float tintAlpha = tint.a * mix(uTintThicknessMaxAlpha, uTintThicknessMinAlpha, thicknessMask);
@@ -192,6 +224,7 @@ const glassFragment = /* glsl */ `
     color += specular(uLight, normal, eyeDir, uShininess, uDiffuseness) * uSpecularStrength;
     float sideMask = smoothstep(-0.5, 0.5, dot(normal, normalize(uFresnelSideDir)));
     color += fresnel(eyeDir, normal, uFresnelPower) * sideMask * uFresnelStrength;
+    color += waterMask * (vec3(1.0, 0.93, 0.72) * caustic * 0.38 + vec3(0.82, 0.94, 1.0) * sunGlint * 0.48);
     gl_FragColor = vec4(color, 1.0);
     #include <tonemapping_fragment>
     #include <colorspace_fragment>
@@ -317,10 +350,12 @@ function makeGlassMaterial(texture: THREE.Texture, screenSize: THREE.Vector2, yR
       uFresnelSideDir: { value: new THREE.Vector3(-1, 1, -1) },
       uTintColorA: { value: new THREE.Vector4(tintA.r, tintA.g, tintA.b, 1) },
       uTintColorB: { value: new THREE.Vector4(1, 1, 1, 1) },
-      uTintLocalYRange: { value: yRange }, uTintEnabled: { value: 1 }, uTintMix: { value: 1 },
+      uTintLocalYRange: { value: yRange }, uTintFlip: { value: 0 }, uTintEnabled: { value: 1 }, uTintMix: { value: 1 },
       uTintThicknessMinAlpha: { value: 1 }, uTintThicknessMaxAlpha: { value: 0.92 },
       uScreenResolutionPx: { value: screenSize }, uSceneRefractionEnabled: { value: 1 },
       uRgbRefraction: { value: 1 }, uLoop: { value: 3 }, uLight: { value: new THREE.Vector3(4, 9, 0.5) },
+      uWaterEnabled: { value: 0 }, uWaterTime: { value: 0 },
+      uWaterPointer: { value: new THREE.Vector2(0.5, 0.5) }, uWaterStrength: { value: 0 },
     },
   });
 }
@@ -344,6 +379,10 @@ export default function HomeVisualCanvas({ onProgress, onReady }: HomeVisualCanv
     const decorativeSprites: THREE.Sprite[] = [];
     const textures: THREE.Texture[] = [];
     const pointer = new THREE.Vector2();
+    const waterPointer = new THREE.Vector2(0.5, 0.5);
+    const reducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)");
+    let pointerPresent = false;
+    let waterStrength = 0;
     const screenSize = new THREE.Vector2(1, 1);
     const timer = new THREE.Timer();
     timer.connect(document);
@@ -459,6 +498,10 @@ export default function HomeVisualCanvas({ onProgress, onReady }: HomeVisualCanv
         } else {
           const yRange = new THREE.Vector2(bounds?.min.y ?? 0, bounds?.max.y ?? 1);
           const glassMaterial = makeGlassMaterial(refractionTarget.texture, screenSize, yRange);
+          // The upright contact mesh has its local Y axis pointing down.
+          // Keep the reference's pale crown and blue lower edge after unflipping it.
+          glassMaterial.uniforms.uTintFlip.value = kind === "cnt" ? 1 : 0;
+          glassMaterial.uniforms.uWaterEnabled.value = kind === "hello" ? 1 : 0;
           glassMaterials.push(glassMaterial);
           node.material = glassMaterial;
           node.layers.set(10);
@@ -472,7 +515,7 @@ export default function HomeVisualCanvas({ onProgress, onReady }: HomeVisualCanv
         group.scale.setScalar(window.innerWidth <= 760 ? 19 : 22);
       } else if (kind === "cnt") {
         group.position.set(0, -28, 2);
-        group.rotation.x = -Math.PI;
+        group.rotation.set(0, 0, 0);
         group.scale.setScalar(19);
       } else {
         group.position.set(window.innerWidth <= 760 ? 6.6 : 11.6, window.innerWidth <= 760 ? -5.6 : -4.2, -3);
@@ -536,9 +579,14 @@ export default function HomeVisualCanvas({ onProgress, onReady }: HomeVisualCanv
     const onPointerMove = (event: PointerEvent) => {
       pointer.x = (event.clientX / Math.max(1, window.innerWidth)) * 2 - 1;
       pointer.y = -(event.clientY / Math.max(1, window.innerHeight)) * 2 + 1;
+      pointerPresent = event.pointerType !== "touch";
     };
-    const onPointerLeave = () => pointer.set(0, 0);
+    const onPointerLeave = () => {
+      pointerPresent = false;
+      pointer.set(0, 0);
+    };
     window.addEventListener("pointermove", onPointerMove, { passive: true });
+    window.addEventListener("blur", onPointerLeave);
     document.documentElement.addEventListener("pointerleave", onPointerLeave);
 
     const animate = (timestamp: number) => {
@@ -572,6 +620,20 @@ export default function HomeVisualCanvas({ onProgress, onReady }: HomeVisualCanv
       const progress = root ? root.scrollTop / Math.max(1, root.scrollHeight - root.clientHeight) : 0;
       const contactTop = document.getElementById("contact")?.getBoundingClientRect().top ?? window.innerHeight;
       const contactReveal = 1 - THREE.MathUtils.smoothstep(contactTop, 0, window.innerHeight * 0.75);
+      const heroVisible = root ? 1 - THREE.MathUtils.smoothstep(root.scrollTop, 0, root.clientHeight * 0.8) : 0;
+      const waterTarget = pointerPresent && !reducedMotion.matches ? heroVisible : 0;
+      waterStrength = reducedMotion.matches ? 0 : THREE.MathUtils.damp(waterStrength, waterTarget, waterTarget > 0 ? 7 : 4, delta);
+      // Keep the fading pool at the last pointer location when leaving the page.
+      if (pointerPresent) {
+        waterPointer.x = THREE.MathUtils.damp(waterPointer.x, pointer.x * 0.5 + 0.5, 12, delta);
+        waterPointer.y = THREE.MathUtils.damp(waterPointer.y, pointer.y * 0.5 + 0.5, 12, delta);
+      }
+      glassMaterials.forEach(({ uniforms }) => {
+        if (uniforms.uWaterEnabled.value === 0) return;
+        uniforms.uWaterTime.value = elapsed;
+        uniforms.uWaterPointer.value.copy(waterPointer);
+        uniforms.uWaterStrength.value = waterStrength;
+      });
       const heroDecorOpacity = 1 - THREE.MathUtils.smoothstep(progress, 0.04, 0.12);
       decorativeSprites.forEach((sprite) => {
         sprite.material.opacity = heroDecorOpacity;
@@ -591,9 +653,12 @@ export default function HomeVisualCanvas({ onProgress, onReady }: HomeVisualCanv
           const baseY = kind === "hello" ? (progress < 0.12 ? 0 : 24) : THREE.MathUtils.lerp(-28, 0, contactReveal);
           const floatY = 0.18 * Math.sin(1.2 * elapsed) + 0.06 * Math.sin(0.6 * elapsed);
           group.position.y = THREE.MathUtils.damp(group.position.y, baseY + floatY, 5, delta);
-          const baseRotation = kind === "hello" ? THREE.MathUtils.lerp(THREE.MathUtils.degToRad(240), THREE.MathUtils.degToRad(4), entranceEase) : -Math.PI;
-          group.rotation.y = THREE.MathUtils.damp(group.rotation.y, baseRotation + pointer.x * 0.1 + progress * Math.PI * 0.3, 4, delta);
-          group.rotation.x = THREE.MathUtils.damp(group.rotation.x, (kind === "cnt" ? -Math.PI : 0) + pointer.y * -0.06, 4, delta);
+          const baseRotation = kind === "hello" ? THREE.MathUtils.lerp(THREE.MathUtils.degToRad(240), THREE.MathUtils.degToRad(4), entranceEase) : 0;
+          // Keep the closing lettering upright in its authored orientation;
+          // the opening model's scroll spin must not turn this one sideways.
+          const scrollRotation = kind === "hello" ? progress * Math.PI * 0.3 : 0;
+          group.rotation.y = THREE.MathUtils.damp(group.rotation.y, baseRotation + pointer.x * 0.1 + scrollRotation, 4, delta);
+          group.rotation.x = THREE.MathUtils.damp(group.rotation.x, pointer.y * -0.06, 4, delta);
           group.position.x = (kind === "hello" ? -0.1 : 0) + pointer.x * 0.2;
         } else {
           const cursorX = window.innerWidth <= 760 ? 6.6 : 11.6;
@@ -639,6 +704,7 @@ export default function HomeVisualCanvas({ onProgress, onReady }: HomeVisualCanv
       disposed = true;
       cancelAnimationFrame(frame);
       window.removeEventListener("pointermove", onPointerMove);
+      window.removeEventListener("blur", onPointerLeave);
       document.documentElement.removeEventListener("pointerleave", onPointerLeave);
       resizeObserver.disconnect();
       timer.dispose();

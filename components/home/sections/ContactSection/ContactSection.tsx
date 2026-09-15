@@ -1,22 +1,20 @@
 "use client";
 
 import { useRef } from "react";
+import Image from "next/image";
 import { ScrambleText } from "../../../animation/ScrambleText";
 import { useFloatingStickers } from "../../animation/useFloatingStickers";
 import { SectionFrame } from "../../shared/SectionFrame";
 import { useContactReveal } from "./useContactReveal";
 
 const contactStickers = [
-  { className: "contact-nextjs", label: "NEXT.JS", tone: "acid", emphasis: true },
-  { className: "contact-typescript", label: "TYPESCRIPT", tone: "violet", emphasis: true },
-  { className: "contact-gcp", label: "GCP", tone: "blue", emphasis: false },
-  { className: "contact-cloudflare", label: "CLOUDFLARE", tone: "coral", emphasis: false },
-  { className: "contact-architecture", label: "SYSTEM ARCH", tone: "ink", emphasis: true },
-  { className: "contact-docker", label: "DOCKER", tone: "blue", emphasis: false },
-  { className: "contact-kubernetes", label: "K8S", tone: "acid", emphasis: false },
-  { className: "contact-graphql", label: "GRAPHQL", tone: "coral", emphasis: false },
-  { className: "contact-api", label: "API DESIGN", tone: "violet", emphasis: true },
-  { className: "contact-patterns", label: "PATTERNS", tone: "blue", emphasis: false },
+  { className: "contact-eyes", image: "01" },
+  { className: "contact-nib", image: "02" },
+  { className: "contact-star", image: "10" },
+  { className: "contact-heart", image: "05" },
+  { className: "contact-smile", image: "06" },
+  { className: "contact-pixel", image: "07" },
+  { className: "contact-bolt", image: "09" },
 ] as const;
 
 export function ContactSection() {
@@ -29,28 +27,27 @@ export function ContactSection() {
       {contactStickers.map((sticker) => (
         <div key={sticker.className} className={`contact-sticker-slot ${sticker.className}`} data-contact-sticker>
           <div
-            className={`contact-sticker-art contact-glyph tone-${sticker.tone}${sticker.emphasis ? " is-emphasis" : ""}`}
+            className="contact-sticker-art"
             data-floating-sticker
-            data-emphasis={sticker.emphasis ? "true" : undefined}
             aria-hidden="true"
           >
-            {sticker.label}
+            <Image src={`/sticker_img/s_${sticker.image}.png`} alt="" width={480} height={480} draggable={false} />
           </div>
         </div>
       ))}
 
-      <div className="contact-title" aria-label="Let's build something useful">
-        <div className="contact-title-row contact-title-first">
+      <h2 className="contact-title" aria-label="Let's create something extraordinary">
+        <span className="contact-title-row contact-title-first">
           <ScrambleText className="contact-scramble contact-lets" text="Let's" />
-          <ScrambleText className="contact-scramble contact-create" text="Build" reverse />
-        </div>
-        <div className="contact-title-row">
+          <ScrambleText className="contact-scramble contact-create" text="Create" reverse />
+        </span>
+        <span className="contact-title-row">
           <ScrambleText className="contact-scramble contact-something" text="Something" />
-        </div>
-        <div className="contact-title-row">
-          <ScrambleText className="contact-scramble contact-extraordinary" text="Useful" reverse />
-        </div>
-      </div>
+        </span>
+        <span className="contact-title-row">
+          <ScrambleText className="contact-scramble contact-extraordinary" text="Extraordinary" reverse />
+        </span>
+      </h2>
 
       <div className="contact-bottom">
         <a href="mailto:benjaminzhuangjobs@outlook.com">

@@ -3,6 +3,8 @@ import { ThemeModeProvider } from "../components/site/ThemeModeProvider";
 import "./original.css";
 import "./globals.css";
 import "./project-studies.css";
+import "./project-art-direction.css";
+import "./product-covers.css";
 
 export const metadata: Metadata = {
   metadataBase: new URL("https://benjaminnnnnn.github.io/portfolio"),
