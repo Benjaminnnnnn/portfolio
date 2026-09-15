@@ -3,7 +3,6 @@
 import { useRef } from "react";
 import Image from "next/image";
 import { ScrambleText } from "../../../animation/ScrambleText";
-import { useFloatingStickers } from "../../animation/useFloatingStickers";
 import { SectionFrame } from "../../shared/SectionFrame";
 import { useContactReveal } from "./useContactReveal";
 
@@ -20,7 +19,6 @@ const contactStickers = [
 export function ContactSection() {
   const section = useRef<HTMLElement>(null);
   useContactReveal(section);
-  useFloatingStickers(section, 1);
 
   return (
     <SectionFrame ref={section} name="contact" className="contact-section" id="contact">

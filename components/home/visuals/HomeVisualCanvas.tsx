@@ -501,7 +501,7 @@ export default function HomeVisualCanvas({ onProgress, onReady }: HomeVisualCanv
           // The upright contact mesh has its local Y axis pointing down.
           // Keep the reference's pale crown and blue lower edge after unflipping it.
           glassMaterial.uniforms.uTintFlip.value = kind === "cnt" ? 1 : 0;
-          glassMaterial.uniforms.uWaterEnabled.value = kind === "hello" ? 1 : 0;
+          glassMaterial.uniforms.uWaterEnabled.value = 1;
           glassMaterials.push(glassMaterial);
           node.material = glassMaterial;
           node.layers.set(10);
@@ -621,7 +621,7 @@ export default function HomeVisualCanvas({ onProgress, onReady }: HomeVisualCanv
       const contactTop = document.getElementById("contact")?.getBoundingClientRect().top ?? window.innerHeight;
       const contactReveal = 1 - THREE.MathUtils.smoothstep(contactTop, 0, window.innerHeight * 0.75);
       const heroVisible = root ? 1 - THREE.MathUtils.smoothstep(root.scrollTop, 0, root.clientHeight * 0.8) : 0;
-      const waterTarget = pointerPresent && !reducedMotion.matches ? heroVisible : 0;
+      const waterTarget = pointerPresent && !reducedMotion.matches ? Math.max(heroVisible, contactReveal) : 0;
       waterStrength = reducedMotion.matches ? 0 : THREE.MathUtils.damp(waterStrength, waterTarget, waterTarget > 0 ? 7 : 4, delta);
       // Keep the fading pool at the last pointer location when leaving the page.
       if (pointerPresent) {

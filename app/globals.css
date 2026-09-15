@@ -881,9 +881,9 @@ html[data-inverse="true"] .hyper-section { color: #fff; }
 
 @media (max-width: 760px) {
   :root { --page-gutter: 16px; --grid-gutter: 16px; }
-  .site-header { top: 20px; }
+  .site-header { top: 20px; flex-wrap: wrap; gap: 10px; }
   .brand { font-size: 14px; }
-  .site-header nav { gap: 14px; font-size: 11px; }
+  .site-header nav { gap: 14px; font-size: 11px; margin-left: auto; }
   .site-header nav > :nth-child(2) { display: none; }
   .shortcut-help { display: none; }
   .site-status { bottom: 20px; font-size: 11px; }

@@ -182,6 +182,7 @@ export function SiteChrome({ scramble = false }: { scramble?: boolean }) {
               <Link href="/#contact">CONTACT</Link>
             </>
           )}
+          <a href="/Zheyi%20Zhuang.pdf" target="_blank" rel="noopener noreferrer" aria-label="Preview resume PDF (opens in a new tab)">Resume[↓]</a>
           <button className="site-preference-control" onClick={() => { setHelpVisible(false); cycleTheme(); }} aria-label={`Theme: ${theme}`} {...preferenceEvents}>{themeLabel}</button>
           <button className="site-preference-control" onClick={() => void toggleSound()} aria-pressed={soundEnabled} {...preferenceEvents}>{soundLabel}</button>
         </nav>
