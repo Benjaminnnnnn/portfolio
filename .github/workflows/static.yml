@@ -40,10 +40,14 @@ jobs:
         # The v1 dependency tree needed --legacy-peer-deps; the Next tree
         # installs clean, so use the lockfile verbatim.
         run: npm ci
+      - name: Setup Pages
+        id: pages
+        uses: actions/configure-pages@v5
       - name: Build
         run: npm run build
-      - name: Setup Pages
-        uses: actions/configure-pages@v5
+        env:
+          # Project Pages live under /<repo>; without this every asset URL 404s.
+          PAGES_BASE_PATH: ${{ steps.pages.outputs.base_path }}
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
         with:

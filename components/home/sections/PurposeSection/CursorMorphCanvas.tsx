@@ -2,6 +2,7 @@
 
 import { useEffect, useRef } from "react";
 import * as THREE from "three";
+import { withBasePath } from "@/lib/base-path";
 import { GLTFLoader } from "three/examples/jsm/loaders/GLTFLoader.js";
 import { mergeGeometries } from "three/examples/jsm/utils/BufferGeometryUtils.js";
 
@@ -226,7 +227,7 @@ export function CursorMorphCanvas() {
 
     const loader = new GLTFLoader();
     loader.load(
-      "/model/cursor.glb",
+      withBasePath("/model/cursor.glb"),
       (gltf) => {
         if (disposed) return;
         gltf.scene.updateMatrixWorld(true);

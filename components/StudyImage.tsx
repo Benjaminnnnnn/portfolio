@@ -2,6 +2,7 @@
 
 import Image from "next/image";
 import { useRef, type CSSProperties } from "react";
+import { withBasePath } from "@/lib/base-path";
 import type { StudyVisual } from "@/data/project-visuals";
 
 export function StudyImage({ src, alt, visual, full = false }: { src: string; alt: string; visual: StudyVisual; full?: boolean }) {
@@ -22,12 +23,12 @@ export function StudyImage({ src, alt, visual, full = false }: { src: string; al
   } as CSSProperties;
   return <>
     <button className={`study-image-button${full ? " study-image-full" : ""}`} onClick={() => dialog.current?.showModal()} aria-label={`Open full screenshot: ${visual.title}`} style={style}>
-      <span className="study-crop"><Image src={src} alt={full ? alt : `${visual.title}. Detail of: ${alt}`} fill sizes="(max-width: 760px) 150vw, 100vw" /></span>
+      <span className="study-crop"><Image src={withBasePath(src)} alt={full ? alt : `${visual.title}. Detail of: ${alt}`} fill sizes="(max-width: 760px) 150vw, 100vw" /></span>
       <span className="study-image-expand" aria-hidden="true">View full image ↗</span>
     </button>
     <dialog ref={dialog} className="study-lightbox" aria-label={`${visual.title}: full project screenshot`} onClick={event => { if (event.target === event.currentTarget) dialog.current?.close(); }}>
       <form method="dialog"><button autoFocus aria-label="Close full screenshot">Close ×</button></form>
-      <div className="lightbox-image"><Image src={src} alt={alt} fill sizes="95vw" /></div>
+      <div className="lightbox-image"><Image src={withBasePath(src)} alt={alt} fill sizes="95vw" /></div>
       <p>{visual.caption}</p>
     </dialog>
   </>;

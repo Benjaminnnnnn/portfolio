@@ -1,6 +1,7 @@
 "use client";
 
 import Link from "next/link";
+import { withBasePath } from "@/lib/base-path";
 import { usePathname } from "next/navigation";
 import { useCallback, useEffect, useRef, useState } from "react";
 import { ScrambleText } from "../animation/ScrambleText";
@@ -113,7 +114,7 @@ export function SiteChrome({ scramble = false }: { scramble?: boolean }) {
   const toggleSound = useCallback(async () => {
     setHelpVisible(false);
     if (!audioRef.current) {
-      const audio = new Audio("/bgm.mp3");
+      const audio = new Audio(withBasePath("/bgm.mp3"));
       audio.loop = true;
       audio.volume = 0.35;
       audioRef.current = audio;
@@ -182,7 +183,7 @@ export function SiteChrome({ scramble = false }: { scramble?: boolean }) {
               <Link href="/#contact">CONTACT</Link>
             </>
           )}
-          <a href="/Zheyi%20Zhuang.pdf" target="_blank" rel="noopener noreferrer" aria-label="Preview resume PDF (opens in a new tab)">Resume[↓]</a>
+          <a href={withBasePath("/Zheyi%20Zhuang.pdf")} target="_blank" rel="noopener noreferrer" aria-label="Preview resume PDF (opens in a new tab)">Resume[↓]</a>
           <button className="site-preference-control" onClick={() => { setHelpVisible(false); cycleTheme(); }} aria-label={`Theme: ${theme}`} {...preferenceEvents}>{themeLabel}</button>
           <button className="site-preference-control" onClick={() => void toggleSound()} aria-pressed={soundEnabled} {...preferenceEvents}>{soundLabel}</button>
         </nav>

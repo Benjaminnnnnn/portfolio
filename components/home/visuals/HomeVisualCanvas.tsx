@@ -2,6 +2,7 @@
 
 import { useEffect, useRef } from "react";
 import * as THREE from "three";
+import { withBasePath } from "@/lib/base-path";
 import { GLTFLoader } from "three/examples/jsm/loaders/GLTFLoader.js";
 import { clone } from "three/examples/jsm/utils/SkeletonUtils.js";
 
@@ -533,7 +534,7 @@ export default function HomeVisualCanvas({ onProgress, onReady }: HomeVisualCanv
       ["/sticker_img/s_05.png", 11.1, 4.4, 2.0, -0.08],
     ] as const;
     spriteSpecs.forEach(([url, x, y, size, rotation]) => {
-      const texture = textureLoader.load(url, (loaded) => {
+      const texture = textureLoader.load(withBasePath(url), (loaded) => {
         loaded.colorSpace = THREE.SRGBColorSpace;
         loaded.needsUpdate = true;
       });
@@ -549,9 +550,9 @@ export default function HomeVisualCanvas({ onProgress, onReady }: HomeVisualCanv
     });
 
     void Promise.all([
-      loadModel("hello", "/model/hello.gltf"),
-      loadModel("cnt", "/model/cnt.gltf"),
-      loadModel("cursor", "/model/cursor.glb"),
+      loadModel("hello", withBasePath("/model/hello.gltf")),
+      loadModel("cnt", withBasePath("/model/cnt.gltf")),
+      loadModel("cursor", withBasePath("/model/cursor.glb")),
     ]).catch((error: unknown) => {
       if (!disposed) console.error("Unable to load the home scene models", error);
     });
