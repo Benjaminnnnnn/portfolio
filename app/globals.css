@@ -1,20 +1,20 @@
 @font-face {
   font-family: "tiktok";
-  src: url("/fonts/TikTokSans.ttf") format("truetype");
+  src: url("../public/fonts/TikTokSans.ttf") format("truetype");
   font-weight: 100 900;
   font-display: swap;
 }
 
 @font-face {
   font-family: "mono";
-  src: url("/fonts/GeistMono[wght].ttf") format("truetype");
+  src: url("../public/fonts/GeistMono[wght].ttf") format("truetype");
   font-weight: 100 900;
   font-display: swap;
 }
 
 @font-face {
   font-family: "tronica-mono";
-  src: url("/fonts/DepartureMono-Regular.otf") format("opentype");
+  src: url("../public/fonts/DepartureMono-Regular.otf") format("opentype");
   font-weight: 400;
   font-display: swap;
 }

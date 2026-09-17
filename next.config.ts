@@ -1,7 +1,15 @@
 import type { NextConfig } from "next";
 
+// GitHub Pages serves the site from /portfolio; the deploy workflow passes that
+// in. Left unset, local dev and `next build` serve from the root.
+const basePath = process.env.PAGES_BASE_PATH ?? "";
+
 const nextConfig: NextConfig = {
   reactStrictMode: true,
+  basePath,
+  env: {
+    NEXT_PUBLIC_BASE_PATH: basePath,
+  },
   distDir: process.env.PORTFOLIO_BUILD_DIR || ".next",
   // This repo is checked out as a git worktree nested inside the parent clone,
   // which still carries the v1 Vite app (postcss.config.cjs + tailwind v3) on

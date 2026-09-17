@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { withBasePath } from "../lib/base-path";
 import { ThemeModeProvider } from "../components/site/ThemeModeProvider";
 import "./original.css";
 import "./globals.css";
@@ -14,7 +15,7 @@ export const metadata: Metadata = {
   },
   description:
     "Benjamin Zhuang, a master's student at Carnegie Mellon. Web applications, systems projects, and engineering notes with code and experiments.",
-  icons: { icon: "/icon.svg" },
+  icons: { icon: withBasePath("/icon.svg") },
 };
 
 export default function RootLayout({ children }: Readonly<{ children: React.ReactNode }>) {

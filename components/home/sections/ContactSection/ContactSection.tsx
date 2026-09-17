@@ -2,6 +2,7 @@
 
 import { useRef } from "react";
 import Image from "next/image";
+import { withBasePath } from "@/lib/base-path";
 import { ScrambleText } from "../../../animation/ScrambleText";
 import { SectionFrame } from "../../shared/SectionFrame";
 import { useContactReveal } from "./useContactReveal";
@@ -29,7 +30,7 @@ export function ContactSection() {
             data-floating-sticker
             aria-hidden="true"
           >
-            <Image src={`/sticker_img/s_${sticker.image}.png`} alt="" width={480} height={480} draggable={false} />
+            <Image src={withBasePath(`/sticker_img/s_${sticker.image}.png`)} alt="" width={480} height={480} draggable={false} />
           </div>
         </div>
       ))}

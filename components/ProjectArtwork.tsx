@@ -1,5 +1,6 @@
 import Image from "next/image";
 import type { CSSProperties } from "react";
+import { withBasePath } from "@/lib/base-path";
 import { projectArt } from "@/data/project-art";
 import { productCovers, coverCrops } from "@/data/product-covers";
 import type { PortfolioProjectSlug } from "@/data/portfolio-projects";
@@ -15,7 +16,7 @@ function Capture({ src, alt, priority, crop }: { src: string; alt: string; prior
     "--capture-top": `${-100 * crop.y / crop.height}%`,
   } as CSSProperties;
   return <div className="product-capture" style={style}>
-    <Image src={src} alt={alt} fill priority={priority} sizes="(max-width: 760px) 100vw, 860px" />
+    <Image src={withBasePath(src)} alt={alt} fill priority={priority} sizes="(max-width: 760px) 100vw, 860px" />
   </div>;
 }
 
