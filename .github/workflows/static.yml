@@ -31,12 +31,15 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v4
       - name: Set up Node
-        uses: actions/setup-node@v3
+        uses: actions/setup-node@v4
         with:
-          node-version: 18
+          # Next 16 requires Node >= 20; the old Vite app ran on 18.
+          node-version: 22
           cache: "npm"
       - name: Install dependencies
-        run: npm install --legacy-peer-deps
+        # The v1 dependency tree needed --legacy-peer-deps; the Next tree
+        # installs clean, so use the lockfile verbatim.
+        run: npm ci
       - name: Build
         run: npm run build
       - name: Setup Pages
@@ -44,8 +47,8 @@ jobs:
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
         with:
-          # Upload dist repository
-          path: "./dist"
+          # next.config.ts sets output: "export", which emits ./out
+          path: "./out"
       - name: Deploy to GitHub Pages
         id: deployment
         uses: actions/deploy-pages@v4

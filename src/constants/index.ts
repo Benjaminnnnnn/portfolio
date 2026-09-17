@@ -33,11 +33,16 @@ import {
   xv6
 } from "../assets";
 
+// Vite typed `import icon from "./x.png"` as string; Next resolves the same
+// import to StaticImageData (see next-env.d.ts -> next/image-types/global).
+// These fields hold image imports, so they carry the Next type now.
+import type { StaticImageData } from "next/image";
+
 export interface IExperince {
   id: string;
   title: string;
   company_name: string;
-  icon: string;
+  icon: StaticImageData;
   iconBg: string;
   date: string;
   points: string[];
@@ -51,7 +56,7 @@ export interface IProject {
     name: string;
     color: string;
   }[];
-  image: string;
+  image: StaticImageData;
   source_code_link: string;
   demo_link?: string;
 }
@@ -59,7 +64,7 @@ export interface IProject {
 export interface IService {
   id: string;
   title: string;
-  icon: string;
+  icon: StaticImageData;
 }
 export interface ITechnology {
   name: string;
@@ -73,7 +78,7 @@ export interface IEducation {
   period: string;
   gpa?: string;
   coursework: string[];
-  icon: string;
+  icon: StaticImageData;
 }
 
 export const navLinks = [

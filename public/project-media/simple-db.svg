@@ -1,0 +1,16 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1440" height="1000" viewBox="0 0 1440 1000" fill="none">
+  <defs><linearGradient id="bg" x2="1" y2="1"><stop stop-color="#c7d2b7"/><stop offset="1" stop-color="#a0b392"/></linearGradient><pattern id="dots" width="24" height="24" patternUnits="userSpaceOnUse"><circle cx="1" cy="1" r="1" fill="#3d533e" opacity=".15"/></pattern></defs>
+  <rect width="1440" height="1000" fill="url(#bg)"/><rect width="1440" height="1000" fill="url(#dots)"/>
+  <g font-family="monospace" fill="#3b503b" font-size="19" letter-spacing="2"><text x="80" y="85">SIMPLE DB / JAVA</text><text x="1054" y="85">STORAGE STUDY</text></g>
+  <text x="76" y="254" fill="#344b35" font-family="Arial, sans-serif" font-size="155" font-weight="700" letter-spacing="-9">Below the query.</text>
+  <rect x="112" y="387" width="430" height="278" rx="12" fill="#eef0de"/>
+  <g fill="#4b6048" font-family="monospace" font-size="21"><text x="150" y="442">SELECT * FROM places</text><text x="150" y="477">WHERE city = 'Pittsburgh';</text><text x="150" y="553" font-size="16">SCAN → FILTER → PROJECT</text><text x="150" y="620" font-size="15">QUERY OPERATORS</text></g>
+  <path d="M542 529H703V589H776" stroke="#52704e" stroke-width="2"/><circle cx="705" cy="589" r="7" fill="#52704e"/>
+  <g transform="translate(775 379)">
+    <path d="M0 197 171 111 490 217 316 304Z" fill="#476345" stroke="#304a32"/><path d="M0 197v51l316 108v-52Z" fill="#40583e"/><path d="m316 304 174-87v51l-174 88Z" fill="#334931"/>
+    <path d="M0 122 171 36 490 142 316 229Z" fill="#dfe8cc" stroke="#567151"/><path d="M0 122v51l316 108v-52Z" fill="#b5c7a1"/><path d="m316 229 174-87v51l-174 88Z" fill="#829e71"/>
+    <path d="m36 123 144-64 247 84-117 59Z" stroke="#839a74" stroke-dasharray="7 7"/><text x="120" y="121" fill="#466044" font-family="monospace" font-size="20" transform="rotate(18 120 121)">BUFFER POOL</text>
+    <text x="106" y="305" fill="#e3ead6" font-family="monospace" font-size="17" transform="rotate(18 106 305)">4 KiB PAGES</text>
+  </g>
+  <path d="M80 877H1360" stroke="#67825f" stroke-opacity=".5"/><g fill="#3b503b" font-family="monospace" font-size="17"><text x="80" y="923">QUERY → LOCK → CACHE → DISK</text><text x="1010" y="923">COMPONENT ILLUSTRATION</text></g>
+</svg>

@@ -1,0 +1,87 @@
+{
+  "tool": "Built-in image_gen",
+  "model": "Tool-managed; no model selector exposed. GPT-image 2.5 was requested but cannot be confirmed.",
+  "created": "2026-09-14",
+  "purpose": "AI-generated editorial concepts, never evidence of actual interfaces, deployments, personal travel or physical products.",
+  "references": "Six supplied images were inspected for layout direction only; no reference artwork copied.",
+  "assets": [
+    {
+      "slug": "relay",
+      "prompt": "Use case: stylized-concept\nAsset type: wide 16:9 editorial cover for Relay, a PostgreSQL-backed job queue engineering project.\nPrimary request: an arresting, beautifully art-directed macro photograph of an imagined physical job-routing machine. Three parallel machined aluminum channels carry small burnt-orange rectangular job tokens; one token is suspended at a transfer junction, the others align in disciplined rows. This is a tactile conceptual sculpture, not an actual product photo or architecture diagram.\nStyle/medium: premium industrial still-life photography, brushed aluminum machining marks, matte vermilion enamel tokens, hard studio sidelight, deep charcoal shadows. Strong orange versus cool blue-gray complementary palette.\nComposition: asymmetrical diagonal channels fill the image, close oblique crop, one clear transfer point, confident negative space, minimalist object count, landscape 16:9. Make the physical surfaces tangible, not generic glossy CGI. No text, no letters, no labels, no logos, no watermark, no UI, no circuit-board cliches.",
+      "source": "/Users/benjaminzhuang/.codex/generated_images/01a09db8-ed6d-72c3-b235-bcd805cbd6b0/exec-487cc506-64ab-426f-a56c-91eccf32248e.png",
+      "output": "/project-media/art-direction/relay-v1.webp"
+    },
+    {
+      "slug": "splendor",
+      "prompt": "Use case: product-mockup\nAsset type: landscape 16:9 portfolio cover for a browser multiplayer gem-trading board game, Splendor.\nPrimary request: an exquisite still life of loose emerald, sapphire, ruby and clear faceted gems beside a small fan of ivory unprinted playing cards and heavy round brass game tokens. Shot directly overhead on deep aubergine velvet, much of the velvet remains empty. No real branded game components.\nStyle: jewel-macro editorial photography; extraordinary refracted light and tiny caustics, sensual velvet nap and antique brass patina. Wine purple contrasted with pale citron highlights, jewel colors kept rich and localized.\nComposition: a cropped sweep of cards enters from the lower right while three large gems form a sparse off-center triangle, quiet upper left. Wide 16:9, not a centered pile, not an isometric render.\nConstraints: no text, no lettering, no watermark, no branding, no UI, no fake screenshot.",
+      "source": "/Users/benjaminzhuang/.codex/generated_images/01a09db8-ed6d-72c3-b235-bcd805cbd6b0/exec-396bf573-4878-4cfc-8072-c3776d2162aa.png",
+      "output": "/project-media/art-direction/splendor-v1.webp"
+    },
+    {
+      "slug": "algo-explorer",
+      "prompt": "Use case: stylized-concept\nAsset type: landscape 16:9 editorial portfolio cover for AlgoExplorer, an interactive pathfinding algorithm learning tool.\nPrimary request: a tactile cut-paper maze, top-down, with a vivid orange thread tracing a single route through a sea of deep cobalt and pale blue folded paper walls. A small orange circle at the start and square at the finish. This is an artistic metaphor for exploring a path, not an exact algorithm trace.\nStyle: meticulously handcrafted layered paper illustration, visible fibers and sharp fold shadows, graphic editorial art, no CGI sheen. Deep cobalt blue and tangerine complementary colors, pale blue paper base.\nComposition: wide landscape 16:9; maze occupies the frame with large graphic rhythm, one route clearly readable, no tiny labyrinth clutter. A few open areas for visual breathing room.\nConstraints: no text, no letters, no numbers, no watermark, no UI, no decorative tech network lines.",
+      "source": "/Users/benjaminzhuang/.codex/generated_images/01a09db8-ed6d-72c3-b235-bcd805cbd6b0/exec-e0da4c56-e964-4dc5-8afa-22c71365ccfc.png",
+      "output": "/project-media/art-direction/algo-explorer-v1.webp"
+    },
+    {
+      "slug": "simple-db",
+      "prompt": "Use case: stylized-concept\nAsset type: 16:9 landscape editorial cover for SimpleDB, a database internals teaching project.\nPrimary request: a beautiful physical archive seen in extreme macro: tightly packed ivory index cards with forest-green tabs forming a deliberate stair-step rhythm across a dark green archival drawer. One coral-red index card pulled halfway out reveals rows of tiny blind embossed rectangular cells, not text. Tactile organization as a metaphor for buffer pages and records.\nStyle: analog archival still-life, 35mm film quality, soft directional window light, very fine paper edges, subtle wear, warm ivory, pine green, unexpected coral. Quiet and structured, not futuristic.\nComposition: graphic close crop across the stacked edges, diagonal depth, one contrasting card, 16:9 wide landscape. No computers or database cylinders.\nConstraints: no text, numbers, letters, logos, watermark, UI, graphs or pretend factual diagrams.",
+      "source": "/Users/benjaminzhuang/.codex/generated_images/01a09db8-ed6d-72c3-b235-bcd805cbd6b0/exec-6a397720-3c94-4d5c-b0e6-e3b2dabe0b74.png",
+      "output": "/project-media/art-direction/simple-db-v1.webp"
+    },
+    {
+      "slug": "petclinic-devops",
+      "prompt": "Use case: illustration-story\nAsset type: 16:9 landscape editorial portfolio artwork for a Spring PetClinic DevOps course extension.\nPrimary request: a charming, sophisticated two-color linocut illustration of a small veterinary clinic with a cat and dog waiting outside; the clinic is constructed from neatly fitted modular blocks, subtly suggesting repeatable software deployment. Architectural elevation, flat frontal view.\nStyle: hand-carved linocut print, chunky confident shapes, slightly imperfect ink registration, visible recycled paper fiber. Ultramarine blue ink with terracotta orange accent on pale warm paper. Contemporary editorial print, not a cartoon mascot or glossy render.\nComposition: wide landscape, clinic fills center-right, long low shadow, dog and cat in lower left, generous paper around the silhouette, only 5 to 7 bold masses.\nConstraints: no text, no brand logos, no letters, no numbers, no watermark; not a real clinic photograph, no medical claims, no computers, no floating UI cards.",
+      "source": "/Users/benjaminzhuang/.codex/generated_images/01a09db8-ed6d-72c3-b235-bcd805cbd6b0/exec-3b8cf31f-c174-4b09-9243-0005fb42f96e.png",
+      "output": "/project-media/art-direction/petclinic-devops-v1.webp"
+    },
+    {
+      "slug": "333gle",
+      "prompt": "Use case: stylized-concept\nAsset type: landscape 16:9 editorial portfolio cover for 333gle, a small C++ document search engine.\nPrimary request: a bold analog print collage about finding a document: an oversized transparent orange magnifying lens over a dense field of torn cream newspaper columns rendered ONLY as abstract black horizontal typographic bars, with one crisp cobalt-blue rectangle found under the lens. The lens enlarges the abstract bars beneath it.\nStyle: Swiss editorial poster meets physical print-room collage, grainy ink, torn paper edges, vivid orange and cobalt on newsprint ivory. Flat overhead composition with one glass refraction detail. Graphic, surprising, crafted.\nComposition: tightly cropped large circle offset left, paper layers cut diagonally across frame, wide 16:9 landscape. No browser mockup, no tech wireframe.\nConstraints: absolutely no readable text, no letters, no numbers, no logos, no watermark. Use simple abstract bars instead of newspaper language.",
+      "source": "/Users/benjaminzhuang/.codex/generated_images/01a09db8-ed6d-72c3-b235-bcd805cbd6b0/exec-33920f13-32ca-4a91-b28e-4d3e9bfa84b6.png",
+      "output": "/project-media/art-direction/333gle-v1.webp"
+    },
+    {
+      "slug": "xv6",
+      "prompt": "Use case: stylized-concept\nAsset type: wide 16:9 landscape editorial cover for xv6 teaching-kernel coursework.\nPrimary request: a stark retro-computing optical image: an extreme close view into a curved black CRT screen, showing a small field of crisp phosphor-green square cells in disciplined horizontal bands, one pale green blinking-cursor-like rectangle surrounded by black. The curvature and magnified red-green-blue phosphor dot texture are visible. A subtle green afterimage echoes two bands.\nStyle: experimental analog darkroom photograph, severe monochrome acid green and true black, fine scanline texture, authentic glass reflection, almost abstract. No modern workstation or rainbow cyberpunk.\nComposition: black dominates, luminous cells offset low-right, one curved edge of glass clips the upper left corner, graphic silhouette, landscape16:9.\nConstraints: no text, no letters, no numbers, no recognizable code, no watermark, no UI, not a real runtime screenshot.",
+      "source": "/Users/benjaminzhuang/.codex/generated_images/01a09db8-ed6d-72c3-b235-bcd805cbd6b0/exec-a63f88e1-3487-4bb1-b4f3-6fb1e6e24c59.png",
+      "output": "/project-media/art-direction/xv6-v1.webp"
+    },
+    {
+      "slug": "rss-aggregator",
+      "prompt": "Use case: stylized-concept\nAsset type: wide 16:9 landscape editorial cover for an RSS feed aggregation backend.\nPrimary request: a bold screenprinted composition of many thin coral lines entering from the upper and lower edges and bending into one dense horizontal teal stream, like folded ribbons of news converging. A few rectangular paper slips ride between the lines. Communicate gathering many feeds into a single reading stream through abstract print art.\nStyle: 1960s information-design print, overlapping opaque inks and slight misregistration, seafoam paper, deep teal and vivid salmon coral, matte paper texture. Flat graphic image, NOT 3D, NOT a software architecture flowchart.\nComposition: sweeping off-center S bend, wide16:9 landscape, a few large open seafoam areas, confident thick-to-thin rhythm.\nConstraints: no text, no letters, no numbers, no logos, no watermark, no arrows, no rounded UI boxes.",
+      "source": "/Users/benjaminzhuang/.codex/generated_images/01a09db8-ed6d-72c3-b235-bcd805cbd6b0/exec-4766bfc4-ab8a-468c-8149-a8d2fcf0d1f3.png",
+      "output": "/project-media/art-direction/rss-aggregator-v1.webp"
+    },
+    {
+      "slug": "cypress",
+      "prompt": "Use case: stylized-concept\nAsset type: wide16:9 portfolio cover for Cypress, a workspace and document organization prototype.\nPrimary request: a sculptural arrangement of folded document sheets resembling the ascending branches of a cypress tree. Lavender, plum and pale chartreuse paper planes interlock into a tall asymmetric silhouette; one unfolded sheet rests at the base. An artistic metaphor for workspaces and nested documents.\nStyle: high-end paper sculpture photographed in a color-block studio, soft diffuse shadows, crisp intricate folds but few objects, tactile matte surfaces. Pale lilac background with deep plum forms and small acidic yellow-green accent.\nComposition: portrait-like sculpture offset right inside a wide16:9 landscape canvas, large calm field on left, not a literal tree illustration, no stationery desk scene.\nConstraints: no text, no letters, no numbers, no watermark, no brand logos, no UI mockup, no glowing gradients.",
+      "source": "/Users/benjaminzhuang/.codex/generated_images/01a09db8-ed6d-72c3-b235-bcd805cbd6b0/exec-6fdbc892-0f11-4a21-b93a-54a8099e481d.png",
+      "output": "/project-media/art-direction/cypress-v1.webp"
+    },
+    {
+      "slug": "leetcode-clone",
+      "prompt": "Use case: stylized-concept\nAsset type: wide16:9 editorial artwork for a coding-practice workspace portfolio project.\nPrimary request: a playful but rigorous flat composition of dark graphite and vivid mustard-yellow interlocking puzzle pieces on a warm ivory field. Three open bracket-like silhouettes face each other around one perfectly fitting angular insert, suggesting the satisfying moment of solving a programming problem.\nStyle: Japanese woodblock-inspired graphic print with visible carved grain and thick confident black silhouettes; extremely reduced, sophisticated editorial poster. Warm yellow, graphite black, ivory, tiny cool gray detail. NOT 3D, not a toy photograph.\nComposition: large cropped graphic forms, asymmetric balance, wide16:9, strong negative spaces become part of the puzzle, no rounded SaaS cards.\nConstraints: no text, no letters, no numbers, no logos or watermark, no actual source code, no UI.",
+      "source": "/Users/benjaminzhuang/.codex/generated_images/01a09db8-ed6d-72c3-b235-bcd805cbd6b0/exec-8c45dd6f-1a32-467f-8762-a991d134e253.png",
+      "output": "/project-media/art-direction/leetcode-clone-v1.webp"
+    },
+    {
+      "slug": "cliphop",
+      "prompt": "Use case: stylized-concept\nAsset type: wide16:9 editorial portfolio artwork for ClipHop, a social video feed and publishing app.\nPrimary request: experimental analog video art: three offset frames of the SAME airborne skateboard and anonymous sneakers, cropped below the knees, against a flat saturated hot-pink sky. The frames overlap like contact-sheet exposures, a mint-green translucent streak crosses them to suggest motion and short video clips. No actual people identifiable.\nStyle: xerox zine collage meets direct-flash skate photography, halftone black shadows, torn mint paper edge, rich hot magenta and pale mint complementary colors. Raw but deliberately composed, not corporate or sci-fi.\nComposition: diagonal motion from lower left to upper right, broad pink negative space, wide16:9. Clear skateboard silhouette and no extra limbs.\nConstraints: no text, no letters, no numbers, no logos, no watermark, no UI controls, no brand marks on shoes or board.",
+      "source": "/Users/benjaminzhuang/.codex/generated_images/01a09db8-ed6d-72c3-b235-bcd805cbd6b0/exec-4876d084-0969-40c5-a3be-f77224869afb.png",
+      "output": "/project-media/art-direction/cliphop-v1.webp"
+    },
+    {
+      "slug": "propertize",
+      "prompt": "Use case: product-mockup\nAsset type: wide16:9 editorial portfolio artwork for Propertize, a property-management dashboard.\nPrimary request: an architectural model photograph of three simplified terracotta townhouses and a pale blue courtyard, cut from heavy plaster and wood, seen in close oblique elevation. Repeated window cutouts cast precise long shadows across the blue ground. A single cobalt doorway makes a focal point.\nStyle: architectural model studio photography, quiet material realism, terracotta plaster grain, chalk-white roof planes, icy blue ground, dramatic warm sunlight. Restrained Mediterranean color study, not a real listing or development.\nComposition: cropped architectural masses fill most of the wide16:9 canvas; asymmetry, blue negative space to one side, no miniature humans, trees, cars or furniture.\nConstraints: no text, no letters, no numbers, no watermark, no logos, no dashboards, no business metrics, no isometric floating city.",
+      "source": "/Users/benjaminzhuang/.codex/generated_images/01a09db8-ed6d-72c3-b235-bcd805cbd6b0/exec-a1e741a9-e791-4971-8ddc-e3ed97d72355.png",
+      "output": "/project-media/art-direction/propertize-v1.webp"
+    },
+    {
+      "slug": "mems",
+      "prompt": "Use case: photorealistic-natural\nAsset type: wide16:9 editorial portfolio artwork for Mems, a saved-place travel journal.\nPrimary request: a sun-faded travel memory diptych made physically from two overlapping small uncaptioned film photographs resting on warm peach paper. One photograph shows a quiet turquoise coastal bay with a winding path; the second shows a cropped terracotta doorway with bougainvillea shadow. A small translucent sea-green glass pebble holds one corner.\nStyle: tactile analog travel editorial, true photographic grain, imperfect white photo borders, midday sunlight and gentle curl shadows; peach and sea-green complementary colors. Intimate and unpolished, not a generic travel brochure.\nComposition: wide16:9, two photographs angled only slightly, edge of one cut off, broad soft peach negative space, close overhead shot. Photos are imagined places, not claims of personal travel.\nConstraints: no text, no stamps, no handwriting, no people, no brands, no logos, no watermark, no UI.",
+      "source": "/Users/benjaminzhuang/.codex/generated_images/01a09db8-ed6d-72c3-b235-bcd805cbd6b0/exec-f3754df4-d621-4268-a142-b51307b2fa70.png",
+      "output": "/project-media/art-direction/mems-v1.webp"
+    }
+  ]
+}
