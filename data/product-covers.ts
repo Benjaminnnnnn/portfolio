@@ -2,6 +2,7 @@ import type { PortfolioProjectSlug } from "./portfolio-projects";
 
 export const productCovers = {
   relay: { title: "Relay", description: "A job queue that recovers after a worker crash", caption: "Recorded job history · local experiment", kind: "recorded-demo" },
+  handpick: { title: "Handpick", description: "Clear a photo library one photo at a time", caption: "App Store screenshots · demo photo library", kind: "screenshot" },
   splendor: { title: "Splendor", description: "Play the gem-trading game together", caption: "Actual game-board capture", kind: "screenshot" },
   "algo-explorer": { title: "AlgoExplorer", description: "Step through algorithms. Ask about each frame.", caption: "Actual pathfinding and tutor capture", kind: "screenshot" },
   "simple-db": { title: "SimpleDB", description: "A Java database, from queries to stored pages", caption: "Actual BufferPool.java excerpt · not a running database UI", kind: "source-code" },
@@ -18,6 +19,7 @@ export const productCovers = {
 
 // Percent crops of original captures. Aspect ratios prevent distorted UI text.
 export const coverCrops: Partial<Record<PortfolioProjectSlug, { x: number; y: number; width: number; height: number; ratio: number }>> = {
+  handpick: { x: 0, y: 0, width: 100, height: 100, ratio: 1800 / 1000 },
   splendor: { x: 0, y: 0, width: 100, height: 100, ratio: 1800 / 981 },
   "algo-explorer": { x: 0, y: 0, width: 100, height: 100, ratio: 1800 / 988 },
   "333gle": { x: 0, y: 0, width: 100, height: 100, ratio: 1800 / 988 },

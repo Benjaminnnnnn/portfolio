@@ -49,11 +49,11 @@ set `CHROME_PATH` if it is installed somewhere other than the default macOS path
 
 ## Portfolio content
 
-- Thirteen image-led project cards in a staggered gallery
+- Fourteen image-led project cards in a staggered gallery
 - Narrow, artwork-first detail pages with four or five visual panels and expandable implementation notes
 - Project writing in `data/portfolio-projects.ts` and `data/systems-projects.ts`
 - Gallery captions, screenshot crops, and scope notes in `data/project-visuals.ts`
-- Thirteen product-demo covers using actual interface captures, recorded job events, source code, and one labeled setup-form reconstruction; see `docs/product-covers.md`
+- Fourteen product-demo covers using actual interface captures, recorded job events, source code, and one labeled setup-form reconstruction; see `docs/product-covers.md`
 - Existing interface captures remain in `public/project-media/`; explanatory diagrams use selectable HTML text
 - Earlier generated artwork and prompts are retained for recovery but no longer rendered on covers
 - Full-image dialogs with keyboard dismissal and restored focus

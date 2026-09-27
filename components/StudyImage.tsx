@@ -10,7 +10,7 @@ export function StudyImage({ src, alt, visual, full = false }: { src: string; al
   const crop = visual.crop!;
   const imageRatios: Record<string, number> = {
     "333gle": 1800 / 988, algo: 1800 / 988, cliphop: 1800 / 948,
-    cypress: 1800 / 1038, leetcode: 1800 / 1013, mems: 1800 / 887,
+    cypress: 1800 / 1038, handpick: 1800 / 1000, leetcode: 1800 / 1013, mems: 1800 / 887,
     propertize: 1513 / 867, rssagg: 1800 / 1028, splendor: 1800 / 981, xv6: 1800 / 993,
   };
   const imageName = src.split("/").pop()!.replace(".webp", "");

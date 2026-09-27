@@ -5,6 +5,7 @@
 .product-cover-stage { position: absolute; inset: 20% 5% 7%; display: grid; place-items: center; }
 .product-capture { position: relative; width: min(100%, calc(40cqw * var(--capture-ratio))); aspect-ratio: var(--capture-ratio); overflow: hidden; border-radius: .5cqw; box-shadow: 0 1.4cqw 3cqw #18202c20; background: #fff; }
 .product-cover .product-capture img { width: var(--capture-width) !important; height: var(--capture-height) !important; max-width: none; left: var(--capture-left) !important; top: var(--capture-top) !important; right: auto !important; bottom: auto !important; object-fit: fill; transform: none !important; transition: none; }
+.product-cover-handpick { background: #f3eee6; color: #2d2724; }
 .product-cover-splendor { background: #15182b; color: #f1ecdf; }
 .product-cover-splendor .product-cover-stage { inset-inline: 3%; }
 .product-cover-algo-explorer { background: #ece8f9; color: #3f2e6e; }

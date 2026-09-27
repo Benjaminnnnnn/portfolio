@@ -31,13 +31,56 @@ export type PortfolioProject = {
 };
 
 export const projectOrder = [
-  "relay", "splendor", "algo-explorer", "simple-db", "petclinic-devops",
+  "relay", "handpick", "splendor", "algo-explorer", "simple-db", "petclinic-devops",
   "333gle", "xv6", "rss-aggregator", "cypress", "leetcode-clone",
   "cliphop", "propertize", "mems",
 ] as const;
 
 export const portfolioProjects = {
   ...systemsProjects,
+  handpick: {
+    slug: "handpick",
+    title: "Handpick",
+    category: "iOS photo app",
+    context: "Independent product · pre-release",
+    headline: "One photo. One easy choice.",
+    summary:
+      "An iPhone and iPad app for clearing a cluttered photo library one photo at a time. Keep it, delete it, or sort it into an album, and nothing leaves the library until you confirm the batch.",
+    cover: "/project-media/handpick.webp",
+    coverAlt: "Handpick on iPhone: the Organize home screen, a single photo under review with Keep and Delete, and a collection grid",
+    accent: "#c0573f",
+    stack: ["Swift", "SwiftUI", "PhotoKit", "Vision", "WidgetKit", "StoreKit", "Tuist"],
+    sourceUrl: "https://github.com/Benjaminnnnnn/handpick",
+    metrics: [
+      { value: "4", label: "review states per photo" },
+      { value: "0.92", label: "similarity bar before suggesting a duplicate" },
+      { value: "3 min", label: "window for comparing shots" },
+    ],
+    chapters: [
+      {
+        "eyebrow": "01 / Context",
+        "title": "Make cleanup feel small.",
+        "body": [
+          "Libraries grow faster than anyone sorts them. Handpick offers manageable sets such as This Week, On This Day, or Large Files, then shows one photo at a time with a few direct actions and undo."
+        ]
+      },
+      {
+        "eyebrow": "02 / Implementation",
+        "title": "Stage deletions before they happen.",
+        "body": [
+          "Every photo the app has seen is unreviewed, kept, pending removal, or deleted. Delete moves a photo to Handpick's own trash; only a confirmed batch reaches PhotoKit, where iOS asks once more.",
+          "A background scan reads each photo with Vision for similarity, quality, and faces. Duplicates are only suggested within a three-minute window at a high similarity bar, because inventing one asks someone to delete a photo they wanted."
+        ]
+      },
+      {
+        "eyebrow": "03 / Notes",
+        "title": "Still in development.",
+        "body": [
+          "There is no public build yet. The project is generated with Tuist, built and tested in Xcode Cloud, and covered by unit and UI tests. The captures here are App Store screenshots with a demo photo library."
+        ]
+      }
+    ],
+  },
   "algo-explorer": {
     slug: "algo-explorer",
     title: "AlgoExplorer",

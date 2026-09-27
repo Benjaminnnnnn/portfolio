@@ -15,6 +15,7 @@ type ProjectArt = {
 // Prompts and provenance: docs/project-art-prompts.json.
 export const projectArt: Record<PortfolioProjectSlug, ProjectArt> = {
   relay: { alt: "AI concept: orange job tokens meet at a junction in brushed-metal channels", medium: "Machined metal / queue study", paper: "#e5e9eb", ink: "#26333b", accent: "#a43f23", contrast: "#f4c4ab", layout: "sequence" },
+  handpick: { alt: "Handpick App Store screenshots on warm paper", medium: "Warm paper / one photo at a time", paper: "#f3eee6", ink: "#2d2724", accent: "#9c4a36", contrast: "#e6d6ec", layout: "sequence", screen: "App Store screenshots of the Organize home, single-photo review and collection grid, shown with a demo library." },
   splendor: { alt: "AI concept: colored gems, brass tokens and blank cards on plum velvet", medium: "Velvet & gemstones", paper: "#ebe1e8", ink: "#402334", accent: "#704158", contrast: "#e3d9a4", layout: "spread", screen: "The multiplayer board, captured from the project." },
   "algo-explorer": { alt: "AI concept: orange thread exploring a folded blue paper maze", medium: "Cut paper / path study", paper: "#e0e9f6", ink: "#203855", accent: "#315c97", contrast: "#f0bc8b", layout: "sequence", screen: "The A* visualization and tutor in the same workspace." },
   "simple-db": { alt: "AI concept: green-tabbed archive cards with one coral record pulled forward", medium: "Paper archive / stored records", paper: "#e6e9dc", ink: "#2c4236", accent: "#456448", contrast: "#e8b3a0", layout: "diptych" },

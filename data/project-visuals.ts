@@ -1,6 +1,6 @@
 import type { PortfolioProjectSlug } from "./portfolio-projects";
 
-export type DiagramKind = "leases" | "throughput" | "buffer" | "transactions" | "operators" | "environments" | "checks" | "monitoring" | "rules" | "frames" | "workspace" | "practice" | "content" | "fetch" | "properties" | "places" | "search" | "kernel";
+export type DiagramKind = "leases" | "throughput" | "buffer" | "transactions" | "operators" | "environments" | "checks" | "monitoring" | "rules" | "frames" | "workspace" | "practice" | "content" | "fetch" | "properties" | "places" | "search" | "kernel" | "removal";
 export type StudyVisual = {
   title: string;
   caption: string;
@@ -11,6 +11,7 @@ export type StudyVisual = {
 
 export const projectScopeNotes: Record<PortfolioProjectSlug, string> = {
   relay: "An AI-assisted systems study. The results are from local tests. Delivery is at least once, so external writes still need duplicate protection.",
+  handpick: "Pre-release: there is no public build yet. Captures are App Store screenshots with a demo photo library, not a user's photos.",
   splendor: "Built by a four-person team. The repository credits AI assistance for the interface, art, initial infrastructure, and documentation.",
   "algo-explorer": "The tutor connects to Gemini and OpenAI. Algorithm tests and checked examples for its explanations are still needed.",
   "simple-db": "Coursework built on a teaching framework. The repository includes tests; they have not been rerun for this page.",
@@ -32,6 +33,11 @@ export const projectVisuals: Record<PortfolioProjectSlug, readonly [StudyVisual,
     { title: "One current owner", diagram: "leases", caption: "A fresh lease token separates the current worker from a late one." },
     { title: "A job after a crash", replay: true, caption: "Recorded local experiment · September 2026" },
     { title: "More execution slots", diagram: "throughput", caption: "3,000 jobs per configuration. One local trial each, including submission and queue drain. These are not production capacity figures." },
+  ],
+  handpick: [
+    { title: "One photo, one choice", crop: { x: 33.6, y: 0, width: 32.4, height: 100 }, caption: "The review screen: Keep, Delete, Undo, and album sorting without leaving the photo." },
+    { title: "A manageable set", crop: { x: 0, y: 0, width: 32.4, height: 100 }, caption: "The Organize home offers small sets such as This Week instead of the whole library." },
+    { title: "Nothing leaves until you confirm", diagram: "removal", caption: "Deleted photos wait in Handpick's trash. Only a confirmed batch reaches the Photos library." },
   ],
   splendor: [
     { title: "The shared board", crop: { x: 18, y: 22, width: 59, height: 57 }, caption: "Detail from the game screenshot: card costs, bonuses, and available decks." },
