@@ -1,7 +1,7 @@
 # Project art direction
 
 > Superseded cover direction: the user approved the detail pages but requested
-> recognizable product-demo covers. [Product covers](product-covers.md) describes
+> recognizable product-demo covers. [Marketing images](marketing.md) now replaces the product covers; it describes
 > the current implementation. The palettes and detail layouts below remain;
 > the generated images are preserved on disk but no longer displayed as covers.
 

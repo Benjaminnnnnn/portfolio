@@ -45,7 +45,7 @@ for (const route of routes) {
 
 await page.goto(origin, { waitUntil: "networkidle" });
 await page.waitForTimeout(2_500);
-assert.equal(await page.locator("canvas").count(), 3, "home WebGL canvases did not mount");
+assert.equal(await page.locator("canvas").count(), 4, "home WebGL canvases (3 scenes + work shader) did not mount");
 assert.deepEqual(
   await page.locator("main [data-section]").evaluateAll((sections) => sections.map((section) => section.dataset.section)),
   ["hero", "about", "work", "purpose", "contact"],

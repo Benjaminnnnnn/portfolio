@@ -43,7 +43,7 @@ export const portfolioProjects = {
     title: "Handpick",
     category: "iOS photo app",
     context: "Independent product · pre-release",
-    headline: "One photo. One easy choice.",
+    headline: "Clear a cluttered camera roll, one decision at a time.",
     summary:
       "An iPhone and iPad app for clearing a cluttered photo library one photo at a time. Keep it, delete it, or sort it into an album, and nothing leaves the library until you confirm the batch.",
     cover: "/project-media/handpick.webp",

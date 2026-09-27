@@ -5,7 +5,7 @@ import "./original.css";
 import "./globals.css";
 import "./project-studies.css";
 import "./project-art-direction.css";
-import "./product-covers.css";
+import "./work-stage.css";
 
 export const metadata: Metadata = {
   metadataBase: new URL("https://benjaminnnnnn.github.io/portfolio"),

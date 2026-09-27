@@ -1,0 +1,49 @@
+--- a/src/styles/globals.css
++++ b/src/styles/globals.css
+@@ -44,3 +44,46 @@
+ ::selection {
+   background: rgba(255, 95, 109, 0.25);
+ }
++
++/* ---- Night feed: neon reskin (Aceternity-inspired glow borders + aurora) ---- */
++html, body {
++  color: #f4f2ff !important;
++  background: #07060d !important;
++  background-image:
++    radial-gradient(60% 50% at 10% 0%, rgba(255, 64, 129, .22), transparent 60%),
++    radial-gradient(50% 40% at 95% 10%, rgba(0, 229, 255, .18), transparent 60%),
++    radial-gradient(40% 40% at 50% 100%, rgba(124, 77, 255, .22), transparent 60%) !important;
++  background-attachment: fixed !important;
++}
++body .bg-white, body .bg-white\/70, body .bg-slate-50, body .bg-slate-100 { background-color: rgba(20, 17, 34, .72) !important; backdrop-filter: blur(16px) saturate(1.3); }
++body .from-slate-50, body .via-white, body .to-slate-50 { --tw-gradient-from: rgba(20,17,34,.72) !important; --tw-gradient-to: rgba(20,17,34,.72) !important; --tw-gradient-stops: rgba(20,17,34,.72), rgba(20,17,34,.72) !important; }
++body .border-slate-200, body .border-white\/40, body .border-white\/30, body .border-white\/70 { border-color: rgba(255, 255, 255, .08) !important; }
++body .text-slate-900, body .text-slate-800, body .text-ink { color: #fbfaff !important; }
++body .text-slate-700, body .text-slate-600 { color: #d7d2ee !important; }
++body .text-slate-500, body .text-slate-400, body .text-gray-400 { color: #9d96bd !important; }
++body .shadow-sm, body .shadow-inner { box-shadow: 0 20px 60px -30px rgba(255, 64, 129, .45) !important; }
++body input { color: #fff; background: transparent; }
++body input::placeholder { color: #8e87b3; }
++
++/* Video cards get a slowly rotating neon ring. */
++@property --hop-angle { syntax: "<angle>"; inherits: false; initial-value: 0deg; }
++body div.overflow-hidden:has(video) {
++  position: relative; border-radius: 22px !important; isolation: isolate; overflow: visible !important; border: 0 !important; background: transparent !important;
++  box-shadow: 0 30px 80px -30px rgba(255, 64, 129, .7), 0 0 0 1px rgba(255, 255, 255, .06) !important;
++}
++body div.overflow-hidden:has(video)::before {
++  content: ""; position: absolute; inset: -2px; z-index: -1; border-radius: 24px;
++  background: conic-gradient(from var(--hop-angle), #ff4081, #ffb74d, #00e5ff, #7c4dff, #ff4081);
++  animation: hop-spin 6s linear infinite; filter: blur(.5px);
++}
++@keyframes hop-spin { to { --hop-angle: 360deg; } }
++
++/* Topic chips glow on hover. */
++body a:hover > div, body button:hover { text-shadow: 0 0 18px rgba(255, 64, 129, .6); }
++@media (prefers-reduced-motion: reduce) { body div.overflow-hidden:has(video)::before { animation: none; } }
++
++body .bg-white\/80, body .bg-white\/90, body .bg-white\/95, body .hover\:bg-white\/60:hover { background-color: rgba(28, 24, 46, .8) !important; }
++body .text-primary { color: #fbfaff !important; }
++body .border-white\/80, body .border-white\/60 { border-color: rgba(255,255,255,.08) !important; }
++body div.overflow-hidden:has(video) video { border-radius: 20px; }
++body .bg-white\/60 { background-color: rgba(255,255,255,.05) !important; border-color: rgba(255,255,255,.1) !important; }

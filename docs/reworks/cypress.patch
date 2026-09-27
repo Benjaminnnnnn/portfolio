@@ -1,0 +1,120 @@
+--- a/src/app/globals.css
++++ b/src/app/globals.css
+@@ -70,3 +70,17 @@
+     transform: translateX(-100%);
+   }
+ }
++
++/* CypressHero: Aceternity-style hero highlight + container scroll */
++.cy-dots { background-image: radial-gradient(rgba(255,255,255,.09) 1px, transparent 1px); background-size: 18px 18px; mask-image: radial-gradient(ellipse 80% 60% at 50% 0%, #000 30%, transparent 85%); }
++.cy-dots-lit { background-image: radial-gradient(rgba(170,130,255,.95) 1px, transparent 1px); mask-image: radial-gradient(220px circle at var(--mx, 50%) var(--my, 30%), #000, transparent 70%); }
++.cy-highlight { position: relative; display: inline-block; padding: 0 .15em; border-radius: .2em; background: linear-gradient(90deg, #6366f1, #a855f7, #ec4899) no-repeat left center / 0% 100%; animation: cy-mark 1.4s cubic-bezier(.22,1,.36,1) .6s forwards; }
++@keyframes cy-mark { to { background-size: 100% 100%; } }
++.cy-rise { opacity: 0; transform: translateY(18px); animation: cy-rise .8s cubic-bezier(.22,1,.36,1) forwards; }
++@keyframes cy-rise { to { opacity: 1; transform: none; } }
++.cy-shine::after { content: ""; position: absolute; inset: 0; background: linear-gradient(110deg, transparent 35%, rgba(255,255,255,.7) 50%, transparent 65%); transform: translateX(-100%); animation: cy-shine 3.5s ease-in-out 1.5s infinite; }
++@keyframes cy-shine { 40%, 100% { transform: translateX(100%); } }
++.cy-stage { perspective: 1400px; }
++.cy-device { transform: rotateX(18deg) scale(.96); transform-origin: top center; animation: cy-flatten linear both; animation-timeline: view(); animation-range: entry 0% cover 45%; }
++@keyframes cy-flatten { to { transform: rotateX(0deg) scale(1); } }
++@media (prefers-reduced-motion: reduce) { .cy-rise, .cy-highlight, .cy-shine::after, .cy-device { animation: none !important; opacity: 1; transform: none; background-size: 100% 100%; } }
+--- a/src/app/(site)/page.tsx
++++ b/src/app/(site)/page.tsx
+@@ -1,4 +1,5 @@
+ import TitleSection from "@/components/landing-page/TitleSection";
++import CypressHero from "@/components/landing-page/CypressHero";
+ import { Button } from "@/components/ui/button";
+ import Image from "next/image";
+ 
+@@ -18,24 +19,7 @@
+ const HomePage = (props: Props) => {
+   return (
+     <>
+-      <section className="mt-10 gap-4 overflow-hidden px-4 sm:flex sm:flex-col sm:px-6 md:items-center md:justify-center">
+-        <TitleSection
+-          pill="✨ Your Workspace, Perfected"
+-          title="All-In-One Collaboration and Productivity Platform"
+-        ></TitleSection>
+-        <div className="mt-6 rounded-xl bg-gradient-to-r from-brand-primary-purple to-brand-primary-blue p-[2px] sm:w-[300px]">
+-          <Button
+-            variant="secondary"
+-            className="w-full rounded-[10px] bg-background p-6 text-2xl"
+-          >
+-            Get Cypress Free
+-          </Button>
+-        </div>
+-        <div className="relative ml-[-50px] mt-[-40px] flex w-[750px] items-center justify-center sm:ml-0 sm:w-full md:mt-[-90px]">
+-          <Image src={AppBanner} alt="Application banner"></Image>
+-          <div className="absolute bottom-0 left-0 right-0 top-1/2 z-10 bg-gradient-to-t dark:from-background"></div>
+-        </div>
+-      </section>
++      <CypressHero />
+ 
+       <section className="relative mx-auto max-w-full lg:max-w-[70%]">
+         <div
+--- /dev/null
++++ b/src/components/landing-page/CypressHero.tsx
+@@ -0,0 +1,63 @@
++"use client";
++// Hero Highlight + Container Scroll patterns from Aceternity UI, built with
++// CSS only (no framer-motion in this project).
++import Image from "next/image";
++import Link from "next/link";
++import { useRef } from "react";
++import AppBanner from "../../../public/appBanner.png";
++
++const features = ["Accounts & sessions", "Private or shared workspaces", "Nested folders & files", "Drizzle + Postgres model"];
++
++export default function CypressHero() {
++  const ref = useRef<HTMLElement>(null);
++  return (
++    <section
++      ref={ref}
++      className="cy-hero relative isolate overflow-hidden px-4 pb-10 pt-20 sm:px-6"
++      onMouseMove={(e) => {
++        const r = e.currentTarget.getBoundingClientRect();
++        e.currentTarget.style.setProperty("--mx", `${e.clientX - r.left}px`);
++        e.currentTarget.style.setProperty("--my", `${e.clientY - r.top}px`);
++      }}
++    >
++      <div aria-hidden className="cy-dots absolute inset-0 -z-10" />
++      <div aria-hidden className="cy-dots cy-dots-lit absolute inset-0 -z-10" />
++      <div aria-hidden className="absolute left-1/2 top-24 -z-10 h-[420px] w-[820px] -translate-x-1/2 rounded-full bg-[radial-gradient(closest-side,rgba(126,74,255,.45),transparent)] blur-3xl" />
++
++      <div className="mx-auto flex max-w-5xl flex-col items-center text-center">
++        <span className="cy-rise rounded-full bg-gradient-to-r from-brand-primary-blue to-brand-primary-purple p-px text-sm">
++          <span className="block rounded-full bg-black/80 px-4 py-1.5 text-white/85">✨ Notes, docs and wikis in one calm place</span>
++        </span>
++        <h1 className="cy-rise mt-7 text-5xl font-semibold leading-[1.05] tracking-[-0.035em] text-white sm:text-7xl" style={{ animationDelay: ".08s" }}>
++          Give every idea
++          <br />
++          <span className="cy-highlight">a workspace of its own.</span>
++        </h1>
++        <p className="cy-rise mt-6 max-w-2xl text-lg text-white/60" style={{ animationDelay: ".16s" }}>
++          Cypress organizes your team&apos;s documents into workspaces, folders and files — with accounts, sharing and a typed Postgres model underneath.
++        </p>
++        <div className="cy-rise mt-9 flex flex-wrap items-center justify-center gap-3" style={{ animationDelay: ".24s" }}>
++          <Link href="/signup" className="cy-shine relative overflow-hidden rounded-xl bg-white px-6 py-3.5 text-base font-semibold text-black shadow-[0_20px_60px_-15px_rgba(126,74,255,.9)]">
++            Create your workspace
++          </Link>
++          <Link href="/login" className="rounded-xl border border-white/15 bg-white/5 px-6 py-3.5 text-base font-semibold text-white backdrop-blur hover:border-white/30">
++            Sign in
++          </Link>
++        </div>
++        <ul className="cy-rise mt-8 flex flex-wrap justify-center gap-x-6 gap-y-2 text-sm text-white/50" style={{ animationDelay: ".32s" }}>
++          {features.map((f) => (
++            <li key={f} className="flex items-center gap-2"><span className="h-1.5 w-1.5 rounded-full bg-brand-primary-purple" />{f}</li>
++          ))}
++        </ul>
++      </div>
++
++      <div className="cy-stage mx-auto mt-16 max-w-6xl">
++        <div className="cy-device rounded-[28px] border border-white/10 bg-[#0d0b16] p-3 shadow-[0_0_0_1px_rgba(255,255,255,.04),0_60px_140px_-40px_rgba(126,74,255,.65)]">
++          <div className="overflow-hidden rounded-[20px] border border-white/5">
++            <Image src={AppBanner} alt="Cypress workspace with sidebar navigation" priority className="w-full" />
++          </div>
++        </div>
++      </div>
++    </section>
++  );
++}
