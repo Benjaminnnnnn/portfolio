@@ -18,12 +18,11 @@ try {
   const productCovers = page.locator(".project-card-gallery .product-cover");
   assert.equal(await productCovers.count(), 14, "each project needs a product preview");
   const coverKinds = await productCovers.evaluateAll(nodes => nodes.map(node => node.dataset.coverKind));
-  assert.equal(coverKinds.filter(kind => kind === "marketing").length, 14, "every card uses its marketing composition");
+  assert.equal(coverKinds.filter(kind => kind === "specimen").length, 14, "every card uses its specimen");
   assert.equal(await page.locator('.project-card-gallery img[src*="art-direction"]').count(), 0, "no abstract artwork should remain on a product cover");
-  const coverSources = await productCovers.locator("img").evaluateAll(nodes => nodes.map(node => node.getAttribute("src")));
-  assert.equal(new Set(coverSources.filter(src => src.includes("marketing"))).size, 14, "each project has its own marketing image");
-  assert.equal(await page.locator(".work-stage canvas.shader-field").count(), 1, "work section has one shared shader field");
-  assert.equal(await page.locator(".project-card-gallery .project-tagline").count(), 14, "each card carries a one-line headline");
+  assert.equal(new Set(await productCovers.locator(".specimen").evaluateAll(nodes => nodes.map(node => node.className))).size, 14, "each project has its own specimen");
+  assert.equal(await page.locator("#work canvas").count(), 0, "the work index stays flat: no shader canvas");
+  assert.equal(await page.locator(".project-card-gallery .project-year").count(), 14, "each card shows its years");
   const palettes = await page.locator(".project-card-gallery").evaluateAll(nodes => nodes.map(node => node.style.getPropertyValue("--card-paper")));
   assert.equal(new Set(palettes).size, 14, "project palettes should be distinct");
   let fullCaptures = 0;
@@ -59,8 +58,8 @@ try {
     assert.equal(await page.locator('.study-hero img[src*="art-direction"]').count(), 0);
     await page.locator(".study-hero img").evaluateAll(nodes => Promise.all(nodes.map(node => node.decode())));
     assert.equal(await page.locator(".study-hero .product-cover").count(), 1);
-    assert.equal(await page.locator(".study-hero .study-shader").count(), 1, `${route} hero shader stage`);
-    assert.ok((await page.locator(".study-headline").innerText()).length > 10, `${route} headline`);
+    assert.equal(await page.locator(".study-hero .specimen").count(), 1, `${route} hero specimen`);
+    assert.equal(await page.locator(".study-meta dt").count(), 5, `${route} metadata sheet`);
     await page.locator(".study-hero .product-cover").screenshot({ path: `${output}/${route.replaceAll("/", "")}-product-cover.png` });
     const nextThumb = page.locator(".study-next-thumb");
     await nextThumb.scrollIntoViewIfNeeded();
@@ -162,7 +161,7 @@ try {
   await page.locator(".study-gallery").evaluate(node => node.scrollIntoView({ block: "start" }));
   await page.screenshot({ path: `${output}/splendor-gallery-dark-mobile.png` });
   assert.deepEqual(errors, [], "browser errors after dark-mode routes");
-  const result = { caseStudies: links.length, productCovers: coverKinds.length, marketingCovers: 14, distinctPalettes: new Set(palettes).size, fullCaptures, visualPanels: links.length * 4 + fullCaptures, widths: [320, 390, 768, 1440, 2048], imageDialogs: "passed", compactHeaders: "passed", productFirst: "passed", expandableNotes: "passed", keyboardReplay: "passed", reducedMotion: "passed", darkMode: "passed", errors };
+  const result = { caseStudies: links.length, productCovers: coverKinds.length, specimenCovers: 14, distinctPalettes: new Set(palettes).size, fullCaptures, visualPanels: links.length * 4 + fullCaptures, widths: [320, 390, 768, 1440, 2048], imageDialogs: "passed", compactHeaders: "passed", productFirst: "passed", expandableNotes: "passed", keyboardReplay: "passed", reducedMotion: "passed", darkMode: "passed", errors };
   await fs.writeFile(`${output}/visual-verification.json`, JSON.stringify(result, null, 2));
   console.log(JSON.stringify(result, null, 2));
 } finally {

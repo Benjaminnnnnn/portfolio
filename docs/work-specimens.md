@@ -1,28 +1,32 @@
-# Marketing images and UI reworks
+# Work specimens
 
-Every project card and case-study hero uses a marketing composition from
-`public/project-media/marketing/<slug>.webp` (2400×1500). Backgrounds, window
-frames, headlines and chips are composed in `scripts/marketing/studio.html`.
-The screens inside the frames are real: interface captures, source excerpts,
-recorded runs, or API schema text. Each image carries a small provenance line
-in its bottom-right corner, and the same text appears under the case-study
-hero (`data/project-marketing.ts`).
+The Work index and case-study heroes use **specimens**, not posters: one flat
+colour field per project holding a single object made from that project's own
+material (`components/specimens/Specimen.tsx`, `app/specimens.css`). Each has
+one hover gesture — the job log flips like a departures board, the photo is
+swiped away with a DELETE stamp, the card hand fans, the A* path draws itself,
+a buffer page gets evicted, pipeline stages pop, the Two Sum cases pass.
 
-## Rebuilding
+Sources are listed in `data/project-meta.ts` and shown under each case-study
+hero. Real imagery comes from Handpick's CC0 demo library, Splendor's card art,
+and crops of existing captures; `scripts/specimens/assets.mjs` rebuilds them
+into `public/project-media/specimens/`.
+
+The earlier marketing-poster, WebGL-shader and tilt/glow treatment was removed
+because it read as generic.
+
+## Case-study screenshots
+
+Interface captures inside case studies come from local runs of the project
+repositories:
 
 ```bash
-# 1. Clone the project repositories into demonstrators/ (gitignored) and run
-#    the captures described below.
-# 2. Crop and convert captures into scripts/marketing/captures/
-node scripts/marketing/prepare.mjs
-# 3. Render all compositions (or pass slugs)
-node scripts/marketing/render.mjs [slug ...]
+# Clone repositories into demonstrators/ (gitignored) and capture, then:
+node scripts/marketing/prepare.mjs   # crop + convert into scripts/marketing/captures/
+node scripts/marketing/covers.mjs    # publish the reworked-UI covers
 ```
 
-`prepare.mjs` reads from `demonstrators/`, so it only runs on a machine with
-the clones and capture PNGs. The committed WebP files are the output.
-
-## Sources per project
+## Capture sources per project
 
 | Project | Inside the frame | How it was captured |
 | --- | --- | --- |
