@@ -43,7 +43,7 @@ refraction ripples. The effect follows the pointer smoothly and fades on pointer
 leave or window blur. Only hello materials enable it; reduced motion and touch
 input disable it. No extra textures or rendering passes were added.
 
-- `node scripts/verify-hero-water.mjs http://127.0.0.1:3109`: passed. Observes actual WebGL uniform uploads for hover strength, animation time, fade-out, reduced motion, hero-only activation, and touch suppression. No browser or shader console errors.
+- `node scripts/verify-hero-shader.mjs http://127.0.0.1:3109`: passed. Observes WebGL uniform uploads: the background chain (vignette → swirl → sine → shatter → bokeh) runs, the vignette follows the pointer, the fluid push turns on while the pointer moves and off 600 ms after it stops, the glass light follows the pointer, and reduced motion disables the fluid. No browser or shader console errors.
 - Visually reviewed idle, two timed hover frames, a second hovered letter, and dark mode. Screenshots and results are under ignored `artifacts/hero-water/`.
 - Production build/TypeScript, script lint, `git diff --check`, and the 14-route browser smoke suite passed after the shader change.
 

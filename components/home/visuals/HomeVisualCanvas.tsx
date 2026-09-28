@@ -2,64 +2,11 @@
 
 import { useEffect, useRef } from "react";
 import * as THREE from "three";
+import { createBokehBackdrop } from "./bokehBackdrop";
+import { createFluidPushPass } from "./fluidPushPass";
 import { withBasePath } from "@/lib/base-path";
 import { GLTFLoader } from "three/examples/jsm/loaders/GLTFLoader.js";
 import { clone } from "three/examples/jsm/utils/SkeletonUtils.js";
-
-const screenVertex = /* glsl */ `
-  varying vec2 vUv;
-  void main() {
-    vUv = uv;
-    gl_Position = vec4(position.xy, 0.0, 1.0);
-  }
-`;
-
-const backdropFragment = /* glsl */ `
-  precision highp float;
-  varying vec2 vUv;
-  uniform float uTime;
-  uniform float uThemeMix;
-  uniform vec2 uPointer;
-  uniform vec2 uResolution;
-  uniform vec3 uLightBg;
-  uniform vec3 uLightVignette;
-  uniform vec3 uLightOutput;
-  uniform vec3 uDarkBg;
-  uniform vec3 uDarkVignette;
-  uniform vec3 uDarkOutput;
-
-  float hash(vec2 p) {
-    return fract(sin(dot(p, vec2(127.1, 311.7))) * 43758.5453);
-  }
-
-  float noise(vec2 p) {
-    vec2 i = floor(p);
-    vec2 f = fract(p);
-    f = f * f * (3.0 - 2.0 * f);
-    return mix(mix(hash(i), hash(i + vec2(1.0, 0.0)), f.x),
-      mix(hash(i + vec2(0.0, 1.0)), hash(i + vec2(1.0)), f.x), f.y);
-  }
-
-  void main() {
-    vec2 uv = vUv;
-    vec2 warped = uv + vec2(noise(uv * 2.1), noise(uv.yx * 2.7)) * 0.12;
-    float sweep = warped.x * 0.82 + warped.y * 0.7;
-    float bands = sin(sweep * 10.0 - 1.5) + 0.48 * sin(sweep * 18.0 + 2.1);
-    float cream = smoothstep(0.36, 1.12, bands + noise(warped * 4.0) * 0.56);
-    cream = mix(cream, smoothstep(0.14, 0.74, cream), 0.72);
-    float aspect = uResolution.x / max(uResolution.y, 1.0);
-    vec2 vignetteUv = (uv - uPointer) * vec2(aspect, 1.0);
-    float vignette = smoothstep(0.12, 1.05, length(vignetteUv));
-    vec3 lightBlue = vec3(0.70, 0.84, 0.92);
-    vec3 lightWarm = vec3(1.0, 0.984, 0.925);
-    vec3 lightColor = mix(lightBlue, lightWarm, cream * 0.94);
-    float darkFalloff = min(mix(vignette, 1.0, 0.72), 0.82);
-    vec3 darkColor = mix(uDarkBg, uDarkVignette, darkFalloff);
-    vec3 color = mix(lightColor, darkColor, smoothstep(0.0, 1.0, uThemeMix));
-    color += (hash(gl_FragCoord.xy + floor(uTime * 2.0)) - 0.5) * 0.014;
-    gl_FragColor = vec4(color, 1.0);
-  }
-`;
 
 const glassVertex = /* glsl */ `
   varying vec3 worldNormal;
@@ -104,14 +51,11 @@ const glassFragment = /* glsl */ `
   uniform float uTintMix;
   uniform float uTintThicknessMinAlpha;
   uniform float uTintThicknessMaxAlpha;
+  uniform float uDark;
   uniform vec2 uScreenResolutionPx;
   uniform sampler2D uTexture;
   uniform float uSceneRefractionEnabled;
   uniform float uRgbRefraction;
-  uniform float uWaterEnabled;
-  uniform float uWaterTime;
-  uniform vec2 uWaterPointer;
-  uniform float uWaterStrength;
   uniform int uLoop;
   varying vec3 worldNormal;
   varying vec3 eyeVector;
@@ -142,32 +86,6 @@ const glassFragment = /* glsl */ `
     vec2 uv = gl_FragCoord.xy / uScreenResolutionPx.xy;
     vec3 normal = normalize(worldNormal);
     if (!gl_FrontFacing) normal = -normal;
-    float waterMask = 0.0;
-    float caustic = 0.0;
-    float sunGlint = 0.0;
-    if (uWaterEnabled > 0.5 && uWaterStrength > 0.001) {
-      // Screen-height units keep the pool circular on wide and tall screens.
-      vec2 aspect = vec2(uScreenResolutionPx.x / uScreenResolutionPx.y, 1.0);
-      vec2 fromPointer = (uv - uWaterPointer) * aspect;
-      float distanceToPointer = length(fromPointer);
-      waterMask = (1.0 - smoothstep(0.025, 0.19, distanceToPointer)) * uWaterStrength;
-      if (waterMask > 0.001) {
-        // Crossing, domain-warped waves make drifting sunlit filaments, not a
-        // flat cursor glow. Perturb the glass normal and refraction together.
-        float t = uWaterTime;
-        vec2 water = uv * aspect * 28.0;
-        water += vec2(sin(water.y * 1.7 + t * 0.7), cos(water.x * 1.3 - t * 0.6)) * 0.38;
-        float a = water.x * 2.2 + water.y * 1.1 + t * 0.9;
-        float b = water.y * 2.8 - water.x * 0.8 - t * 0.7;
-        vec2 waves = vec2(cos(a) + 0.55 * cos(b), sin(b) - 0.55 * sin(a));
-        float ripple = sin(distanceToPointer * 85.0 - t * 2.5) * exp(-distanceToPointer * 12.0);
-        waves += fromPointer / max(distanceToPointer, 0.001) * ripple * 0.35;
-        normal = normalize(normal + vec3(waves * waterMask * 0.12, 0.0));
-        uv += waves * waterMask * 0.003;
-        caustic = pow(clamp(1.0 - abs(sin(a) + sin(b)) * 0.7, 0.0, 1.0), 12.0);
-        sunGlint = caustic * pow(max(0.0, sin(a * 0.6 - b * 0.8 + t * 0.45)), 8.0);
-      }
-    }
     vec3 eyeDir = normalize(eyeVector);
     vec3 color = vec3(0.0);
     float noise = random(uv) * 0.025;
@@ -220,12 +138,17 @@ const glassFragment = /* glsl */ `
     float thicknessMask = clamp(1.0 - abs(dot(normal, eyeDir)), 0.0, 1.0);
     float tintAlpha = tint.a * mix(uTintThicknessMaxAlpha, uTintThicknessMinAlpha, thicknessMask);
     float tintK = clamp(uTintEnabled, 0.0, 1.0) * tintAlpha;
+    // Light theme: Beer-Lambert absorption. Dark theme: hard-light blend.
     vec3 transmittance = pow(clamp(tint.rgb, 0.001, 1.0), vec3(clamp(uTintMix, 0.01, 3.0)));
-    color = mix(color, color * transmittance, tintK);
+    vec3 beerColor = mix(color, color * transmittance, tintK);
+    float tintKHard = clamp(uTintEnabled, 0.0, 1.0) * clamp(uTintMix, 0.0, 1.0) * tintAlpha;
+    vec3 baseClamped = clamp(color, 0.0, 1.0);
+    vec3 blendClamped = clamp(tint.rgb, 0.0, 1.0);
+    vec3 hard = mix(2.0 * baseClamped * blendClamped, 1.0 - 2.0 * (1.0 - blendClamped) * (1.0 - baseClamped), step(vec3(0.5), blendClamped));
+    color = mix(beerColor, mix(color, hard, tintKHard), clamp(uDark, 0.0, 1.0));
     color += specular(uLight, normal, eyeDir, uShininess, uDiffuseness) * uSpecularStrength;
     float sideMask = smoothstep(-0.5, 0.5, dot(normal, normalize(uFresnelSideDir)));
     color += fresnel(eyeDir, normal, uFresnelPower) * sideMask * uFresnelStrength;
-    color += waterMask * (vec3(1.0, 0.93, 0.72) * caustic * 0.38 + vec3(0.82, 0.94, 1.0) * sunGlint * 0.48);
     gl_FragColor = vec4(color, 1.0);
     #include <tonemapping_fragment>
     #include <colorspace_fragment>
@@ -352,11 +275,9 @@ function makeGlassMaterial(texture: THREE.Texture, screenSize: THREE.Vector2, yR
       uTintColorA: { value: new THREE.Vector4(tintA.r, tintA.g, tintA.b, 1) },
       uTintColorB: { value: new THREE.Vector4(1, 1, 1, 1) },
       uTintLocalYRange: { value: yRange }, uTintFlip: { value: 0 }, uTintEnabled: { value: 1 }, uTintMix: { value: 1 },
-      uTintThicknessMinAlpha: { value: 1 }, uTintThicknessMaxAlpha: { value: 0.92 },
+      uTintThicknessMinAlpha: { value: 1 }, uTintThicknessMaxAlpha: { value: 0.92 }, uDark: { value: 0 },
       uScreenResolutionPx: { value: screenSize }, uSceneRefractionEnabled: { value: 1 },
       uRgbRefraction: { value: 1 }, uLoop: { value: 3 }, uLight: { value: new THREE.Vector3(4, 9, 0.5) },
-      uWaterEnabled: { value: 0 }, uWaterTime: { value: 0 },
-      uWaterPointer: { value: new THREE.Vector2(0.5, 0.5) }, uWaterStrength: { value: 0 },
     },
   });
 }
@@ -380,10 +301,22 @@ export default function HomeVisualCanvas({ onProgress, onReady }: HomeVisualCanv
     const decorativeSprites: THREE.Sprite[] = [];
     const textures: THREE.Texture[] = [];
     const pointer = new THREE.Vector2();
-    const waterPointer = new THREE.Vector2(0.5, 0.5);
     const reducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)");
     let pointerPresent = false;
-    let waterStrength = 0;
+    // Fluid push (reference FluidPushPass) and the pointer-following glass light.
+    const fluid = createFluidPushPass();
+    const compositeTarget = new THREE.WebGLRenderTarget(1, 1, { minFilter: THREE.LinearFilter, magFilter: THREE.LinearFilter, depthBuffer: false, stencilBuffer: false });
+    const fluidPointer = new THREE.Vector2(-1, -1);
+    const fluidPrevious = new THREE.Vector2(-1, -1);
+    const fluidDelta = new THREE.Vector2();
+    let lastFluidMove = -Infinity;
+    const lightRadius = Math.hypot(4, 9);
+    const lightRestAngle = Math.atan2(9, 4);
+    let lightAngle = lightRestAngle;
+    let lightTargetAngle = lightRestAngle;
+    const lightRay = new THREE.Raycaster();
+    const lightPlane = new THREE.Plane(new THREE.Vector3(0, 0, 1), 0);
+    const lightHit = new THREE.Vector3();
     const screenSize = new THREE.Vector2(1, 1);
     const timer = new THREE.Timer();
     timer.connect(document);
@@ -446,22 +379,9 @@ export default function HomeVisualCanvas({ onProgress, onReady }: HomeVisualCanv
     const darkTintB = new THREE.Color("#8e9dc4");
     const tintA = new THREE.Color();
     const tintB = new THREE.Color();
-    const backdropUniforms = {
-      uTime: { value: 0 },
-      uThemeMix: { value: themeMix },
-      uPointer: { value: new THREE.Vector2(0.5, 0.5) },
-      uResolution: { value: screenSize },
-      uLightBg: { value: new THREE.Color("#ffead6") },
-      uLightVignette: { value: new THREE.Color("#6196ff") },
-      uLightOutput: { value: new THREE.Color("#acffb9") },
-      uDarkBg: { value: new THREE.Color("#2c4bd5") },
-      uDarkVignette: { value: new THREE.Color("#00000d") },
-      uDarkOutput: { value: new THREE.Color("#00344c") },
-    };
-    const backdrop = new THREE.Mesh(
-      new THREE.PlaneGeometry(2, 2),
-      new THREE.ShaderMaterial({ vertexShader: screenVertex, fragmentShader: backdropFragment, uniforms: backdropUniforms, depthWrite: false, depthTest: false, toneMapped: false }),
-    );
+    const backdropField = createBokehBackdrop();
+    const pointerUv = new THREE.Vector2(0.5, 0.5);
+    const backdrop = new THREE.Mesh(new THREE.PlaneGeometry(2, 2), backdropField.material);
     backdrop.frustumCulled = false;
     backdrop.renderOrder = -100;
     backdrop.layers.set(0);
@@ -502,7 +422,6 @@ export default function HomeVisualCanvas({ onProgress, onReady }: HomeVisualCanv
           // The upright contact mesh has its local Y axis pointing down.
           // Keep the reference's pale crown and blue lower edge after unflipping it.
           glassMaterial.uniforms.uTintFlip.value = kind === "cnt" ? 1 : 0;
-          glassMaterial.uniforms.uWaterEnabled.value = 1;
           glassMaterials.push(glassMaterial);
           node.material = glassMaterial;
           node.layers.set(10);
@@ -529,8 +448,8 @@ export default function HomeVisualCanvas({ onProgress, onReady }: HomeVisualCanv
 
     const spriteSpecs = [
       ["/sticker_img/s_09.png", -6.4, 5.4, 2.1, -0.18],
-      ["/sticker_img/s_10.png", -5.3, 1.9, 1.9, 0.08],
-      ["/sticker_img/s_06.png", -0.2, -0.2, 1.85, 0.05],
+      ["/sticker_img/s_10.png", -10.2, 3.1, 1.9, 0.08],
+      ["/sticker_img/s_06.png", 3.4, 6.6, 1.85, 0.05],
       ["/sticker_img/s_05.png", 11.1, 4.4, 2.0, -0.08],
     ] as const;
     spriteSpecs.forEach(([url, x, y, size, rotation]) => {
@@ -567,7 +486,10 @@ export default function HomeVisualCanvas({ onProgress, onReady }: HomeVisualCanv
       refractionTarget.setSize(Math.max(1, Math.floor(screenSize.x * 0.5)), Math.max(1, Math.floor(screenSize.y * 0.5)));
       sceneTarget.setSize(Math.max(1, Math.floor(screenSize.x)), Math.max(1, Math.floor(screenSize.y)));
       flareTarget.setSize(Math.max(1, Math.floor(screenSize.x * 0.5)), Math.max(1, Math.floor(screenSize.y * 0.5)));
+      compositeTarget.setSize(Math.max(1, Math.floor(screenSize.x)), Math.max(1, Math.floor(screenSize.y)));
+      fluid.setSize(screenSize.x, screenSize.y);
       flareMaterial.uniforms.uStreakScale.value = 8 * (safeWidth / 1920);
+      backdropField.setSize(safeWidth, safeHeight);
       camera.aspect = safeWidth / safeHeight;
       const horizontalFov = window.innerWidth <= 760 ? 38 : 60;
       camera.fov = THREE.MathUtils.radToDeg(2 * Math.atan(Math.tan(THREE.MathUtils.degToRad(horizontalFov) / 2) / camera.aspect));
@@ -595,11 +517,10 @@ export default function HomeVisualCanvas({ onProgress, onReady }: HomeVisualCanv
       timer.update(timestamp);
       const delta = Math.min(timer.getDelta(), 0.1);
       const elapsed = timer.getElapsed();
-      backdropUniforms.uTime.value = elapsed;
       const dark = document.documentElement.dataset.theme === "dark";
       themeMix = THREE.MathUtils.damp(themeMix, dark ? 1 : 0, 7, delta);
-      backdropUniforms.uThemeMix.value = themeMix;
-      backdropUniforms.uPointer.value.set(pointer.x * 0.5 + 0.5, pointer.y * 0.5 + 0.5);
+      pointerUv.set(pointer.x * 0.5 + 0.5, pointer.y * 0.5 + 0.5);
+      backdropField.render(renderer, elapsed, themeMix, pointerPresent ? pointerUv : null, window.innerWidth <= 760);
       flareMaterial.uniforms.uTailColor.value.lerpColors(
         lightFlareTail,
         darkFlareTail,
@@ -614,6 +535,9 @@ export default function HomeVisualCanvas({ onProgress, onReady }: HomeVisualCanv
         uniforms.uFresnelPower.value = THREE.MathUtils.lerp(1, 3, themeMix);
         uniforms.uFresnelStrength.value = THREE.MathUtils.lerp(0.24, 0.72, themeMix);
         uniforms.uTintThicknessMaxAlpha.value = THREE.MathUtils.lerp(0.92, 0.4, themeMix);
+        uniforms.uBrightness.value = THREE.MathUtils.lerp(0.78, 0.6, themeMix);
+        uniforms.uContrast.value = THREE.MathUtils.lerp(0.9, 0.98, themeMix);
+        uniforms.uDark.value = themeMix;
         uniforms.uTintColorA.value.set(tintA.r, tintA.g, tintA.b, 1);
         uniforms.uTintColorB.value.set(tintB.r, tintB.g, tintB.b, 1);
       });
@@ -621,20 +545,26 @@ export default function HomeVisualCanvas({ onProgress, onReady }: HomeVisualCanv
       const progress = root ? root.scrollTop / Math.max(1, root.scrollHeight - root.clientHeight) : 0;
       const contactTop = document.getElementById("contact")?.getBoundingClientRect().top ?? window.innerHeight;
       const contactReveal = 1 - THREE.MathUtils.smoothstep(contactTop, 0, window.innerHeight * 0.75);
-      const heroVisible = root ? 1 - THREE.MathUtils.smoothstep(root.scrollTop, 0, root.clientHeight * 0.8) : 0;
-      const waterTarget = pointerPresent && !reducedMotion.matches ? Math.max(heroVisible, contactReveal) : 0;
-      waterStrength = reducedMotion.matches ? 0 : THREE.MathUtils.damp(waterStrength, waterTarget, waterTarget > 0 ? 7 : 4, delta);
-      // Keep the fading pool at the last pointer location when leaving the page.
-      if (pointerPresent) {
-        waterPointer.x = THREE.MathUtils.damp(waterPointer.x, pointer.x * 0.5 + 0.5, 12, delta);
-        waterPointer.y = THREE.MathUtils.damp(waterPointer.y, pointer.y * 0.5 + 0.5, 12, delta);
+      const mobile = window.innerWidth <= 760;
+      // Pointer delta in drawing-buffer pixels, decaying once the pointer stops.
+      if (pointerPresent && !mobile && !reducedMotion.matches) {
+        fluidPointer.set((pointer.x * 0.5 + 0.5) * screenSize.x, (pointer.y * 0.5 + 0.5) * screenSize.y);
+        if (fluidPrevious.x >= 0) fluidDelta.subVectors(fluidPointer, fluidPrevious); else fluidDelta.set(0, 0);
+        fluidPrevious.copy(fluidPointer);
+      } else {
+        fluidDelta.multiplyScalar(0.9);
+        fluidPrevious.set(-1, -1);
       }
-      glassMaterials.forEach(({ uniforms }) => {
-        if (uniforms.uWaterEnabled.value === 0) return;
-        uniforms.uWaterTime.value = elapsed;
-        uniforms.uWaterPointer.value.copy(waterPointer);
-        uniforms.uWaterStrength.value = waterStrength;
-      });
+      if (fluidDelta.lengthSq() > 1) lastFluidMove = performance.now();
+      fluid.setPointer(fluidPointer, fluidDelta);
+      fluid.setEffectEnabled(!mobile && !reducedMotion.matches && performance.now() - lastFluidMove <= 600);
+      // Glass light swings to face away from the pointer's hit on the z=0 plane.
+      lightRay.setFromCamera(pointer, camera);
+      const hit = lightRay.ray.intersectPlane(lightPlane, lightHit);
+      if (pointerPresent && hit && lightHit.x * lightHit.x + lightHit.y * lightHit.y > 1e-6) lightTargetAngle = Math.atan2(-lightHit.y, -lightHit.x);
+      const goalAngle = pointerPresent && hit ? lightTargetAngle : lightRestAngle;
+      lightAngle += Math.atan2(Math.sin(goalAngle - lightAngle), Math.cos(goalAngle - lightAngle)) * (1 - Math.exp(-6 * delta));
+      glassMaterials.forEach(({ uniforms }) => uniforms.uLight.value.set(lightRadius * Math.cos(lightAngle), lightRadius * Math.sin(lightAngle), 0.5));
       const heroDecorOpacity = 1 - THREE.MathUtils.smoothstep(progress, 0.04, 0.12);
       decorativeSprites.forEach((sprite) => {
         sprite.material.opacity = heroDecorOpacity;
@@ -691,9 +621,10 @@ export default function HomeVisualCanvas({ onProgress, onReady }: HomeVisualCanv
       renderer.clear();
       renderer.render(postScene, postCamera);
       postQuad.material = compositeMaterial;
-      renderer.setRenderTarget(null);
+      renderer.setRenderTarget(compositeTarget);
       renderer.clear();
       renderer.render(postScene, postCamera);
+      fluid.render(renderer, compositeTarget.texture);
       firstFrameRendered = true;
       frame = requestAnimationFrame(animate);
     };
@@ -715,10 +646,12 @@ export default function HomeVisualCanvas({ onProgress, onReady }: HomeVisualCanv
       models.forEach(({ group }) => disposeObject(group));
       textures.forEach((texture) => texture.dispose());
       backdrop.geometry.dispose();
-      backdrop.material.dispose();
+      backdropField.dispose();
       refractionTarget.dispose();
       sceneTarget.dispose();
       flareTarget.dispose();
+      compositeTarget.dispose();
+      fluid.dispose();
       postQuad.geometry.dispose();
       flareMaterial.dispose();
       compositeMaterial.dispose();
