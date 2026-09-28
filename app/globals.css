@@ -810,39 +810,6 @@ html[data-inverse="true"] .hyper-section { color: #fff; }
 .contact-something { grid-column: 3 / span 10; text-align: left; }
 .contact-extraordinary { grid-column: 4 / 11; text-align: right; }
 
-.contact-sticker-slot {
-  position: absolute;
-  z-index: 7;
-  opacity: 0;
-  visibility: hidden;
-  pointer-events: none;
-  will-change: transform, opacity;
-}
-
-.contact-sticker-art {
-  display: block;
-  width: 100%;
-  height: 100%;
-  will-change: transform;
-}
-
-.contact-sticker-art img {
-  display: block;
-  width: 100%;
-  height: 100%;
-  object-fit: contain;
-  transform: rotate(var(--sticker-tilt, 0deg));
-  filter: drop-shadow(1px 3px 1px rgb(30 42 55 / 15%));
-}
-
-/* Die-cut silhouettes frame the typography, leaving the center and links clear. */
-.contact-eyes { left: 18%; top: 9%; width: clamp(90px, 9vw, 184px); aspect-ratio: 1; --sticker-tilt: -36deg; }
-.contact-nib { left: -4%; top: -4%; width: clamp(100px, 10vw, 205px); aspect-ratio: 1; --sticker-tilt: 18deg; }
-.contact-star { left: 60%; top: 22%; width: clamp(82px, 8vw, 164px); aspect-ratio: 1; --sticker-tilt: 20deg; z-index: 4; }
-.contact-heart { right: 18%; top: 44%; width: clamp(70px, 7vw, 144px); aspect-ratio: 1; --sticker-tilt: 30deg; }
-.contact-smile { right: 9%; top: 66%; width: clamp(92px, 8vw, 164px); aspect-ratio: 1; --sticker-tilt: -28deg; }
-.contact-pixel { right: 7%; top: 19%; width: clamp(90px, 9vw, 184px); aspect-ratio: 1; --sticker-tilt: 22deg; }
-.contact-bolt { left: 67%; bottom: -2%; width: clamp(86px, 8vw, 164px); aspect-ratio: 1; --sticker-tilt: -65deg; }
 
 .contact-bottom {
   position: absolute;
@@ -925,13 +892,6 @@ html[data-inverse="true"] .hyper-section { color: #fff; }
   .contact-create { grid-column: 7 / span 6; }
   .contact-something { grid-column: 1 / 13; }
   .contact-extraordinary { grid-column: 1 / 13; }
-  .contact-eyes { left: 12%; top: 17%; width: 82px; }
-  .contact-nib { left: -12%; top: 6%; width: 84px; }
-  .contact-star { left: 57%; top: 29%; width: 66px; }
-  .contact-heart { right: 4%; top: 58%; width: 65px; }
-  .contact-smile { right: 16%; top: 71%; width: 78px; }
-  .contact-pixel { right: 3%; top: 15%; width: 74px; }
-  .contact-bolt { left: 62%; bottom: -2%; width: 72px; }
   .contact-bottom {
     left: 8px;
     right: 8px;

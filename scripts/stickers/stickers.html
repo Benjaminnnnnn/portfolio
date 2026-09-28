@@ -1,0 +1,186 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8" />
+<!-- Original sticker set for the portfolio. Rendered to PNG by render.mjs. -->
+<style>
+@font-face { font-family: "tiktok"; src: url("../../public/fonts/TikTokSans.ttf"); font-weight: 100 900; }
+@font-face { font-family: "mono"; src: url("../../public/fonts/GeistMono[wght].ttf"); font-weight: 100 900; }
+@font-face { font-family: "pixel"; src: url("../../public/fonts/DepartureMono-Regular.otf"); }
+html, body { margin: 0; background: transparent; }
+body { display: flex; flex-wrap: wrap; gap: 20px; padding: 20px; }
+.s { width: 480px; height: 480px; display: grid; place-items: center; }
+svg { overflow: visible; }
+text { font-family: "tiktok", sans-serif; }
+.mono { font-family: "mono", monospace; }
+.pixel { font-family: "pixel", monospace; }
+</style>
+</head>
+<body>
+<svg width="0" height="0" style="position:absolute">
+  <defs>
+    <!-- Die-cut white border + soft lift shadow + paper grain, applied to each sticker group. -->
+    <filter id="cut" x="-20%" y="-20%" width="140%" height="140%" color-interpolation-filters="sRGB">
+      <feMorphology in="SourceAlpha" operator="dilate" radius="14" result="thick" />
+      <feGaussianBlur in="thick" stdDeviation="1.2" result="thickSoft" />
+      <feFlood flood-color="#fffdf7" />
+      <feComposite in2="thickSoft" operator="in" result="border" />
+      <feGaussianBlur in="thick" stdDeviation="7" result="blur" />
+      <feOffset in="blur" dy="6" result="drop" />
+      <feFlood flood-color="#1b1f2a" flood-opacity="0.22" />
+      <feComposite in2="drop" operator="in" result="shadow" />
+      <feTurbulence type="fractalNoise" baseFrequency="0.9" numOctaves="2" seed="7" result="grain" />
+      <feColorMatrix in="grain" type="matrix" values="0 0 0 0 0.5  0 0 0 0 0.45  0 0 0 0 0.4  0 0 0 0.14 0" result="grainTint" />
+      <feMerge result="art"><feMergeNode in="shadow" /><feMergeNode in="border" /><feMergeNode in="SourceGraphic" /></feMerge>
+      <feComposite in="grainTint" in2="thick" operator="in" result="grainMask" />
+      <feMerge><feMergeNode in="art" /><feMergeNode in="grainMask" /></feMerge>
+    </filter>
+    <linearGradient id="foil" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#d9f3ff" /><stop offset=".3" stop-color="#f7d9ff" /><stop offset=".55" stop-color="#fffbd6" /><stop offset=".8" stop-color="#d6ffe9" /><stop offset="1" stop-color="#dbe4ff" />
+    </linearGradient>
+    <linearGradient id="pinkfoil" gradientUnits="userSpaceOnUse" x1="90" y1="70" x2="310" y2="270"><stop offset="0" stop-color="#ff9ad1" /><stop offset=".45" stop-color="#ff3d8b" /><stop offset=".7" stop-color="#b86bff" /><stop offset="1" stop-color="#6b7cff" /></linearGradient>
+    <radialGradient id="rubyGlow" cx=".35" cy=".3" r=".8"><stop offset="0" stop-color="#ff7a9a" /><stop offset=".5" stop-color="#e0245e" /><stop offset="1" stop-color="#7d0b2e" /></radialGradient>
+  </defs>
+</svg>
+
+<!-- 01 rubber duck: rubber-duck debugging -->
+<div class="s" id="duck"><svg width="400" height="400" viewBox="0 0 400 400"><g filter="url(#cut)">
+  <path d="M92 250c-10-60 40-92 96-86 8-52 44-86 96-78 58 9 78 70 50 108-6 8-4 14 6 16 26 6 24 44-4 66-40 32-110 40-170 26-52-12-68-28-74-52z" fill="#ffd23f" stroke="#1d1b16" stroke-width="10" stroke-linejoin="round" />
+  <path d="M326 188c26-6 50 2 58 14-10 14-34 22-58 16" fill="#ff8a1f" stroke="#1d1b16" stroke-width="10" stroke-linejoin="round" />
+  <circle cx="288" cy="150" r="13" fill="#1d1b16" /><circle cx="292" cy="146" r="4" fill="#fff" />
+  <path d="M150 250c28 22 74 22 104 2" fill="none" stroke="#1d1b16" stroke-width="9" stroke-linecap="round" />
+  <path d="M96 244c-20-4-34 4-40 14" fill="none" stroke="#1d1b16" stroke-width="9" stroke-linecap="round" />
+  <rect x="96" y="300" width="214" height="44" rx="12" fill="#1d1b16" transform="rotate(-6 203 322)" />
+  <text x="203" y="330" text-anchor="middle" transform="rotate(-6 203 322)" class="mono" font-size="22" font-weight="600" fill="#ffd23f">explain it to me</text>
+</g></svg></div>
+
+<!-- 02 pierogi: Pittsburgh -->
+<div class="s" id="pierogi"><svg width="400" height="400" viewBox="0 0 400 400"><g filter="url(#cut)">
+  <path d="M60 250c0-100 80-160 140-160s140 60 140 160c0 20-20 30-140 30S60 270 60 250z" fill="#f6dfb0" stroke="#3a2816" stroke-width="10" stroke-linejoin="round" />
+  <path d="M72 250c20 16 40 16 56 0 16 16 36 16 52 0 16 16 36 16 52 0 16 16 36 16 52 0 16 16 36 16 44 0" fill="none" stroke="#3a2816" stroke-width="8" stroke-linecap="round" />
+  <ellipse cx="150" cy="190" rx="12" ry="16" fill="#3a2816" /><ellipse cx="250" cy="190" rx="12" ry="16" fill="#3a2816" />
+  <circle cx="154" cy="184" r="4" fill="#fff" /><circle cx="254" cy="184" r="4" fill="#fff" />
+  <path d="M182 214c10 12 26 12 36 0" fill="none" stroke="#3a2816" stroke-width="8" stroke-linecap="round" />
+  <ellipse cx="120" cy="218" rx="18" ry="10" fill="#ff9a8a" opacity=".7" /><ellipse cx="280" cy="218" rx="18" ry="10" fill="#ff9a8a" opacity=".7" />
+  <path d="M120 128c14-10 26-10 36 0" fill="none" stroke="#e9c78a" stroke-width="8" stroke-linecap="round" />
+  <text x="200" y="340" text-anchor="middle" font-size="40" font-weight="800" letter-spacing="-1" fill="#3a2816">PIEROGI</text>
+</g></svg></div>
+
+<!-- 03 Pittsburgh yellow bridge -->
+<div class="s" id="pgh"><svg width="400" height="400" viewBox="0 0 400 400"><g filter="url(#cut)">
+  <circle cx="200" cy="200" r="170" fill="#111316" />
+  <circle cx="200" cy="200" r="150" fill="none" stroke="#ffcf1f" stroke-width="4" stroke-dasharray="2 10" stroke-linecap="round" />
+  <path d="M60 250h280" stroke="#ffcf1f" stroke-width="12" stroke-linecap="round" />
+  <path d="M118 250V150M282 250V150" stroke="#ffcf1f" stroke-width="12" stroke-linecap="round" />
+  <path d="M60 196C90 196 104 150 118 150 150 150 170 214 200 214S250 150 282 150c14 0 28 46 58 46" fill="none" stroke="#ffcf1f" stroke-width="8" stroke-linecap="round" />
+  <g stroke="#ffcf1f" stroke-width="4">
+    <path d="M140 250v-80M160 250v-54M180 250v-38M200 250v-36M220 250v-38M240 250v-54M260 250v-80M90 250v-50M310 250v-50" />
+  </g>
+  <path d="M60 280q70 14 140 0t140 0" fill="none" stroke="#4a8bff" stroke-width="6" stroke-linecap="round" />
+  <text x="200" y="118" text-anchor="middle" font-size="52" font-weight="900" letter-spacing="2" fill="#ffcf1f">PGH</text>
+  <text x="200" y="330" text-anchor="middle" class="mono" font-size="20" fill="#ffcf1f" letter-spacing="3">446 BRIDGES</text>
+</g></svg></div>
+
+<!-- 04 ruby gem: Splendor -->
+<div class="s" id="gem"><svg width="400" height="400" viewBox="0 0 400 400"><g filter="url(#cut)">
+  <path d="M100 150l50-60h100l50 60-100 170z" fill="url(#rubyGlow)" stroke="#3b0716" stroke-width="10" stroke-linejoin="round" />
+  <path d="M100 150h200M150 90l-12 60 62 170 62-170-12-60M200 90v60" fill="none" stroke="#3b0716" stroke-width="6" stroke-linejoin="round" />
+  <path d="M160 104l-8 34h30l8-34z" fill="#ffd1dc" opacity=".8" />
+  <path d="M290 76l10 20 20 10-20 10-10 20-10-20-20-10 20-10z" fill="#fff4b0" stroke="#3b0716" stroke-width="5" stroke-linejoin="round" />
+  <rect x="148" y="324" width="104" height="44" rx="22" fill="#3b0716" />
+  <text x="200" y="354" text-anchor="middle" font-size="26" font-weight="800" fill="#ffd1dc">+3 ✦</text>
+</g></svg></div>
+
+<!-- 05 KEEP stamp: Handpick -->
+<div class="s" id="keep"><svg width="400" height="400" viewBox="0 0 400 400"><g filter="url(#cut)" transform="rotate(-10 200 200)">
+  <rect x="50" y="110" width="300" height="180" rx="26" fill="#fff6ee" stroke="#e5312b" stroke-width="12" />
+  <rect x="68" y="128" width="264" height="144" rx="16" fill="none" stroke="#e5312b" stroke-width="4" stroke-dasharray="3 9" stroke-linecap="round" />
+  <text x="200" y="232" text-anchor="middle" font-size="96" font-weight="900" letter-spacing="4" fill="#e5312b">KEEP</text>
+  <text x="200" y="262" text-anchor="middle" class="mono" font-size="17" letter-spacing="3" fill="#e5312b">1 OF 13 · THIS WEEK</text>
+</g></svg></div>
+
+<!-- 06 A* path tile: AlgoExplorer -->
+<div class="s" id="astar"><svg width="400" height="400" viewBox="0 0 400 400"><g filter="url(#cut)">
+  <rect x="60" y="60" width="280" height="280" rx="28" fill="#0e0e10" />
+  <g id="cells"></g>
+  <path d="M101 101H177V177H253V253H291V291" fill="none" stroke="#d7ff3c" stroke-width="18" stroke-linecap="round" stroke-linejoin="round" />
+  <rect x="86" y="86" width="30" height="30" rx="6" fill="#d7ff3c" /><rect x="276" y="276" width="30" height="30" rx="6" fill="#ff4a5c" />
+  <text x="200" y="378" text-anchor="middle" class="pixel" font-size="30" fill="#0e0e10">A* FOUND IT</text>
+</g></svg></div>
+
+<!-- 07 command-K keycap -->
+<div class="s" id="cmdk"><svg width="400" height="400" viewBox="0 0 400 400"><g filter="url(#cut)">
+  <rect x="80" y="96" width="240" height="220" rx="44" fill="#d9d4ff" stroke="#1d1a33" stroke-width="10" />
+  <rect x="104" y="112" width="192" height="164" rx="30" fill="#f1efff" stroke="#1d1a33" stroke-width="6" />
+  <text x="200" y="232" text-anchor="middle" font-size="104" font-weight="800" fill="#1d1a33">⌘K</text>
+</g></svg></div>
+
+<!-- 08 coffee: compiling -->
+<div class="s" id="coffee"><svg width="400" height="400" viewBox="0 0 400 400"><g filter="url(#cut)">
+  <path d="M170 104c-14-18 14-30 0-50M210 104c-14-18 14-30 0-50M250 104c-14-18 14-30 0-50" fill="none" stroke="#1f1a17" stroke-width="9" stroke-linecap="round" />
+  <path d="M108 130h228l-22 180c-3 24-20 36-44 36H174c-24 0-41-12-44-36z" fill="#ff6a3d" stroke="#1f1a17" stroke-width="10" stroke-linejoin="round" />
+  <path d="M336 170c40 0 44 70-4 74" fill="none" stroke="#1f1a17" stroke-width="12" stroke-linecap="round" />
+  <rect x="136" y="196" width="170" height="54" rx="12" fill="#fff4e8" stroke="#1f1a17" stroke-width="6" />
+  <text x="221" y="232" text-anchor="middle" class="mono" font-size="24" font-weight="700" fill="#1f1a17">compiling…</text>
+</g></svg></div>
+
+<!-- 09 200 OK badge -->
+<div class="s" id="ok"><svg width="400" height="400" viewBox="0 0 400 400"><g filter="url(#cut)">
+  <path id="burst" fill="#7dffa8" stroke="#0d3a22" stroke-width="10" stroke-linejoin="round" />
+  <text x="200" y="210" text-anchor="middle" font-size="96" font-weight="900" fill="#0d3a22">200</text>
+  <text x="200" y="262" text-anchor="middle" class="mono" font-size="40" font-weight="700" fill="#0d3a22">OK</text>
+</g></svg></div>
+
+<!-- 10 LGTM pixel heart (foil) -->
+<div class="s" id="lgtm"><svg width="400" height="400" viewBox="0 0 400 400"><g filter="url(#cut)">
+  <g id="heart" fill="url(#pinkfoil)"></g>
+  <text x="200" y="360" text-anchor="middle" class="pixel" font-size="44" fill="#2b1f5a">LGTM</text>
+</g></svg></div>
+
+<!-- 11 terminal: it works on my machine -->
+<div class="s" id="term"><svg width="400" height="400" viewBox="0 0 400 400"><g filter="url(#cut)" transform="rotate(6 200 200)">
+  <rect x="40" y="110" width="320" height="190" rx="22" fill="#121212" stroke="#121212" stroke-width="6" />
+  <circle cx="72" cy="140" r="8" fill="#ff5f57" /><circle cx="98" cy="140" r="8" fill="#febc2e" /><circle cx="124" cy="140" r="8" fill="#28c840" />
+  <text x="66" y="200" class="mono" font-size="25" fill="#9dff8a">$ npm run it</text>
+  <text x="66" y="238" class="mono" font-size="22" fill="#f3efe6">works on my</text>
+  <text x="66" y="270" class="mono" font-size="22" fill="#f3efe6">machine ✓</text>
+</g></svg></div>
+
+<!-- 12 BZ smiley -->
+<div class="s" id="bz"><svg width="400" height="400" viewBox="0 0 400 400"><g filter="url(#cut)">
+  <circle cx="200" cy="200" r="160" fill="#4a7dff" stroke="#111a3a" stroke-width="10" />
+  <text x="152" y="200" text-anchor="middle" font-size="96" font-weight="900" fill="#fff">B</text>
+  <text x="252" y="200" text-anchor="middle" font-size="96" font-weight="900" fill="#fff">Z</text>
+  <path d="M124 246c40 50 112 50 152 0" fill="none" stroke="#fff" stroke-width="16" stroke-linecap="round" />
+  <circle cx="110" cy="256" r="16" fill="#ff9ad1" opacity=".8" /><circle cx="290" cy="256" r="16" fill="#ff9ad1" opacity=".8" />
+</g></svg></div>
+
+<script>
+// A* tile cells
+const cells = document.getElementById("cells");
+// Path cells: (0,0)(1,0)(2,0)(2,1)(2,2)(3,2)(4,2)(4,3)(4,4)(5,4)(5,5) — no wall sits on them.
+const walls = new Set(["3,0", "5,1", "0,3", "3,3", "1,5", "6,2", "1,1", "6,6", "4,6", "3,1", "5,3"]);
+for (let y = 0; y < 7; y++) for (let x = 0; x < 7; x++) {
+  const r = document.createElementNS("http://www.w3.org/2000/svg", "rect");
+  r.setAttribute("x", 86 + x * 38); r.setAttribute("y", 86 + y * 38); r.setAttribute("width", 30); r.setAttribute("height", 30); r.setAttribute("rx", 5);
+  r.setAttribute("fill", walls.has(`${x},${y}`) ? "#7c5cff" : "#1d1d22");
+  cells.appendChild(r);
+}
+// 200 OK starburst
+const pts = [];
+for (let i = 0; i < 32; i++) { const a = (i / 32) * Math.PI * 2; const rr = i % 2 ? 150 : 172; pts.push(`${200 + Math.cos(a) * rr},${200 + Math.sin(a) * rr}`); }
+document.getElementById("burst").setAttribute("d", `M${pts.join("L")}Z`);
+// Pixel heart
+const heart = ["..XX...XX..", ".XXXX.XXXX.", "XXXXXXXXXXX", "XXXXXXXXXXX", "XXXXXXXXXXX", ".XXXXXXXXX.", "..XXXXXXX..", "...XXXXX...", "....XXX....", ".....X....."];
+const hg = document.getElementById("heart");
+heart.forEach((row, y) => [...row].forEach((c, x) => {
+  if (c !== "X") return;
+  const r = document.createElementNS("http://www.w3.org/2000/svg", "rect");
+  r.setAttribute("x", 90 + x * 20); r.setAttribute("y", 70 + y * 20); r.setAttribute("width", 20.5); r.setAttribute("height", 20.5);
+  if ((x === 2 || x === 3) && y === 1) r.setAttribute("fill", "#fff");
+  hg.appendChild(r);
+}));
+window.__ready = true;
+</script>
+</body>
+</html>

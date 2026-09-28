@@ -1,21 +1,9 @@
 "use client";
 
 import { useRef } from "react";
-import Image from "next/image";
-import { withBasePath } from "@/lib/base-path";
 import { ScrambleText } from "../../../animation/ScrambleText";
 import { SectionFrame } from "../../shared/SectionFrame";
 import { useContactReveal } from "./useContactReveal";
-
-const contactStickers = [
-  { className: "contact-eyes", image: "01" },
-  { className: "contact-nib", image: "02" },
-  { className: "contact-star", image: "10" },
-  { className: "contact-heart", image: "05" },
-  { className: "contact-smile", image: "06" },
-  { className: "contact-pixel", image: "07" },
-  { className: "contact-bolt", image: "09" },
-] as const;
 
 export function ContactSection() {
   const section = useRef<HTMLElement>(null);
@@ -23,18 +11,6 @@ export function ContactSection() {
 
   return (
     <SectionFrame ref={section} name="contact" className="contact-section" id="contact">
-      {contactStickers.map((sticker) => (
-        <div key={sticker.className} className={`contact-sticker-slot ${sticker.className}`} data-contact-sticker>
-          <div
-            className="contact-sticker-art"
-            data-floating-sticker
-            aria-hidden="true"
-          >
-            <Image src={withBasePath(`/sticker_img/s_${sticker.image}.png`)} alt="" width={480} height={480} draggable={false} />
-          </div>
-        </div>
-      ))}
-
       <h2 className="contact-title" aria-label="Let's create something extraordinary">
         <span className="contact-title-row contact-title-first">
           <ScrambleText className="contact-scramble contact-lets" text="Let's" />

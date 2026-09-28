@@ -4,6 +4,7 @@ import { useEffect, useRef } from "react";
 import * as THREE from "three";
 import { createBokehBackdrop } from "./bokehBackdrop";
 import { createFluidPushPass } from "./fluidPushPass";
+import { createStickerRain, type StickerEmitter } from "./stickerRain";
 import { withBasePath } from "@/lib/base-path";
 import { GLTFLoader } from "three/examples/jsm/loaders/GLTFLoader.js";
 import { clone } from "three/examples/jsm/utils/SkeletonUtils.js";
@@ -298,8 +299,6 @@ export default function HomeVisualCanvas({ onProgress, onReady }: HomeVisualCanv
     let readyAt = 0;
     const models: ModelRecord[] = [];
     const glassMaterials: THREE.ShaderMaterial[] = [];
-    const decorativeSprites: THREE.Sprite[] = [];
-    const textures: THREE.Texture[] = [];
     const pointer = new THREE.Vector2();
     const reducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)");
     let pointerPresent = false;
@@ -402,7 +401,6 @@ export default function HomeVisualCanvas({ onProgress, onReady }: HomeVisualCanv
       onProgress?.(100);
     };
     const loader = new GLTFLoader(manager);
-    const textureLoader = new THREE.TextureLoader(manager);
 
     const loadModel = async (kind: ModelRecord["kind"], url: string) => {
       const gltf = await loader.loadAsync(url);
@@ -446,27 +444,53 @@ export default function HomeVisualCanvas({ onProgress, onReady }: HomeVisualCanv
       models.push({ group, kind });
     };
 
-    const spriteSpecs = [
-      ["/sticker_img/s_09.png", -6.4, 5.4, 2.1, -0.18],
-      ["/sticker_img/s_10.png", -10.2, 3.1, 1.9, 0.08],
-      ["/sticker_img/s_06.png", 3.4, 6.6, 1.85, 0.05],
-      ["/sticker_img/s_05.png", 11.1, 4.4, 2.0, -0.08],
-    ] as const;
-    spriteSpecs.forEach(([url, x, y, size, rotation]) => {
-      const texture = textureLoader.load(withBasePath(url), (loaded) => {
-        loaded.colorSpace = THREE.SRGBColorSpace;
-        loaded.needsUpdate = true;
-      });
-      textures.push(texture);
-      const material = new THREE.SpriteMaterial({ map: texture, transparent: true, depthWrite: false, toneMapped: false });
-      material.rotation = rotation;
-      const sprite = new THREE.Sprite(material);
-      sprite.position.set(x, y, 0.6);
-      sprite.scale.set(size, size, 1);
-      sprite.layers.set(0);
-      scene.add(sprite);
-      decorativeSprites.push(sprite);
+    const STICKERS = ["duck", "pierogi", "pgh", "gem", "keep", "astar", "cmdk", "coffee", "ok", "lgtm", "term", "bz"];
+    const stickers = createStickerRain(STICKERS.map((name) => withBasePath(`/sticker_img/${name}.png`)), manager);
+    scene.add(stickers.group);
+    const stickerSections: StickerEmitter[] = [
+      { name: "hero", offsetY: 0, active: true },
+      { name: "contact", offsetY: 0, active: false },
+    ];
+    const stickerPointer = new THREE.Vector3();
+    let stickerPointerValid = false;
+    const sectionElements = () => ({
+      hero: document.querySelector<HTMLElement>('[data-section="hero"]'),
+      contact: document.getElementById("contact"),
     });
+    // Click (not drag) spawns a burst where you clicked, like the reference.
+    let press: { id: number; x: number; y: number; at: number; moved: boolean } | null = null;
+    const onPointerDown = (event: PointerEvent) => {
+      if (!event.isPrimary || (event.pointerType === "mouse" && event.button !== 0)) return;
+      press = { id: event.pointerId, x: event.clientX, y: event.clientY, at: event.timeStamp, moved: false };
+    };
+    const onPointerTrack = (event: PointerEvent) => {
+      if (!press || event.pointerId !== press.id) return;
+      const limit = event.pointerType === "touch" ? 10 : 4;
+      if ((event.clientX - press.x) ** 2 + (event.clientY - press.y) ** 2 > limit * limit) press.moved = true;
+    };
+    const onPointerUp = (event: PointerEvent) => {
+      const current = press;
+      press = null;
+      if (!current || current.id !== event.pointerId || current.moved || event.timeStamp - current.at > 600) return;
+      if (window.innerWidth <= 760 || reducedMotion.matches) return;
+      if ((event.target as Element | null)?.closest?.("a, button, input, textarea, select, label")) return;
+      const selection = window.getSelection();
+      if (selection && !selection.isCollapsed && selection.toString().trim()) return;
+      const section = stickerSections.find((entry) => {
+        const element = sectionElements()[entry.name as "hero" | "contact"];
+        if (!entry.active || !element) return false;
+        const rect = element.getBoundingClientRect();
+        return event.clientY >= rect.top && event.clientY <= rect.bottom;
+      });
+      if (!section) return;
+      const ndc = new THREE.Vector2((event.clientX / window.innerWidth) * 2 - 1, -(event.clientY / window.innerHeight) * 2 + 1);
+      lightRay.setFromCamera(ndc, camera);
+      const hitPoint = new THREE.Vector3();
+      if (lightRay.ray.intersectPlane(lightPlane, hitPoint)) stickers.burst(section.name, hitPoint.x, hitPoint.y);
+    };
+    window.addEventListener("pointerdown", onPointerDown, { capture: true, passive: true });
+    window.addEventListener("pointermove", onPointerTrack, { capture: true, passive: true });
+    window.addEventListener("pointerup", onPointerUp, { capture: true, passive: true });
 
     void Promise.all([
       loadModel("hello", withBasePath("/model/hello.gltf")),
@@ -565,11 +589,28 @@ export default function HomeVisualCanvas({ onProgress, onReady }: HomeVisualCanv
       const goalAngle = pointerPresent && hit ? lightTargetAngle : lightRestAngle;
       lightAngle += Math.atan2(Math.sin(goalAngle - lightAngle), Math.cos(goalAngle - lightAngle)) * (1 - Math.exp(-6 * delta));
       glassMaterials.forEach(({ uniforms }) => uniforms.uLight.value.set(lightRadius * Math.cos(lightAngle), lightRadius * Math.sin(lightAngle), 0.5));
-      const heroDecorOpacity = 1 - THREE.MathUtils.smoothstep(progress, 0.04, 0.12);
-      decorativeSprites.forEach((sprite) => {
-        sprite.material.opacity = heroDecorOpacity;
-        sprite.visible = heroDecorOpacity > 0.001;
-      });
+      // Stickers ride with their section (scroll-synced world Y, reference formula).
+      if (root) {
+        const viewportHeight = Math.max(1, root.clientHeight);
+        const worldHeight = 2 * Math.tan(THREE.MathUtils.degToRad(camera.fov) / 2) * camera.position.z;
+        const scrollerTop = root.getBoundingClientRect().top;
+        const elements = sectionElements();
+        stickerSections.forEach((entry) => {
+          const element = elements[entry.name as "hero" | "contact"];
+          if (!element) { entry.active = false; return; }
+          const rect = element.getBoundingClientRect();
+          const centerInViewport = rect.top - scrollerTop + rect.height / 2;
+          entry.offsetY = (0.5 - centerInViewport / viewportHeight) * worldHeight;
+          entry.active = rect.bottom > -viewportHeight * 0.25 && rect.top < viewportHeight * 1.25;
+        });
+      }
+      stickerPointerValid = pointerPresent && hit !== null;
+      let stickerSpeed = 0;
+      if (stickerPointerValid) {
+        stickerSpeed = stickerPointer.distanceTo(lightHit) / Math.max(delta, 1e-3);
+        stickerPointer.copy(lightHit);
+      }
+      stickers.update(delta, stickerSections, stickerPointerValid && fluidDelta.lengthSq() > 1 ? stickerPointer : null, stickerSpeed, reducedMotion.matches);
 
       if (assetsReady && firstFrameRendered && !readySent) {
         readySent = true;
@@ -644,7 +685,10 @@ export default function HomeVisualCanvas({ onProgress, onReady }: HomeVisualCanv
         if (object instanceof THREE.Sprite) object.material.dispose();
       });
       models.forEach(({ group }) => disposeObject(group));
-      textures.forEach((texture) => texture.dispose());
+      stickers.dispose();
+      window.removeEventListener("pointerdown", onPointerDown, true);
+      window.removeEventListener("pointermove", onPointerTrack, true);
+      window.removeEventListener("pointerup", onPointerUp, true);
       backdrop.geometry.dispose();
       backdropField.dispose();
       refractionTarget.dispose();
