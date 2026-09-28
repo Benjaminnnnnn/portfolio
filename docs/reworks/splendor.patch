@@ -1,0 +1,263 @@
+--- a/client/src/pages/HomePage.tsx
++++ b/client/src/pages/HomePage.tsx
+@@ -27,6 +27,7 @@
+ import { useAuth } from '../contexts/AuthContext';
+ import { Game } from '../../../shared/types/game';
+ import { ChatPanel } from '../components/ChatPanel';
++import { SplendorHero } from '../components/SplendorHero';
+ 
+ const HomePage: React.FC = () => {
+   const [playerName, setPlayerName] = useState('');
+@@ -243,112 +244,9 @@
+         px: 2
+       }}
+     >
+-      <Container maxWidth="lg">
++      <Container maxWidth="xl">
+         <Box sx={{ mt: 3, mb: 3 }}>
+-          {/* Game Description */}
+-          <Paper
+-            elevation={0}
+-            sx={{
+-              p: 3,
+-              mb: 3,
+-              background: 'rgba(0, 0, 0, 0.6)',
+-              backdropFilter: 'blur(8px)',
+-              border: '1px solid rgba(255, 255, 255, 0.2)',
+-              borderRadius: 2,
+-              textAlign: 'center'
+-            }}
+-          >
+-            <Typography
+-              variant="h3"
+-              sx={{
+-                color: 'white',
+-                fontFamily: '"Cinzel", serif',
+-                mb: 2,
+-                fontWeight: 600
+-              }}
+-            >
+-              Welcome to Splendor
+-            </Typography>
+-            <Typography
+-              variant="body1"
+-              sx={{
+-                color: 'rgba(255, 255, 255, 0.9)',
+-                maxWidth: '800px',
+-                margin: '0 auto',
+-                lineHeight: 1.8,
+-                fontSize: '1.1rem'
+-              }}
+-            >
+-              As a wealthy Renaissance merchant, compete to build the most prestigious jewelry empire. 
+-              Collect gems, purchase development cards, and attract noble patrons. The first player to 
+-              reach 15 prestige points claims victory and eternal glory!
+-            </Typography>
+-          </Paper>
+-
+-          {/* Action Buttons */}
+-          <Paper
+-            elevation={0}
+-            sx={{
+-              p: 3,
+-              mb: 3,
+-              background: 'rgba(0, 0, 0, 0.6)',
+-              backdropFilter: 'blur(8px)',
+-              border: '1px solid rgba(255, 255, 255, 0.2)',
+-              borderRadius: 2
+-            }}
+-          >
+-            <Grid container spacing={2} justifyContent="center">
+-              <Grid item xs={12} sm={6}>
+-                <Button
+-                  fullWidth
+-                  variant="contained"
+-                  size="large"
+-                  onClick={openCreateGameModal}
+-                  disabled={loading}
+-                  startIcon={<AddIcon />}
+-                  data-testid="create-game-button"
+-                  sx={{
+-                    height: 56,
+-                    background: 'linear-gradient(135deg, #DAA520 0%, #FFD700 100%)',
+-                    color: '#000',
+-                    fontWeight: 600,
+-                    '&:hover': {
+-                      background: 'linear-gradient(135deg, #B8860B 0%, #DAA520 100%)',
+-                    },
+-                    '&:disabled': {
+-                      background: 'rgba(255, 255, 255, 0.1)',
+-                      color: 'rgba(255, 255, 255, 0.3)',
+-                    }
+-                  }}
+-                >
+-                  Create New Game
+-                </Button>
+-              </Grid>
+-              <Grid item xs={12} sm={6}>
+-                <Button
+-                  fullWidth
+-                  variant="outlined"
+-                  size="large"
+-                  onClick={openInviteCodeModal}
+-                  data-testid="join-invite-code-button"
+-                  disabled={loading}
+-                  sx={{
+-                    height: 56,
+-                    borderColor: 'rgba(255, 255, 255, 0.3)',
+-                    color: 'white',
+-                    fontWeight: 600,
+-                    '&:hover': {
+-                      borderColor: '#FFD700',
+-                      backgroundColor: 'rgba(255, 215, 0, 0.1)',
+-                    },
+-                  }}
+-                >
+-                  Join by Invite Code
+-                </Button>
+-              </Grid>
+-              {/* Leaderboard is accessible from the header now */}
+-            </Grid>
+-          </Paper>
++          <SplendorHero onCreate={openCreateGameModal} onJoin={openInviteCodeModal} disabled={loading} />
+ 
+           {/* Error Alert */}
+           {error && (
+--- /dev/null
++++ b/client/src/components/SplendorHero.tsx
+@@ -0,0 +1,86 @@
++// Home hero inspired by Aceternity's Lamp, 3D Card and Moving Border patterns.
++import React from 'react';
++import { motion, useMotionValue, useSpring, useTransform } from 'framer-motion';
++import './splendor-hero.css';
++
++const gems = [
++  { c: '#f4f1ea', x: '54%', y: '14%', s: 34, d: 0 },
++  { c: '#3b6fe0', x: '57%', y: '74%', s: 28, d: 0.6 },
++  { c: '#1fa065', x: '86%', y: '14%', s: 34, d: 1.1 },
++  { c: '#e0245e', x: '93%', y: '60%', s: 42, d: 0.3 },
++  { c: '#2b2d33', x: '76%', y: '86%', s: 26, d: 0.9 },
++  { c: '#f5c518', x: '64%', y: '40%', s: 22, d: 1.4 },
++];
++
++const hand = [
++  { src: '/card-art/ruby-tier3.png', r: -14, x: -150, pts: 4, gem: '#e0245e' },
++  { src: '/noble-art/noble_3.png', r: 0, x: 0, pts: 3, gem: '#f5c518', noble: true },
++  { src: '/card-art/sapphire-tier2.png', r: 14, x: 150, pts: 2, gem: '#3b6fe0' },
++];
++
++export const SplendorHero: React.FC<{ onCreate: () => void; onJoin: () => void; disabled?: boolean }> = ({ onCreate, onJoin, disabled }) => {
++  const mx = useMotionValue(0), my = useMotionValue(0);
++  const rx = useSpring(useTransform(my, [-0.5, 0.5], [10, -10]), { stiffness: 120, damping: 14 });
++  const ry = useSpring(useTransform(mx, [-0.5, 0.5], [-14, 14]), { stiffness: 120, damping: 14 });
++  return (
++    <section
++      className="sp-hero"
++      onMouseMove={(e) => { const r = e.currentTarget.getBoundingClientRect(); mx.set((e.clientX - r.left) / r.width - 0.5); my.set((e.clientY - r.top) / r.height - 0.5); }}
++      onMouseLeave={() => { mx.set(0); my.set(0); }}
++    >
++      <div className="sp-lamp" aria-hidden>
++        <motion.span className="sp-cone sp-cone-l" initial={{ width: '14rem', opacity: 0.4 }} animate={{ width: '30rem', opacity: 1 }} transition={{ delay: 0.2, duration: 1, ease: 'easeInOut' }} />
++        <motion.span className="sp-cone sp-cone-r" initial={{ width: '14rem', opacity: 0.4 }} animate={{ width: '30rem', opacity: 1 }} transition={{ delay: 0.2, duration: 1, ease: 'easeInOut' }} />
++        <motion.span className="sp-beam" initial={{ width: '14rem' }} animate={{ width: '30rem' }} transition={{ delay: 0.2, duration: 1 }} />
++        <span className="sp-glow" />
++      </div>
++      {gems.map((g, i) => (
++        <motion.span
++          key={i}
++          aria-hidden
++          className="sp-gem"
++          style={{ left: g.x, top: g.y, width: g.s, height: g.s, ['--gem' as string]: g.c }}
++          animate={{ y: [0, -14, 0] }}
++          transition={{ duration: 5 + i, repeat: Infinity, ease: 'easeInOut', delay: g.d }}
++        />
++      ))}
++
++      <div className="sp-copy">
++        <motion.p className="sp-kicker" initial={{ opacity: 0, y: 12 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.4 }}>
++          Renaissance · 2–4 players · real time
++        </motion.p>
++        <motion.h1 initial={{ opacity: 0.4, y: 40 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.3, duration: 0.8, ease: 'easeInOut' }}>
++          Build a jewel empire <br /> <em>before your rivals do.</em>
++        </motion.h1>
++        <motion.p className="sp-lede" initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ delay: 0.7 }}>
++          Collect gems, buy mines and caravans, and court the nobles. First to fifteen prestige wins.
++        </motion.p>
++        <div className="sp-ctas">
++          <button className="sp-moving-border" onClick={onCreate} disabled={disabled} data-testid="create-game-button">
++            <span className="sp-moving-border-track" aria-hidden />
++            <span className="sp-moving-border-inner">＋ Create New Game</span>
++          </button>
++          <button className="sp-ghost" onClick={onJoin} disabled={disabled} data-testid="join-invite-code-button">Join by Invite Code</button>
++        </div>
++      </div>
++
++      <motion.div className="sp-hand" style={{ rotateX: rx, rotateY: ry }}>
++        {hand.map((c, i) => (
++          <motion.figure
++            key={c.src}
++            className={`sp-card${c.noble ? ' sp-card-noble' : ''}`}
++            initial={{ opacity: 0, y: 60, rotate: 0, x: 0 }}
++            animate={{ opacity: 1, y: c.noble ? -18 : 0, rotate: c.r, x: c.x }}
++            transition={{ delay: 0.5 + i * 0.12, type: 'spring', stiffness: 90, damping: 14 }}
++            whileHover={{ y: c.noble ? -40 : -24, scale: 1.04 }}
++          >
++            <img src={c.src} alt="" />
++            <span className="sp-card-pts">{c.pts}</span>
++            <span className="sp-card-gem" style={{ ['--gem' as string]: c.gem }} />
++            <span className="sp-card-sheen" aria-hidden />
++          </motion.figure>
++        ))}
++      </motion.div>
++    </section>
++  );
++};
+--- /dev/null
++++ b/client/src/components/splendor-hero.css
+@@ -0,0 +1,42 @@
++.sp-hero { position: relative; isolation: isolate; overflow: hidden; display: grid; grid-template-columns: 1.05fr 1fr; align-items: center; gap: 24px; min-height: 560px; padding: 72px 56px 64px; margin-bottom: 28px; border-radius: 28px; background: radial-gradient(120% 90% at 50% -10%, #2a1f0c 0%, #0f0c17 45%, #07060c 100%); border: 1px solid rgba(255, 215, 0, 0.14); box-shadow: 0 40px 120px -40px rgba(218, 165, 32, 0.35), inset 0 1px 0 rgba(255, 255, 255, 0.06); }
++.sp-hero::after { content: ""; position: absolute; inset: 0; z-index: -1; background-image: radial-gradient(rgba(255, 215, 0, 0.12) 1px, transparent 1px); background-size: 22px 22px; mask-image: radial-gradient(ellipse 60% 70% at 70% 50%, #000 20%, transparent 80%); }
++
++/* Lamp */
++.sp-lamp { position: absolute; top: -40px; left: 0; right: 0; height: 320px; display: flex; justify-content: center; pointer-events: none; z-index: -1; }
++.sp-cone { position: absolute; top: 0; height: 280px; }
++.sp-cone-l { right: 50%; background: conic-gradient(from 70deg at center top, #f5c518, transparent, transparent); mask-image: linear-gradient(to bottom, #000, transparent 90%); }
++.sp-cone-r { left: 50%; background: conic-gradient(from 290deg at center top, transparent, transparent, #f5c518); mask-image: linear-gradient(to bottom, #000, transparent 90%); }
++.sp-beam { position: absolute; top: 0; height: 2px; background: linear-gradient(90deg, transparent, #ffe27a, transparent); box-shadow: 0 0 40px 8px rgba(255, 215, 0, 0.55); }
++.sp-glow { position: absolute; top: -60px; width: 34rem; height: 12rem; border-radius: 50%; background: rgba(245, 197, 24, 0.35); filter: blur(70px); }
++
++/* Floating tokens */
++.sp-gem { position: absolute; z-index: 0; border-radius: 50%; background: radial-gradient(circle at 32% 28%, rgba(255, 255, 255, 0.95), var(--gem) 38%, color-mix(in srgb, var(--gem), #000 45%) 100%); box-shadow: 0 10px 30px -6px var(--gem), inset 0 -4px 8px rgba(0, 0, 0, 0.35); opacity: 0.85; }
++
++/* Copy */
++.sp-copy { position: relative; z-index: 2; }
++.sp-kicker { margin: 0 0 18px; font: 600 12px/1 "Inter", sans-serif; letter-spacing: 0.24em; text-transform: uppercase; color: #e9c46a; }
++.sp-hero h1 { margin: 0; font: 600 clamp(34px, 3.6vw, 52px)/1.06 "Cinzel", serif; letter-spacing: -0.01em; color: #fff7e0; text-shadow: 0 2px 30px rgba(245, 197, 24, 0.25); }
++.sp-hero h1 em { font-style: normal; white-space: nowrap; background: linear-gradient(100deg, #fff1b8, #f5c518 40%, #e0245e 75%, #b86bff); -webkit-background-clip: text; background-clip: text; color: transparent; }
++.sp-lede { max-width: 30em; margin: 22px 0 32px; font: 400 17px/1.6 "Inter", sans-serif; color: rgba(255, 244, 214, 0.72); }
++.sp-ctas { display: flex; flex-wrap: wrap; gap: 14px; }
++
++/* Moving border button */
++.sp-moving-border { position: relative; overflow: hidden; padding: 1.5px; border: 0; border-radius: 16px; background: transparent; cursor: pointer; }
++.sp-moving-border-track { position: absolute; inset: -60%; background: conic-gradient(from 0deg, transparent 0 55%, #fff4c2 70%, #f5c518 80%, transparent 90%); animation: sp-spin 3.2s linear infinite; }
++.sp-moving-border-inner { position: relative; display: block; padding: 16px 28px; border-radius: 15px; background: linear-gradient(135deg, #f7d44c, #daa520); color: #1a1204; font: 700 16px/1 "Inter", sans-serif; box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.6); }
++.sp-ghost { padding: 16px 26px; border-radius: 16px; border: 1px solid rgba(255, 244, 214, 0.22); background: rgba(255, 255, 255, 0.04); color: #fff7e0; font: 600 16px/1 "Inter", sans-serif; cursor: pointer; backdrop-filter: blur(8px); transition: border-color 0.2s, background 0.2s; }
++.sp-ghost:hover { border-color: #f5c518; background: rgba(245, 197, 24, 0.1); }
++.sp-moving-border:disabled, .sp-ghost:disabled { opacity: 0.4; cursor: default; }
++@keyframes sp-spin { to { transform: rotate(360deg); } }
++
++/* 3D hand of cards */
++.sp-hand { position: relative; z-index: 1; height: 420px; display: grid; place-items: center; perspective: 1200px; transform-style: preserve-3d; }
++.sp-card { position: absolute; width: 210px; aspect-ratio: 5 / 7; margin: 0; overflow: hidden; border-radius: 18px; border: 2px solid rgba(255, 226, 122, 0.55); background: #111; box-shadow: 0 30px 60px -20px rgba(0, 0, 0, 0.9), 0 0 0 6px rgba(0, 0, 0, 0.35); }
++.sp-card-noble { width: 230px; border-color: #f5c518; box-shadow: 0 40px 80px -24px rgba(245, 197, 24, 0.55), 0 0 0 6px rgba(0, 0, 0, 0.35); z-index: 2; }
++.sp-card img { width: 100%; height: 100%; object-fit: cover; }
++.sp-card-pts { position: absolute; top: 10px; left: 14px; font: 700 40px/1 "Cinzel", serif; color: #fff; text-shadow: 0 2px 10px rgba(0, 0, 0, 0.8); }
++.sp-card-gem { position: absolute; top: 12px; right: 12px; width: 34px; height: 34px; border-radius: 10px; background: radial-gradient(circle at 30% 25%, #fff, var(--gem) 45%, #000 140%); box-shadow: 0 0 18px var(--gem); }
++.sp-card-sheen { position: absolute; inset: 0; background: linear-gradient(115deg, transparent 30%, rgba(255, 255, 255, 0.22) 45%, transparent 60%); mix-blend-mode: screen; }
++
++@media (max-width: 900px) { .sp-hero { grid-template-columns: 1fr; padding: 48px 24px; } .sp-hand { height: 340px; } .sp-card { width: 150px; } .sp-card-noble { width: 170px; } }
++@media (prefers-reduced-motion: reduce) { .sp-moving-border-track { animation: none; } }
+--- /dev/null
++++ b/client/postcss.config.cjs
+@@ -0,0 +1 @@
++module.exports = { plugins: {} };

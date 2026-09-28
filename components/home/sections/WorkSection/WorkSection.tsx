@@ -13,7 +13,7 @@ export function WorkSection() {
 
   return (
     <SectionFrame ref={section} name="work" className="work-section work-gallery-section" id="work">
-      <header className="work-gallery-heading"><h2>Selected work</h2><p>Web apps, systems, and coursework <span>01—13</span></p></header>
+      <header className="work-gallery-heading"><h2>Selected work</h2><p>Web and iOS apps, systems, and coursework <span>01—{String(projects.length).padStart(2, "0")}</span></p></header>
       <div ref={grid} className="projects-grid work-gallery-grid">
         {projects.map((project, index) => <ProjectCard project={project} index={index} key={project.slug} />)}
       </div>

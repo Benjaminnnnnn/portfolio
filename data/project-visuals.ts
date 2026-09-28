@@ -1,6 +1,6 @@
 import type { PortfolioProjectSlug } from "./portfolio-projects";
 
-export type DiagramKind = "leases" | "throughput" | "buffer" | "transactions" | "operators" | "environments" | "checks" | "monitoring" | "rules" | "frames" | "workspace" | "practice" | "content" | "fetch" | "properties" | "places" | "search" | "kernel";
+export type DiagramKind = "leases" | "throughput" | "buffer" | "transactions" | "operators" | "environments" | "checks" | "monitoring" | "rules" | "frames" | "workspace" | "practice" | "content" | "fetch" | "properties" | "places" | "search" | "kernel" | "removal";
 export type StudyVisual = {
   title: string;
   caption: string;
@@ -11,6 +11,7 @@ export type StudyVisual = {
 
 export const projectScopeNotes: Record<PortfolioProjectSlug, string> = {
   relay: "An AI-assisted systems study. The results are from local tests. Delivery is at least once, so external writes still need duplicate protection.",
+  handpick: "Pre-release: there is no public build yet. Captures are App Store screenshots with a demo photo library, not a user's photos.",
   splendor: "Built by a four-person team. The repository credits AI assistance for the interface, art, initial infrastructure, and documentation.",
   "algo-explorer": "The tutor connects to Gemini and OpenAI. Algorithm tests and checked examples for its explanations are still needed.",
   "simple-db": "Coursework built on a teaching framework. The repository includes tests; they have not been rerun for this page.",
@@ -18,7 +19,7 @@ export const projectScopeNotes: Record<PortfolioProjectSlug, string> = {
   "333gle": "UW CSE 333 coursework. The repository includes course-provided code and indexing libraries.",
   xv6: "Coursework on the existing xv6 teaching kernel. The upstream kernel and included networking code belong to their original authors.",
   "rss-aggregator": "A single-service implementation with concurrent fetching. Worker leases and automated tests are not included in this version.",
-  cypress: "A workspace prototype with accounts and navigation. The landing page advertises features beyond the verified implementation; AI features remain unfinished.",
+  cypress: "A workspace prototype with accounts and navigation. The reworked landing page lists only implemented features; AI features remain unfinished.",
   "leetcode-clone": "A coding-practice clone. It does not establish a production-grade isolated code-execution service.",
   cliphop: "The project covers feeds, profiles, and publishing with Sanity. Video encoding and large-scale media delivery are outside its scope.",
   propertize: "Dashboard numbers are demo content, not measured business results.",
@@ -33,14 +34,19 @@ export const projectVisuals: Record<PortfolioProjectSlug, readonly [StudyVisual,
     { title: "A job after a crash", replay: true, caption: "Recorded local experiment · September 2026" },
     { title: "More execution slots", diagram: "throughput", caption: "3,000 jobs per configuration. One local trial each, including submission and queue drain. These are not production capacity figures." },
   ],
+  handpick: [
+    { title: "One photo, one choice", crop: { x: 33.6, y: 0, width: 32.4, height: 100 }, caption: "The review screen: Keep, Delete, Undo, and album sorting without leaving the photo." },
+    { title: "A manageable set", crop: { x: 0, y: 0, width: 32.4, height: 100 }, caption: "The Organize home offers small sets such as This Week instead of the whole library." },
+    { title: "Nothing leaves until you confirm", diagram: "removal", caption: "Deleted photos wait in Handpick's trash. Only a confirmed batch reaches the Photos library." },
+  ],
   splendor: [
-    { title: "The shared board", crop: { x: 18, y: 22, width: 59, height: 57 }, caption: "Detail from the game screenshot: card costs, bonuses, and available decks." },
-    { title: "Whose turn is it?", crop: { x: 80, y: 7, width: 19, height: 28 }, caption: "The player panel keeps the current turn and prestige points beside the board." },
+    { title: "The shared board", crop: { x: 19.5, y: 22, width: 58, height: 55 }, caption: "Detail from the four-player game: card costs, bonuses, and the three decks." },
+    { title: "Whose turn is it?", crop: { x: 79, y: 7, width: 20, height: 60 }, caption: "The player panel keeps the current turn and every player's tokens beside the board." },
     { title: "Checking a move", diagram: "rules", caption: "Rule checks happen before an accepted move changes shared game state." },
   ],
   "algo-explorer": [
-    { title: "Pause on a frame", crop: { x: 14, y: 34, width: 45, height: 57 }, caption: "Detail from the A* screenshot. Start, goal, and blocked cells have different marks." },
-    { title: "Ask beside the grid", crop: { x: 75, y: 8, width: 24, height: 77 }, caption: "The tutor panel stays beside the active visualization. This is a crop of the same screen." },
+    { title: "Pause on a frame", crop: { x: 12, y: 35, width: 48, height: 54 }, caption: "The finished A* path. Start, goal, walls and the rebuilt path have different marks." },
+    { title: "Ask beside the grid", crop: { x: 73, y: 7, width: 27, height: 93 }, caption: "The tutor panel stays beside the active visualization. This is a crop of the same screen." },
     { title: "What the tutor receives", diagram: "frames", caption: "The active frame gives the question a specific algorithm state to refer to." },
   ],
   "simple-db": [
@@ -69,18 +75,18 @@ export const projectVisuals: Record<PortfolioProjectSlug, readonly [StudyVisual,
     { title: "Readers and feeds", diagram: "content", caption: "Conceptual data relationships behind subscriptions and collected posts." },
   ],
   cypress: [
-    { title: "The entry page", crop: { x: 0, y: 0, width: 100, height: 50 }, caption: "Existing landing-page image. Its marketing copy includes features beyond the verified prototype." },
+    { title: "The entry page", crop: { x: 18, y: 17, width: 64, height: 52 }, caption: "The reworked hero. Its feature list names only what the prototype implements." },
     { title: "Workspace navigation", diagram: "workspace", caption: "A schematic of the implemented account, workspace, and dashboard areas. This is not an editor screenshot." },
     { title: "The data layer", diagram: "content", caption: "Next.js, Supabase, and Drizzle support the workspace prototype. AI features remain unfinished." },
   ],
   "leetcode-clone": [
-    { title: "Read the problem", crop: { x: 24, y: 28, width: 37, height: 43 }, caption: "The problem description and example from the existing screenshot." },
-    { title: "Code and test cases", crop: { x: 62, y: 28, width: 38, height: 72 }, caption: "The editor and test panel from the same screenshot. This does not establish isolated server-side execution." },
+    { title: "Read the problem", crop: { x: 0, y: 7, width: 50, height: 60 }, caption: "The problem description and first example from the workspace capture." },
+    { title: "Code and test cases", crop: { x: 50, y: 7, width: 50, height: 93 }, caption: "The editor and test panel from the same screenshot. Test cases run in the browser, not an isolated server." },
     { title: "A practice workspace", diagram: "practice", caption: "The layout keeps the problem, solution, and feedback within one view." },
   ],
   cliphop: [
-    { title: "A clip in the feed", crop: { x: 43, y: 13, width: 43, height: 62 }, caption: "The captured post groups its creator, video, and reactions." },
-    { title: "Browse by topic", crop: { x: 14, y: 21, width: 26, height: 47 }, caption: "Topic navigation from the existing feed screenshot." },
+    { title: "A clip in the feed", crop: { x: 42, y: 12, width: 47, height: 56 }, caption: "A post groups its creator, video, and reactions." },
+    { title: "Browse by topic", crop: { x: 11.5, y: 18, width: 28, height: 42 }, caption: "Topic navigation from the reworked feed." },
     { title: "Clips and creators", diagram: "content", caption: "A conceptual view of the content stored through Sanity." },
   ],
   propertize: [

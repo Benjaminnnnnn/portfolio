@@ -1,0 +1,185 @@
+/* Project specimens: flat colour, one object, one gesture on hover. */
+.specimen { position: absolute; inset: 0; container-type: size; display: grid; place-items: center; overflow: hidden; background: var(--sp-bg); color: var(--sp-ink); font-family: "tiktok", sans-serif; }
+.specimen img { display: block; max-width: none; }
+.specimen * { box-sizing: border-box; }
+.specimen-relay { --sp-bg: #121212; --sp-ink: #f3efe6; }
+.specimen-handpick { --sp-bg: #ffcdb2; --sp-ink: #1d1512; }
+.specimen-splendor { --sp-bg: #0f3d2e; --sp-ink: #f6e7b8; }
+.specimen-algo-explorer { --sp-bg: #0c0c0c; --sp-ink: #f0f0f0; }
+.specimen-simple-db { --sp-bg: #e3ecd3; --sp-ink: #1d2a1f; }
+.specimen-petclinic-devops { --sp-bg: #2f5bff; --sp-ink: #fff; }
+.specimen-333gle { --sp-bg: #ffffff; --sp-ink: #111; }
+.specimen-xv6 { --sp-bg: #0a0e0a; --sp-ink: #9dff8a; }
+.specimen-rss-aggregator { --sp-bg: #ff4a1c; --sp-ink: #fff; }
+.specimen-cypress { --sp-bg: #d6d0ff; --sp-ink: #17132b; }
+.specimen-leetcode-clone { --sp-bg: #ffa116; --sp-ink: #111; }
+.specimen-cliphop { --sp-bg: #ff5fa2; --sp-ink: #1b0b14; }
+.specimen-propertize { --sp-bg: #4458e6; --sp-ink: #11163a; }
+.specimen-mems { --sp-bg: #f1e4d1; --sp-ink: #2c2219; }
+
+/* Relay — a departures board of one job's life */
+.sp-relay { width: 84cqw; font: 500 3.1cqw/1 "mono", monospace; letter-spacing: .02em; }
+.sp-relay-head { display: flex; justify-content: space-between; padding-bottom: 2.4cqw; margin-bottom: 1.2cqw; border-bottom: 1px solid #ffffff33; font-size: 2.2cqw; color: #ffffff88; }
+.sp-relay-row { display: grid; grid-template-columns: 17% 1fr 32%; align-items: center; padding: 1.55cqw 0; border-bottom: 1px solid #ffffff14; }
+.sp-relay-row > span { color: #ffffff77; }
+.sp-relay-row > span:last-child { text-align: right; }
+.sp-relay-row strong { display: flex; font-weight: 600; color: #ffd24a; }
+.sp-relay-row strong i { font-style: normal; display: inline-block; min-width: .64em; padding: .18em .04em; margin-right: .08em; text-align: center; background: #1e1e1e; border-radius: .12em; }
+.sp-relay-row-2 strong { color: #ff6a3d; }
+.sp-relay-row-4 strong { color: #7dffa8; }
+.specimen-host:hover .sp-relay-row strong i { animation: sp-flap .5s calc(var(--k) * 28ms) steps(3) both; }
+@keyframes sp-flap { 0% { transform: rotateX(90deg); } 60% { transform: rotateX(-20deg); } 100% { transform: none; } }
+
+/* Handpick — a stack you can decide on */
+.sp-handpick { display: grid; justify-items: center; gap: 4.5cqh; }
+.sp-handpick-stack { position: relative; width: 44cqh; aspect-ratio: 3 / 4; }
+.sp-handpick-stack img, .sp-hp-top { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; border-radius: 2.2cqh; box-shadow: 0 1.5cqh 3cqh -1.6cqh #5a2a1a88; transition: transform .6s cubic-bezier(.22, 1, .36, 1), opacity .6s; }
+.sp-hp-2 { transform: rotate(8deg) translate(9%, 2%); }
+.sp-hp-1 { transform: rotate(-6deg) translate(-8%, 1%); }
+.sp-hp-top { transform: rotate(-1.5deg); overflow: visible; }
+.sp-hp-top img { position: static; width: 100%; height: 100%; }
+.sp-hp-stamp { position: absolute; top: 9%; right: -8%; box-shadow: none; padding: .6cqh 1.6cqh; border: .45cqh solid #e5312b; border-radius: .8cqh; color: #e5312b; font: 700 2.6cqh/1 "mono", monospace; letter-spacing: .1em; transform: rotate(12deg); opacity: 0; transition: opacity .3s; }
+.sp-handpick-actions { display: flex; gap: 1.8cqh; font: 600 3.2cqh/1 "tiktok", sans-serif; }
+.sp-handpick-actions span { padding: 1.4cqh 2.6cqh; border-radius: 99px; background: #fff; }
+.sp-handpick-actions span:last-child { background: #1d1512; color: #fff; }
+.specimen-host:hover .sp-hp-top { transform: translate(-70%, -4%) rotate(-18deg); opacity: 0; }
+.specimen-host:hover .sp-hp-1 { transform: rotate(-1.5deg); }
+.specimen-host:hover .sp-hp-stamp { opacity: 1; }
+
+/* Splendor — the game's own card art on felt */
+.sp-splendor { display: grid; justify-items: center; gap: 5cqh; }
+.sp-splendor-hand { position: relative; width: 70cqw; height: 58cqh; }
+.sp-sp-card { position: absolute; left: 50%; bottom: 0; width: 30cqh; aspect-ratio: 2 / 3; margin: 0 0 0 -15cqh; overflow: hidden; border-radius: 1.6cqh; border: .5cqh solid #f6e7b8; box-shadow: 0 2cqh 3cqh -1.5cqh #00000099; transform-origin: 50% 120%; transition: transform .55s cubic-bezier(.22, 1, .36, 1); }
+.sp-sp-card img { width: 100%; height: 100%; object-fit: cover; }
+.sp-sp-card b { position: absolute; top: .8cqh; left: 1.4cqh; font: 700 4.6cqh/1 "Cinzel", Georgia, serif; color: #fff; text-shadow: 0 .3cqh .8cqh #000; }
+.sp-sp-card-0 { transform: rotate(-21deg); }
+.sp-sp-card-1 { transform: rotate(-7deg); z-index: 1; }
+.sp-sp-card-2 { transform: rotate(7deg); z-index: 2; }
+.sp-sp-card-3 { transform: rotate(21deg); z-index: 3; }
+.specimen-host:hover .sp-sp-card-0 { transform: rotate(-30deg) translateY(-2cqh); }
+.specimen-host:hover .sp-sp-card-1 { transform: rotate(-10deg) translateY(-4cqh); }
+.specimen-host:hover .sp-sp-card-2 { transform: rotate(10deg) translateY(-4cqh); }
+.specimen-host:hover .sp-sp-card-3 { transform: rotate(30deg) translateY(-2cqh); }
+.sp-splendor-gems { display: flex; gap: 1.8cqh; }
+.sp-splendor-gems i { width: 5cqh; height: 5cqh; border-radius: 50%; box-shadow: inset 0 -.6cqh 0 #00000040, 0 0 0 .4cqh #ffffff30; }
+
+/* AlgoExplorer — the path draws itself */
+.sp-algo { width: 82cqw; }
+.sp-algo svg { display: block; width: 100%; }
+.sp-algo .cell { fill: #1b1b1b; }
+.sp-algo .wall { fill: #7c5cff; }
+.sp-algo .start { fill: #d7ff3c; }
+.sp-algo .goal { fill: #ff4a5c; }
+.sp-algo-path { fill: none; stroke: #d7ff3c; stroke-width: .34; stroke-linecap: round; stroke-linejoin: round; stroke-dasharray: 1; stroke-dashoffset: 0; }
+.specimen-host:hover .sp-algo-path { animation: sp-draw 1.4s cubic-bezier(.45, 0, .2, 1) both; }
+@keyframes sp-draw { from { stroke-dashoffset: 1; } }
+.sp-algo-label { margin-top: 3cqw; font: 500 2.4cqw/1 "mono", monospace; color: #ffffff88; }
+.sp-algo-label span { color: #d7ff3c; margin-right: 1cqw; }
+
+/* SimpleDB — four page slots, one about to be evicted */
+.sp-db { width: 78cqw; }
+.sp-db-title { display: flex; justify-content: space-between; align-items: baseline; font: 600 5cqw/1 "tiktok", sans-serif; letter-spacing: -.03em; }
+.sp-db-title span { font: 500 2.1cqw/1 "mono", monospace; letter-spacing: 0; opacity: .6; }
+.sp-db-slots { display: grid; grid-template-columns: repeat(4, 1fr); gap: 2cqw; margin: 4cqw 0; }
+.sp-db-slot { display: grid; gap: 1.1cqw; padding: 2.2cqw; aspect-ratio: 3 / 4; border: 1px solid #1d2a1f; background: #f7fbef; transition: transform .45s cubic-bezier(.22, 1, .36, 1), background .3s; }
+.sp-db-slot span { font: 600 2.3cqw/1 "mono", monospace; margin-bottom: 1cqw; }
+.sp-db-slot i { height: 1cqw; background: #1d2a1f22; }
+.sp-db-slot.is-evicting { background: #1d2a1f; color: #e3ecd3; }
+.sp-db-slot.is-evicting i { background: #e3ecd344; }
+.specimen-host:hover .sp-db-slot.is-evicting { transform: translateY(-14%) rotate(-4deg); background: #ff6a3d; border-color: #ff6a3d; }
+.sp-db-call { font: 500 2.6cqw/1 "mono", monospace; }
+
+/* PetClinic — the Jenkinsfile, stage by stage */
+.sp-pc { width: 82cqw; }
+.sp-pc-title { font: 600 3.4cqw/1.2 "mono", monospace; }
+.sp-pc-title span { display: block; margin-top: 1cqw; font-weight: 400; font-size: 2.2cqw; opacity: .7; }
+.sp-pc-stages { display: flex; flex-wrap: wrap; gap: 1.4cqw; margin: 4cqw 0 0; padding: 0; list-style: none; }
+.sp-pc-stages li { display: flex; align-items: center; gap: 1cqw; padding: 1.3cqw 2cqw 1.3cqw 1.3cqw; border-radius: 99px; background: #ffffff; color: #1a2f8f; font: 500 2.3cqw/1 "tiktok", sans-serif; }
+.sp-pc-stages i { display: grid; place-items: center; width: 2.8cqw; height: 2.8cqw; border-radius: 50%; background: #1fa55b; color: #fff; font-style: normal; font-size: 1.6cqw; }
+.specimen-host:hover .sp-pc-stages li { animation: sp-pop .5s calc(var(--i) * 70ms) cubic-bezier(.22, 1.4, .36, 1) both; }
+@keyframes sp-pop { from { transform: scale(.6); opacity: 0; } }
+
+/* 333gle — its own wordmark and search box */
+.sp-333 { display: grid; justify-items: center; width: 70cqw; }
+.sp-333 img { width: 52cqw; }
+.sp-333-search { display: flex; gap: 1.2cqw; width: 100%; margin-top: 3cqw; }
+.sp-333-query { flex: 1; padding: 1.6cqw 2cqw; border: 1px solid #999; font: 2.6cqw/1 Georgia, serif; }
+.sp-333-query::after { content: ""; display: inline-block; width: 1px; height: 1em; margin-left: 2px; vertical-align: -.15em; background: #111; animation: sp-blink 1s steps(1) infinite; }
+.sp-333-search b { padding: 1.6cqw 2cqw; border: 1px solid #aaa; border-radius: .6cqw; background: #f2f2f2; font: 400 2.4cqw/1 system-ui, sans-serif; }
+.sp-333-count { align-self: start; margin-top: 4cqw; font: 2.6cqw/1 Georgia, serif; opacity: 0; transform: translateY(1cqw); transition: .4s; }
+.specimen-host:hover .sp-333-count { opacity: 1; transform: none; }
+@keyframes sp-blink { 50% { opacity: 0; } }
+
+/* xv6 — phosphor shell */
+.sp-xv6 { margin: 0; width: 80cqw; font: 400 3.2cqh/1.45 "mono", monospace; color: #9dff8a; text-shadow: 0 0 1.2cqh #9dff8a66; white-space: pre; }
+.sp-xv6 span:nth-child(-n+3) { color: #9dff8a99; }
+.sp-caret { display: inline-block; width: .6em; height: 1em; vertical-align: -.15em; background: #9dff8a; animation: sp-blink 1s steps(1) infinite; }
+.specimen-host:hover .sp-xv6 span { animation: sp-type .02s calc(var(--i) * 70ms) both; }
+@keyframes sp-type { from { opacity: 0; } }
+
+/* RSS — one request on vermilion */
+.sp-rss { width: 80cqw; font: 500 4.4cqw/1.4 "mono", monospace; }
+.sp-rss-cmd span { opacity: .6; margin-right: 1.5cqw; }
+.sp-rss-body { margin-top: 3cqw; font-size: 3.1cqw; opacity: .85; }
+.sp-rss-res { display: inline-block; margin-top: 4cqw; padding: 1cqw 2cqw; background: #fff; color: #ff4a1c; font-weight: 600; transform: scale(.9); opacity: .0; transition: .35s cubic-bezier(.22, 1.4, .36, 1); }
+.specimen-host:hover .sp-rss-res { transform: none; opacity: 1; }
+
+/* Cypress — the setup form it actually ships */
+.sp-cy-card { width: 58cqw; padding: 4cqw; background: #110e22; color: #f2efff; border-radius: 2cqw; box-shadow: 1.6cqw 1.6cqw 0 #17132b; }
+.sp-cy-card strong { display: block; font: 600 4cqw/1.1 "tiktok", sans-serif; margin-bottom: 3cqw; }
+.sp-cy-card small { display: block; margin: 2cqw 0 1cqw; font-size: 1.9cqw; color: #b9b2d8; }
+.sp-cy-input { display: flex; align-items: center; gap: 1.5cqw; padding: 1.6cqw 2cqw; border: 1px solid #4b4270; border-radius: 1cqw; font-size: 2.3cqw; }
+.sp-cy-typed { overflow: hidden; white-space: nowrap; }
+.sp-cy-file { color: #b9b2d8; }
+.sp-cy-button { display: block; width: max-content; margin: 3cqw 0 0 auto; padding: 1.6cqw 2.6cqw; border-radius: 1cqw; background: #a88be8; color: #17132b; font-size: 2.2cqw; transition: transform .2s; }
+.specimen-host:hover .sp-cy-typed { animation: sp-typing 1s steps(11) both; }
+.specimen-host:hover .sp-cy-button { transform: translateY(.4cqw) scale(.97); }
+@keyframes sp-typing { from { width: 0; } to { width: 11ch; } }
+
+/* Coding practice — Two Sum, all cases passing */
+.sp-lc-card { width: 66cqw; padding: 4cqw; background: #111; color: #f5f5f5; border-radius: 1.6cqw; }
+.sp-lc-title { display: flex; justify-content: space-between; align-items: center; font: 600 4.4cqw/1 "tiktok", sans-serif; }
+.sp-lc-title span { padding: .8cqw 1.8cqw; border-radius: 99px; background: #0f3a33; color: #2ec4a6; font-size: 2cqw; }
+.sp-lc-code { margin: 3cqw 0; padding: 2cqw; background: #1e1e1e; border-radius: 1cqw; font: 2.2cqw/1.3 "mono", monospace; color: #cfcfcf; }
+.sp-lc-cases { display: flex; gap: 1.4cqw; }
+.sp-lc-cases span { padding: 1.2cqw 2cqw; border-radius: 1cqw; background: #2a2a2a; font-size: 2.1cqw; transition: background .3s calc(var(--i) * 160ms), color .3s calc(var(--i) * 160ms); }
+.sp-lc-cases span::before { content: "○ "; }
+.specimen-host:hover .sp-lc-cases span { background: #1f5f3a; color: #7dffa8; }
+.specimen-host:hover .sp-lc-cases span::before { content: "✓ "; }
+
+/* ClipHop — the topic shelf */
+.sp-hop { display: flex; flex-wrap: wrap; justify-content: center; gap: 1.8cqw; width: 80cqw; }
+.sp-hop span { display: inline-flex; align-items: center; gap: 1cqw; padding: 1.6cqw 2.6cqw; border-radius: 99px; background: #fff; font: 600 2.9cqw/1 "tiktok", sans-serif; transform: rotate(calc((var(--i) - 4.5) * 1.6deg)); transition: transform .5s cubic-bezier(.22, 1.6, .36, 1); }
+.sp-hop span:nth-child(3n) { background: #1b0b14; color: #fff; }
+.sp-hop em { font-style: normal; font-family: "mono", monospace; }
+.specimen-host:hover .sp-hop span { transform: rotate(calc((var(--i) - 4.5) * -2.4deg)) translateY(calc((var(--i) - 4.5) * .3cqw)); }
+
+/* Propertize — one card from the dashboard */
+.sp-prop-card { display: flex; align-items: center; gap: 6cqw; padding: 5cqw 6cqw; background: #fff; border-radius: 2.4cqw; }
+.sp-prop-card small { display: block; font-size: 2.4cqw; color: #7a7f99; }
+.sp-prop-card strong { display: block; margin-top: 1.5cqw; font: 600 8cqw/1 "tiktok", sans-serif; letter-spacing: -.04em; }
+.sp-prop-card em { display: block; margin-top: 1.5cqw; font: normal 1.8cqw/1 "mono", monospace; color: #9aa0bd; }
+.sp-prop-card svg { width: 16cqw; transform: rotate(-90deg); }
+.sp-prop-card circle { fill: none; stroke-width: 5; }
+.sp-prop-card .track { stroke: #d8f1f6; }
+.sp-prop-card .value { stroke: #4458e6; stroke-dasharray: 72 100; stroke-linecap: round; transition: stroke-dasharray .9s cubic-bezier(.22, 1, .36, 1); }
+.specimen-host:hover .sp-prop-card .value { stroke-dasharray: 96 100; }
+
+/* Mems — polaroids of saved places */
+.sp-mems { position: relative; width: 80cqw; height: 72cqh; }
+.sp-mems-p { position: absolute; top: 50%; left: 50%; width: 30cqw; margin: 0; padding: 1.4cqw 1.4cqw 5cqw; background: #fffdf8; box-shadow: 0 1.4cqw 2.6cqw -1.4cqw #5a3a1f88; transition: transform .55s cubic-bezier(.22, 1, .36, 1); }
+.sp-mems-p img { width: 100%; aspect-ratio: 4 / 3; object-fit: cover; }
+.sp-mems-cap { position: absolute; left: 1.6cqw; bottom: 1.5cqw; font: 500 1.9cqw/1 "mono", monospace; }
+.sp-mems-p0 { transform: translate(-105%, -50%) rotate(-9deg); }
+.sp-mems-p1 { transform: translate(-50%, -56%) rotate(2deg); z-index: 1; }
+.sp-mems-p2 { transform: translate(5%, -46%) rotate(8deg); z-index: 2; }
+.specimen-host:hover .sp-mems-p0 { transform: translate(-118%, -48%) rotate(-13deg); }
+.specimen-host:hover .sp-mems-p1 { transform: translate(-50%, -62%) rotate(-1deg) scale(1.04); }
+.specimen-host:hover .sp-mems-p2 { transform: translate(18%, -44%) rotate(12deg); }
+
+@media (prefers-reduced-motion: reduce) {
+  .specimen *, .specimen *::before, .specimen *::after { animation: none !important; transition: none !important; }
+}
+
+/* Dark tiles need an edge on the dark theme. */
+html.dark .specimen-relay, html.dark .specimen-xv6, html.dark .specimen-algo-explorer { box-shadow: inset 0 0 0 1px #ffffff1f; }

@@ -39,6 +39,9 @@ export function ProjectDiagram({ kind, slug }: { kind: DiagramKind; slug: string
     case "rules":
       drawing = <div><div className="token-row" aria-hidden="true">{["#eadfc7", "#4d78b7", "#57916e", "#be516c", "#535659"].map(c => <i key={c} style={{ background: c }} />)}</div><Box label="Player action">Take tokens · reserve · purchase</Box><Arrow /><div className="rule-gate"><span>Current turn?</span><span>Move allowed?</span><span>Enough resources?</span></div><div className="diagram-pair"><Arrow>invalid</Arrow><Arrow>valid</Arrow></div><div className="diagram-pair"><Box label="Keep current state" /><Box label="Apply and share" tone="accent">Connected players receive the update</Box></div></div>;
       break;
+    case "removal":
+      drawing = <div><Box label="One photo at a time">Keep · Delete · sort to an album</Box><div className="diagram-pair"><Arrow>keep</Arrow><Arrow>delete</Arrow></div><div className="diagram-pair"><Box label="Kept">Stays in its collection</Box><Box label="Pending removal" tone="accent">Held in Handpick's trash</Box></div><Arrow>review and confirm the batch</Arrow><Box label="Delete through Photos">iOS asks for confirmation</Box><div className="diagram-footnote">Until then, a pending photo can still be restored.</div></div>;
+      break;
     case "frames":
       drawing = <div><div className="frame-strip">{[0, 1, 2].map(i => <div className={i === 1 ? "active" : ""} key={i}><div className="mini-grid" aria-hidden="true">{Array.from({ length: 20 }, (_, n) => <i className={n < 4 + i * 3 ? "visited" : ""} key={n} />)}</div><span>Frame {i + 1}</span></div>)}</div><Arrow>active frame + question</Arrow><Box label="Tutor context" tone="accent">Algorithm · current state · learner's question</Box><Arrow /><div className="diagram-pair"><Box label="Gemini" /><Box label="OpenAI" /></div></div>;
       break;

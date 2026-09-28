@@ -6,6 +6,7 @@ const origin = process.argv[2] ?? "http://127.0.0.1:3000";
 const routes = [
   "/",
   "/relay",
+  "/handpick",
   "/simple-db",
   "/petclinic-devops",
   "/algo-explorer",

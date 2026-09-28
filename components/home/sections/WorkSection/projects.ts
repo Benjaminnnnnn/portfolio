@@ -9,6 +9,7 @@ export type Project = {
   tag?: string;
   slug: string;
   summary: string;
+  headline: string;
   context: string;
   stack: readonly string[];
   sourceUrl: string;
@@ -24,6 +25,7 @@ export const projects: readonly Project[] = portfolioProjects.map((project) => (
   href: `/${project.slug}`,
   slug: project.slug,
   summary: project.summary,
+  headline: project.headline,
   context: project.context,
   stack: project.stack,
   sourceUrl: project.sourceUrl,

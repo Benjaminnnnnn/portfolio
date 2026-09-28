@@ -1,0 +1,323 @@
+--- a/index.html
++++ b/index.html
+@@ -50,9 +50,9 @@
+   }
+ }
+ </script>
+-<link rel="stylesheet" href="/index.css">
++<link rel="preconnect" href="https://fonts.googleapis.com"><link href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600;700;800&family=Geist+Mono&display=swap" rel="stylesheet"><link rel="stylesheet" href="/index.css">
+ </head>
+-  <body class="bg-slate-50 text-slate-800 antialiased h-screen overflow-hidden">
++  <body class="aurora antialiased h-screen overflow-hidden">
+     <div id="root" class="h-full"></div>
+     <script type="module" src="/client/main.tsx"></script>
+   </body>
+--- /dev/null
++++ b/index.css
+@@ -0,0 +1,62 @@
++/* Aurora theme — a dark, luminous skin over the existing Tailwind classes. */
++:root {
++  --ink-0: #05040d;
++  --ink-1: #0b0a18;
++  --ink-2: #121027;
++  --ink-3: #1b1838;
++  --line: rgba(167, 139, 250, 0.14);
++  --line-strong: rgba(167, 139, 250, 0.28);
++  --text-0: #f4f1ff;
++  --text-1: #c9c2e8;
++  --text-2: #8e87b3;
++}
++
++body.aurora {
++  background: radial-gradient(1200px 600px at 20% -10%, rgba(124, 58, 237, 0.22), transparent 60%),
++    radial-gradient(900px 500px at 110% 10%, rgba(34, 211, 238, 0.12), transparent 60%), var(--ink-0);
++  color: var(--text-1);
++  font-family: "Geist", "Inter", ui-sans-serif, system-ui, sans-serif;
++}
++
++.aurora .bg-white, .aurora .bg-white\/90 { background-color: rgba(18, 16, 39, 0.72) !important; backdrop-filter: blur(14px); }
++.aurora .bg-slate-50, .aurora .bg-slate-50\/50 { background-color: rgba(11, 10, 24, 0.55) !important; }
++.aurora .bg-slate-100 { background-color: rgba(27, 24, 56, 0.9) !important; }
++.aurora .bg-slate-200, .aurora .bg-slate-200\/50 { background-color: rgba(167, 139, 250, 0.12) !important; }
++.aurora .bg-brand-50, .aurora .bg-brand-50\/80 { background-color: rgba(139, 92, 246, 0.16) !important; }
++.aurora .bg-brand-100 { background-color: rgba(139, 92, 246, 0.28) !important; }
++.aurora .bg-amber-50 { background-color: rgba(251, 191, 36, 0.1) !important; }
++.aurora .bg-rose-50 { background-color: rgba(244, 63, 94, 0.1) !important; }
++.aurora .bg-slate-900 { background: linear-gradient(135deg, #7c3aed, #22d3ee) !important; }
++
++.aurora .border-slate-100, .aurora .border-slate-200, .aurora .border-slate-300,
++.aurora .border-brand-100, .aurora .border-brand-200 { border-color: var(--line) !important; }
++.aurora .ring-slate-100, .aurora .ring-black\/5, .aurora .ring-black\/10, .aurora .ring-brand-100 { --tw-ring-color: var(--line) !important; }
++
++.aurora .text-slate-900, .aurora .text-slate-800 { color: var(--text-0) !important; }
++.aurora .text-slate-700, .aurora .text-slate-600 { color: var(--text-1) !important; }
++.aurora .text-slate-500, .aurora .text-slate-400 { color: var(--text-2) !important; }
++.aurora .text-brand-600, .aurora .text-brand-700 { color: #c4b5fd !important; }
++
++.aurora .shadow-sm, .aurora .shadow-md, .aurora .shadow-lg { box-shadow: 0 10px 40px -20px rgba(124, 58, 237, 0.55) !important; }
++
++.aurora nav { background: rgba(5, 4, 13, 0.6) !important; backdrop-filter: blur(18px) saturate(1.4); border-color: var(--line) !important; }
++
++/* Pathfinding grid: cells become glowing tiles. */
++.aurora .grid .bg-slate-800 { background: linear-gradient(160deg, #2a2456, #16132f) !important; box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.06); }
++.aurora .grid .bg-emerald-400 { background: #34d399 !important; box-shadow: 0 0 18px rgba(52, 211, 153, 0.8), 0 0 42px rgba(52, 211, 153, 0.35) !important; }
++.aurora .grid .bg-emerald-500 { box-shadow: 0 0 24px rgba(16, 185, 129, 0.9) !important; }
++.aurora .grid .bg-rose-500 { box-shadow: 0 0 24px rgba(244, 63, 94, 0.9) !important; }
++.aurora .grid .bg-amber-400 { box-shadow: 0 0 26px rgba(251, 191, 36, 0.95) !important; }
++
++.scrollbar-hide::-webkit-scrollbar { display: none; }
++.scrollbar-hide { -ms-overflow-style: none; scrollbar-width: none; }
++
++@keyframes meteor { 0% { transform: rotate(215deg) translateX(0); opacity: 1; } 70% { opacity: 1; } 100% { transform: rotate(215deg) translateX(-600px); opacity: 0; } }
++@keyframes spotlight { 0% { opacity: 0; transform: translate(-72%, -62%) scale(0.5); } 100% { opacity: 1; transform: translate(-50%, -40%) scale(1); } }
++@keyframes shimmer { from { background-position: 0 0; } to { background-position: -200% 0; } }
++@media (prefers-reduced-motion: reduce) { * { animation: none !important; transition: none !important; } }
++
++.aurora .grid .bg-slate-800 { background: linear-gradient(160deg, #6d5bd0, #3b2f86) !important; box-shadow: inset 0 1px 0 rgba(255,255,255,.25), 0 6px 18px -8px rgba(109,91,208,.8) !important; }
++.aurora .grid .bg-slate-50 { background: rgba(255,255,255,.025) !important; border-color: rgba(167,139,250,.08) !important; }
++.aurora .grid .bg-brand-100 { background: rgba(34,211,238,.18) !important; border-color: rgba(103,232,249,.35) !important; box-shadow: 0 0 14px -2px rgba(34,211,238,.45); }
++.aurora .prose, .aurora .prose p, .aurora .prose em { color: var(--text-1) !important; } .aurora .prose strong { color: var(--text-0) !important; }
+--- a/client/components/Explore.tsx
++++ b/client/components/Explore.tsx
+@@ -1,6 +1,8 @@
+ import React from 'react';
++import { motion } from 'framer-motion';
++import { ArrowUpRight, Sparkles } from 'lucide-react';
+ import { AlgorithmType } from '../types';
+-import { ChevronRight } from 'lucide-react';
++import { CardSpotlight, GridBackground, Meteors, ShimmerText, Spotlight } from './ui/aceternity';
+ 
+ interface AlgorithmOption {
+   type: AlgorithmType;
+@@ -14,68 +16,81 @@
+   onSelect: (algo: AlgorithmType) => void;
+ }
+ 
++// Each family gets its own glow so the catalogue reads as a map, not a list.
++const categoryTone: Record<string, { glow: string; chip: string }> = {
++  Searching: { glow: 'rgba(34,211,238,.28)', chip: 'text-cyan-300 bg-cyan-400/10 ring-cyan-300/20' },
++  Sorting: { glow: 'rgba(244,114,182,.28)', chip: 'text-pink-300 bg-pink-400/10 ring-pink-300/20' },
++  Stack: { glow: 'rgba(251,191,36,.26)', chip: 'text-amber-300 bg-amber-400/10 ring-amber-300/20' },
++  Graph: { glow: 'rgba(52,211,153,.26)', chip: 'text-emerald-300 bg-emerald-400/10 ring-emerald-300/20' },
++};
++const fallbackTone = { glow: 'rgba(139,92,246,.32)', chip: 'text-violet-300 bg-violet-400/10 ring-violet-300/20' };
++
+ const Explore: React.FC<ExploreProps> = ({ algorithms, onSelect }) => {
+-  // Group algorithms by category
+-  const groupedAlgorithms = algorithms.reduce((acc, algo) => {
+-    if (!acc[algo.category]) acc[algo.category] = [];
+-    acc[algo.category].push(algo);
++  const grouped = algorithms.reduce((acc, algo) => {
++    (acc[algo.category] ||= []).push(algo);
+     return acc;
+   }, {} as Record<string, AlgorithmOption[]>);
+ 
+   return (
+-    <div className="h-full overflow-y-auto bg-slate-50 p-6 lg:p-8 scrollbar-hide">
+-      <div className="max-w-7xl mx-auto space-y-10 pb-12">
+-        
+-        <div className="text-center space-y-3 py-6">
+-            <h1 className="text-3xl md:text-4xl font-extrabold text-slate-900 tracking-tight">
+-              Explore Algorithms
+-            </h1>
+-            <p className="text-base text-slate-600 max-w-2xl mx-auto">
+-              Select an algorithm below to visualize its execution, analyze time complexity, and learn with our AI tutor.
+-            </p>
+-        </div>
++    <div className="relative h-full overflow-y-auto scrollbar-hide">
++      <section className="relative isolate overflow-hidden px-6 pb-10 pt-16 lg:pt-24">
++        <GridBackground />
++        <Spotlight className="-top-40 left-0 md:-top-20 md:left-60" fill="#a78bfa" />
++        <div className="pointer-events-none absolute inset-0 overflow-hidden"><Meteors number={16} /></div>
++        <motion.div
++          initial={{ opacity: 0, y: 24 }}
++          animate={{ opacity: 1, y: 0 }}
++          transition={{ duration: 0.8, ease: [0.22, 1, 0.36, 1] }}
++          className="relative z-10 mx-auto max-w-4xl text-center"
++        >
++          <span className="inline-flex items-center gap-2 rounded-full border border-white/10 bg-white/[0.04] px-3 py-1 text-xs font-medium text-violet-200 backdrop-blur">
++            <Sparkles size={13} className="text-cyan-300" /> {algorithms.length} algorithms · AI tutor on every frame
++          </span>
++          <h1 className="mt-6 text-5xl font-extrabold leading-[1.02] tracking-[-0.04em] text-white md:text-7xl">
++            Watch an algorithm <br className="hidden md:block" />
++            <ShimmerText>think, one frame at a time.</ShimmerText>
++          </h1>
++          <p className="mx-auto mt-6 max-w-2xl text-base text-violet-100/70 md:text-lg">
++            Pause any step, inspect the state that changed, and ask the tutor why. Pick an algorithm to begin.
++          </p>
++        </motion.div>
++      </section>
+ 
+-        {Object.entries(groupedAlgorithms).map(([category, algos]) => (
+-          <div key={category} className="space-y-4 animate-in fade-in slide-in-from-bottom-4 duration-700">
+-            <div className="flex items-center space-x-3">
+-               <h2 className="text-lg font-bold text-slate-800 tracking-tight uppercase text-xs bg-slate-200/50 px-2 py-1 rounded-md">{category}</h2>
+-               <div className="h-px bg-slate-200 flex-1"></div>
+-            </div>
+-            
+-            <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-4">
+-              {algos.map((algo) => (
+-                <button
+-                  key={algo.type}
+-                  onClick={() => onSelect(algo.type)}
+-                  className="group relative flex flex-col bg-white rounded-xl p-4 border border-slate-200 shadow-sm hover:shadow-md hover:border-brand-300 hover:-translate-y-0.5 transition-all duration-200 text-left h-full"
+-                >
+-                  <div className="flex items-start justify-between mb-2">
+-                      <div className="p-2 bg-slate-50 rounded-lg w-fit text-brand-600 group-hover:bg-brand-50 group-hover:scale-105 transition-all duration-300 ring-1 ring-slate-100 group-hover:ring-brand-100">
+-                        {/* Scale down the icon slightly visually via transform if needed, but keeping original node */}
+-                        <div className="transform scale-90 origin-top-left">
+-                            {algo.icon}
+-                        </div>
+-                      </div>
+-                      <div className="opacity-0 group-hover:opacity-100 transition-opacity duration-200">
+-                          <ChevronRight size={16} className="text-brand-400" />
+-                      </div>
+-                  </div>
+-                  
+-                  <h3 className="text-sm font-bold text-slate-900 mb-1 group-hover:text-brand-700 transition-colors line-clamp-1" title={algo.type}>
+-                    {algo.type}
+-                  </h3>
+-                  
+-                  <p className="text-xs text-slate-500 leading-snug line-clamp-2">
+-                    {algo.desc}
+-                  </p>
+-                </button>
+-              ))}
+-            </div>
+-          </div>
+-        ))}
++      <div className="relative z-10 mx-auto max-w-7xl space-y-12 px-6 pb-20">
++        {Object.entries(grouped).map(([category, algos], gi) => {
++          const tone = categoryTone[category] ?? fallbackTone;
++          return (
++            <motion.section
++              key={category}
++              initial={{ opacity: 0, y: 30 }}
++              whileInView={{ opacity: 1, y: 0 }}
++              viewport={{ once: true, margin: '-60px' }}
++              transition={{ duration: 0.6, delay: gi * 0.05 }}
++              className="space-y-4"
++            >
++              <div className="flex items-center gap-3">
++                <h2 className={`rounded-full px-3 py-1 text-[11px] font-semibold uppercase tracking-[0.18em] ring-1 ${tone.chip}`}>{category}</h2>
++                <div className="h-px flex-1 bg-gradient-to-r from-white/15 to-transparent" />
++                <span className="font-mono text-xs text-violet-200/40">{String(algos.length).padStart(2, '0')}</span>
++              </div>
++              <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5">
++                {algos.map((algo) => (
++                  <CardSpotlight key={algo.type} color={tone.glow} onClick={() => onSelect(algo.type)} className="h-full">
++                    <div className="mb-8 flex items-start justify-between">
++                      <div className={`rounded-xl p-2.5 ring-1 ${tone.chip}`}>{algo.icon}</div>
++                      <ArrowUpRight size={16} className="text-white/30 transition-all duration-300 group-hover:-translate-y-0.5 group-hover:translate-x-0.5 group-hover:text-white" />
++                    </div>
++                    <h3 className="line-clamp-1 text-[15px] font-semibold text-white" title={algo.type}>{algo.type}</h3>
++                    <p className="mt-1 line-clamp-2 text-xs leading-relaxed text-violet-100/55">{algo.desc}</p>
++                  </CardSpotlight>
++                ))}
++              </div>
++            </motion.section>
++          );
++        })}
+       </div>
+     </div>
+   );
+ };
+ 
+-export default Explore;+export default Explore;
+--- /dev/null
++++ b/client/components/ui/aceternity.tsx
+@@ -0,0 +1,94 @@
++// Small ports of Aceternity UI patterns (ui.aceternity.com): Spotlight, grid
++// background, card spotlight, meteors and a text shimmer. Tailwind + framer-motion.
++import React, { useRef, useState } from "react";
++import { motion, useMotionTemplate, useMotionValue } from "framer-motion";
++
++export const Spotlight: React.FC<{ className?: string; fill?: string }> = ({ className = "", fill = "#a78bfa" }) => (
++  <svg
++    className={`pointer-events-none absolute z-[1] h-[169%] w-[138%] lg:w-[84%] opacity-0 ${className}`}
++    style={{ animation: "spotlight 2s ease .75s 1 forwards" }}
++    xmlns="http://www.w3.org/2000/svg" viewBox="0 0 3787 2842" fill="none"
++  >
++    <g filter="url(#spot-blur)">
++      <ellipse cx="1924.71" cy="273.501" rx="1924.71" ry="273.501" transform="matrix(-0.822377 -0.568943 -0.568943 0.822377 3631.88 2291.09)" fill={fill} fillOpacity="0.21" />
++    </g>
++    <defs>
++      <filter id="spot-blur" x="0.860352" y="0.838989" width="3785.16" height="2840.26" filterUnits="userSpaceOnUse" colorInterpolationFilters="sRGB">
++        <feFlood floodOpacity="0" result="BackgroundImageFix" />
++        <feBlend mode="normal" in="SourceGraphic" in2="BackgroundImageFix" result="shape" />
++        <feGaussianBlur stdDeviation="151" result="effect1_foregroundBlur" />
++      </filter>
++    </defs>
++  </svg>
++);
++
++export const GridBackground: React.FC<{ className?: string }> = ({ className = "" }) => (
++  <div
++    aria-hidden
++    className={`pointer-events-none absolute inset-0 ${className}`}
++    style={{
++      backgroundImage:
++        "linear-gradient(to right, rgba(167,139,250,.09) 1px, transparent 1px), linear-gradient(to bottom, rgba(167,139,250,.09) 1px, transparent 1px)",
++      backgroundSize: "44px 44px",
++      maskImage: "radial-gradient(ellipse 70% 60% at 50% 0%, #000 40%, transparent 100%)",
++      WebkitMaskImage: "radial-gradient(ellipse 70% 60% at 50% 0%, #000 40%, transparent 100%)",
++    }}
++  />
++);
++
++export const Meteors: React.FC<{ number?: number }> = ({ number = 14 }) => (
++  <>
++    {Array.from({ length: number }, (_, i) => (
++      <span
++        key={i}
++        aria-hidden
++        className="pointer-events-none absolute h-0.5 w-0.5 rotate-[215deg] rounded-full bg-violet-200 shadow-[0_0_0_1px_#ffffff10] before:absolute before:top-1/2 before:h-px before:w-[60px] before:-translate-y-1/2 before:bg-gradient-to-r before:from-violet-300 before:to-transparent before:content-['']"
++        style={{
++          top: -10,
++          left: `${(i * 97) % 100}%`,
++          animation: `meteor ${5 + (i % 5)}s linear ${(i * 0.73) % 4}s infinite`,
++        }}
++      />
++    ))}
++  </>
++);
++
++export const CardSpotlight: React.FC<React.ButtonHTMLAttributes<HTMLButtonElement> & { color?: string }> = ({
++  children, className = "", color = "rgba(139,92,246,.35)", ...rest
++}) => {
++  const x = useMotionValue(-200), y = useMotionValue(-200);
++  const [hover, setHover] = useState(false);
++  const bg = useMotionTemplate`radial-gradient(260px circle at ${x}px ${y}px, ${color}, transparent 75%)`;
++  const border = useMotionTemplate`radial-gradient(180px circle at ${x}px ${y}px, rgba(196,181,253,.9), transparent 70%)`;
++  return (
++    <button
++      {...rest}
++      onMouseMove={(e) => { const r = e.currentTarget.getBoundingClientRect(); x.set(e.clientX - r.left); y.set(e.clientY - r.top); }}
++      onMouseEnter={() => setHover(true)}
++      onMouseLeave={() => setHover(false)}
++      className={`group relative overflow-hidden rounded-2xl border border-white/[0.08] bg-[#0f0d22]/80 p-5 text-left transition-transform duration-300 hover:-translate-y-1 ${className}`}
++    >
++      <motion.div aria-hidden className="pointer-events-none absolute -inset-px rounded-2xl" style={{ background: border, opacity: hover ? 1 : 0, padding: 1, WebkitMask: "linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0)", WebkitMaskComposite: "xor", maskComposite: "exclude", transition: "opacity .3s" }} />
++      <motion.div aria-hidden className="pointer-events-none absolute inset-0" style={{ background: bg, opacity: hover ? 1 : 0, transition: "opacity .3s" }} />
++      <div className="relative z-10">{children}</div>
++    </button>
++  );
++};
++
++export const ShimmerText: React.FC<{ children: React.ReactNode; className?: string }> = ({ children, className = "" }) => (
++  <span
++    className={`bg-clip-text text-transparent ${className}`}
++    style={{
++      backgroundImage: "linear-gradient(110deg, #f5f3ff 35%, #c4b5fd 45%, #67e8f9 55%, #f5f3ff 65%)",
++      backgroundSize: "200% 100%",
++      animation: "shimmer 6s linear infinite",
++    }}
++  >
++    {children}
++  </span>
++);
++
++export function useTilt() {
++  const ref = useRef<HTMLDivElement>(null);
++  return ref;
++}
