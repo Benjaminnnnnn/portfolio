@@ -16,7 +16,28 @@ export const metadata: Metadata = {
   },
   description:
     "Benjamin Zhuang, a master's student at Carnegie Mellon. Web applications, systems projects, and engineering notes with code and experiments.",
+  keywords: [
+    // Who
+    "Benjamin Zhuang", "Zheyi Zhuang", "Carnegie Mellon University", "CMU", "portfolio", "resume",
+    // Roles recruiters search for
+    "software engineer", "software engineering intern", "new grad software engineer",
+    "backend engineer", "full-stack engineer", "systems engineer", "iOS developer",
+    // Domains
+    "database systems", "distributed systems", "cloud computing", "operating systems",
+    "backend development", "web development", "DevOps", "CI/CD",
+    // Languages and tools
+    "Python", "Go", "Java", "C", "C++", "TypeScript", "JavaScript", "Swift",
+    "React", "Next.js", "Node.js", "PostgreSQL", "MongoDB", "SQL", "Docker", "Kubernetes",
+  ],
+  authors: [{ name: "Benjamin Zhuang", url: "https://github.com/Benjaminnnnnn" }],
   icons: { icon: withBasePath("/icon.svg") },
+  // Link previews for LinkedIn, Slack, email. Project pages override title/url.
+  openGraph: {
+    type: "website",
+    siteName: "Benjamin Zhuang",
+    images: [{ url: "/preview.png", width: 1513, height: 731, alt: "Benjamin Zhuang portfolio" }],
+  },
+  twitter: { card: "summary_large_image" },
   verification: { google: "EnT0dRSecixANBMwGzTzwdn6-52P7-OEDK-ccecpJhs" },
 };
 
