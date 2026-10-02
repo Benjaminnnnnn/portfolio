@@ -28,7 +28,7 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
       title: `${project.title} — Benjamin Zhuang`,
       description: project.summary,
       url: `/${slug}/`,
-      images: [{ url: "/preview.png", width: 1513, height: 731 }],
+      images: [{ url: "/preview.png", width: 1200, height: 630 }],
     },
   };
 }
