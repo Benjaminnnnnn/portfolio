@@ -31,6 +31,13 @@ export const metadata: Metadata = {
   ],
   authors: [{ name: "Benjamin Zhuang", url: "https://github.com/Benjaminnnnnn" }],
   icons: { icon: withBasePath("/icon.svg") },
+  // Link previews for LinkedIn, Slack, email. Project pages override title/url.
+  openGraph: {
+    type: "website",
+    siteName: "Benjamin Zhuang",
+    images: [{ url: "/preview.png", width: 1513, height: 731, alt: "Benjamin Zhuang portfolio" }],
+  },
+  twitter: { card: "summary_large_image" },
   verification: { google: "EnT0dRSecixANBMwGzTzwdn6-52P7-OEDK-ccecpJhs" },
 };
 

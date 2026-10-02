@@ -21,6 +21,15 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
     title: project.title,
     description: project.summary,
     keywords: [project.title, project.category, ...project.stack, "Benjamin Zhuang"],
+    alternates: { canonical: `/${slug}/` },
+    openGraph: {
+      type: "article",
+      siteName: "Benjamin Zhuang",
+      title: `${project.title} — Benjamin Zhuang`,
+      description: project.summary,
+      url: `/${slug}/`,
+      images: [{ url: "/preview.png", width: 1513, height: 731 }],
+    },
   };
 }
 
