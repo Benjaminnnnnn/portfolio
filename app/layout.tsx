@@ -16,6 +16,12 @@ export const metadata: Metadata = {
   },
   description:
     "Benjamin Zhuang, a master's student at Carnegie Mellon. Web applications, systems projects, and engineering notes with code and experiments.",
+  keywords: [
+    "Benjamin Zhuang", "Zheyi Zhuang", "software engineer", "Carnegie Mellon", "CMU",
+    "portfolio", "full-stack developer", "web applications", "distributed systems",
+    "operating systems", "database internals", "iOS", "React", "Next.js", "TypeScript", "Go",
+  ],
+  authors: [{ name: "Benjamin Zhuang", url: "https://github.com/Benjaminnnnnn" }],
   icons: { icon: withBasePath("/icon.svg") },
   verification: { google: "EnT0dRSecixANBMwGzTzwdn6-52P7-OEDK-ccecpJhs" },
 };
