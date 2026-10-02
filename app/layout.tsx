@@ -17,6 +17,7 @@ export const metadata: Metadata = {
   description:
     "Benjamin Zhuang, a master's student at Carnegie Mellon. Web applications, systems projects, and engineering notes with code and experiments.",
   icons: { icon: withBasePath("/icon.svg") },
+  verification: { google: "EnT0dRSecixANBMwGzTzwdn6-52P7-OEDK-ccecpJhs" },
 };
 
 export default function RootLayout({ children }: Readonly<{ children: React.ReactNode }>) {
