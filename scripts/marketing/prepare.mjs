@@ -24,9 +24,6 @@ const jobs = {
   "handpick-home": ["handpick-appstore/01-home.png", { left: 100, top: 760, width: 1120, height: 1920 }],
   "handpick-review": ["handpick-appstore/02-review.png", { left: 100, top: 760, width: 1120, height: 1920 }],
   "handpick-collection": ["handpick-appstore/03-collection.png", { left: 100, top: 760, width: 1120, height: 1920 }],
-  "propertize-dashboard": ["propertize/demo_imgs/dashboard_1.png"],
-  "propertize-detail": ["propertize/demo_imgs/property_detail.png"],
-  "propertize-list": ["propertize/demo_imgs/all_properties.png"],
   // Browser chrome and bookmarks are cropped out of the PetClinic captures.
   "petclinic-grafana": ["spring-petclinic/screenshots/grafana.png", { left: 0, top: 150, width: 3022, height: 1652 }],
   "petclinic-sonar": ["spring-petclinic/screenshots/sonarqube.png", { left: 0, top: 248, width: 3024, height: 760 }],

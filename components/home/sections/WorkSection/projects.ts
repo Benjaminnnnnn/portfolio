@@ -13,7 +13,7 @@ export type Project = {
   context: string;
   stack: readonly string[];
   sourceUrl: string;
-  sourceStatus?: "pending";
+  sourceStatus?: "pending" | "private";
   accent: string;
 };
 

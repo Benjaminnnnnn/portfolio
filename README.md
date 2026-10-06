@@ -49,7 +49,7 @@ set `CHROME_PATH` if it is installed somewhere other than the default macOS path
 
 ## Portfolio content
 
-- Fourteen project specimens in a sparse staggered grid — one flat colour field and one crafted object per project, each with its own hover gesture; see `docs/work-specimens.md`
+- Sixteen project specimens in a sparse staggered grid — one flat colour field and one crafted object per project, each with its own hover gesture; see `docs/work-specimens.md`
 - Narrow, artwork-first detail pages with four or five visual panels and expandable implementation notes
 - Project writing in `data/portfolio-projects.ts` and `data/systems-projects.ts`
 - Gallery captions, screenshot crops, and scope notes in `data/project-visuals.ts`

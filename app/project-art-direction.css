@@ -53,8 +53,6 @@
 .study-art-directed .workspace-map aside { background: var(--study-contrast); }
 .study-art-directed .skeleton-records i { background: color-mix(in srgb, var(--study-ink), transparent 75%); }
 .study-art-directed .search-query { background: var(--study-contrast); border-color: var(--project-accent); }
-.study-art-directed .record-sheet { background: color-mix(in srgb, var(--study-paper), white 45%); border-color: var(--project-accent); }
-.study-art-directed .record-image { background: var(--study-contrast); }
 .study-simple-db .diagram-buffer { background-image: linear-gradient(#4564480a 1px, transparent 1px), linear-gradient(90deg, #4564480a 1px, transparent 1px); background-size: 24px 24px; }
 .study-xv6 .diagram-box { background: #223027; border-color: #58794c; }
 .study-xv6 .kernel-map { background: transparent; }

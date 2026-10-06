@@ -1,0 +1,8 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1440" height="1000" viewBox="0 0 1440 1000" fill="none">
+  <rect width="1440" height="1000" fill="#0f8a43"/>
+  <g font-family="monospace" fill="#fff" font-size="19" letter-spacing="2"><text x="80" y="85">PPE MOTION ANALYSIS</text><text x="1150" y="85">SCHEMATIC</text></g>
+  <path d="M120 500 C164 360 194 640 238 500 S312 360 356 500 S430 640 474 500 L504 500 C548 654 606 654 650 500 S754 654 798 500 L842 500 C886 318 930 318 974 500 S1062 318 1106 500 L1150 500 C1196 472 1240 528 1284 500 S1310 486 1320 500" stroke="#fff" stroke-width="6" stroke-linecap="round" stroke-linejoin="round"/>
+  <g stroke="#ffe14a" stroke-width="4" stroke-dasharray="14 14"><path d="M489 300V700"/><path d="M820 300V700"/><path d="M1128 300V700"/></g>
+  <g font-family="monospace" fill="#fff" font-size="24" letter-spacing="2" text-anchor="middle"><text x="304" y="780">WALKING</text><text x="654" y="780">SQUAT</text><text x="974" y="780">OVERHEAD</text><text x="1224" y="780">BALANCE</text></g>
+  <text x="80" y="920" font-family="monospace" fill="#fff" font-size="19" letter-spacing="2" opacity=".8">ONE CONTINUOUS CAPTURE, CUT INTO TASKS · NO RECORDED DATA</text>
+</svg>

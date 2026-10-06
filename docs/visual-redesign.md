@@ -36,8 +36,6 @@ All 13 projects now have their own generated editorial cover, palette and materi
 | Cypress | Plum and chartreuse document sculpture |
 | Leetcode Clone | Mustard and graphite woodblock puzzle |
 | ClipHop | Hot-pink and mint skateboard motion collage |
-| Propertize | Terracotta architectural model and blue shadows |
-| Mems | Peach paper, sea glass, imagined travel photographs |
 
 The artwork appears in the index, detail-page hero and next-project thumbnail.
 Detail pages lead with a full-width 16:9 cover, then a compact two-column intro

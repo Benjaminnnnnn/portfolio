@@ -15,8 +15,10 @@ const routes = [
   "/leetcode-clone",
   "/cliphop",
   "/rss-aggregator",
-  "/propertize",
-  "/mems",
+  "/poreia",
+  "/tartan-tickets",
+  "/companion",
+  "/ppe-motion",
   "/333gle",
   "/xv6",
 ];
