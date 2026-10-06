@@ -156,17 +156,6 @@
 .kernel-map > div > span { display: block; margin-bottom: 16px; font: 11px "mono", monospace; }
 .kernel-map .syscall-boundary { text-align: center; margin: 26px -10px; padding: 18px 0; border-block: 1px dashed #82907c; font: 12px "mono", monospace; }
 .kernel-base { margin-top: 24px; background: #414d3d; padding: 14px; color: #e6edda; text-align: center; font: 12px "mono", monospace; }
-.record-drawing { display: grid; grid-template-columns: 1.4fr 1fr; gap: 32px; align-items: center; }
-.record-sheet { padding: 22px; background: #fffdf2; box-shadow: 5px 6px 0 #c0c9b8; border: 1px solid #abb5a0; transform: rotate(-3deg); }
-.record-sheet > span { font: 10px "mono", monospace; }
-.record-image { height: 85px; margin: 20px 0; background: #dee6cd; position: relative; overflow: hidden; }
-.record-image i { position: absolute; width: 80px; height: 80px; transform: rotate(45deg); left: 10px; top: 40px; background: #9eaf8b; }
-.record-image i + i { left: 80px; top: 30px; background: #7e946c; }
-.record-sheet > strong { font-size: 18px; font-weight: 500; }
-.record-sheet dl { margin-top: 14px; }
-.record-sheet dl > div { display: flex; justify-content: space-between; gap: 8px; padding: 8px 0; border-top: 1px solid #dee0d3; font-size: 11px; }
-.record-sheet dd { color: #727b6a; }
-.record-actions > span { display: block; text-align: center; font: 11px "mono", monospace; }
 .entity-connectors { display: flex; justify-content: space-around; height: 60px; align-items: center; font: 44px "mono", monospace; color: #97a085; }
 .entity-storage { text-align: center; margin-top: 30px; padding: 18px 10px; border-top: 1px solid #aeb59f; font: 12px/1.6 "mono", monospace; }
 .chart-unit { display: flex; justify-content: space-between; gap: 14px; margin-bottom: 36px; font: 11px "mono", monospace; }
@@ -202,9 +191,6 @@
 .study-gallery .check-row { gap: 10px; grid-template-columns: 18px 1fr 1fr; padding-block: 20px; }
 .study-gallery .check-row strong { font-size: 16px; }
 .study-gallery .check-row > span { font-size: 11px; }
-.study-gallery .record-drawing { gap: 20px; }
-.study-gallery .record-sheet { padding: 15px; }
-.study-gallery .record-sheet > strong { font-size: 15px; }
 .study-gallery .workspace-map aside { padding-inline: 10px; font-size: 11px; }
 .study-gallery .workspace-map > div { padding: 18px 12px; }
 .study-gallery .practice-map > div { padding: 20px 12px; }

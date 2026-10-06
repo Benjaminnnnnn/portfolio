@@ -129,27 +129,47 @@ function ClipHop() {
   return <div className="sp-hop">{topics.map(([icon, t], i) => <span key={t} style={{ ["--i" as string]: i }}><em>{icon}</em>{t}</span>)}</div>;
 }
 
-function Propertize() {
-  return <div className="sp-prop">
-    <div className="sp-prop-card">
-      <div><small>Properties for Sale</small><strong>684</strong><em>demo data</em></div>
-      <svg viewBox="0 0 36 36" aria-hidden="true"><circle cx="18" cy="18" r="14" className="track" /><circle cx="18" cy="18" r="14" className="value" pathLength="100" /></svg>
-    </div>
+function Poreia() {
+  // Placeholder and example requests from the planner's home screen.
+  const ideas = ["5-day foodie trip to Tokyo on $2,000", "A romantic weekend in Paris", "7 days of hiking in Patagonia", "Luxury shopping in Milan"];
+  return <div className="sp-po">
+    <div className="sp-po-bar"><span className="sp-po-typed">3 relaxed days in Lisbon</span><b>Start planning</b></div>
+    <div className="sp-po-ideas">{ideas.map((t, i) => <span key={t} style={{ ["--i" as string]: i }}>↗ {t}</span>)}</div>
   </div>;
 }
 
-function Mems() {
-  return <div className="sp-mems">
-    <div className="sp-mems-p sp-mems-p0"><img src={img("mems-canyon")} alt="" /><span className="sp-mems-cap">Road trip</span></div>
-    <div className="sp-mems-p sp-mems-p1"><img src={img("mems-kyoto")} alt="" /><span className="sp-mems-cap">Fushimi Inari, Kyoto</span></div>
-    <div className="sp-mems-p sp-mems-p2"><img src={img("mems-banff")} alt="" /><span className="sp-mems-cap">Moraine Lake, Banff</span></div>
+function TartanTickets() {
+  // Wording from Scotty's system prompt, placeholders included.
+  return <div className="sp-tt">
+    <p className="sp-tt-name">Scotty <span>AI Assistant</span></p>
+    <p className="sp-tt-msg">You're requesting a full refund of $X.XX for order TARTAN-XXX (N ticket(s)). This will cancel all tickets in the order. Confirm? (yes/no)</p>
+    <div className="sp-tt-reply"><span>yes</span><code>userConfirmed: true</code></div>
+  </div>;
+}
+
+function Companion() {
+  return <div className="sp-co">
+    {["companion-headphones", "companion-star", "companion-player"].map((name, i) => <img key={name} className={`sp-co-obj sp-co-obj-${i}`} src={img(name)} alt="" />)}
+  </div>;
+}
+
+function PpeMotion() {
+  // Schematic trace, not recorded data. Task names from the tool's catalogue.
+  const trace = "M0,30 C6,10 10,50 16,30 S26,10 32,30 S42,50 48,30 L52,30 C58,52 66,52 72,30 S86,52 92,30 L98,30 C104,4 110,4 116,30 S128,4 134,30 L140,30 C150,26 160,34 170,30 S186,28 196,30";
+  return <div className="sp-ppe">
+    <svg viewBox="0 0 196 60" preserveAspectRatio="none" aria-hidden="true">
+      <path d={trace} className="sp-ppe-trace" />
+      {[50, 96, 138].map((x, i) => <line key={x} x1={x} x2={x} y1="2" y2="58" className="sp-ppe-cut" style={{ ["--i" as string]: i }} />)}
+    </svg>
+    <div className="sp-ppe-tasks"><span>walking</span><span>squat</span><span>overhead</span><span>balance</span></div>
   </div>;
 }
 
 const pieces: Record<string, () => React.JSX.Element> = {
   relay: Relay, handpick: Handpick, splendor: Splendor, "algo-explorer": AlgoExplorer, "simple-db": SimpleDb,
   "petclinic-devops": PetClinic, "333gle": Gle333, xv6: Xv6, "rss-aggregator": Rss, cypress: Cypress,
-  "leetcode-clone": LeetCode, cliphop: ClipHop, propertize: Propertize, mems: Mems,
+  "leetcode-clone": LeetCode, cliphop: ClipHop, poreia: Poreia, "tartan-tickets": TartanTickets,
+  companion: Companion, "ppe-motion": PpeMotion,
 };
 
 export function Specimen({ slug }: { slug: string }) {

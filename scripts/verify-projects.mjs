@@ -13,22 +13,22 @@ try {
   await page.addInitScript(() => { window.localStorage.setItem("sound", "off"); if (!window.localStorage.getItem("theme")) window.localStorage.setItem("theme", "light"); });
   await page.goto(origin, { waitUntil: "networkidle" });
   await page.locator(".home-root.intro-ready").waitFor({ state: "visible" });
-  assert.equal(await page.locator(".project-card-gallery").count(), 14);
-  assert.equal(await page.locator(".project-card-gallery .project-artwork").count(), 14);
+  assert.equal(await page.locator(".project-card-gallery").count(), 16);
+  assert.equal(await page.locator(".project-card-gallery .project-artwork").count(), 16);
   const productCovers = page.locator(".project-card-gallery .product-cover");
-  assert.equal(await productCovers.count(), 14, "each project needs a product preview");
+  assert.equal(await productCovers.count(), 16, "each project needs a product preview");
   const coverKinds = await productCovers.evaluateAll(nodes => nodes.map(node => node.dataset.coverKind));
-  assert.equal(coverKinds.filter(kind => kind === "specimen").length, 14, "every card uses its specimen");
+  assert.equal(coverKinds.filter(kind => kind === "specimen").length, 16, "every card uses its specimen");
   assert.equal(await page.locator('.project-card-gallery img[src*="art-direction"]').count(), 0, "no abstract artwork should remain on a product cover");
-  assert.equal(new Set(await productCovers.locator(".specimen").evaluateAll(nodes => nodes.map(node => node.className))).size, 14, "each project has its own specimen");
+  assert.equal(new Set(await productCovers.locator(".specimen").evaluateAll(nodes => nodes.map(node => node.className))).size, 16, "each project has its own specimen");
   assert.equal(await page.locator("#work canvas").count(), 0, "the work index stays flat: no shader canvas");
-  assert.equal(await page.locator(".project-card-gallery .project-year").count(), 14, "each card shows its years");
+  assert.equal(await page.locator(".project-card-gallery .project-year").count(), 16, "each card shows its years");
   const palettes = await page.locator(".project-card-gallery").evaluateAll(nodes => nodes.map(node => node.style.getPropertyValue("--card-paper")));
-  assert.equal(new Set(palettes).size, 14, "project palettes should be distinct");
+  assert.equal(new Set(palettes).size, 16, "project palettes should be distinct");
   let fullCaptures = 0;
   assert.equal(await page.locator(".project-stack, .archive-row").count(), 0, "index should use visual cards and small labels");
   const links = await page.locator("#work a[href^='/']").evaluateAll((nodes) => [...new Set(nodes.map((node) => node.getAttribute("href")))]);
-  assert.equal(links.length, 14, "every project should have a case study");
+  assert.equal(links.length, 16, "every project should have a case study");
   for (const card of await page.locator(".project-card-gallery").all()) {
     await card.scrollIntoViewIfNeeded();
     await card.locator("img").evaluateAll(nodes => Promise.all(nodes.map(node => node.decode())));
@@ -103,7 +103,7 @@ try {
     await page.locator("body").click({ position: { x: 5, y: 100 } });
     await page.screenshot({ path: `${output}/${route.replaceAll("/", "")}-detail-desktop.png` });
   }
-  assert.equal(fullCaptures, 10, "ten UI projects retain large original interface captures");
+  assert.equal(fullCaptures, 11, "eleven UI projects retain large original interface captures");
   await page.goto(`${origin}/relay`, { waitUntil: "networkidle" });
   for (let i = 0; i < 4; i++) await page.getByRole("button", { name: "Next event" }).click();
   assert.equal(await page.locator(".lease-job strong").innerText(), "Succeeded");
@@ -161,7 +161,7 @@ try {
   await page.locator(".study-gallery").evaluate(node => node.scrollIntoView({ block: "start" }));
   await page.screenshot({ path: `${output}/splendor-gallery-dark-mobile.png` });
   assert.deepEqual(errors, [], "browser errors after dark-mode routes");
-  const result = { caseStudies: links.length, productCovers: coverKinds.length, specimenCovers: 14, distinctPalettes: new Set(palettes).size, fullCaptures, visualPanels: links.length * 4 + fullCaptures, widths: [320, 390, 768, 1440, 2048], imageDialogs: "passed", compactHeaders: "passed", productFirst: "passed", expandableNotes: "passed", keyboardReplay: "passed", reducedMotion: "passed", darkMode: "passed", errors };
+  const result = { caseStudies: links.length, productCovers: coverKinds.length, specimenCovers: 16, distinctPalettes: new Set(palettes).size, fullCaptures, visualPanels: links.length * 4 + fullCaptures, widths: [320, 390, 768, 1440, 2048], imageDialogs: "passed", compactHeaders: "passed", productFirst: "passed", expandableNotes: "passed", keyboardReplay: "passed", reducedMotion: "passed", darkMode: "passed", errors };
   await fs.writeFile(`${output}/visual-verification.json`, JSON.stringify(result, null, 2));
   console.log(JSON.stringify(result, null, 2));
 } finally {

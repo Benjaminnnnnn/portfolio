@@ -24,20 +24,205 @@ export type PortfolioProject = {
   accent: string;
   stack: readonly string[];
   sourceUrl: string;
-  sourceStatus?: "pending";
+  // "pending": will be published. "private": course, team, or sponsor repository.
+  sourceStatus?: "pending" | "private";
+  demoUrl?: string;
   metrics: readonly ProjectMetric[];
   chapters: readonly ProjectChapter[];
   evidence?: readonly { label: string; href: string }[];
 };
 
 export const projectOrder = [
-  "relay", "handpick", "splendor", "algo-explorer", "simple-db", "petclinic-devops",
-  "333gle", "xv6", "rss-aggregator", "cypress", "leetcode-clone",
-  "cliphop", "propertize", "mems",
+  "poreia", "tartan-tickets", "relay", "handpick", "companion", "ppe-motion",
+  "splendor", "algo-explorer", "simple-db", "petclinic-devops",
+  "333gle", "xv6", "rss-aggregator", "cypress", "leetcode-clone", "cliphop",
 ] as const;
 
 export const portfolioProjects = {
   ...systemsProjects,
+  poreia: {
+    slug: "poreia",
+    title: "Poreia",
+    category: "AI travel planner",
+    context: "Independent product",
+    headline: "One sentence in. A trip you can edit out.",
+    summary:
+      "A travel planner that turns one sentence into a multi-day itinerary with costs, a map, and an editable day-by-day plan. The model's answer has to pass a schema and a destination check before anyone sees it.",
+    cover: "/project-media/poreia.webp",
+    coverAlt: "Poreia home screen: a prompt bar with a placeholder Lisbon trip above four example requests, over a dusk mountain photograph",
+    accent: "#e2674a",
+    stack: ["Next.js", "React", "TypeScript", "Hono", "Cloudflare Workers", "Supabase", "PostgreSQL", "Drizzle", "Zod", "Leaflet"],
+    sourceUrl: "https://github.com/Benjaminnnnnn/poreia",
+    demoUrl: "https://poreia-five.vercel.app",
+    metrics: [
+      { value: "1 sentence", label: "is enough to start a trip" },
+      { value: "Zod", label: "schema every model reply must pass" },
+      { value: "1 retry", label: "correction pass when the destination drifts" },
+    ],
+    chapters: [
+      {
+        "eyebrow": "01 / Context",
+        "title": "Start from a sentence.",
+        "body": [
+          "The home screen asks for one sentence: a place, a mood, a length, or a budget. The result is a day-by-day plan with times, places, cost estimates, and a budget breakdown, drawn on a map and open to drag-and-drop reordering.",
+          "Trips are saved to an account, can be refined with follow-up requests, and can be shared."
+        ]
+      },
+      {
+        "eyebrow": "02 / Implementation",
+        "title": "Treat the model's answer as untrusted input.",
+        "body": [
+          "A Hono service on Cloudflare Workers sends the request to an OpenAI model through Pollinations, with a fixed JSON shape and a low temperature. The reply is parsed and validated with Zod. Anything that fails becomes an error instead of a half-built trip.",
+          "The service then compares the itinerary's destination with the place the user named. If the model wandered elsewhere, it asks once more with an explicit correction. A refinement has to stay in the current trip's destination, and the notes a traveller wrote for each day survive regeneration."
+        ]
+      },
+      {
+        "eyebrow": "03 / Notes",
+        "title": "One model, checked by code.",
+        "body": [
+          "The checks are ordinary code, not a second model. The repository includes integration tests for the trips API and a rate limit on trip requests. The quality of the itineraries themselves has not been evaluated."
+        ]
+      }
+    ],
+  },
+  "tartan-tickets": {
+    slug: "tartan-tickets",
+    title: "Tartan Tickets",
+    category: "AI agent safety",
+    context: "CMU 17-643 Quality Management · four-person team",
+    headline: "An assistant that can refund money needs more than a prompt.",
+    summary:
+      "A course ticketing platform with Scotty, an LLM assistant that looks up orders, buys tickets, and issues refunds through tool calls. I built the refund capability and the guards around it: the model can ask for a refund, but it cannot decide one.",
+    cover: "/project-media/tartan-tickets.webp",
+    coverAlt: "Tartan Tickets events page with the Scotty assistant panel open, showing its greeting and three quick actions",
+    accent: "#b30000",
+    stack: ["TypeScript", "Node.js", "Express", "React", "PostgreSQL", "TypeORM", "OpenAI SDK", "LiteLLM", "Prometheus", "Grafana", "Playwright", "k6"],
+    sourceUrl: "https://github.com/CMU-643/17643-s26-team04",
+    sourceStatus: "private",
+    metrics: [
+      { value: "10 tools", label: "the assistant can call" },
+      { value: "1 refund", label: "at most per assistant turn" },
+      { value: "$10,000", label: "ceiling before a person takes over" },
+    ],
+    chapters: [
+      {
+        "eyebrow": "01 / Context",
+        "title": "Start from a course codebase.",
+        "body": [
+          "Tartan Tickets is the starter project for CMU's Quality Management course: a React frontend, Express services, PostgreSQL, and a Prometheus and Grafana stack. The course staff added Scotty, an assistant that calls tools through an OpenAI-compatible gateway.",
+          "Each teammate took one capability to make safe enough to launch. Mine was refunds."
+        ]
+      },
+      {
+        "eyebrow": "02 / Implementation",
+        "title": "The model proposes. The service decides.",
+        "body": [
+          "A refund passes checks the model cannot skip: a signed-in user, an explicit confirmation, valid input, ownership of the order, no earlier refund, an event that has not ended, and an amount under the ceiling. The user's identity comes from the session token on the server, never from the model's tool arguments.",
+          "The order moves to refund-pending in a guarded transaction before the payment provider is called with an idempotency key. If that call fails, a sweep every five minutes asks the provider what happened to orders stuck for ten minutes, then completes or rolls back the refund."
+        ]
+      },
+      {
+        "eyebrow": "03 / Notes",
+        "title": "What I built, and what I didn't.",
+        "body": [
+          "Besides refunds I added the session middleware Scotty's tools rely on, Prometheus metrics, Grafana dashboards, alert rules, Playwright end-to-end tests, and k6 load tests. Teammates hardened purchasing, order lookup, and event discovery.",
+          "The platform and the first version of Scotty came from the course staff, and the repository is private."
+        ]
+      }
+    ],
+  },
+  companion: {
+    slug: "companion",
+    title: "Companion",
+    category: "3D collectibles app",
+    context: "Hackathon MVP · two-person team",
+    headline: "Photograph an object. Keep it as a 3D collectible.",
+    summary:
+      "An iPhone app that turns a photo of a real object into a textured 3D model to spin, keep, and arrange in a personal collection. A small API hands the photo to an image-to-3D model and converts the result for iOS.",
+    cover: "/project-media/companion.webp",
+    coverAlt: "Companion landing page: the headline 'Bring your collectibles to life' surrounded by floating collectible objects",
+    accent: "#1e8a5e",
+    stack: ["Swift", "SwiftUI", "WidgetKit", "Node.js", "Hono", "Zod", "Next.js", "React Three Fiber", "Meshy 6 via Wavespeed"],
+    sourceUrl: "https://github.com/Benjaminnnnnn/companion",
+    sourceStatus: "private",
+    demoUrl: "https://companion-eight-zeta.vercel.app",
+    metrics: [
+      { value: "1 photo", label: "in, one textured model out" },
+      { value: "30,000", label: "triangle target per model" },
+      { value: "USDZ", label: "converted once, then cached" },
+    ],
+    chapters: [
+      {
+        "eyebrow": "01 / Context",
+        "title": "A shelf for things you care about.",
+        "body": [
+          "Companion was built in a week as a hackathon MVP. You photograph an object, wait while a model is generated, and get a 3D collectible that lives in a gallery and on home screen widgets."
+        ]
+      },
+      {
+        "eyebrow": "02 / Implementation",
+        "title": "Submit, poll, convert once.",
+        "body": [
+          "The API sends the photo to Meshy 6 through Wavespeed and returns a prediction ID, which the app polls. The first time a prediction completes, the server downloads the GLB, converts it to USDZ with a Python script, and caches the result so later polls and downloads reuse it.",
+          "Routes are described with Zod schemas that also generate the OpenAPI document. The model provider, converter, and cache sit behind small interfaces, so the generation flow reads top to bottom."
+        ]
+      },
+      {
+        "eyebrow": "03 / Notes",
+        "title": "What is real and what is a mock-up.",
+        "body": [
+          "The 3D generation path is real. The web landing page is a marketing mock-up: its user counts, rating, and community screens are placeholder content, and its object pictures are image-model renders rather than app output.",
+          "I worked on the iOS interface, widgets, model rendering, the web app, and the API scaffold, with one teammate. The repository is private."
+        ]
+      }
+    ],
+  },
+  "ppe-motion": {
+    slug: "ppe-motion",
+    title: "PPE Motion Analysis",
+    category: "Motion-capture analytics",
+    context: "CMU MSE practicum · sponsored by MSA Safety",
+    headline: "Does the gear change how a firefighter moves?",
+    summary:
+      "A local tool that turns Xsens motion capture into repeatable comparisons between protective-equipment designs: the same subject and the same task, with one piece of gear changed. A command line and a browser workspace drive the same services.",
+    cover: "/project-media/ppe-motion.svg",
+    coverAlt: "Schematic of a continuous motion trace divided into four tasks",
+    coverCaption: "Schematic drawn for this case study. It contains no recorded data.",
+    accent: "#157a3c",
+    stack: ["Python", "FastAPI", "NumPy", "SciPy", "OpenSim", "SQLite", "Parquet", "React", "TypeScript", "Playwright"],
+    sourceUrl: "https://bitbucket.org/msasafety/kinematic-analysis",
+    sourceStatus: "private",
+    metrics: [
+      { value: "A / B", label: "matched trials with one gear change" },
+      { value: "9", label: "measurement rules the code must hold to" },
+      { value: "127.0.0.1", label: "captures stay on the operator's machine" },
+    ],
+    chapters: [
+      {
+        "eyebrow": "01 / Context",
+        "title": "Compare gear, not people.",
+        "body": [
+          "MSA Safety designs protective equipment. The practicum team built a tool for its engineers: capture a subject in Xsens MVN, import the recording, record what was worn, divide it into tasks, run the analysis, then compare one configuration against another on matched trials."
+        ]
+      },
+      {
+        "eyebrow": "02 / Implementation",
+        "title": "Find the tasks in the motion.",
+        "body": [
+          "A study is usually captured without pausing between exercises. The tool drafts task boundaries from joint-angle movement: where the body goes still, and where one exercise flows into the next. With a protocol chosen, it cuts the recording into exactly the tasks that protocol prescribes. The operator confirms the boundaries before they count.",
+          "The backend is one domain model with adapters for Xsens files, OpenSim, SQLite, and Parquet. Dependencies point inward, and a test fails when they do not. The browser's API types are generated from the backend schema."
+        ]
+      },
+      {
+        "eyebrow": "03 / Notes",
+        "title": "No score, no p-value.",
+        "body": [
+          "The tool reports differences on matched trials and which direction each metric favours. It does not produce an overall gear score, a significance test, or a causal claim, and missing measurements stay missing.",
+          "The recordings and repository belong to the sponsor, so this page uses drawings instead of screens. There is no machine-learning model here; task detection is signal processing."
+        ]
+      }
+    ],
+  },
   handpick: {
     slug: "handpick",
     title: "Handpick",
@@ -330,90 +515,6 @@ export const portfolioProjects = {
         "title": "Study what happens when a fetch fails.",
         "body": [
           "This version has no worker lease protocol or automated tests in its public tree. It marks a feed fetched before retrieval and continues after logging a fetch error. Relay studies the ownership and recovery questions that appear when background work spans multiple processes."
-        ]
-      }
-    ],
-  },
-  propertize: {
-    slug: "propertize",
-    title: "Propertize",
-    category: "Operations dashboard",
-    context: "Full-stack CRUD product",
-    headline: "Find a property. Update its details.",
-    summary:
-      "A property-management interface with listing CRUD, account access, and dashboard views, built with React, Material UI, Node.js, and MongoDB.",
-    cover: "/project-media/propertize.webp",
-    coverAlt: "Propertize dashboard with property totals, revenue chart, and referral breakdowns",
-    accent: "#3f68ff",
-    stack: ["React", "TypeScript", "Material UI", "Node.js", "MongoDB", "OAuth 2.0"],
-    sourceUrl: "https://github.com/Benjaminnnnnn/propertize",
-    metrics: [
-      { value: "CRUD", label: "complete property workflows" },
-      { value: "OAuth", label: "account access" },
-      { value: "UI", label: "dashboard and chart examples" },
-    ],
-    chapters: [
-      {
-        "eyebrow": "01 / Context",
-        "title": "Put the property list within reach.",
-        "body": [
-          "The dashboard combines summary cards with navigation to property records. The charts are interface examples, not independently verified business metrics."
-        ]
-      },
-      {
-        "eyebrow": "02 / Implementation",
-        "title": "Use consistent forms for changes.",
-        "body": [
-          "Create and edit views share React and Material UI patterns. The project covers the lifecycle of a property record, including deletion."
-        ]
-      },
-      {
-        "eyebrow": "03 / Notes",
-        "title": "Persist listings through a Node service.",
-        "body": [
-          "The client connects to a Node.js backend and MongoDB. Account access supports the property-management workflow."
-        ]
-      }
-    ],
-  },
-  mems: {
-    slug: "mems",
-    title: "Mems",
-    category: "Travel social product",
-    context: "Full-stack product build",
-    headline: "Save a place with the story behind it.",
-    summary:
-      "A travel-themed social app for posts about places, with image cards, descriptions, and personal collections.",
-    cover: "/project-media/mems.webp",
-    coverAlt: "Mems travel platform displaying a grid of destination cards on a dark interface",
-    accent: "#4ea1ff",
-    stack: ["React", "Node.js", "MongoDB"],
-    sourceUrl: "https://github.com/Benjaminnnnnn/mems",
-    metrics: [
-      { value: "Places", label: "location-led storytelling" },
-      { value: "Social", label: "shared travel memories" },
-      { value: "MongoDB", label: "post storage" },
-    ],
-    chapters: [
-      {
-        "eyebrow": "01 / Context",
-        "title": "Keep the image and description together.",
-        "body": [
-          "Destination cards pair a place with a photo and a short description. The layout supports browsing across travel posts."
-        ]
-      },
-      {
-        "eyebrow": "02 / Implementation",
-        "title": "Distinguish personal posts from browsing.",
-        "body": [
-          "Profile context and ownership controls separate a user's own posts from the wider collection."
-        ]
-      },
-      {
-        "eyebrow": "03 / Notes",
-        "title": "Build the post workflow end to end.",
-        "body": [
-          "React handles browsing and authoring, while Node.js and MongoDB support the underlying records."
         ]
       }
     ],

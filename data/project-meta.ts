@@ -10,6 +10,10 @@ export type ProjectMeta = {
 };
 
 export const projectMeta: Record<PortfolioProjectSlug, ProjectMeta> = {
+  poreia: { years: "2026", kind: "AI product", specimen: "Prompt bar and example requests from the home screen" },
+  "tartan-tickets": { years: "2026", kind: "Team project", specimen: "Refund confirmation wording from Scotty's system prompt" },
+  companion: { years: "2026", kind: "iOS app", specimen: "Object renders from the landing page; image-generated, not app output" },
+  "ppe-motion": { years: "2026", kind: "Practicum", specimen: "Schematic of task detection; not recorded data" },
   relay: { years: "2026", kind: "Systems", specimen: "Event log from the recorded worker-crash experiment" },
   handpick: { years: "2026", kind: "iOS app", specimen: "Photos from Handpick's CC0 demo library" },
   splendor: { years: "2025–2026", kind: "Team project", specimen: "Card and noble art from the game's repository" },
@@ -22,6 +26,4 @@ export const projectMeta: Record<PortfolioProjectSlug, ProjectMeta> = {
   cypress: { years: "2023–2024", kind: "Web app", specimen: "Workspace setup form, redrawn from the component" },
   "leetcode-clone": { years: "2023–2025", kind: "Web app", specimen: "Two Sum and its three bundled test cases" },
   cliphop: { years: "2023–2025", kind: "Web app", specimen: "The topic list from the feed sidebar" },
-  propertize: { years: "2023", kind: "Web app", specimen: "One dashboard card; figures are demo data" },
-  mems: { years: "2023–2025", kind: "Web app", specimen: "Photos cropped from the saved-places capture" },
 };

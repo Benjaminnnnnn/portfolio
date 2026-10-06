@@ -1,6 +1,6 @@
 // Real assets used by the project specimens (components/specimens).
 // Sources: Handpick's CC0 demo library, Splendor's card art, and crops of the
-// existing Mems and 333gle captures. Clones live in demonstrators/ (gitignored).
+// existing 333gle capture. Clones live in demonstrators/ (gitignored).
 import fs from "node:fs/promises";
 import sharp from "sharp";
 
@@ -18,9 +18,6 @@ const jobs = [
   ["splendor-sapphire", `${D}splendor/client/public/card-art/sapphire-tier2.png`, null, 520],
   ["splendor-emerald", `${D}splendor/client/public/card-art/emerald-tier1.png`, null, 520],
   ["splendor-noble", `${D}splendor/client/public/noble-art/noble_3.png`, null, 520],
-  ["mems-kyoto", `${M}mems.webp`, { left: 731, top: 86, width: 349, height: 251 }, 600],
-  ["mems-banff", `${M}mems.webp`, { left: 1104, top: 86, width: 349, height: 251 }, 600],
-  ["mems-canyon", `${M}mems.webp`, { left: 358, top: 673, width: 349, height: 214 }, 600],
   ["333gle-logo", `${M}333gle.webp`, { left: 668, top: 0, width: 492, height: 190 }, 800],
 ];
 

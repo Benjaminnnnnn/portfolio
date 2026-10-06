@@ -10,6 +10,8 @@ import { ProjectArtwork } from "./ProjectArtwork";
 import { ProjectDiagram } from "./ProjectDiagram";
 import { StudyImage } from "./StudyImage";
 
+const sourceNote = { pending: "Source publication pending", private: "Private repository" } as const;
+
 export function ArticleShell({ project }: { project: PortfolioProject }) {
   const slug = project.slug as PortfolioProjectSlug;
   const nextProject = getNextProject(slug);
@@ -33,7 +35,8 @@ export function ArticleShell({ project }: { project: PortfolioProject }) {
           <section className="study-intro" aria-label="About this project">
             <p>{project.summary}</p>
             <p className="study-scope">{projectScopeNotes[slug]}</p>
-            {project.sourceStatus === "pending" ? <span className="study-source project-source-pending">Source publication pending</span> : <a className="study-source" href={project.sourceUrl} target="_blank" rel="noreferrer">View repository <span aria-hidden="true">↗</span></a>}
+            {project.demoUrl && <a className="study-source" href={project.demoUrl} target="_blank" rel="noreferrer">Open live demo <span aria-hidden="true">↗</span></a>}
+            {project.sourceStatus ? <span className="study-source project-source-pending">{sourceNote[project.sourceStatus]}</span> : <a className="study-source" href={project.sourceUrl} target="_blank" rel="noreferrer">View repository <span aria-hidden="true">↗</span></a>}
           </section>
 
           <div className="study-gallery">
@@ -53,14 +56,14 @@ export function ArticleShell({ project }: { project: PortfolioProject }) {
 
           <details className="study-notes"><summary>Implementation notes</summary><div>{project.chapters.map(chapter => <section key={chapter.eyebrow}><h2>{chapter.title}</h2>{chapter.body.map(paragraph => <p key={paragraph}>{paragraph}</p>)}</section>)}</div></details>
 
-          {project.evidence && project.sourceStatus !== "pending" ? <nav className="study-evidence" aria-label="Project code and notes"><span>Code & notes</span>{project.evidence.map(item => <a key={item.href} href={item.href} target="_blank" rel="noreferrer">{item.label} ↗</a>)}</nav> : null}
+          {project.evidence && !project.sourceStatus ? <nav className="study-evidence" aria-label="Project code and notes"><span>Code & notes</span>{project.evidence.map(item => <a key={item.href} href={item.href} target="_blank" rel="noreferrer">{item.label} ↗</a>)}</nav> : null}
 
           <dl className="study-meta">
             <div><dt>Years</dt><dd>{meta.years}</dd></div>
             <div><dt>Type</dt><dd>{meta.kind}</dd></div>
             <div><dt>Context</dt><dd>{project.context}</dd></div>
             <div className="study-meta-wide"><dt>Stack</dt><dd>{project.stack.join(", ")}</dd></div>
-            <div className="study-meta-wide"><dt>Links</dt><dd>{project.sourceStatus === "pending" ? "Source publication pending" : <a href={project.sourceUrl} target="_blank" rel="noreferrer">Repository ↗</a>}<Link href="/#work">All work</Link><Link href="/#contact">Contact</Link></dd></div>
+            <div className="study-meta-wide"><dt>Links</dt><dd>{project.demoUrl && <a href={project.demoUrl} target="_blank" rel="noreferrer">Live demo ↗</a>}{project.sourceStatus ? sourceNote[project.sourceStatus] : <a href={project.sourceUrl} target="_blank" rel="noreferrer">Repository ↗</a>}<Link href="/#work">All work</Link><Link href="/#contact">Contact</Link></dd></div>
           </dl>
 
           <footer className="study-next"><Link className="specimen-host" href={`/${nextProject.slug}`}><div className="study-next-thumb"><ProjectArtwork slug={nextProject.slug} alt={nextProject.coverAlt} /></div><div><span>Next project</span><strong>{nextProject.title}</strong><small>{projectMeta[nextProject.slug as PortfolioProjectSlug].kind} · {projectMeta[nextProject.slug as PortfolioProjectSlug].years}</small></div><span aria-hidden="true">↗</span></Link></footer>

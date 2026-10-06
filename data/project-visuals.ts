@@ -1,6 +1,6 @@
 import type { PortfolioProjectSlug } from "./portfolio-projects";
 
-export type DiagramKind = "leases" | "throughput" | "buffer" | "transactions" | "operators" | "environments" | "checks" | "monitoring" | "rules" | "frames" | "workspace" | "practice" | "content" | "fetch" | "properties" | "places" | "search" | "kernel" | "removal";
+export type DiagramKind = "leases" | "throughput" | "buffer" | "transactions" | "operators" | "environments" | "checks" | "monitoring" | "rules" | "frames" | "workspace" | "practice" | "content" | "fetch" | "search" | "kernel" | "removal" | "itinerary-check" | "refund-gate" | "refund-recovery" | "model3d" | "capture-flow" | "task-detect" | "ppe-compare";
 export type StudyVisual = {
   title: string;
   caption: string;
@@ -10,6 +10,10 @@ export type StudyVisual = {
 };
 
 export const projectScopeNotes: Record<PortfolioProjectSlug, string> = {
+  poreia: "Built solo. One model call per request, checked by code rather than by a second model. Itinerary quality has not been formally evaluated.",
+  "tartan-tickets": "Team coursework on a starter codebase from the course staff; the repository is private. Refunds, session middleware, metrics, and load tests are my work. Other guardrails are teammates'.",
+  companion: "A two-person hackathon MVP with a private repository. The landing page's user counts and rating are placeholder copy, and its object images are image-model renders, not app output.",
+  "ppe-motion": "A team practicum for an industry sponsor. The repository and recordings are private, so the drawings here are schematic and contain no study data. The analysis is signal processing, not machine learning.",
   relay: "An AI-assisted systems study. The results are from local tests. Delivery is at least once, so external writes still need duplicate protection.",
   handpick: "Pre-release: there is no public build yet. Captures are App Store screenshots with a demo photo library, not a user's photos.",
   splendor: "Built by a four-person team. The repository credits AI assistance for the interface, art, initial infrastructure, and documentation.",
@@ -22,13 +26,31 @@ export const projectScopeNotes: Record<PortfolioProjectSlug, string> = {
   cypress: "A workspace prototype with accounts and navigation. The reworked landing page lists only implemented features; AI features remain unfinished.",
   "leetcode-clone": "A coding-practice clone. It does not establish a production-grade isolated code-execution service.",
   cliphop: "The project covers feeds, profiles, and publishing with Sanity. Video encoding and large-scale media delivery are outside its scope.",
-  propertize: "Dashboard numbers are demo content, not measured business results.",
-  mems: "The gallery uses existing project captures with demo travel posts.",
 };
 
 // Crops refer to the existing project images, not additional product screens.
 // Diagrams are explanatory drawings, not captures of running services.
 export const projectVisuals: Record<PortfolioProjectSlug, readonly [StudyVisual, StudyVisual, StudyVisual]> = {
+  poreia: [
+    { title: "One sentence is enough", crop: { x: 20, y: 45.5, width: 60, height: 20 }, caption: "The prompt bar from the live home screen, with its placeholder trip." },
+    { title: "Somewhere to start", crop: { x: 21.5, y: 67, width: 57, height: 23 }, caption: "Four example requests: a budget, a mood, a pace, a length." },
+    { title: "Before a plan reaches the screen", diagram: "itinerary-check", caption: "Each reply is parsed, validated against the schema, and compared with the requested destination. A mismatch triggers one correction request." },
+  ],
+  "tartan-tickets": [
+    { title: "Ask Scotty", crop: { x: 72.5, y: 30, width: 27, height: 60 }, caption: "The assistant panel on the events page. Signed-out visitors can chat but cannot refund." },
+    { title: "Seven checks before money moves", diagram: "refund-gate", caption: "Every refund request passes these in order. Failing one stops the refund and reports why." },
+    { title: "If the payment call fails", diagram: "refund-recovery", caption: "The order waits in refund-pending. A sweep asks the payment provider what happened, then finishes or undoes the refund." },
+  ],
+  companion: [
+    { title: "An object worth keeping", crop: { x: 2, y: 42, width: 19, height: 34 }, caption: "A collectible from the landing page. This is an image-model render made for the mock-up." },
+    { title: "Small things, kept", crop: { x: 73, y: 0, width: 16, height: 34 }, caption: "A keychain from the same page, also an image-model render." },
+    { title: "From photo to model", diagram: "model3d", caption: "Submit the photo, poll the prediction, then download and convert once. Later requests read the cached file." },
+  ],
+  "ppe-motion": [
+    { title: "From capture to comparison", diagram: "capture-flow", caption: "The steps an operator follows. The command line and the browser workspace call the same services." },
+    { title: "Cutting a recording into tasks", diagram: "task-detect", caption: "A schematic of one continuous capture. Boundaries are proposed from movement and confirmed by the operator." },
+    { title: "One change at a time", diagram: "ppe-compare", caption: "A comparison needs matched trials: the same subject, task, and protocol, with different gear." },
+  ],
   relay: [
     { title: "One current owner", diagram: "leases", caption: "A fresh lease token separates the current worker from a late one." },
     { title: "A job after a crash", replay: true, caption: "Recorded local experiment · September 2026" },
@@ -88,15 +110,5 @@ export const projectVisuals: Record<PortfolioProjectSlug, readonly [StudyVisual,
     { title: "A clip in the feed", crop: { x: 42, y: 12, width: 47, height: 56 }, caption: "A post groups its creator, video, and reactions." },
     { title: "Browse by topic", crop: { x: 11.5, y: 18, width: 28, height: 42 }, caption: "Topic navigation from the reworked feed." },
     { title: "Clips and creators", diagram: "content", caption: "A conceptual view of the content stored through Sanity." },
-  ],
-  propertize: [
-    { title: "The dashboard overview", crop: { x: 6, y: 18, width: 92, height: 15 }, caption: "Summary cards from the dashboard screenshot. The numbers are demo content, not business results." },
-    { title: "Chart details", crop: { x: 6, y: 37, width: 54, height: 62 }, caption: "The chart compares two example series. It is an interface example, not measured revenue." },
-    { title: "Editing a property", diagram: "properties", caption: "A conceptual record view for the project's create, read, update, and delete operations." },
-  ],
-  mems: [
-    { title: "A place and its story", crop: { x: 61, y: 9, width: 20, height: 61 }, caption: "A destination card from the existing screenshot, with image, address, and description." },
-    { title: "A personal collection", crop: { x: 19, y: 8, width: 62, height: 64 }, caption: "The saved-place grid. Existing demo posts are shown as they appeared in the capture." },
-    { title: "The parts of a post", diagram: "places", caption: "A conceptual post model for the React, Node.js, and MongoDB application." },
   ],
 };

@@ -70,18 +70,6 @@
       "prompt": "Use case: stylized-concept\nAsset type: wide16:9 editorial portfolio artwork for ClipHop, a social video feed and publishing app.\nPrimary request: experimental analog video art: three offset frames of the SAME airborne skateboard and anonymous sneakers, cropped below the knees, against a flat saturated hot-pink sky. The frames overlap like contact-sheet exposures, a mint-green translucent streak crosses them to suggest motion and short video clips. No actual people identifiable.\nStyle: xerox zine collage meets direct-flash skate photography, halftone black shadows, torn mint paper edge, rich hot magenta and pale mint complementary colors. Raw but deliberately composed, not corporate or sci-fi.\nComposition: diagonal motion from lower left to upper right, broad pink negative space, wide16:9. Clear skateboard silhouette and no extra limbs.\nConstraints: no text, no letters, no numbers, no logos, no watermark, no UI controls, no brand marks on shoes or board.",
       "source": "/Users/benjaminzhuang/.codex/generated_images/01a09db8-ed6d-72c3-b235-bcd805cbd6b0/exec-4876d084-0969-40c5-a3be-f77224869afb.png",
       "output": "/project-media/art-direction/cliphop-v1.webp"
-    },
-    {
-      "slug": "propertize",
-      "prompt": "Use case: product-mockup\nAsset type: wide16:9 editorial portfolio artwork for Propertize, a property-management dashboard.\nPrimary request: an architectural model photograph of three simplified terracotta townhouses and a pale blue courtyard, cut from heavy plaster and wood, seen in close oblique elevation. Repeated window cutouts cast precise long shadows across the blue ground. A single cobalt doorway makes a focal point.\nStyle: architectural model studio photography, quiet material realism, terracotta plaster grain, chalk-white roof planes, icy blue ground, dramatic warm sunlight. Restrained Mediterranean color study, not a real listing or development.\nComposition: cropped architectural masses fill most of the wide16:9 canvas; asymmetry, blue negative space to one side, no miniature humans, trees, cars or furniture.\nConstraints: no text, no letters, no numbers, no watermark, no logos, no dashboards, no business metrics, no isometric floating city.",
-      "source": "/Users/benjaminzhuang/.codex/generated_images/01a09db8-ed6d-72c3-b235-bcd805cbd6b0/exec-a1e741a9-e791-4971-8ddc-e3ed97d72355.png",
-      "output": "/project-media/art-direction/propertize-v1.webp"
-    },
-    {
-      "slug": "mems",
-      "prompt": "Use case: photorealistic-natural\nAsset type: wide16:9 editorial portfolio artwork for Mems, a saved-place travel journal.\nPrimary request: a sun-faded travel memory diptych made physically from two overlapping small uncaptioned film photographs resting on warm peach paper. One photograph shows a quiet turquoise coastal bay with a winding path; the second shows a cropped terracotta doorway with bougainvillea shadow. A small translucent sea-green glass pebble holds one corner.\nStyle: tactile analog travel editorial, true photographic grain, imperfect white photo borders, midday sunlight and gentle curl shadows; peach and sea-green complementary colors. Intimate and unpolished, not a generic travel brochure.\nComposition: wide16:9, two photographs angled only slightly, edge of one cut off, broad soft peach negative space, close overhead shot. Photos are imagined places, not claims of personal travel.\nConstraints: no text, no stamps, no handwriting, no people, no brands, no logos, no watermark, no UI.",
-      "source": "/Users/benjaminzhuang/.codex/generated_images/01a09db8-ed6d-72c3-b235-bcd805cbd6b0/exec-f3754df4-d621-4268-a142-b51307b2fa70.png",
-      "output": "/project-media/art-direction/mems-v1.webp"
     }
   ]
 }

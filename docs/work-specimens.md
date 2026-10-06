@@ -42,8 +42,10 @@ node scripts/marketing/covers.mjs    # publish the reworked-UI covers
 | Cypress | Reworked landing page | Local build with placeholder Supabase settings |
 | Coding Practice | Reworked problem list; Two Sum workspace | Local build, bundled problem data |
 | ClipHop | Reworked feed | Local build reading the project's public Sanity dataset |
-| Propertize | Dashboard, property detail | Screenshots committed in the repo's `demo_imgs/` (demo figures) |
-| Mems | Saved places | Existing capture with demo posts |
+| Poreia | Home screen | Live site at 1512×830; generating a trip needs a sign-in, so no itinerary is shown |
+| Tartan Tickets | Events page with the Scotty panel | Prebuilt frontend bundle served locally with no backend, so the event list is empty |
+| Companion | Web landing page; three object renders | Live site at 1512×830; objects are image-model renders from the repo's `apps/web/public/assets/` |
+| PPE Motion Analysis | Diagrams only | Sponsor repository and recordings are private; nothing is captured |
 
 ## UI reworks
 
