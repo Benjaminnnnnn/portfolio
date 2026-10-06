@@ -2,6 +2,8 @@
 .specimen { position: absolute; inset: 0; container-type: size; display: grid; place-items: center; overflow: hidden; background: var(--sp-bg); color: var(--sp-ink); font-family: "tiktok", sans-serif; }
 .specimen img { display: block; max-width: none; }
 .specimen * { box-sizing: border-box; }
+/* A project's own photograph or capture behind its object. */
+.specimen .sp-bg { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; }
 .specimen-relay { --sp-bg: #121212; --sp-ink: #f3efe6; }
 .specimen-handpick { --sp-bg: #ffcdb2; --sp-ink: #1d1512; }
 .specimen-splendor { --sp-bg: #0f3d2e; --sp-ink: #f6e7b8; }
@@ -15,7 +17,7 @@
 .specimen-leetcode-clone { --sp-bg: #ffa116; --sp-ink: #111; }
 .specimen-cliphop { --sp-bg: #ff5fa2; --sp-ink: #1b0b14; }
 .specimen-poreia { --sp-bg: #2b2f3f; --sp-ink: #fff; }
-.specimen-tartan-tickets { --sp-bg: #b30000; --sp-ink: #1d1010; }
+.specimen-tartan-tickets { --sp-bg: #2a0606; --sp-ink: #1d1010; }
 .specimen-companion { --sp-bg: #dff0e4; --sp-ink: #14241c; }
 .specimen-ppe-motion { --sp-bg: #0f8a43; --sp-ink: #fff; }
 
@@ -157,18 +159,23 @@
 .specimen-host:hover .sp-hop span { transform: rotate(calc((var(--i) - 4.5) * -2.4deg)) translateY(calc((var(--i) - 4.5) * .3cqw)); }
 
 /* Poreia — one sentence, then somewhere to start */
-.sp-po { width: 80cqw; display: grid; gap: 4cqh; }
+.sp-po { display: grid; align-content: center; justify-items: center; gap: 4cqh; width: 100%; height: 100%; }
+.sp-po::before { content: ""; position: absolute; inset: 0; z-index: 1; background: linear-gradient(180deg, #0000004d, #00000073); }
+.sp-po > :not(.sp-bg) { position: relative; z-index: 2; width: 80cqw; }
 .sp-po-bar { display: flex; align-items: center; justify-content: space-between; gap: 2cqw; padding: 1.4cqw 1.4cqw 1.4cqw 3cqw; border-radius: 99px; background: #fff; color: #2b2f3f; font: 500 3.2cqw/1 "tiktok", sans-serif; box-shadow: 0 0 0 .5cqw #f1a48f55; }
 .sp-po-bar b { padding: 1.7cqw 2.6cqw; border-radius: 99px; background: #e2674a; color: #fff; font-weight: 600; font-size: 2.6cqw; white-space: nowrap; }
 .sp-po-typed { overflow: hidden; white-space: nowrap; }
 .sp-po-ideas { display: grid; grid-template-columns: 1fr 1fr; gap: 1.6cqw; }
-.sp-po-ideas span { padding: 2cqw 2.2cqw; border: 1px solid #ffffff44; border-radius: 1.6cqw; background: #ffffff14; font-size: 2.3cqw; line-height: 1.3; transition: transform .4s cubic-bezier(.22, 1, .36, 1), background .4s; transition-delay: calc(var(--i) * 60ms); }
-.specimen-host:hover .sp-po-ideas span { transform: translateY(-1cqh); background: #ffffff2e; }
+.sp-po-ideas span { padding: 2cqw 2.2cqw; border: 1px solid #ffffff55; border-radius: 1.6cqw; background: #2b2f3f99; backdrop-filter: blur(1.2cqw); font-size: 2.3cqw; line-height: 1.3; transition: transform .4s cubic-bezier(.22, 1, .36, 1), background .4s; transition-delay: calc(var(--i) * 60ms); }
+.specimen-host:hover .sp-po-ideas span { transform: translateY(-1cqh); background: #2b2f3fcc; }
 .specimen-host:hover .sp-po-typed { animation: sp-po-type 1s steps(24) both; }
 @keyframes sp-po-type { from { max-width: 0; } to { max-width: 60cqw; } }
 
 /* Tartan Tickets — the question Scotty must ask before a refund */
-.sp-tt { width: 70cqw; padding: 3.4cqw; border-radius: 2cqw; background: #fff; box-shadow: 0 2.4cqw 4cqw -2cqw #3d0000aa; }
+.sp-tt { display: grid; place-items: center; width: 100%; height: 100%; }
+.sp-tt .sp-bg { object-position: left top; opacity: .55; filter: blur(.9cqw); transform: scale(1.04); transition: transform .8s cubic-bezier(.22, 1, .36, 1); }
+.sp-tt-card { position: relative; width: 70cqw; padding: 3.4cqw; border-radius: 2cqw; background: #fff; box-shadow: 0 2.4cqw 5cqw -1.6cqw #2a0000cc; }
+.specimen-host:hover .sp-tt .sp-bg { transform: scale(1.1); }
 .sp-tt-name { margin: 0 0 2cqw; font: 700 3.2cqw/1 "tiktok", sans-serif; color: #b30000; }
 .sp-tt-name span { margin-left: 1cqw; font-weight: 400; font-size: 2.1cqw; color: #6b5a5a; }
 .sp-tt-msg { margin: 0; padding: 2.2cqw 2.4cqw; border-left: .6cqw solid #1a7a2e; border-radius: 1cqw; background: #f6f3f1; font-size: 2.6cqw; line-height: 1.45; }

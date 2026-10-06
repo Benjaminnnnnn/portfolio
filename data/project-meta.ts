@@ -10,8 +10,8 @@ export type ProjectMeta = {
 };
 
 export const projectMeta: Record<PortfolioProjectSlug, ProjectMeta> = {
-  poreia: { years: "2026", kind: "AI product", specimen: "Prompt bar and example requests from the home screen" },
-  "tartan-tickets": { years: "2026", kind: "Team project", specimen: "Refund confirmation wording from Scotty's system prompt" },
+  poreia: { years: "2026", kind: "AI product", specimen: "Prompt bar and example requests over the home screen's photograph (Pexels)" },
+  "tartan-tickets": { years: "2026", kind: "Team project", specimen: "Refund confirmation wording from Scotty's system prompt, over the events page capture" },
   companion: { years: "2026", kind: "iOS app", specimen: "Object renders from the landing page; image-generated, not app output" },
   "ppe-motion": { years: "2026", kind: "Practicum", specimen: "Schematic of task detection; not recorded data" },
   relay: { years: "2026", kind: "Systems", specimen: "Event log from the recorded worker-crash experiment" },

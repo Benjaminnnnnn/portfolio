@@ -133,6 +133,7 @@ function Poreia() {
   // Placeholder and example requests from the planner's home screen.
   const ideas = ["5-day foodie trip to Tokyo on $2,000", "A romantic weekend in Paris", "7 days of hiking in Patagonia", "Luxury shopping in Milan"];
   return <div className="sp-po">
+    <img className="sp-bg" src={img("poreia-dusk")} alt="" />
     <div className="sp-po-bar"><span className="sp-po-typed">3 relaxed days in Lisbon</span><b>Start planning</b></div>
     <div className="sp-po-ideas">{ideas.map((t, i) => <span key={t} style={{ ["--i" as string]: i }}>↗ {t}</span>)}</div>
   </div>;
@@ -141,9 +142,12 @@ function Poreia() {
 function TartanTickets() {
   // Wording from Scotty's system prompt, placeholders included.
   return <div className="sp-tt">
+    <img className="sp-bg" src={withBasePath("/project-media/tartan-tickets.webp")} alt="" />
+    <div className="sp-tt-card">
     <p className="sp-tt-name">Scotty <span>AI Assistant</span></p>
     <p className="sp-tt-msg">You're requesting a full refund of $X.XX for order TARTAN-XXX (N ticket(s)). This will cancel all tickets in the order. Confirm? (yes/no)</p>
     <div className="sp-tt-reply"><span>yes</span><code>userConfirmed: true</code></div>
+    </div>
   </div>;
 }
 
