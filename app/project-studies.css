@@ -62,10 +62,13 @@
 .study-notes { margin-top: 38px; padding-block: 20px; border-block: 1px solid var(--line); }
 .study-notes > summary { cursor: pointer; font-size: 15px; }
 .study-notes > div { padding-top: 25px; }
-.study-notes section + section { margin-top: 25px; }
-.study-notes h2 { font-size: 18px; font-weight: 550; margin-bottom: 10px; }
-.study-notes p { font-size: 15px; line-height: 1.7; color: var(--label-2); }
-.study-notes p + p { margin-top: 12px; }
+.info-body { padding-bottom: 48px; }
+.info-body p { overflow-wrap: break-word; }
+.info-body a { color: var(--label-1); text-decoration: underline; text-underline-offset: 3px; }
+.study-notes section + section, .info-body section + section { margin-top: 25px; }
+.study-notes h2, .info-body h2 { font-size: 18px; font-weight: 550; margin-bottom: 10px; }
+.study-notes p, .info-body p { font-size: 15px; line-height: 1.7; color: var(--label-2); }
+.study-notes p + p, .info-body p + p { margin-top: 12px; }
 .study-evidence { display: flex; flex-wrap: wrap; gap: 14px 24px; margin: 26px 0 0; padding: 0; border: 0; }
 .study-evidence > span { font-size: 12px; color: var(--label-2); }
 .study-evidence a { font-size: 12px; text-decoration: underline; text-underline-offset: 4px; }
@@ -236,8 +239,8 @@
   .study-gallery .lease-replay { padding: 20px 14px; }
   .study-gallery .lease-controls { font-size: 9px; gap: 6px; }
   .study-notes { margin-top: 30px; }
-  .study-notes h2 { font-size: 17px; }
-  .study-notes p { font-size: 14px; }
+  .study-notes h2, .info-body h2 { font-size: 17px; }
+  .study-notes p, .info-body p { font-size: 14px; }
   .study-next > a { grid-template-columns: 75px 1fr 18px; gap: 14px; }
   .study-next a > div:nth-child(2) > strong { font-size: 20px; }
   .study-next-thumb { height: 60px; }

@@ -1,28 +1,17 @@
 import type { Metadata } from "next";
 import { HomeExperience } from "@/components/home/HomeExperience";
+import { JsonLd } from "@/components/JsonLd";
+import { projects } from "@/data/portfolio-projects";
+import { pageAlternates } from "@/lib/page-metadata";
+import { homeJsonLd } from "@/lib/structured-data";
 
-export const metadata: Metadata = { alternates: { canonical: "./" } };
-
-// Tells search engines this site is about one person and which profiles are theirs.
-const person = {
-  "@context": "https://schema.org",
-  "@type": "Person",
-  name: "Benjamin Zhuang",
-  alternateName: "Zheyi Zhuang",
-  url: "https://benjaminnnnnn.github.io/portfolio/",
-  jobTitle: "Software Engineer",
-  alumniOf: { "@type": "CollegeOrUniversity", name: "Carnegie Mellon University" },
-  sameAs: ["https://github.com/Benjaminnnnnn", "https://www.linkedin.com/in/benjamin-zhuang/"],
-  knowsAbout: [
-    "Distributed systems", "Database systems", "Cloud computing", "Operating systems",
-    "Backend development", "Web development", "Python", "Go", "TypeScript", "Java", "C++",
-  ],
-};
+export const metadata: Metadata = { alternates: pageAlternates("/") };
 
 export default function HomePage() {
   return (
     <>
-      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(person) }} />
+      {/* Tells search engines and agents this site is about one person and which profiles are theirs. */}
+      <JsonLd data={homeJsonLd(projects)} />
       <HomeExperience />
     </>
   );
