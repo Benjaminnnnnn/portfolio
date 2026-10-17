@@ -468,52 +468,20 @@ html[data-inverse="true"] .site-status {
 }
 
 .about-copy p + p { margin-top: 0.7em; color: var(--label-2); }
-.about-sticker {
-  position: absolute;
-  z-index: 7;
-  left: 18vw;
-  bottom: 9vh;
-  width: 150px;
-  height: 150px;
-  pointer-events: none;
-  will-change: transform;
+.about-section .eyebrow,
+.about-photo {
+  grid-row: 1;
 }
 
-.about-orbit {
-  display: grid;
-  place-items: center;
+.about-photo {
+  grid-column: 1;
+  align-self: end;
+  width: min(22vw, 320px);
+  height: auto;
+  aspect-ratio: 1;
+  object-fit: cover;
   border: 1px solid var(--label-1);
-  border-radius: 50%;
-  background: var(--acid);
-  color: #101410;
-  font-family: "tronica-mono", "mono", monospace;
-  font-size: 36px;
-  font-weight: 700;
   box-shadow: 9px 9px 0 var(--label-1);
-}
-
-.about-orbit::before,
-.about-orbit::after {
-  content: "";
-  position: absolute;
-  border: 1px solid currentColor;
-  border-radius: 50%;
-}
-
-.about-orbit::before { inset: 18px; }
-.about-orbit::after { inset: 36px; border-style: dashed; }
-
-.about-orbit span { position: relative; z-index: 2; }
-
-.about-orbit i {
-  position: absolute;
-  top: 10px;
-  left: 50%;
-  width: 13px;
-  height: 13px;
-  border-radius: 50%;
-  background: #101410;
-  transform: translateX(-50%);
 }
 
 .work-section {
@@ -870,11 +838,8 @@ html[data-inverse="true"] .hyper-section { color: #fff; }
   .about-section { grid-template-columns: 1fr; align-content: start; padding-top: 18vh; }
   .eyebrow { grid-column: 1; }
   .about-copy { grid-column: 1; margin-top: 16vh; font-size: 10vw; }
-  .about-sticker { left: auto; right: 8vw; bottom: 7vh; width: 100px; height: 100px; }
-  .about-orbit { font-size: 25px; box-shadow: 6px 6px 0 var(--label-1); }
-  .about-orbit::before { inset: 12px; }
-  .about-orbit::after { inset: 24px; }
-  .about-orbit i { top: 6px; width: 9px; height: 9px; }
+  .about-section .eyebrow { grid-row: auto; }
+  .about-photo { grid-row: auto; width: 62vw; margin-top: 6vh; box-shadow: 6px 6px 0 var(--label-1); }
   .work-section { padding-top: 24px; }
   .work-heading { min-height: 18vh; font-size: 11px; }
   .projects-grid { grid-template-columns: 1fr; row-gap: 72px; }

@@ -1,15 +1,9 @@
-"use client";
-
-import { useRef } from "react";
-import { useFloatingStickers } from "../../animation/useFloatingStickers";
+import { withBasePath } from "@/lib/base-path";
 import { SectionFrame } from "../../shared/SectionFrame";
 
 export function AboutSection() {
-  const section = useRef<HTMLElement>(null);
-  useFloatingStickers(section);
-
   return (
-    <SectionFrame ref={section} name="about" className="about-section">
+    <SectionFrame name="about" className="about-section">
       <p className="eyebrow">ABOUT / 01</p>
       <div className="about-copy">
         <p>
@@ -21,14 +15,14 @@ export function AboutSection() {
           I&apos;m looking for software engineering roles where I can keep building and learning with a team.
         </p>
       </div>
-      <div
-        className="about-sticker about-orbit"
-        data-floating-sticker
-        aria-hidden="true"
-      >
-        <span>BZ</span>
-        <i />
-      </div>
+      <img
+        className="about-photo"
+        src={withBasePath("/img/about.jpg")}
+        alt="Benjamin Zhuang walking up a concrete stairwell"
+        width={896}
+        height={900}
+        loading="lazy"
+      />
     </SectionFrame>
   );
 }
