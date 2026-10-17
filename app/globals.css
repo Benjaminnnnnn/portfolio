@@ -468,14 +468,16 @@ html[data-inverse="true"] .site-status {
 }
 
 .about-copy p + p { margin-top: 0.7em; color: var(--label-2); }
-.about-section .eyebrow,
-.about-photo {
-  grid-row: 1;
+.about-aside {
+  grid-column: 1;
+  align-self: start;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 24px;
 }
 
 .about-photo {
-  grid-column: 1;
-  align-self: end;
   width: min(22vw, 320px);
   height: auto;
   aspect-ratio: 1;
@@ -835,11 +837,11 @@ html[data-inverse="true"] .hyper-section { color: #fff; }
   .sticker-one { right: 1vw; width: 82px; }
   .sticker-two { left: 42vw; top: 28vh; width: 74px; }
   .sticker-three { display: none; }
-  .about-section { grid-template-columns: 1fr; align-content: start; padding-top: 18vh; }
+  .about-section { grid-template-columns: 1fr; align-content: start; padding-top: 14vh; }
   .eyebrow { grid-column: 1; }
-  .about-copy { grid-column: 1; margin-top: 16vh; font-size: 10vw; }
-  .about-section .eyebrow { grid-row: auto; }
-  .about-photo { grid-row: auto; width: 62vw; margin-top: 6vh; box-shadow: 6px 6px 0 var(--label-1); }
+  .about-aside { gap: 4vh; }
+  .about-photo { width: 52vw; box-shadow: 6px 6px 0 var(--label-1); }
+  .about-copy { grid-column: 1; margin-top: 6vh; font-size: 10vw; }
   .work-section { padding-top: 24px; }
   .work-heading { min-height: 18vh; font-size: 11px; }
   .projects-grid { grid-template-columns: 1fr; row-gap: 72px; }
