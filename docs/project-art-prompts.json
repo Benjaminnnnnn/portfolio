@@ -48,12 +48,6 @@
       "output": "/project-media/art-direction/xv6-v1.webp"
     },
     {
-      "slug": "rss-aggregator",
-      "prompt": "Use case: stylized-concept\nAsset type: wide 16:9 landscape editorial cover for an RSS feed aggregation backend.\nPrimary request: a bold screenprinted composition of many thin coral lines entering from the upper and lower edges and bending into one dense horizontal teal stream, like folded ribbons of news converging. A few rectangular paper slips ride between the lines. Communicate gathering many feeds into a single reading stream through abstract print art.\nStyle: 1960s information-design print, overlapping opaque inks and slight misregistration, seafoam paper, deep teal and vivid salmon coral, matte paper texture. Flat graphic image, NOT 3D, NOT a software architecture flowchart.\nComposition: sweeping off-center S bend, wide16:9 landscape, a few large open seafoam areas, confident thick-to-thin rhythm.\nConstraints: no text, no letters, no numbers, no logos, no watermark, no arrows, no rounded UI boxes.",
-      "source": "/Users/benjaminzhuang/.codex/generated_images/01a09db8-ed6d-72c3-b235-bcd805cbd6b0/exec-4766bfc4-ab8a-468c-8149-a8d2fcf0d1f3.png",
-      "output": "/project-media/art-direction/rss-aggregator-v1.webp"
-    },
-    {
       "slug": "cypress",
       "prompt": "Use case: stylized-concept\nAsset type: wide16:9 portfolio cover for Cypress, a workspace and document organization prototype.\nPrimary request: a sculptural arrangement of folded document sheets resembling the ascending branches of a cypress tree. Lavender, plum and pale chartreuse paper planes interlock into a tall asymmetric silhouette; one unfolded sheet rests at the base. An artistic metaphor for workspaces and nested documents.\nStyle: high-end paper sculpture photographed in a color-block studio, soft diffuse shadows, crisp intricate folds but few objects, tactile matte surfaces. Pale lilac background with deep plum forms and small acidic yellow-green accent.\nComposition: portrait-like sculpture offset right inside a wide16:9 landscape canvas, large calm field on left, not a literal tree illustration, no stationery desk scene.\nConstraints: no text, no letters, no numbers, no watermark, no brand logos, no UI mockup, no glowing gradients.",
       "source": "/Users/benjaminzhuang/.codex/generated_images/01a09db8-ed6d-72c3-b235-bcd805cbd6b0/exec-6fdbc892-0f11-4a21-b93a-54a8099e481d.png",

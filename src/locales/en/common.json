@@ -154,17 +154,9 @@
         "name": "ClipHop",
         "description": "ClipHop is an immersive video sharing web application that combines the power of social media with captivating short-form videos."
       },
-      "rssagg": {
-        "name": "RSS Aggregator",
-        "description": "An RSS feed aggregator web server and scraper, desinged to be dynamic and effective. Get/subscribe your favorite RSS feeds here."
-      },
       "propertize": {
         "name": "Propertize",
         "description": "Propertize is a user-friendly and efficient CRUD real estate dashboard application designed to streamline property management process."
-      },
-      "mems": {
-        "name": "Mems",
-        "description": "Social media platform that enables users to share their favorite travel places to others and record their best part of memories."
       },
       "tttgle": {
         "name": "333gle",

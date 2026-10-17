@@ -1,6 +1,6 @@
 import type { PortfolioProjectSlug } from "./portfolio-projects";
 
-export type DiagramKind = "leases" | "throughput" | "buffer" | "transactions" | "operators" | "environments" | "checks" | "monitoring" | "rules" | "frames" | "workspace" | "practice" | "content" | "fetch" | "search" | "kernel" | "removal" | "itinerary-check" | "refund-gate" | "refund-recovery" | "model3d" | "capture-flow" | "task-detect" | "ppe-compare";
+export type DiagramKind = "leases" | "throughput" | "buffer" | "transactions" | "operators" | "environments" | "checks" | "monitoring" | "rules" | "frames" | "workspace" | "practice" | "content" | "search" | "kernel" | "removal" | "itinerary-check" | "refund-gate" | "refund-recovery" | "model3d" | "capture-flow" | "task-detect" | "ppe-compare";
 export type StudyVisual = {
   title: string;
   caption: string;
@@ -22,7 +22,6 @@ export const projectScopeNotes: Record<PortfolioProjectSlug, string> = {
   "petclinic-devops": "A course extension of the open-source Spring PetClinic app. The diagrams show the documented VM setup, not a live deployment.",
   "333gle": "UW CSE 333 coursework. The repository includes course-provided code and indexing libraries.",
   xv6: "Coursework on the existing xv6 teaching kernel. The upstream kernel and included networking code belong to their original authors.",
-  "rss-aggregator": "A single-service implementation with concurrent fetching. Worker leases and automated tests are not included in this version.",
   cypress: "A workspace prototype with accounts and navigation. The reworked landing page lists only implemented features; AI features remain unfinished.",
   "leetcode-clone": "A coding-practice clone. It does not establish a production-grade isolated code-execution service.",
   cliphop: "The project covers feeds, profiles, and publishing with Sanity. Video encoding and large-scale media delivery are outside its scope.",
@@ -90,11 +89,6 @@ export const projectVisuals: Record<PortfolioProjectSlug, readonly [StudyVisual,
     { title: "From shell to kernel", diagram: "kernel", caption: "A conceptual view of the teaching kernel. It does not represent a new operating system authored from scratch." },
     { title: "Files in the shell", crop: { x: 0, y: 27, width: 39, height: 71 }, caption: "Detail from the existing terminal image. This older capture is not evidence of a new RISC-V test run." },
     { title: "Processes and resources", diagram: "operators", caption: "A simplified resource hierarchy for studying the kernel, not a runtime trace." },
-  ],
-  "rss-aggregator": [
-    { title: "The feed endpoints", crop: { x: 1, y: 71, width: 54, height: 28 }, caption: "The existing Swagger screen lists feed retrieval and creation routes." },
-    { title: "A concurrent batch", diagram: "fetch", caption: "The ticker starts a batch; the wait group waits for its goroutines. This version has no worker leases." },
-    { title: "Readers and feeds", diagram: "content", caption: "Conceptual data relationships behind subscriptions and collected posts." },
   ],
   cypress: [
     { title: "The entry page", crop: { x: 18, y: 17, width: 64, height: 52 }, caption: "The reworked hero. Its feature list names only what the prototype implements." },

@@ -14,7 +14,6 @@ const routes = [
   "/cypress",
   "/leetcode-clone",
   "/cliphop",
-  "/rss-aggregator",
   "/poreia",
   "/tartan-tickets",
   "/companion",

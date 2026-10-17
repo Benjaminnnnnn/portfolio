@@ -32,7 +32,6 @@ All 13 projects now have their own generated editorial cover, palette and materi
 | PetClinic | Blue and terracotta clinic linocut |
 | 333gle | Orange lens, abstract newspaper collage, cobalt mark |
 | xv6 | Black CRT glass and phosphor-green cells |
-| RSS Aggregator | Coral and teal screenprinted streams |
 | Cypress | Plum and chartreuse document sculpture |
 | Leetcode Clone | Mustard and graphite woodblock puzzle |
 | ClipHop | Hot-pink and mint skateboard motion collage |

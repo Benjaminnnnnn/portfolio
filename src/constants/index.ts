@@ -11,7 +11,6 @@ import {
   git,
   graphql,
   leetcode,
-  mems,
   microsoft,
   mobile,
   mongodb,
@@ -22,7 +21,6 @@ import {
   reactjs,
   redux,
   rest,
-  rssagg,
   seal,
   splendor,
   tailwind,
@@ -473,32 +471,6 @@ const projects: IProject[] = [
     source_code_link: "https://github.com/Benjaminnnnnn/cliphop",
   },
   {
-    id: "rssagg",
-    name: "RSS Aggregator",
-    description:
-      "An RSS feed aggregator web server and scraper, desinged to be dynamic and effective. Get/subscribe your favorite RSS feeds here.",
-    tags: [
-      {
-        name: "go",
-        color: "blue-text-gradient",
-      },
-      {
-        name: "go-chi",
-        color: "blue-text-gradient",
-      },
-      {
-        name: "postgresql",
-        color: "blue-text-gradient",
-      },
-      {
-        name: "sqlc",
-        color: "green-text-gradient",
-      },
-    ],
-    image: rssagg,
-    source_code_link: "https://github.com/Benjaminnnnnn/go-rssagg",
-  },
-  {
     id: "propertize",
     name: "Propertize",
     description:
@@ -528,32 +500,6 @@ const projects: IProject[] = [
     image: propertize,
     source_code_link: "https://github.com/Benjaminnnnnn/propertize",
     // demo_link: "https://leafy-centaur-afc811.netlify.app/",
-  },
-  {
-    id: "mems",
-    name: "Mems",
-    description:
-      "Social media platform that enables users to share their favorite travel places to others and record their best part of memories.",
-    tags: [
-      {
-        name: "react",
-        color: "blue-text-gradient",
-      },
-      {
-        name: "mongodb",
-        color: "green-text-gradient",
-      },
-      {
-        name: "node",
-        color: "green-text-gradient",
-      },
-      {
-        name: "gcp",
-        color: "pink-text-gradient",
-      },
-    ],
-    image: mems,
-    source_code_link: "https://github.com/Benjaminnnnnn/mems",
   },
   {
     id: "tttgle",
