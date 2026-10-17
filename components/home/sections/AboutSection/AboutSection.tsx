@@ -18,7 +18,7 @@ export function AboutSection() {
       <img
         className="about-photo"
         src={withBasePath("/img/about.jpg")}
-        alt="Benjamin Zhuang walking up a concrete stairwell"
+        alt="Benjamin Zhuang personal photo"
         width={896}
         height={900}
         loading="lazy"
