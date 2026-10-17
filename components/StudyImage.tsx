@@ -12,7 +12,7 @@ export function StudyImage({ src, alt, visual, full = false }: { src: string; al
     "333gle": 1800 / 988, algo: 1800 / 988, cliphop: 1800 / 948,
     cypress: 1800 / 1038, handpick: 1800 / 1000,
     "algo-v2": 1.6, "splendor-v2": 1.6, "leetcode-v2": 1.6, "cypress-v2": 1.6, "cliphop-v2": 1.6, leetcode: 1800 / 1013,
-    poreia: 1800 / 989, "tartan-tickets": 1800 / 989, companion: 1800 / 989, rssagg: 1800 / 1028, splendor: 1800 / 981, xv6: 1800 / 993,
+    poreia: 1800 / 989, "tartan-tickets": 1800 / 989, companion: 1800 / 989, splendor: 1800 / 981, xv6: 1800 / 993,
   };
   const imageName = src.split("/").pop()!.replace(".webp", "");
   const style = {

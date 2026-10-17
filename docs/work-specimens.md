@@ -38,7 +38,6 @@ node scripts/marketing/covers.mjs    # publish the reworked-UI covers
 | PetClinic / DevOps | Grafana, SonarQube | Screenshots committed in the repo's `screenshots/`, bookmarks bar cropped out |
 | 333gle | Search results; `HttpServer.cc` accept loop | Existing capture; source excerpt from the repository |
 | xv6 | Shell session | Existing capture (not a new test run) |
-| RSS Aggregator | Swagger UI; feed request example | Existing capture; example values from `docs/swagger.json` |
 | Cypress | Reworked landing page | Local build with placeholder Supabase settings |
 | Coding Practice | Reworked problem list; Two Sum workspace | Local build, bundled problem data |
 | ClipHop | Reworked feed | Local build reading the project's public Sanity dataset |

@@ -93,14 +93,6 @@ function Xv6() {
   return <pre className="sp-xv6">{lines.map((l, i) => <span key={i} style={{ ["--i" as string]: i }}>{l}{i === lines.length - 1 ? <b className="sp-caret" /> : null}{"\n"}</span>)}</pre>;
 }
 
-function Rss() {
-  return <div className="sp-rss">
-    <p className="sp-rss-cmd"><span>$</span> curl -X POST /v1/feeds</p>
-    <p className="sp-rss-body">{`{ "name": "New York Times - U.S.",`}<br />{`  "url": "rss.nytimes.com/…/US.xml" }`}</p>
-    <p className="sp-rss-res">201 Created</p>
-  </div>;
-}
-
 function Cypress() {
   return <div className="sp-cy">
     <div className="sp-cy-card">
@@ -171,7 +163,7 @@ function PpeMotion() {
 
 const pieces: Record<string, () => React.JSX.Element> = {
   relay: Relay, handpick: Handpick, splendor: Splendor, "algo-explorer": AlgoExplorer, "simple-db": SimpleDb,
-  "petclinic-devops": PetClinic, "333gle": Gle333, xv6: Xv6, "rss-aggregator": Rss, cypress: Cypress,
+  "petclinic-devops": PetClinic, "333gle": Gle333, xv6: Xv6, cypress: Cypress,
   "leetcode-clone": LeetCode, cliphop: ClipHop, poreia: Poreia, "tartan-tickets": TartanTickets,
   companion: Companion, "ppe-motion": PpeMotion,
 };

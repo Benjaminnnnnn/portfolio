@@ -154,17 +154,9 @@
         "name": "ClipHop",
         "description": "ClipHop 是融合社群互動的沉浸式短影音分享網站。"
       },
-      "rssagg": {
-        "name": "RSS Aggregator",
-        "description": "高效的 RSS 訂閱與抓取伺服器，輕鬆追蹤你喜愛的來源。"
-      },
       "propertize": {
         "name": "Propertize",
         "description": "Propertize 是高效率的 CRUD 不動產管理儀表板，簡化物件管理流程。"
-      },
-      "mems": {
-        "name": "Mems",
-        "description": "讓使用者分享最愛的旅遊地點，並記錄美好回憶的社群平台。"
       },
       "tttgle": {
         "name": "333gle",

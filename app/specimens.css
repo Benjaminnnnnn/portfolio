@@ -12,7 +12,6 @@
 .specimen-petclinic-devops { --sp-bg: #2f5bff; --sp-ink: #fff; }
 .specimen-333gle { --sp-bg: #ffffff; --sp-ink: #111; }
 .specimen-xv6 { --sp-bg: #0a0e0a; --sp-ink: #9dff8a; }
-.specimen-rss-aggregator { --sp-bg: #ff4a1c; --sp-ink: #fff; }
 .specimen-cypress { --sp-bg: #d6d0ff; --sp-ink: #17132b; }
 .specimen-leetcode-clone { --sp-bg: #ffa116; --sp-ink: #111; }
 .specimen-cliphop { --sp-bg: #ff5fa2; --sp-ink: #1b0b14; }
@@ -120,13 +119,6 @@
 .sp-caret { display: inline-block; width: .6em; height: 1em; vertical-align: -.15em; background: #9dff8a; animation: sp-blink 1s steps(1) infinite; }
 .specimen-host:hover .sp-xv6 span { animation: sp-type .02s calc(var(--i) * 70ms) both; }
 @keyframes sp-type { from { opacity: 0; } }
-
-/* RSS — one request on vermilion */
-.sp-rss { width: 80cqw; font: 500 4.4cqw/1.4 "mono", monospace; }
-.sp-rss-cmd span { opacity: .6; margin-right: 1.5cqw; }
-.sp-rss-body { margin-top: 3cqw; font-size: 3.1cqw; opacity: .85; }
-.sp-rss-res { display: inline-block; margin-top: 4cqw; padding: 1cqw 2cqw; background: #fff; color: #ff4a1c; font-weight: 600; transform: scale(.9); opacity: .0; transition: .35s cubic-bezier(.22, 1.4, .36, 1); }
-.specimen-host:hover .sp-rss-res { transform: none; opacity: 1; }
 
 /* Cypress — the setup form it actually ships */
 .sp-cy-card { width: 58cqw; padding: 4cqw; background: #110e22; color: #f2efff; border-radius: 2cqw; box-shadow: 1.6cqw 1.6cqw 0 #17132b; }

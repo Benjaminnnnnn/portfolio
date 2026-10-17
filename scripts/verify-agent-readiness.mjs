@@ -37,7 +37,7 @@ const htmlPages = sitemapUrls.map((entry) => entry.loc);
 
 check("sitemap.xml is a sitemaps.org urlset", () => {
   assert.match(sitemap, /^<\?xml version="1.0" encoding="UTF-8"\?>\s*<urlset xmlns="http:\/\/www.sitemaps.org\/schemas\/sitemap\/0.9">/);
-  assert.ok(sitemapUrls.length >= 20, `only ${sitemapUrls.length} URLs`);
+  assert.ok(sitemapUrls.length >= 19, `only ${sitemapUrls.length} URLs`);
 });
 check("sitemap lists every exported page with a lastmod", () => {
   for (const { loc, lastmod } of sitemapUrls) {

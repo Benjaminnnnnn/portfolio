@@ -51,9 +51,6 @@ export function ProjectDiagram({ kind, slug }: { kind: DiagramKind; slug: string
     case "practice":
       drawing = <div className="practice-map"><div><span>PROBLEM</span><strong>Two Sum</strong><p>Find the two values that add up to the target.</p><code>[2, 7, 11, 15]<br />target = 9</code></div><div><span>SOLUTION</span><div className="code-lines" aria-hidden="true"><i /><i /><i /><i /></div><div className="practice-result"><span>Expected output</span><code>[0, 1]</code></div></div></div>;
       break;
-    case "fetch":
-      drawing = <div><Box label="Ticker">Select the next feed batch</Box><div className="branch-line" /><div className="diagram-trio">{["Feed A", "Feed B", "Feed C"].map(feed => <Box key={feed} label={feed} tone="accent">Fetch + parse</Box>)}</div><Arrow>wait group</Arrow><Box label="Batch complete">The next iteration can begin</Box><div className="diagram-footnote">HTTP timeout: 10 seconds</div></div>;
-      break;
     case "search":
       drawing = <div><div className="search-query"><span aria-hidden="true">⌕</span><code>hello</code><span>HTTP request</span></div><Arrow /><Box label="Listening socket → thread pool" tone="accent">A worker handles the accepted connection</Box><Arrow /><div className="diagram-pair"><Box label="Prepared index">Read matching documents</Box><Box label="HTML response">Format the results</Box></div></div>;
       break;
@@ -82,8 +79,7 @@ export function ProjectDiagram({ kind, slug }: { kind: DiagramKind; slug: string
       drawing = <div><div className="diagram-pair"><Box label="Trial A">Baseline gear</Box><Box label="Trial B" tone="accent">Gear under test</Box></div><div className="branch-line" /><div className="rule-gate"><span>Same subject?</span><span>Same task?</span><span>Same protocol?</span></div><Arrow>matched</Arrow><Box label="Difference per metric">With the direction each metric favours</Box><div className="diagram-footnote">Descriptive only: no overall score, p-value, or causal claim.</div></div>;
       break;
     case "content": {
-      drawing = slug === "rss-aggregator" ? <div className="entity-drawing"><div className="diagram-pair"><Box label="Reader" /><Box label="Feed" /></div><Arrow>linked by</Arrow><Box label="Follow" tone="accent">A reader's subscription to a feed</Box><div className="entity-storage">Each feed has collected posts.</div><div className="diagram-footnote">Go · sqlc · PostgreSQL</div></div>
-        : slug === "cypress" ? <div className="entity-drawing"><Box label="Next.js interface">Accounts · workspaces · navigation</Box><Arrow>backend services</Arrow><Box label="Supabase" tone="accent">PostgreSQL data</Box><div className="entity-storage">Drizzle describes the database model in TypeScript.</div></div>
+      drawing = slug === "cypress" ? <div className="entity-drawing"><Box label="Next.js interface">Accounts · workspaces · navigation</Box><Arrow>backend services</Arrow><Box label="Supabase" tone="accent">PostgreSQL data</Box><div className="entity-storage">Drizzle describes the database model in TypeScript.</div></div>
         : <div className="entity-drawing"><Box label="Creator" tone="accent" /><div className="branch-line" /><div className="diagram-pair"><Box label="Profile">Creator information</Box><div><Box label="Videos">Published clips</Box><Arrow /><Box label="Reactions" /></div></div><div className="diagram-footnote">Content stored through Sanity · conceptual view</div></div>;
       break;
     }

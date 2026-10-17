@@ -35,7 +35,7 @@ export type PortfolioProject = {
 export const projectOrder = [
   "poreia", "tartan-tickets", "relay", "handpick", "companion", "ppe-motion",
   "splendor", "algo-explorer", "simple-db", "petclinic-devops",
-  "333gle", "xv6", "rss-aggregator", "cypress", "leetcode-clone", "cliphop",
+  "333gle", "xv6", "cypress", "leetcode-clone", "cliphop",
 ] as const;
 
 export const portfolioProjects = {
@@ -473,48 +473,6 @@ export const portfolioProjects = {
         "title": "Add participation around playback.",
         "body": [
           "Account-aware actions let users publish and react to clips. The project focuses on application flows rather than custom video encoding or large-scale media delivery."
-        ]
-      }
-    ],
-  },
-  "rss-aggregator": {
-    slug: "rss-aggregator",
-    title: "RSS Aggregator",
-    category: "Go backend service",
-    context: "Independent systems project",
-    headline: "Collect updates from several feeds at once.",
-    summary:
-      "A Go service for RSS subscriptions, concurrent feed retrieval, and PostgreSQL storage, with a documented HTTP API.",
-    cover: "/project-media/rssagg.webp",
-    coverAlt: "Swagger documentation for the RSS feed API with health and feed endpoints",
-    accent: "#69a9ff",
-    stack: ["Go", "go-chi", "PostgreSQL", "sqlc", "REST"],
-    sourceUrl: "https://github.com/Benjaminnnnnn/go-rssagg",
-    metrics: [
-      { value: "Go", label: "concurrent feed processing" },
-      { value: "REST", label: "documented service contract" },
-      { value: "SQL", label: "typed PostgreSQL queries" },
-    ],
-    chapters: [
-      {
-        "eyebrow": "01 / Context",
-        "title": "Separate subscriptions from fetching.",
-        "body": [
-          "HTTP handlers manage users, feeds, and follows. PostgreSQL stores those relationships and the posts collected from each source."
-        ]
-      },
-      {
-        "eyebrow": "02 / Implementation",
-        "title": "Fetch a batch concurrently.",
-        "body": [
-          "A ticker selects feeds for the next batch. Goroutines fetch and parse them concurrently, and a wait group waits for the batch before the next iteration. The HTTP client has a ten-second timeout."
-        ]
-      },
-      {
-        "eyebrow": "03 / Notes",
-        "title": "Study what happens when a fetch fails.",
-        "body": [
-          "This version has no worker lease protocol or automated tests in its public tree. It marks a feed fetched before retrieval and continues after logging a fetch error. Relay studies the ownership and recovery questions that appear when background work spans multiple processes."
         ]
       }
     ],

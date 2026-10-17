@@ -47,9 +47,7 @@ import tttgle from "./project/333gle.png";
 import cliphop from "./project/cliphop.png";
 import cypress from "./project/cypress.png";
 import leetcode from "./project/leetcode.png";
-import mems from "./project/mems.png";
 import propertize from "./project/propertize.png";
-import rssagg from "./project/rssagg.png";
 import splendor from "./project/splendor.png";
 import xv6 from "./project/xv6.png";
 
@@ -72,7 +70,6 @@ export {
   kubernetes,
   leetcode, logo,
   logo_test,
-  mems,
   menu,
   microsoft,
   mobile,
@@ -80,7 +77,7 @@ export {
   nextjs,
   nodejs, playwright, propertize,
   python,
-  reactjs, redux, rest, rssagg,
+  reactjs, redux, rest,
   seal,
   splendor,
   tailwind,
